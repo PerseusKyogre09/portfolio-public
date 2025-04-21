@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Projects</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/custom.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body class="bg-gray-900 text-gray-200 min-h-screen flex flex-col transition-colors duration-300">
+    <!-- Particle Background -->
+    <div id="particles-js" class="fixed inset-0 z-0"></div>
+
+    <header class="sticky top-0 bg-gray-900 bg-opacity-95 backdrop-filter backdrop-blur-sm z-50 shadow-lg">
+        <nav class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="text-xl font-bold">
+                    <a href="../index.html" class="text-indigo-400 hover:text-indigo-300 flex items-center gap-2 transition-colors">
+                        <span class="text-2xl">&lt;/&gt;</span> Pradeepto Pal
+                    </a>
+                </div>
+                
+                <div class="hidden md:flex space-x-8 text-sm">
+                    <a href="../index.html" class="text-gray-300 hover:text-indigo-400 transition-colors nav-link">Home</a>
+                    <a href="projects.html" class="text-indigo-400 font-medium nav-link active">Projects</a>
+                    <a href="skills.html" class="text-gray-300 hover:text-indigo-400 transition-colors nav-link">Skills</a>
+                    <a href="blog.html" class="text-gray-300 hover:text-indigo-400 transition-colors nav-link">Blog</a>
+                    <a href="contact.html" class="text-gray-300 hover:text-indigo-400 transition-colors nav-link">Contact</a>
+                </div>
+                
+                <div class="flex items-center">
+                    <button id="theme-toggle" class="text-gray-300 hover:text-indigo-400 mr-4 transition-colors focus:outline-none">
+                        <i class="fas fa-moon text-xl"></i>
+                    </button>
+                    
+                    <button id="mobile-menu-button" class="md:hidden text-gray-300 hover:text-indigo-400 transition-colors focus:outline-none">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="md:hidden hidden mt-4 pb-2 border-t border-gray-700">
+                <div class="flex flex-col space-y-3 mt-3">
+                    <a href="../index.html" class="text-gray-300 hover:text-indigo-400 transition-colors py-2">Home</a>
+                    <a href="projects.html" class="text-indigo-400 font-medium py-2">Projects</a>
+                    <a href="skills.html" class="text-gray-300 hover:text-indigo-400 transition-colors py-2">Skills</a>
+                    <a href="blog.html" class="text-gray-300 hover:text-indigo-400 transition-colors py-2">Blog</a>
+                    <a href="contact.html" class="text-gray-300 hover:text-indigo-400 transition-colors py-2">Contact</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="flex-grow z-10 relative">
+        <!-- Projects Header -->
+        <section class="py-16 relative overflow-hidden">
+            <div class="container mx-auto px-6">
+                <div class="max-w-3xl mx-auto text-center">
+                    <h1 class="text-4xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-500 animate-fade-in">My Projects</h1>
+                    <p class="text-gray-400 mb-8 animate-fade-in">A showcase of my work, personal projects, and contributions.</p>
+                    
+                    <!-- Filter Buttons -->
+                    <div class="flex flex-wrap justify-center gap-3 mb-10">
+                        <button class="filter-btn active px-4 py-2 rounded-full text-sm font-medium bg-indigo-600 text-white hover:bg-indigo-700 transition-colors" data-filter="all">
+                            All Projects
+                        </button>
+                        <button class="filter-btn px-4 py-2 rounded-full text-sm font-medium bg-gray-800 text-gray-300 hover:bg-indigo-600 hover:text-white transition-colors" data-filter="web">
+                            Web Apps
+                        </button>
+                        <button class="filter-btn px-4 py-2 rounded-full text-sm font-medium bg-gray-800 text-gray-300 hover:bg-indigo-600 hover:text-white transition-colors" data-filter="desktop">
+                            Desktop Apps
+                        </button>
+                        <button class="filter-btn px-4 py-2 rounded-full text-sm font-medium bg-gray-800 text-gray-300 hover:bg-indigo-600 hover:text-white transition-colors" data-filter="mobile">
+                            Mobile Apps
+                        </button>
+                        <button class="filter-btn px-4 py-2 rounded-full text-sm font-medium bg-gray-800 text-gray-300 hover:bg-indigo-600 hover:text-white transition-colors" data-filter="aiml">
+                            AIML
+                        </button>
+                        <button class="filter-btn px-4 py-2 rounded-full text-sm font-medium bg-gray-800 text-gray-300 hover:bg-indigo-600 hover:text-white transition-colors" data-filter="blockchain">
+                            Blockchain
+                        </button>
+                        <button class="filter-btn px-4 py-2 rounded-full text-sm font-medium bg-gray-800 text-gray-300 hover:bg-indigo-600 hover:text-white transition-colors" data-filter="hpc">
+                            High Processing Compute
+                        </button>
+                        <button class="filter-btn px-4 py-2 rounded-full text-sm font-medium bg-gray-800 text-gray-300 hover:bg-indigo-600 hover:text-white transition-colors" data-filter="cybersecurity">
+                            Cybersecurity
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Gallery -->
+        <section class="pb-20">
+            <div class="container mx-auto px-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="projects-container">
+                    <!-- Project Card 1 -->
+                    <div class="project-card bg-gray-800 rounded-xl overflow-hidden shadow-lg transform hover:-translate-y-2 transition-all duration-300" data-category="hpc">
+                        <div class="relative overflow-hidden h-48">
+                            <div class="bg-indigo-900 h-full w-full flex items-center justify-center">
+                                <i class="fas fa-microchip text-5xl text-indigo-300"></i>
+                            </div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-70"></div>
+                            <div class="absolute bottom-0 left-0 p-4">
+                                <span class="bg-indigo-600 text-xs px-2 py-1 rounded-md text-white">High Processing Compute</span>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2 text-white">Parallel Image Processing with Intel oneAPI</h3>
+                            <p class="text-gray-400 mb-4 text-sm">Applies basic image processing using Intel oneAPI DPC++ to compare serial processing & parallel processing.</p>
+                            <div class="flex space-x-2 text-xs mb-4">
+                                <span class="bg-gray-700 px-2 py-1 rounded text-gray-300">C++</span>
+                                <span class="bg-gray-700 px-2 py-1 rounded text-gray-300">Shell</span>
+                                <span class="bg-gray-700 px-2 py-1 rounded text-gray-300">Makefile</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <a href="https://github.com/PerseusKyogre09/oneapi-compare" class="text-indigo-400 hover:text-indigo-300 text-sm flex items-center">
+                                    <span>View Project</span>
+                                    <i class="fas fa-arrow-right ml-1"></i>
+                                </a>
+                                <a href="https://github.com/PerseusKyogre09/oneapi-compare" class="text-gray-400 hover:text-white">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Project Card 2 -->
+                    <div class="project-card bg-gray-800 rounded-xl overflow-hidden shadow-lg transform hover:-translate-y-2 transition-all duration-300" data-category="desktop">
+                        <div class="relative overflow-hidden h-48">
+                            <div class="bg-purple-900 h-full w-full flex items-center justify-center">
+                                <i class="fas fa-desktop text-5xl text-purple-300"></i>
+                            </div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-70"></div>
+                            <div class="absolute bottom-0 left-0 p-4">
+                                <span class="bg-purple-600 text-xs px-2 py-1 rounded-md text-white">Desktop App</span>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2 text-white">Widgets App</h3>
+                            <p class="text-gray-400 mb-4 text-sm">A desktop application to demonstrate different widgets made using PyQt5</p>
+                            <div class="flex space-x-2 text-xs mb-4">
+                                <span class="bg-gray-700 px-2 py-1 rounded text-gray-300">Python</span>
+                                <span class="bg-gray-700 px-2 py-1 rounded text-gray-300">PyQt5</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <a href="https://github.com/PerseusKyogre09/desktop-widgets" class="text-indigo-400 hover:text-indigo-300 text-sm flex items-center">
+                                    <span>View Project</span>
+                                    <i class="fas fa-arrow-right ml-1"></i>
+                                </a>
+                                <a href="https://github.com/PerseusKyogre09/desktop-widgets" class="text-gray-400 hover:text-white">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Project Card 3 -->
+                    <div class="project-card bg-gray-800 rounded-xl overflow-hidden shadow-lg transform hover:-translate-y-2 transition-all duration-300" data-category="blockchain">
+                        <div class="relative overflow-hidden h-48">
+                            <div class="bg-blue-900 h-full w-full flex items-center justify-center">
+                                <i class="fab fa-bitcoin text-5xl text-blue-300"></i>
+                            </div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-70"></div>
+                            <div class="absolute bottom-0 left-0 p-4">
+                                <span class="bg-blue-600 text-xs px-2 py-1 rounded-md text-white">Blockchain</span>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2 text-white">Blockchain Messenger</h3>
+                            <p class="text-gray-400 mb-4 text-sm">A beginner project in blockchain, using smart contracts.</p>
+                            <div class="flex space-x-2 text-xs mb-4">
+                                <span class="bg-gray-700 px-2 py-1 rounded text-gray-300">Solidity</span>
+                                <span class="bg-gray-700 px-2 py-1 rounded text-gray-300">Typescript</span>
+                                <span class="bg-gray-700 px-2 py-1 rounded text-gray-300">Javascript</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <a href="https://github.com/PerseusKyogre09/blockchain-messenger" class="text-indigo-400 hover:text-indigo-300 text-sm flex items-center">
+                                    <span>View Project</span>
+                                    <i class="fas fa-arrow-right ml-1"></i>
+                                </a>
+                                <a href="https://github.com/PerseusKyogre09/blockchain-messenger" class="text-gray-400 hover:text-white">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Project Card 4 -->
+                    <div class="project-card bg-gray-800 rounded-xl overflow-hidden shadow-lg transform hover:-translate-y-2 transition-all duration-300" data-category="web">
+                        <div class="relative overflow-hidden h-48">
+                            <div class="bg-green-900 h-full w-full flex items-center justify-center">
+                                <i class="fas fa-gamepad text-5xl text-green-300"></i>
+                            </div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-70"></div>
+                            <div class="absolute bottom-0 left-0 p-4">
+                                <span class="bg-green-600 text-xs px-2 py-1 rounded-md text-white">Web App</span>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2 text-white">Pokemon Battle Simulator</h3>
+                            <p class="text-gray-400 mb-4 text-sm">A simple pokemon battle game similar in style to Pokemon Showdown.</p>
+                            <div class="flex space-x-2 text-xs mb-4">
+                                <span class="bg-gray-700 px-2 py-1 rounded text-gray-300">HTML/CSS</span>
+                                <span class="bg-gray-700 px-2 py-1 rounded text-gray-300">Python</span>
+                                <span class="bg-gray-700 px-2 py-1 rounded text-gray-300">Flask</span>
+                                <span class="bg-gray-700 px-2 py-1 rounded text-gray-300">Javascript</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <a href="https://github.com/PerseusKyogre09/pokemon-battle-sim" class="text-indigo-400 hover:text-indigo-300 text-sm flex items-center">
+                                    <span>View Project</span>
+                                    <i class="fas fa-arrow-right ml-1"></i>
+                                </a>
+                                <a href="https://github.com/PerseusKyogre09/pokemon-battle-sim" class="text-gray-400 hover:text-white">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Project Card 5 -->
+                    <div class="project-card bg-gray-800 rounded-xl overflow-hidden shadow-lg transform hover:-translate-y-2 transition-all duration-300" data-category="desktop">
+                        <div class="relative overflow-hidden h-48">
+                            <div class="bg-yellow-900 h-full w-full flex items-center justify-center">
+                                <i class="fas fa-cloud-sun text-5xl text-yellow-300"></i>
+                            </div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-70"></div>
+                            <div class="absolute bottom-0 left-0 p-4">
+                                <span class="bg-yellow-600 text-xs px-2 py-1 rounded-md text-white">Desktop App</span>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2 text-white">Weather App</h3>
+                            <p class="text-gray-400 mb-4 text-sm">A desktop application which shows current weather in any city and shows 3 days weather forecast.</p>
+                            <div class="flex space-x-2 text-xs mb-4">
+                                <span class="bg-gray-700 px-2 py-1 rounded text-gray-300">Python</span>
+                                <span class="bg-gray-700 px-2 py-1 rounded text-gray-300">Custom Tkinter</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <a href="https://github.com/PerseusKyogre09/weather-project" class="text-indigo-400 hover:text-indigo-300 text-sm flex items-center">
+                                    <span>View Project</span>
+                                    <i class="fas fa-arrow-right ml-1"></i>
+                                </a>
+                                <a href="https://github.com/PerseusKyogre09/weather-project" class="text-gray-400 hover:text-white">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Project Card 6 -->
+                    <div class="project-card bg-gray-800 rounded-xl overflow-hidden shadow-lg transform hover:-translate-y-2 transition-all duration-300" data-category="cybersecurity">
+                        <div class="relative overflow-hidden h-48">
+                            <div class="bg-red-900 h-full w-full flex items-center justify-center">
+                                <i class="fas fa-network-wired text-5xl text-red-300"></i>
+                            </div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-70"></div>
+                            <div class="absolute bottom-0 left-0 p-4">
+                                <span class="bg-red-600 text-xs px-2 py-1 rounded-md text-white">Cybersecurity</span>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2 text-white">Port Sniffer CLI</h3>
+                            <p class="text-gray-400 mb-4 text-sm">A simple, multi-threaded TCP port scanner.</p>
+                            <div class="flex space-x-2 text-xs mb-4">
+                                <span class="bg-gray-700 px-2 py-1 rounded text-gray-300">Rust</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <a href="https://github.com/PerseusKyogre09/ip_sniffer" class="text-indigo-400 hover:text-indigo-300 text-sm flex items-center">
+                                    <span>View Project</span>
+                                    <i class="fas fa-arrow-right ml-1"></i>
+                                </a>
+                                <a href="https://github.com/PerseusKyogre09/ip_sniffer" class="text-gray-400 hover:text-white">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- GitHub Activity Section -->
+        <section class="py-20 bg-gray-800 bg-opacity-50">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold mb-4">GitHub Activity</h2>
+                    <div class="w-24 h-1 bg-indigo-500 mx-auto rounded-full"></div>
+                </div>
+                
+                <div class="max-w-5xl mx-auto bg-gray-800 rounded-xl p-6 shadow-lg">
+                    <!-- Container that will be populated by JavaScript -->
+                    <div id="github-activity-container" class="relative min-h-64 w-full">
+                        <div class="flex items-center justify-center h-full">
+                            <div class="animate-pulse text-gray-400">
+                                <i class="fas fa-spinner fa-spin mr-2"></i>
+                                Loading GitHub activity...
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-8 flex justify-center">
+                    <a href="https://github.com/PerseusKyogre09" data-github-profile 
+                    class="flex items-center px-6 py-3 rounded-full bg-gray-700 hover:bg-gray-600 text-gray-300 hover:text-white font-medium transition-all duration-300">
+                        <i class="fab fa-github mr-2"></i>
+                        <span>Visit My GitHub Profile</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-900 py-10 border-t border-gray-800 z-10 relative">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <div class="text-lg font-bold text-indigo-400 flex items-center">
+                        <span class="text-xl mr-1">&lt;/&gt;</span> Pradeepto Pal
+                    </div>
+                    <p class="text-gray-500 text-sm mt-1">Computer Science Student</p>
+                </div>
+                
+                <div class="flex flex-col md:flex-row md:space-x-10 space-y-4 md:space-y-0 text-sm">
+                    <a href="../index.html" class="text-gray-400 hover:text-indigo-400 transition-colors">Home</a>
+                    <a href="projects.html" class="text-gray-400 hover:text-indigo-400 transition-colors">Projects</a>
+                    <a href="skills.html" class="text-gray-400 hover:text-indigo-400 transition-colors">Skills</a>
+                    <a href="blog.html" class="text-gray-400 hover:text-indigo-400 transition-colors">Blog</a>
+                    <a href="contact.html" class="text-gray-400 hover:text-indigo-400 transition-colors">Contact</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/animations.js"></script>
+    <script src="../js/theme.js"></script>
+    <script src="../js/projects.js"></script>
+    <script src="../js/github.js"></script>
+</body>
+</html>

@@ -1,0 +1,527 @@
+
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Skills</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/custom.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body class="bg-gray-900 text-gray-200 min-h-screen flex flex-col transition-colors duration-300">
+    <!-- Particle Background -->
+    <div id="particles-js" class="fixed inset-0 z-0"></div>
+
+    <header class="sticky top-0 bg-gray-900 bg-opacity-95 backdrop-filter backdrop-blur-sm z-50 shadow-lg">
+        <nav class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="text-xl font-bold">
+                    <a href="../index.html" class="text-indigo-400 hover:text-indigo-300 flex items-center gap-2 transition-colors">
+                        <span class="text-2xl">&lt;/&gt;</span> Pradeepto Pal
+                    </a>
+                </div>
+                
+                <div class="hidden md:flex space-x-8 text-sm">
+                    <a href="../index.html" class="text-gray-300 hover:text-indigo-400 transition-colors nav-link">Home</a>
+                    <a href="projects.html" class="text-gray-300 hover:text-indigo-400 transition-colors nav-link">Projects</a>
+                    <a href="skills.html" class="text-indigo-400 font-medium nav-link active">Skills</a>
+                    <a href="blog.html" class="text-gray-300 hover:text-indigo-400 transition-colors nav-link">Blog</a>
+                    <a href="contact.html" class="text-gray-300 hover:text-indigo-400 transition-colors nav-link">Contact</a>
+                </div>
+                
+                <div class="flex items-center">
+                    <button id="theme-toggle" class="text-gray-300 hover:text-indigo-400 mr-4 transition-colors focus:outline-none">
+                        <i class="fas fa-moon text-xl"></i>
+                    </button>
+                    
+                    <button id="mobile-menu-button" class="md:hidden text-gray-300 hover:text-indigo-400 transition-colors focus:outline-none">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="md:hidden hidden mt-4 pb-2 border-t border-gray-700">
+                <div class="flex flex-col space-y-3 mt-3">
+                    <a href="../index.html" class="text-gray-300 hover:text-indigo-400 transition-colors py-2">Home</a>
+                    <a href="projects.html" class="text-gray-300 hover:text-indigo-400 transition-colors py-2">Projects</a>
+                    <a href="skills.html" class="text-indigo-400 font-medium py-2">Skills</a>
+                    <a href="blog.html" class="text-gray-300 hover:text-indigo-400 transition-colors py-2">Blog</a>
+                    <a href="contact.html" class="text-gray-300 hover:text-indigo-400 transition-colors py-2">Contact</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="flex-grow z-10 relative">
+        <!-- Page Header -->
+        <section class="py-20 md:py-24">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16 animate-fade-in">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-500">
+                        My Skills
+                    </h1>
+                    <div class="w-24 h-1 bg-indigo-500 mx-auto rounded-full"></div>
+                    <p class="mt-6 text-gray-400 max-w-2xl mx-auto">
+                        As a passionate computer science student, I continuously expand my skill set. Here are the technologies and tools I'm proficient in.
+                    </p>
+                </div>
+
+                <!-- Skill Categories -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Programming Languages -->
+                    <div class="bg-gray-800 rounded-xl overflow-hidden shadow-lg transform hover:-translate-y-2 transition-all duration-300 animate-fade-in">
+                        <div class="p-6">
+                            <div class="flex items-center mb-6">
+                                <div class="bg-indigo-600 p-3 rounded-lg">
+                                    <i class="fas fa-code text-white text-xl"></i>
+                                </div>
+                                <h3 class="ml-4 text-xl font-semibold">Programming Languages</h3>
+                            </div>
+                            
+                            <div class="space-y-5">
+                                <div>
+                                    <div class="flex justify-between">
+                                        <span class="text-gray-300">Python</span>
+                                        <span class="text-gray-400">90%</span>
+                                    </div>
+                                    <div class="mt-2 h-2 bg-gray-700 rounded-full">
+                                        <div class="h-full bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full skill-progress" style="width: 90%"></div>
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <div class="flex justify-between">
+                                        <span class="text-gray-300">C/C++</span>
+                                        <span class="text-gray-400">70%</span>
+                                    </div>
+                                    <div class="mt-2 h-2 bg-gray-700 rounded-full">
+                                        <div class="h-full bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full skill-progress" style="width: 70%"></div>
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <div class="flex justify-between">
+                                        <span class="text-gray-300">Solidity</span>
+                                        <span class="text-gray-400">20%</span>
+                                    </div>
+                                    <div class="mt-2 h-2 bg-gray-700 rounded-full">
+                                        <div class="h-full bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full skill-progress" style="width: 20%"></div>
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <div class="flex justify-between">
+                                        <span class="text-gray-300">Rust</span>
+                                        <span class="text-gray-400">10%</span>
+                                    </div>
+                                    <div class="mt-2 h-2 bg-gray-700 rounded-full">
+                                        <div class="h-full bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full skill-progress" style="width: 10%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Front-End -->
+                    <div class="bg-gray-800 rounded-xl overflow-hidden shadow-lg transform hover:-translate-y-2 transition-all duration-300 animate-fade-in delay-100">
+                        <div class="p-6">
+                            <div class="flex items-center mb-6">
+                                <div class="bg-purple-600 p-3 rounded-lg">
+                                    <i class="fas fa-laptop-code text-white text-xl"></i>
+                                </div>
+                                <h3 class="ml-4 text-xl font-semibold">Front-End</h3>
+                            </div>
+                            
+                            <div class="space-y-5">
+                                <div>
+                                    <div class="flex justify-between">
+                                        <span class="text-gray-300">HTML5</span>
+                                        <span class="text-gray-400">95%</span>
+                                    </div>
+                                    <div class="mt-2 h-2 bg-gray-700 rounded-full">
+                                        <div class="h-full bg-gradient-to-r from-purple-500 to-indigo-500 rounded-full skill-progress" style="width: 95%"></div>
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <div class="flex justify-between">
+                                        <span class="text-gray-300">CSS3/Tailwind</span>
+                                        <span class="text-gray-400">90%</span>
+                                    </div>
+                                    <div class="mt-2 h-2 bg-gray-700 rounded-full">
+                                        <div class="h-full bg-gradient-to-r from-purple-500 to-indigo-500 rounded-full skill-progress" style="width: 90%"></div>
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <div class="flex justify-between">
+                                        <span class="text-gray-300">Javascript</span>
+                                        <span class="text-gray-400">50%</span>
+                                    </div>
+                                    <div class="mt-2 h-2 bg-gray-700 rounded-full">
+                                        <div class="h-full bg-gradient-to-r from-purple-500 to-indigo-500 rounded-full skill-progress" style="width: 50%"></div>
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <div class="flex justify-between">
+                                        <span class="text-gray-300">React</span>
+                                        <span class="text-gray-400">1%</span>
+                                    </div>
+                                    <div class="mt-2 h-2 bg-gray-700 rounded-full">
+                                        <div class="h-full bg-gradient-to-r from-purple-500 to-indigo-500 rounded-full skill-progress" style="width: 1%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Back-End -->
+                    <div class="bg-gray-800 rounded-xl overflow-hidden shadow-lg transform hover:-translate-y-2 transition-all duration-300 animate-fade-in delay-200">
+                        <div class="p-6">
+                            <div class="flex items-center mb-6">
+                                <div class="bg-blue-600 p-3 rounded-lg">
+                                    <i class="fas fa-server text-white text-xl"></i>
+                                </div>
+                                <h3 class="ml-4 text-xl font-semibold">Back-End</h3>
+                            </div>
+                            
+                            <div class="space-y-5">
+                                <div>
+                                    <div class="flex justify-between">
+                                        <span class="text-gray-300">Flask</span>
+                                        <span class="text-gray-400">80%</span>
+                                    </div>
+                                    <div class="mt-2 h-2 bg-gray-700 rounded-full">
+                                        <div class="h-full bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full skill-progress" style="width: 80%"></div>
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <div class="flex justify-between">
+                                        <span class="text-gray-300">PyQt5</span>
+                                        <span class="text-gray-400">60%</span>
+                                    </div>
+                                    <div class="mt-2 h-2 bg-gray-700 rounded-full">
+                                        <div class="h-full bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full skill-progress" style="width: 60%"></div>
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <div class="flex justify-between">
+                                        <span class="text-gray-300">MySQL</span>
+                                        <span class="text-gray-400">70%</span>
+                                    </div>
+                                    <div class="mt-2 h-2 bg-gray-700 rounded-full">
+                                        <div class="h-full bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full skill-progress" style="width: 70%"></div>
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <div class="flex justify-between">
+                                        <span class="text-gray-300">NoSQL</span>
+                                        <span class="text-gray-400">0%</span>
+                                    </div>
+                                    <div class="mt-2 h-2 bg-gray-700 rounded-full">
+                                        <div class="h-full bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full skill-progress" style="width: 0%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tools & Others -->
+                    <div class="bg-gray-800 rounded-xl overflow-hidden shadow-lg transform hover:-translate-y-2 transition-all duration-300 animate-fade-in delay-300">
+                        <div class="p-6">
+                            <div class="flex items-center mb-6">
+                                <div class="bg-yellow-500 p-3 rounded-lg">
+                                    <i class="fas fa-tools text-white text-xl"></i>
+                                </div>
+                                <h3 class="ml-4 text-xl font-semibold">Tools & Version Control</h3>
+                            </div>
+                            
+                            <div class="space-y-5">
+                                <div>
+                                    <div class="flex justify-between">
+                                        <span class="text-gray-300">Git/GitHub</span>
+                                        <span class="text-gray-400">90%</span>
+                                    </div>
+                                    <div class="mt-2 h-2 bg-gray-700 rounded-full">
+                                        <div class="h-full bg-gradient-to-r from-yellow-500 to-orange-500 rounded-full skill-progress" style="width: 90%"></div>
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <div class="flex justify-between">
+                                        <span class="text-gray-300">VS Code</span>
+                                        <span class="text-gray-400">100%</span>
+                                    </div>
+                                    <div class="mt-2 h-2 bg-gray-700 rounded-full">
+                                        <div class="h-full bg-gradient-to-r from-yellow-500 to-orange-500 rounded-full skill-progress" style="width: 100%"></div>
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <div class="flex justify-between">
+                                        <span class="text-gray-300">Terminal/Command Line</span>
+                                        <span class="text-gray-400">35%</span>
+                                    </div>
+                                    <div class="mt-2 h-2 bg-gray-700 rounded-full">
+                                        <div class="h-full bg-gradient-to-r from-yellow-500 to-orange-500 rounded-full skill-progress" style="width: 35%"></div>
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <div class="flex justify-between">
+                                        <span class="text-gray-300">Docker</span>
+                                        <span class="text-gray-400">10%</span>
+                                    </div>
+                                    <div class="mt-2 h-2 bg-gray-700 rounded-full">
+                                        <div class="h-full bg-gradient-to-r from-yellow-500 to-orange-500 rounded-full skill-progress" style="width: 10%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Soft Skills -->
+                    <div class="bg-gray-800 rounded-xl overflow-hidden shadow-lg transform hover:-translate-y-2 transition-all duration-300 animate-fade-in delay-400">
+                        <div class="p-6">
+                            <div class="flex items-center mb-6">
+                                <div class="bg-pink-500 p-3 rounded-lg">
+                                    <i class="fas fa-comments text-white text-xl"></i>
+                                </div>
+                                <h3 class="ml-4 text-xl font-semibold">Soft Skills</h3>
+                            </div>
+                            
+                            <div class="space-y-5">
+                                <div>
+                                    <div class="flex justify-between">
+                                        <span class="text-gray-300">Problem Solving</span>
+                                        <span class="text-gray-400">75%</span>
+                                    </div>
+                                    <div class="mt-2 h-2 bg-gray-700 rounded-full">
+                                        <div class="h-full bg-gradient-to-r from-pink-500 to-purple-500 rounded-full skill-progress" style="width: 75%"></div>
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <div class="flex justify-between">
+                                        <span class="text-gray-300">Communication</span>
+                                        <span class="text-gray-400">75%</span>
+                                    </div>
+                                    <div class="mt-2 h-2 bg-gray-700 rounded-full">
+                                        <div class="h-full bg-gradient-to-r from-pink-500 to-purple-500 rounded-full skill-progress" style="width: 75%"></div>
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <div class="flex justify-between">
+                                        <span class="text-gray-300">Teamwork</span>
+                                        <span class="text-gray-400">85%</span>
+                                    </div>
+                                    <div class="mt-2 h-2 bg-gray-700 rounded-full">
+                                        <div class="h-full bg-gradient-to-r from-pink-500 to-purple-500 rounded-full skill-progress" style="width: 85%"></div>
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <div class="flex justify-between">
+                                        <span class="text-gray-300">Time Management</span>
+                                        <span class="text-gray-400">70%</span>
+                                    </div>
+                                    <div class="mt-2 h-2 bg-gray-700 rounded-full">
+                                        <div class="h-full bg-gradient-to-r from-pink-500 to-purple-500 rounded-full skill-progress" style="width: 70%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Currently Learning Section -->
+                    <div class="bg-gray-800 rounded-xl overflow-hidden shadow-lg transform hover:-translate-y-2 transition-all duration-300 animate-fade-in delay-500">
+                        <div class="p-6">
+                            <div class="flex items-center mb-6">
+                                <div class="bg-indigo-500 p-3 rounded-lg">
+                                    <i class="fas fa-graduation-cap text-white text-xl"></i>
+                                </div>
+                                <h3 class="ml-4 text-xl font-semibold">Currently Learning</h3>
+                            </div>
+                            
+                            <div class="grid grid-cols-1 gap-4 text-gray-300">
+                                <div class="flex items-center">
+                                    <i class="fas fa-arrow-right text-indigo-400 mr-3"></i>
+                                    <span>Blockchain/Web3</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <i class="fas fa-arrow-right text-indigo-400 mr-3"></i>
+                                    <span>AIML</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <i class="fas fa-arrow-right text-indigo-400 mr-3"></i>
+                                    <span>Rust</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <i class="fas fa-arrow-right text-indigo-400 mr-3"></i>
+                                    <span>Java</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <i class="fas fa-arrow-right text-indigo-400 mr-3"></i>
+                                    <span>CI/CD Pipelines</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Certificate & Achievements Section -->
+                <div class="mt-20 animate-fade-in">
+                    <h2 class="text-3xl font-bold mb-8 text-center">Certifications & Achievements</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+                        <!-- Certificate 1 -->
+                        <a href="https://cs50.harvard.edu/certificates/9b2ea42e-44dc-4caa-8ea0-6226198f9ab2" target="_blank" rel="noopener noreferrer">
+                            <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300">
+                                <div class="flex items-start">
+                                    <div class="bg-blue-500 p-3 rounded-full">
+                                        <i class="fas fa-certificate text-white"></i>
+                                    </div>
+                                    <div class="ml-4">
+                                        <h3 class="text-xl font-semibold text-blue-400">CS50's Introduction Python and Programming</h3>
+                                        <p class="text-gray-400 mt-1">CS50P</p>
+                                        <p class="text-gray-300 mt-3">Completed a comprehensive course of CS50, including nine problem sets and one final project</p>
+                                        <p class="text-gray-500 mt-2">Issued: Mar 2025</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+
+                        <!-- Certificate 2 -->
+                        <a href="https://api.badgr.io/public/assertions/d7dUs-XpRACyfurVS4mNNw" target="_blank" rel="noopener noreferrer">
+                            <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300">
+                                <div class="flex items-start">
+                                    <div class="bg-green-500 p-3 rounded-full">
+                                        <i class="fas fa-certificate text-white"></i>
+                                    </div>
+                                    <div class="ml-4">
+                                        <h3 class="text-xl font-semibold text-green-400">Postman API Fundamentals Student Expert</h3>
+                                        <p class="text-gray-400 mt-1">Postman</p>
+                                        <p class="text-gray-300 mt-3">Mastered API fundamentals using Postman, including creating, testing, and documenting APIs.</p>
+                                        <p class="text-gray-500 mt-2">Issued: Nov 2024</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+
+                        <!--
+                        <a href="https://example.com/hackathon-winner" target="_blank" rel="noopener noreferrer">
+                            <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300">
+                                <div class="flex items-start">
+                                    <div class="bg-yellow-500 p-3 rounded-full">
+                                        <i class="fas fa-trophy text-white"></i>
+                                    </div>
+                                    <div class="ml-4">
+                                        <h3 class="text-xl font-semibold text-yellow-400">Hackathon Winner</h3>
+                                        <p class="text-gray-400 mt-1">University Tech Fest</p>
+                                        <p class="text-gray-300 mt-3">Won first place in the university hackathon by developing an innovative campus navigation app.</p>
+                                        <p class="text-gray-500 mt-2">March 2023</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+
+                        
+                        <a href="https://example.com/deans-list" target="_blank" rel="noopener noreferrer">
+                            <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300">
+                                <div class="flex items-start">
+                                    <div class="bg-purple-500 p-3 rounded-full">
+                                        <i class="fas fa-award text-white"></i>
+                                    </div>
+                                    <div class="ml-4">
+                                        <h3 class="text-xl font-semibold text-purple-400">Dean's List Scholar</h3>
+                                        <p class="text-gray-400 mt-1">Computer Science Department</p>
+                                        <p class="text-gray-300 mt-3">Recognized for academic excellence with a GPA of 3.9 in Computer Science major courses.</p>
+                                        <p class="text-gray-500 mt-2">2022-2023 Academic Year</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+        </section> -->
+
+        <!-- Call To Action -->
+        <div class="md:col-span-2 flex justify-center">
+            <section class="py-16 bg-indigo-900 bg-opacity-20 flex justify-center items-center w-full">
+                <div class="container mx-auto px-6">
+                    <div class="max-w-4xl mx-auto text-center">
+                        <h2 class="text-3xl font-bold mb-4">Want to Work Together?</h2>
+                        <p class="text-gray-400 mb-8 max-w-lg mx-auto">
+                            I'm always open to new opportunities and collaborations. Let's create something amazing together!
+                        </p>
+                        <div class="mt-8">
+                            <a href="contact.html" class="inline-flex items-center px-6 py-3 rounded-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-indigo-500/30">
+                                <span>Get In Touch</span>
+                                <i class="fas fa-paper-plane ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>        
+    </main>
+
+    <footer class="bg-gray-900 py-10 border-t border-gray-800 z-10 relative">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <div class="text-lg font-bold text-indigo-400 flex items-center">
+                        <span class="text-xl mr-1">&lt;/&gt;</span> Pradeepto
+                    </div>
+                    <p class="text-gray-500 text-sm mt-1">Computer Science Student</p>
+                </div>
+                
+                <div class="flex flex-col md:flex-row md:space-x-10 space-y-4 md:space-y-0 text-sm">
+                    <a href="../index.html" class="text-gray-400 hover:text-indigo-400 transition-colors">Home</a>
+                    <a href="projects.html" class="text-gray-400 hover:text-indigo-400 transition-colors">Projects</a>
+                    <a href="skills.html" class="text-gray-400 hover:text-indigo-400 transition-colors">Skills</a>
+                    <a href="blog.html" class="text-gray-400 hover:text-indigo-400 transition-colors">Blog</a>
+                    <a href="contact.html" class="text-gray-400 hover:text-indigo-400 transition-colors">Contact</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/animations.js"></script>
+    <script src="../js/theme.js"></script>
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Animate skill bars on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const skillBars = document.querySelectorAll('.skill-progress');
+            
+            // Initial state (width: 0)
+            skillBars.forEach(bar => {
+                const targetWidth = bar.style.width;
+                bar.style.width = '0';
+                
+                // Trigger animation
+                setTimeout(() => {
+                    bar.style.transition = 'width 1.5s ease-in-out';
+                    bar.style.width = targetWidth;
+                }, 300);
+            });
+        });
+    </script>
+</body>
+</html>

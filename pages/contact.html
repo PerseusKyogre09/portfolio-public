@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Contact</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/custom.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body class="bg-gray-900 text-gray-200 min-h-screen flex flex-col transition-colors duration-300">
+    <!-- Particle Background -->
+    <div id="particles-js" class="fixed inset-0 z-0"></div>
+
+    <header class="sticky top-0 bg-gray-900 bg-opacity-95 backdrop-filter backdrop-blur-sm z-50 shadow-lg">
+        <nav class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="text-xl font-bold">
+                    <a href="../index.html" class="text-indigo-400 hover:text-indigo-300 flex items-center gap-2 transition-colors">
+                        <span class="text-2xl">&lt;/&gt;</span> Pradeepto Pal
+                    </a>
+                </div>
+                
+                <div class="hidden md:flex space-x-8 text-sm">
+                    <a href="../index.html" class="text-gray-300 hover:text-indigo-400 transition-colors nav-link">Home</a>
+                    <a href="projects.html" class="text-gray-300 hover:text-indigo-400 transition-colors nav-link">Projects</a>
+                    <a href="skills.html" class="text-gray-300 hover:text-indigo-400 transition-colors nav-link">Skills</a>
+                    <a href="blog.html" class="text-gray-300 hover:text-indigo-400 transition-colors nav-link">Blog</a>
+                    <a href="contact.html" class="text-indigo-400 font-medium nav-link active">Contact</a>
+                </div>
+                
+                <div class="flex items-center">
+                    <button id="theme-toggle" class="text-gray-300 hover:text-indigo-400 mr-4 transition-colors focus:outline-none">
+                        <i class="fas fa-moon text-xl"></i>
+                    </button>
+                    
+                    <button id="mobile-menu-button" class="md:hidden text-gray-300 hover:text-indigo-400 transition-colors focus:outline-none">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="md:hidden hidden mt-4 pb-2 border-t border-gray-700">
+                <div class="flex flex-col space-y-3 mt-3">
+                    <a href="../index.html" class="text-gray-300 hover:text-indigo-400 transition-colors py-2">Home</a>
+                    <a href="projects.html" class="text-gray-300 hover:text-indigo-400 transition-colors py-2">Projects</a>
+                    <a href="skills.html" class="text-gray-300 hover:text-indigo-400 transition-colors py-2">Skills</a>
+                    <a href="blog.html" class="text-gray-300 hover:text-indigo-400 transition-colors py-2">Blog</a>
+                    <a href="contact.html" class="text-indigo-400 font-medium py-2">Contact</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="flex-grow z-10 relative">
+        <!-- Hero Section -->
+        <section class="relative py-16 md:py-24 overflow-hidden">
+            <div class="container mx-auto px-6 relative">
+                <div class="max-w-4xl mx-auto text-center">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-6 leading-tight text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-500 animate-title">
+                        Get In Touch<span class="text-indigo-300">.</span>
+                    </h1>
+                    
+                    <p class="text-xl mb-8 text-gray-300 animate-fade-in-up">
+                        Have a question or want to work together? Drop me a line.
+                    </p>
+                    
+                    <div class="absolute -top-20 -right-20 w-64 h-64 bg-indigo-500 rounded-full opacity-10 blur-xl animate-pulse"></div>
+                    <div class="absolute -bottom-20 -left-20 w-72 h-72 bg-purple-600 rounded-full opacity-5 blur-xl animate-pulse delay-700"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Form Section -->
+        <section class="py-12">
+            <div class="container mx-auto px-6">
+                <div class="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
+                    <!-- Contact Form -->
+                    <div class="bg-gray-800 rounded-xl overflow-hidden shadow-lg transform hover:-translate-y-1 transition-all duration-300 animate-fade-in">
+                        <div class="p-8">
+                            <h2 class="text-2xl font-bold mb-6 text-indigo-300 flex items-center">
+                                <i class="fas fa-paper-plane mr-3 text-indigo-400"></i>
+                                Send Me a Message
+                            </h2>
+                            
+                            <form id="contactForm" class="space-y-6">
+                                <div>
+                                    <label for="name" class="block text-sm font-medium text-gray-300 mb-1">Name</label>
+                                    <input type="text" id="name" name="name" class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-md focus:ring-indigo-500 focus:border-indigo-500 text-gray-200" required>
+                                </div>
+                                
+                                <div>
+                                    <label for="email" class="block text-sm font-medium text-gray-300 mb-1">Email</label>
+                                    <input type="email" id="email" name="email" class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-md focus:ring-indigo-500 focus:border-indigo-500 text-gray-200" required>
+                                </div>
+                                
+                                <div>
+                                    <label for="subject" class="block text-sm font-medium text-gray-300 mb-1">Subject</label>
+                                    <input type="text" id="subject" name="subject" class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-md focus:ring-indigo-500 focus:border-indigo-500 text-gray-200" required>
+                                </div>
+                                
+                                <div>
+                                    <label for="message" class="block text-sm font-medium text-gray-300 mb-1">Message</label>
+                                    <textarea id="message" name="message" rows="5" class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-md focus:ring-indigo-500 focus:border-indigo-500 text-gray-200" required></textarea>
+                                </div>
+                                
+                                <div>
+                                    <button type="submit" class="w-full py-3 px-6 bg-indigo-600 hover:bg-indigo-700 transition-colors rounded-md text-white font-medium flex items-center justify-center transform hover:scale-105 duration-300 shadow-lg hover:shadow-indigo-500/30">
+                                        <span>Send Message</span>
+                                        <i class="fas fa-paper-plane ml-2"></i>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    
+                    <!-- Contact Info -->
+                    <div class="space-y-8">
+                        <!-- Contact Information -->
+                        <div class="bg-gray-800 rounded-xl p-8 shadow-lg relative overflow-hidden transform hover:-translate-y-1 transition-all duration-300 animate-fade-in-up" style="animation-delay: 200ms;">
+                            <div class="absolute top-0 right-0 -mr-10 -mt-10 w-40 h-40 rounded-full bg-indigo-900 opacity-10"></div>
+                            
+                            <h2 class="text-2xl font-bold mb-6 text-indigo-300 flex items-center">
+                                <i class="fas fa-address-card mr-3 text-indigo-400"></i>
+                                Contact Information
+                            </h2>
+                            
+                            <div class="space-y-6">
+                                <div class="flex items-start">
+                                    <div class="flex-shrink-0 h-12 w-12 rounded-full bg-indigo-600 bg-opacity-20 flex items-center justify-center">
+                                        <i class="fas fa-envelope text-indigo-400"></i>
+                                    </div>
+                                    <div class="ml-4">
+                                        <p class="text-sm font-medium text-gray-300">Email</p>
+                                        <a href="mailto:pradeepto@example.com" class="text-indigo-400 hover:text-indigo-300 transition-colors">pradeepto.pal09@gmail.com</a>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start">
+                                    <div class="flex-shrink-0 h-12 w-12 rounded-full bg-indigo-600 bg-opacity-20 flex items-center justify-center">
+                                        <i class="fas fa-phone text-indigo-400"></i>
+                                    </div>
+                                    <div class="ml-4">
+                                        <p class="text-sm font-medium text-gray-300">Phone</p>
+                                        <p class="text-indigo-400">+91 9667581819</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start">
+                                    <div class="flex-shrink-0 h-12 w-12 rounded-full bg-indigo-600 bg-opacity-20 flex items-center justify-center">
+                                        <i class="fas fa-map-marker-alt text-indigo-400"></i>
+                                    </div>
+                                    <div class="ml-4">
+                                        <p class="text-sm font-medium text-gray-300">Location</p>
+                                        <p class="text-indigo-400">Ghaziabad, Uttar Pradesh, India</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Connect -->
+                        <div class="bg-gray-800 rounded-xl p-8 shadow-lg relative overflow-hidden transform hover:-translate-y-1 transition-all duration-300 animate-fade-in-up" style="animation-delay: 400ms;">
+                            <h2 class="text-2xl font-bold mb-6 text-indigo-300 flex items-center">
+                                <i class="fas fa-network-wired mr-3 text-indigo-400"></i>
+                                Connect With Me
+                            </h2>
+                            
+                            <div class="flex flex-wrap gap-4">
+                                <a href="https://github.com/PerseusKyogre09" class="h-14 w-14 rounded-lg bg-gray-700 hover:bg-indigo-700 transition-all duration-300 flex items-center justify-center text-white transform hover:scale-110 hover:rotate-3">
+                                    <i class="fab fa-github text-xl"></i>
+                                </a>
+                                <a href="https://www.linkedin.com/in/pradeeptopal/" class="h-14 w-14 rounded-lg bg-gray-700 hover:bg-indigo-700 transition-all duration-300 flex items-center justify-center text-white transform hover:scale-110 hover:rotate-3">
+                                    <i class="fab fa-linkedin-in text-xl"></i>
+                                </a>
+                                <a href="https://x.com/KyogrePerseus" class="h-14 w-14 rounded-lg bg-gray-700 hover:bg-indigo-700 transition-all duration-300 flex items-center justify-center text-white transform hover:scale-110 hover:rotate-3">
+                                    <i class="fab fa-twitter text-xl"></i>
+                                </a>
+                                <a href="https://discord.com/users/707503002440957963" class="h-14 w-14 rounded-lg bg-gray-700 hover:bg-indigo-700 transition-all duration-300 flex items-center justify-center text-white transform hover:scale-110 hover:rotate-3">
+                                    <i class="fab fa-discord text-xl"></i>
+                                </a>
+                            </div>
+                            
+                            <div class="mt-8 p-4 bg-gray-700 bg-opacity-50 rounded-lg border border-gray-600">
+                                <p class="text-gray-300 text-sm flex items-start">
+                                    <i class="fas fa-lightbulb text-yellow-400 mr-3 mt-1"></i>
+                                    I'm currently available for freelance work and open to new opportunities. Let's create something amazing together!
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="py-16 bg-gray-800 bg-opacity-30">
+            <div class="container mx-auto px-6">
+                <div class="max-w-3xl mx-auto">
+                    <h2 class="text-3xl font-bold mb-12 text-center">Frequently Asked Questions</h2>
+                    
+                    <div class="space-y-6 animate-fade-in">
+                        <div class="bg-gray-800 rounded-lg p-6 shadow-md transition-all duration-300 hover:shadow-lg">
+                            <h3 class="text-xl font-semibold mb-2 text-indigo-300">What services do you offer?</h3>
+                            <p class="text-gray-400">I offer web development, app development, UI/UX design, and blockchain development services. I'm passionate about creating clean, efficient, and user-friendly digital experiences.</p>
+                        </div>
+                        
+                        <div class="bg-gray-800 rounded-lg p-6 shadow-md transition-all duration-300 hover:shadow-lg">
+                            <h3 class="text-xl font-semibold mb-2 text-indigo-300">How can we work together?</h3>
+                            <p class="text-gray-400">After you contact me, we'll have an initial consultation to discuss your project needs, timeline, and budget. Then I'll create a proposal tailored to your requirements.</p>
+                        </div>
+                        
+                        <div class="bg-gray-800 rounded-lg p-6 shadow-md transition-all duration-300 hover:shadow-lg">
+                            <h3 class="text-xl font-semibold mb-2 text-indigo-300">What is your typical timeline for projects?</h3>
+                            <p class="text-gray-400">Project timelines vary based on complexity and scope. A simple website might take 2-4 weeks, while more complex applications could take several months. I'll provide a detailed timeline during our consultation.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-900 py-10 border-t border-gray-800 z-10 relative">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <div class="text-lg font-bold text-indigo-400 flex items-center">
+                        <span class="text-xl mr-1">&lt;/&gt;</span> Pradeepto
+                    </div>
+                    <p class="text-gray-500 text-sm mt-1">Computer Science Student</p>
+                </div>
+                
+                <div class="flex flex-col md:flex-row md:space-x-10 space-y-4 md:space-y-0 text-sm">
+                    <a href="../index.html" class="text-gray-400 hover:text-indigo-400 transition-colors">Home</a>
+                    <a href="projects.html" class="text-gray-400 hover:text-indigo-400 transition-colors">Projects</a>
+                    <a href="skills.html" class="text-gray-400 hover:text-indigo-400 transition-colors">Skills</a>
+                    <a href="blog.html" class="text-gray-400 hover:text-indigo-400 transition-colors">Blog</a>
+                    <a href="contact.html" class="text-gray-400 hover:text-indigo-400 transition-colors">Contact</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/animations.js"></script>
+    <script src="../js/theme.js"></script>
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+
+        // Form submission handler
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Here you would typically send the form data to a server
+            alert('Thank you for your message! I will get back to you soon.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
