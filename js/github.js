@@ -105,14 +105,16 @@ async function fetchUserRepos(username) {
  * In a real implementation, this would fetch actual contribution data from GitHub API
  */
 async function generateContributionData() {
-    // Generate a full year of contribution data (52 weeks × 7 days)
+    // Generate data for the most recent 12 months
     const now = new Date();
-    const currentYear = now.getFullYear();
-    
-    // Generate months for the header
     const months = [];
-    for (let i = 0; i < 12; i++) {
-        months.push(new Date(currentYear, i, 1).toLocaleString('default', { month: 'short' }));
+    const monthNames = [];
+    
+    // Generate month labels for the last 12 months
+    for (let i = 11; i >= 0; i--) {
+        const month = new Date(now.getFullYear(), now.getMonth() - i, 1);
+        months.push(month);
+        monthNames.push(month.toLocaleString('default', { month: 'short' }));
     }
     
     // Generate contribution data with weighted random values
@@ -141,7 +143,7 @@ async function generateContributionData() {
             weekData.push({
                 level,
                 count: level === 0 ? 0 : level * Math.floor(Math.random() * 5) + 1,
-                date: new Date(currentYear, 0, week * 7 + day)
+                date: new Date(now.getFullYear(), now.getMonth() - 11, (week * 7) + day)
             });
         }
         contributions.push(weekData);
@@ -149,7 +151,8 @@ async function generateContributionData() {
     
     return {
         totalCount: 529,
-        months,
+        months: monthNames,
+        monthDates: months,
         days,
         contributions
     };
@@ -178,44 +181,68 @@ function renderContributionCalendar(container, data) {
     const calendarSection = document.createElement('div');
     calendarSection.className = 'mb-8';
     
-    // Create calendar header with contribution count
+    // Create calendar header with contribution count and year dropdown
     const calendarHeader = document.createElement('div');
     calendarHeader.className = 'flex justify-between items-center mb-2';
+    
+    // Get current year and previous years for dropdown
+    const currentYear = new Date().getFullYear();
+    
     calendarHeader.innerHTML = `
         <h4 class="text-sm font-medium text-gray-300">${data.totalCount} contributions in the last year</h4>
         <div class="text-xs text-gray-500">
-            <select class="bg-gray-800 border border-gray-700 rounded px-2 py-1">
-                <option>2025</option>
-                <option>2024</option>
-                <option>2023</option>
+            <select id="year-selector" class="bg-gray-800 border border-gray-700 rounded px-2 py-1">
+                <option value="${currentYear}">${currentYear}</option>
+                <option value="${currentYear-1}">${currentYear-1}</option>
+                <option value="${currentYear-2}">${currentYear-2}</option>
             </select>
         </div>
     `;
     calendarSection.appendChild(calendarHeader);
     
-    // Create month labels
+    // Create main calendar container
+    const calendarContainer = document.createElement('div');
+    calendarContainer.className = 'relative bg-gray-900 rounded-md p-2';
+    
+    // Month labels - positioned above the contribution grid
     const monthsRow = document.createElement('div');
-    monthsRow.className = 'flex text-xs text-gray-500 mb-1 pl-10';
+    monthsRow.className = 'flex text-xs text-gray-500 mb-1 pl-10 relative h-4';
     
     // Calculate month positions
-    const monthWidth = 100 / 12; // percentage width for each month
     let monthsHTML = '';
+    const totalWeeks = data.contributions.length;
     
-    data.months.forEach((month, index) => {
-        monthsHTML += `<div style="width: ${monthWidth}%" class="text-center">${month}</div>`;
+    // Position month labels based on their actual start positions in the grid
+    const monthPositions = [];
+    
+    data.monthDates.forEach((date, i) => {
+        // Calculate the week number for this month's start
+        const startOfMonth = new Date(date);
+        const timeSinceFirstDate = startOfMonth - data.monthDates[0];
+        const daysSinceFirstDate = timeSinceFirstDate / (1000 * 60 * 60 * 24);
+        const weekIndex = Math.floor(daysSinceFirstDate / 7);
+        
+        monthPositions.push({
+            name: data.months[i],
+            position: (weekIndex / totalWeeks) * 100
+        });
+    });
+    
+    // Generate month labels
+    monthPositions.forEach(month => {
+        monthsHTML += `<div style="position: absolute; left: ${month.position + 8}%" class="text-xs">${month.name}</div>`;
     });
     
     monthsRow.innerHTML = monthsHTML;
-    calendarSection.appendChild(monthsRow);
+    calendarContainer.appendChild(monthsRow);
     
     // Create main calendar grid with day labels
     const calendarGrid = document.createElement('div');
-    calendarGrid.className = 'flex';
+    calendarGrid.className = 'flex mt-6';
     
     // Day labels column
     const dayLabels = document.createElement('div');
-    dayLabels.className = 'flex flex-col justify-between pr-2 text-xs text-gray-500';
-    dayLabels.style.height = '100px'; // Set height to match the grid
+    dayLabels.className = 'flex flex-col justify-between pr-2 text-xs text-gray-500 h-16';
     
     data.days.forEach(day => {
         dayLabels.innerHTML += `<div>${day}</div>`;
@@ -225,7 +252,38 @@ function renderContributionCalendar(container, data) {
     const cellsContainer = document.createElement('div');
     cellsContainer.className = 'flex-grow';
     
-    let gridHTML = '<div class="grid grid-cols-52 gap-1" style="grid-template-rows: repeat(7, 1fr); height: 100px;">';
+    // Add our custom styles for the grid at render time
+    // This creates the GitHub-style tight grid
+    document.head.insertAdjacentHTML('beforeend', `
+        <style>
+            .contribution-grid {
+                display: grid;
+                grid-template-columns: repeat(52, 1fr);
+                grid-template-rows: repeat(7, 1fr);
+                grid-gap: 2px;
+                height: 80px;
+            }
+            
+            .contribution-cell {
+                width: 10px;
+                height: 10px;
+                border-radius: 2px;
+            }
+            
+            @media (max-width: 768px) {
+                .contribution-grid {
+                    grid-gap: 1px;
+                }
+                
+                .contribution-cell {
+                    width: 8px;
+                    height: 8px;
+                }
+            }
+        </style>
+    `);
+    
+    let gridHTML = '<div class="contribution-grid">';
     
     // Flatten the data for easier rendering
     const flatData = data.contributions.flatMap((week, weekIndex) => 
@@ -242,7 +300,7 @@ function renderContributionCalendar(container, data) {
         const title = dataPoint.count > 0 ? `${dataPoint.count} contributions` : 'No contributions';
         
         gridHTML += `
-            <div class="w-3 h-3 ${colorClass} rounded-sm" 
+            <div class="contribution-cell ${colorClass}" 
                  title="${title}"></div>
         `;
     }
@@ -252,7 +310,7 @@ function renderContributionCalendar(container, data) {
     
     calendarGrid.appendChild(dayLabels);
     calendarGrid.appendChild(cellsContainer);
-    calendarSection.appendChild(calendarGrid);
+    calendarContainer.appendChild(calendarGrid);
     
     // Color scale legend
     const legend = document.createElement('div');
@@ -270,9 +328,22 @@ function renderContributionCalendar(container, data) {
             <span class="ml-2">More</span>
         </div>
     `;
-    calendarSection.appendChild(legend);
+    calendarContainer.appendChild(legend);
     
+    calendarSection.appendChild(calendarContainer);
     container.appendChild(calendarSection);
+    
+    // Add event listener to the year selector
+    const yearSelector = calendarSection.querySelector('#year-selector');
+    if (yearSelector) {
+        yearSelector.addEventListener('change', (e) => {
+            const selectedYear = parseInt(e.target.value);
+            // In a real implementation, you would fetch data for the selected year
+            alert(`Fetching data for year: ${selectedYear}`);
+            // For demo purposes we're just showing an alert
+            // In production, you would call a function to update the calendar with new data
+        });
+    }
 }
 
 /**
@@ -431,13 +502,3 @@ function renderError(container, error) {
         </div>
     `;
 }
-
-// Use grid-template-columns to create 52 equal columns for weeks
-document.head.insertAdjacentHTML('beforeend', `
-    <style>
-        .grid-cols-52 {
-            display: grid;
-            grid-template-columns: repeat(52, 1fr);
-        }
-    </style>
-`);
