@@ -254,12 +254,12 @@ html {
     transform: scale(1.2);
   }
   
-  /* Blog Post Cards */
-  .blog-post {
+  /* About Post Cards */
+  .About-post {
     transition: transform 0.3s ease;
   }
   
-  .blog-post:hover {
+  .About-post:hover {
     transform: translateY(-5px);
   }
   

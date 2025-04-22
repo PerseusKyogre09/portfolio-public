@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
 // Initialize ScrollReveal for element animations on scroll
 function initScrollReveal() {
     // Add animation classes to elements based on scroll position
-    const animatedElements = document.querySelectorAll('.project-card, .skill-circle, .blog-post');
+    const animatedElements = document.querySelectorAll('.project-card, .skill-circle, .About-post');
     
     // Create observer for scroll animations
     const observer = new IntersectionObserver((entries) => {
