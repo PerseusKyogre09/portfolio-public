@@ -1,504 +1,409 @@
-/**
- * Enhanced GitHub Activity Visualization
- * Creates a more authentic GitHub-style contribution calendar
- */
-
-// Configuration
-const config = {
-    username: 'PerseusKyogre09', // Your GitHub username
-    repoLimit: 5, // Number of repositories to display
-    commitLimit: 10, // Number of commits to display per repository
-    apiUrl: 'https://api.github.com/users/',
-    profileUrl: 'https://github.com/' // Base GitHub URL
-};
-
-// Initialize when the DOM is fully loaded
-document.addEventListener('DOMContentLoaded', () => {
-    initGitHubActivity();
-    updateProfileLink();
-});
-
-/**
- * Update the profile link with the configured username
- */
-function updateProfileLink() {
-    const profileLink = document.querySelector('[data-github-profile]');
-    if (profileLink) {
-        profileLink.href = config.profileUrl + config.username;
-    }
-}
-
-/**
- * Initialize GitHub activity visualization
- */
-async function initGitHubActivity() {
+// github.js - GitHub Activity Visualization
+document.addEventListener('DOMContentLoaded', function() {
+    // Configuration
+    const username = 'PerseusKyogre09'; // GitHub username to fetch data for
     const container = document.getElementById('github-activity-container');
-
-    if (!container) {
-        console.error('GitHub activity container not found');
-        return;
-    }
-
-    try {
-        // Fetch user data and repositories
-        const userData = await fetchUserData(config.username);
-        const contributionData = await generateContributionData();
-
-        // Clear loading indicator
-        container.innerHTML = '';
-
-        // Render the activity visualization
-        renderUserInfo(container, userData);
-        renderContributionCalendar(container, contributionData);
-        await renderRecentActivity(container);
-        renderActivityOverview(container);
-    } catch (error) {
-        renderError(container, error);
-    }
-}
-
-/**
- * Fetch basic user data from GitHub API
- */
-async function fetchUserData(username) {
-    try {
-        const response = await fetch(`${config.apiUrl}${username}`);
-        if (!response.ok) {
-            throw new Error(`Failed to fetch user data: ${response.status}`);
-        }
-        return await response.json();
-    } catch (error) {
-        console.error('Error fetching user data:', error);
-        return {
-            login: username,
-            avatar_url: '/api/placeholder/80/80',
-            name: username,
-            public_repos: 40,
-            followers: 22
-        };
-    }
-}
-
-/**
- * Fetch repositories for a user
- */
-async function fetchUserRepos(username) {
-    try {
-        const response = await fetch(`${config.apiUrl}${username}/repos?sort=updated&per_page=${config.repoLimit}`);
-        if (!response.ok) {
-            throw new Error(`Failed to fetch repositories: ${response.status}`);
-        }
-        return await response.json();
-    } catch (error) {
-        console.error('Error fetching repositories:', error);
-        // Return mock data if API call fails
-        return [
-            { name: 'PerseusKyogre09', description: 'My personal repository.', html_url: '#', stargazers_count: 0, forks_count: 0 },
-            { name: 'ip_sniffer', description: 'No description', html_url: '#', stargazers_count: 0, forks_count: 0 },
-            { name: 'PawMart', description: 'No description', html_url: '#', stargazers_count: 0, forks_count: 0 }
-        ];
-    }
-}
-
-/**
- * Generate mock contribution data for demonstration
- * In a real implementation, this would fetch actual contribution data from GitHub API
- */
-async function generateContributionData() {
-    // Generate data for the most recent 12 months
-    const now = new Date();
-    const months = [];
-    const monthNames = [];
     
-    // Generate month labels for the last 12 months
-    for (let i = 11; i >= 0; i--) {
-        const month = new Date(now.getFullYear(), now.getMonth() - i, 1);
-        months.push(month);
-        monthNames.push(month.toLocaleString('default', { month: 'short' }));
-    }
-    
-    // Generate contribution data with weighted random values
-    // Higher probability of contributions in recent months
-    const contributions = [];
-    const days = ['Mon', 'Wed', 'Fri'];
-    
-    for (let week = 0; week < 52; week++) {
-        const weekData = [];
-        for (let day = 0; day < 7; day++) {
-            // More recent weeks have higher probability of contributions
-            const recencyFactor = week > 26 ? (week - 26) / 26 : 0;
-            const probability = 0.1 + (recencyFactor * 0.5);
+    // Color scheme for contribution levels (dark theme)
+    const colors = {
+        level0: '#161b22', // No contributions
+        level1: '#0e4429', // Low contributions
+        level2: '#006d32', // Medium-low contributions
+        level3: '#26a641', // Medium-high contributions
+        level4: '#39d353', // High contributions
+        text: '#8b949e'    // Text color
+    };
+
+    // Fetch GitHub contribution data
+    async function fetchGitHubContributions() {
+        try {
+            // Show loading state
+            container.innerHTML = `
+                <div class="flex items-center justify-center h-full">
+                    <div class="animate-pulse text-gray-400">
+                        <i class="fas fa-spinner fa-spin mr-2"></i>
+                        Loading GitHub activity...
+                    </div>
+                </div>
+            `;
             
-            // Generate activity level (0-4)
-            let level = 0;
-            if (Math.random() < probability) {
-                // Weighted distribution favoring lower values
-                const rand = Math.random();
-                if (rand > 0.8) level = 4;
-                else if (rand > 0.6) level = 3;
-                else if (rand > 0.3) level = 2;
-                else level = 1;
+            // Fetch contribution data using the GitHub Contribution Calendar API
+            const response = await fetch(`https://gh-calendar.rschristian.dev/user/${username}`);
+            
+            if (!response.ok) {
+                throw new Error('Failed to fetch GitHub contributions');
             }
             
-            weekData.push({
-                level,
-                count: level === 0 ? 0 : level * Math.floor(Math.random() * 5) + 1,
-                date: new Date(now.getFullYear(), now.getMonth() - 11, (week * 7) + day)
-            });
+            const data = await response.json();
+            renderContributionGraph(data);
+        } catch (error) {
+            console.error('Error fetching GitHub contributions:', error);
+            container.innerHTML = `
+                <div class="text-center text-red-500 py-8">
+                    <i class="fas fa-exclamation-triangle text-xl mb-2"></i>
+                    <p>Failed to load GitHub activity. Please try again later.</p>
+                </div>
+            `;
         }
-        contributions.push(weekData);
+    }
+
+    // Render the contribution graph
+    function renderContributionGraph(data) {
+        // Extract contribution data
+        const totalContributions = data.total || 572; // Fallback to 572 as shown in the image
+        
+        // Create the HTML structure
+        let html = `
+            <div class="contribution-wrapper text-sm">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-white font-medium">${totalContributions} contributions in the last year</h3>
+                    <div class="contribution-settings text-gray-400 cursor-pointer">
+                        <span>Contribution settings</span>
+                        <i class="fas fa-chevron-down ml-1"></i>
+                    </div>
+                </div>
+                
+                <div class="contribution-calendar-container bg-gray-900 rounded-md p-4">
+                    <!-- Month headers -->
+                    <div class="month-headers grid grid-cols-12 mb-2">
+                        <div class="text-xs text-gray-500">Apr</div>
+                        <div class="text-xs text-gray-500">May</div>
+                        <div class="text-xs text-gray-500">Jun</div>
+                        <div class="text-xs text-gray-500">Jul</div>
+                        <div class="text-xs text-gray-500">Aug</div>
+                        <div class="text-xs text-gray-500">Sep</div>
+                        <div class="text-xs text-gray-500">Oct</div>
+                        <div class="text-xs text-gray-500">Nov</div>
+                        <div class="text-xs text-gray-500">Dec</div>
+                        <div class="text-xs text-gray-500">Jan</div>
+                        <div class="text-xs text-gray-500">Feb</div>
+                        <div class="text-xs text-gray-500">Mar</div>
+                        <div class="text-xs text-gray-500">Apr</div>
+                    </div>
+                    
+                    <div class="contribution-grid-container flex">
+                        <!-- Day labels -->
+                        <div class="day-labels flex flex-col justify-between pr-2">
+                            <div class="text-xs text-gray-500">Mon</div>
+                            <div class="text-xs text-gray-500">Wed</div>
+                            <div class="text-xs text-gray-500">Fri</div>
+                        </div>
+                        
+                        <!-- Contribution cells -->
+                        <div class="contribution-cells grid grid-cols-53 gap-1 w-full">
+                            ${generateContributionCells(data)}
+                        </div>
+                    </div>
+                    
+                    <!-- Legend -->
+                    <div class="flex justify-between items-center mt-2">
+                        <a href="https://docs.github.com/articles/why-are-my-contributions-not-showing-up-on-my-profile" 
+                           class="text-xs text-gray-500 hover:text-blue-400 transition-colors duration-200">
+                           Learn how we count contributions
+                        </a>
+                        
+                        <div class="flex items-center">
+                            <span class="text-xs text-gray-500 mr-1">Less</span>
+                            <div class="w-3 h-3 rounded-sm" style="background-color: ${colors.level0};"></div>
+                            <div class="w-3 h-3 rounded-sm ml-1" style="background-color: ${colors.level1};"></div>
+                            <div class="w-3 h-3 rounded-sm ml-1" style="background-color: ${colors.level2};"></div>
+                            <div class="w-3 h-3 rounded-sm ml-1" style="background-color: ${colors.level3};"></div>
+                            <div class="w-3 h-3 rounded-sm ml-1" style="background-color: ${colors.level4};"></div>
+                            <span class="text-xs text-gray-500 ml-1">More</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Collaborators section -->
+                <div class="mt-4 border-t border-gray-800 pt-4">
+                    <div class="flex space-x-2 overflow-x-auto pb-2">
+                        <a href="https://github.com/code50" class="flex items-center px-3 py-1 bg-gray-800 rounded-full text-sm text-gray-300">
+                            <img src="https://github.com/code50.png" class="w-5 h-5 rounded-full mr-2" alt="@code50">
+                            <span>@code50</span>
+                        </a>
+                        <a href="https://github.com/Alektronika" class="flex items-center px-3 py-1 bg-gray-800 rounded-full text-sm text-gray-300">
+                            <img src="https://github.com/Alektronika.png" class="w-5 h-5 rounded-full mr-2" alt="@Alektronika">
+                            <span>@Alektronika</span>
+                        </a>
+                        <a href="https://github.com/me50" class="flex items-center px-3 py-1 bg-gray-800 rounded-full text-sm text-gray-300">
+                            <img src="https://github.com/me50.png" class="w-5 h-5 rounded-full mr-2" alt="@me50">
+                            <span>@me50</span>
+                        </a>
+                        <button class="flex items-center px-3 py-1 bg-gray-800 rounded-full text-sm text-gray-300">
+                            <span>More</span>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Activity overview and Code review -->
+                <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <h4 class="text-lg font-medium text-white mb-4">Activity overview</h4>
+                        <p class="flex items-start text-gray-300 mb-2">
+                            <span class="mr-2">📊</span>
+                            <span>Contributed to 
+                                <a href="https://github.com/code50/8853467" class="text-blue-400 hover:underline">code50/8853467</a>,
+                                <a href="https://github.com/PerseusKyogre09/PerseusKyogre09" class="text-blue-400 hover:underline">PerseusKyogre09/PerseusKyogre09</a>,
+                                <a href="https://github.com/PerseusKyogre09/weather-project" class="text-blue-400 hover:underline">PerseusKyogre09/weather-project</a>
+                                and 55 other repositories
+                            </span>
+                        </p>
+                    </div>
+                    
+                    <div>
+                        <h4 class="text-lg font-medium text-white mb-4">Code review</h4>
+                        <div class="relative h-32">
+                            <!-- Horizontal line -->
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <div class="w-full h-px bg-gray-700"></div>
+                            </div>
+                            
+                            <!-- Vertical line -->
+                            <div class="absolute inset-0 flex justify-center">
+                                <div class="h-full w-px bg-gray-700"></div>
+                            </div>
+                            
+                            <!-- Green lines -->
+                            <div class="absolute inset-0 flex items-center">
+                                <div class="w-full h-px bg-green-500"></div>
+                            </div>
+                            <div class="absolute inset-0 flex justify-center">
+                                <div class="h-full w-px bg-green-500"></div>
+                            </div>
+                            
+                            <!-- Percentages -->
+                            <div class="absolute left-0 top-1/2 transform -translate-y-1/2 text-gray-400 text-xs">
+                                <span>96%</span>
+                                <div class="mt-1">Commits</div>
+                            </div>
+                            <div class="absolute right-0 top-1/2 transform -translate-y-1/2 text-gray-400 text-xs text-right">
+                                <span>1%</span>
+                                <div class="mt-1">Issues</div>
+                            </div>
+                            <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 text-gray-400 text-xs text-center">
+                                <span>3%</span>
+                                <div class="mt-1">Pull requests</div>
+                            </div>
+                            
+                            <!-- Center dot -->
+                            <div class="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-green-500 rounded-full"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+        
+        // Update the container with the generated HTML
+        container.innerHTML = html;
+        
+        // Add event listeners for tooltips
+        const cells = container.querySelectorAll('.contribution-cell');
+        cells.forEach(cell => {
+            cell.addEventListener('mouseenter', showTooltip);
+            cell.addEventListener('mouseleave', hideTooltip);
+        });
     }
     
-    return {
-        totalCount: 529,
-        months: monthNames,
-        monthDates: months,
-        days,
-        contributions
-    };
-}
-
-/**
- * Render user information in the container
- */
-function renderUserInfo(container, userData) {
-    const userInfoEl = document.createElement('div');
-    userInfoEl.className = 'flex items-center mb-6';
-    userInfoEl.innerHTML = `
-        <img src="${userData.avatar_url}" alt="${userData.login}" class="w-12 h-12 rounded-full mr-4">
-        <div>
-            <h3 class="text-lg font-bold text-white">${userData.name || userData.login}</h3>
-            <p class="text-gray-400 text-sm">${userData.public_repos} repositories · ${userData.followers} followers</p>
-        </div>
-    `;
-    container.appendChild(userInfoEl);
-}
-
-/**
- * Render GitHub-style contribution calendar
- */
-function renderContributionCalendar(container, data) {
-    const calendarSection = document.createElement('div');
-    calendarSection.className = 'mb-8';
-    
-    // Create calendar header with contribution count and year dropdown
-    const calendarHeader = document.createElement('div');
-    calendarHeader.className = 'flex justify-between items-center mb-2';
-    
-    // Get current year and previous years for dropdown
-    const currentYear = new Date().getFullYear();
-    
-    calendarHeader.innerHTML = `
-        <h4 class="text-sm font-medium text-gray-300">${data.totalCount} contributions in the last year</h4>
-        <div class="text-xs text-gray-500">
-            <select id="year-selector" class="bg-gray-800 border border-gray-700 rounded px-2 py-1">
-                <option value="${currentYear}">${currentYear}</option>
-                <option value="${currentYear-1}">${currentYear-1}</option>
-                <option value="${currentYear-2}">${currentYear-2}</option>
-            </select>
-        </div>
-    `;
-    calendarSection.appendChild(calendarHeader);
-    
-    // Create main calendar container
-    const calendarContainer = document.createElement('div');
-    calendarContainer.className = 'relative bg-gray-900 rounded-md p-2';
-    
-    // Month labels - positioned above the contribution grid
-    const monthsRow = document.createElement('div');
-    monthsRow.className = 'flex text-xs text-gray-500 mb-1 pl-10 relative h-4';
-    
-    // Calculate month positions
-    let monthsHTML = '';
-    const totalWeeks = data.contributions.length;
-    
-    // Position month labels based on their actual start positions in the grid
-    const monthPositions = [];
-    
-    data.monthDates.forEach((date, i) => {
-        // Calculate the week number for this month's start
-        const startOfMonth = new Date(date);
-        const timeSinceFirstDate = startOfMonth - data.monthDates[0];
-        const daysSinceFirstDate = timeSinceFirstDate / (1000 * 60 * 60 * 24);
-        const weekIndex = Math.floor(daysSinceFirstDate / 7);
+    // Generate contribution cells based on data or mock data if needed
+    function generateContributionCells(data) {
+        let cellsHTML = '';
         
-        monthPositions.push({
-            name: data.months[i],
-            position: (weekIndex / totalWeeks) * 100
-        });
-    });
+        // If we have real data, use it
+        if (data && data.contributions) {
+            const contributions = data.contributions;
+            
+            // Generate cells for each day in the year
+            for (let i = 0; i < contributions.length; i++) {
+                const week = contributions[i];
+                if (week && week.days) {
+                    for (let j = 0; j < week.days.length; j++) {
+                        const day = week.days[j] || { level: 0, count: 0, date: '' };
+                        const level = day.level || 0;
+                        const count = day.count || 0;
+                        const date = day.date || '';
+                        
+                        let color;
+                        switch (level) {
+                            case 0: color = colors.level0; break;
+                            case 1: color = colors.level1; break;
+                            case 2: color = colors.level2; break;
+                            case 3: color = colors.level3; break;
+                            case 4: color = colors.level4; break;
+                            default: color = colors.level0;
+                        }
+                        
+                        cellsHTML += `
+                            <div 
+                                class="contribution-cell w-3 h-3 rounded-sm" 
+                                style="background-color: ${color};"
+                                data-date="${date}"
+                                data-count="${count}"
+                                title="${count} contributions on ${formatDate(date)}"
+                            ></div>
+                        `;
+                    }
+                }
+            }
+        } else {
+            // Generate mock data similar to the image
+            // This creates a pattern similar to what's shown in the image
+            for (let i = 0; i < 53; i++) {
+                for (let j = 0; j < 7; j++) {
+                    // Create a pattern similar to the image
+                    let level = 0;
+                    
+                    // Add some activity in Sep-Dec and Jan-Apr as shown in the image
+                    if ((i >= 20 && i <= 35) || (i >= 40 && i <= 52)) {
+                        // Higher chance of activity in these months
+                        level = Math.random() > 0.8 ? Math.floor(Math.random() * 4) + 1 : 0;
+                    }
+                    
+                    const color = level === 0 ? colors.level0 : 
+                                 level === 1 ? colors.level1 : 
+                                 level === 2 ? colors.level2 : 
+                                 level === 3 ? colors.level3 : colors.level4;
+                    
+                    // Calculate a mock date
+                    const today = new Date('2025-04-22');
+                    const date = new Date(today);
+                    date.setDate(today.getDate() - ((52 - i) * 7 + (6 - j)));
+                    
+                    cellsHTML += `
+                        <div 
+                            class="contribution-cell w-3 h-3 rounded-sm" 
+                            style="background-color: ${color};"
+                            data-date="${date.toISOString().split('T')[0]}"
+                            data-count="${level * 2}"
+                            title="${level * 2} contributions on ${formatDate(date.toISOString().split('T')[0])}"
+                        ></div>
+                    `;
+                }
+            }
+        }
+        
+        return cellsHTML;
+    }
     
-    // Generate month labels
-    monthPositions.forEach(month => {
-        monthsHTML += `<div style="position: absolute; left: ${month.position + 8}%" class="text-xs">${month.name}</div>`;
-    });
+    // Helper function to format dates
+    function formatDate(dateString) {
+        if (!dateString) return '';
+        
+        const date = new Date(dateString);
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        return date.toLocaleDateString('en-US', options);
+    }
     
-    monthsRow.innerHTML = monthsHTML;
-    calendarContainer.appendChild(monthsRow);
+    // Tooltip functions
+    function showTooltip(event) {
+        const cell = event.target;
+        const date = cell.getAttribute('data-date');
+        const count = cell.getAttribute('data-count');
+        
+        // Create tooltip
+        const tooltip = document.createElement('div');
+        tooltip.className = 'absolute z-10 bg-gray-900 text-white text-xs rounded py-1 px-2 shadow-lg';
+        tooltip.textContent = `${count} contributions on ${formatDate(date)}`;
+        
+        // Position tooltip
+        const rect = cell.getBoundingClientRect();
+        tooltip.style.left = `${rect.left + window.scrollX}px`;
+        tooltip.style.top = `${rect.top + window.scrollY - 30}px`;
+        
+        // Add tooltip to body
+        document.body.appendChild(tooltip);
+        cell.setAttribute('data-tooltip-id', Date.now());
+        tooltip.id = cell.getAttribute('data-tooltip-id');
+    }
     
-    // Create main calendar grid with day labels
-    const calendarGrid = document.createElement('div');
-    calendarGrid.className = 'flex mt-6';
+    function hideTooltip(event) {
+        const cell = event.target;
+        const tooltipId = cell.getAttribute('data-tooltip-id');
+        if (tooltipId) {
+            const tooltip = document.getElementById(tooltipId);
+            if (tooltip) {
+                tooltip.remove();
+            }
+        }
+    }
     
-    // Day labels column
-    const dayLabels = document.createElement('div');
-    dayLabels.className = 'flex flex-col justify-between pr-2 text-xs text-gray-500 h-16';
-    
-    data.days.forEach(day => {
-        dayLabels.innerHTML += `<div>${day}</div>`;
-    });
-    
-    // Contribution cells
-    const cellsContainer = document.createElement('div');
-    cellsContainer.className = 'flex-grow';
-    
-    // Add our custom styles for the grid at render time
-    // This creates the GitHub-style tight grid
-    document.head.insertAdjacentHTML('beforeend', `
-        <style>
-            .contribution-grid {
-                display: grid;
-                grid-template-columns: repeat(52, 1fr);
-                grid-template-rows: repeat(7, 1fr);
-                grid-gap: 2px;
-                height: 80px;
+    // Add CSS for the contribution graph
+    const style = document.createElement('style');
+    style.textContent = `
+        .contribution-wrapper {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            color: #c9d1d9;
+        }
+        
+        .contribution-calendar-container {
+            background-color: #0d1117;
+            border-radius: 6px;
+            padding: 16px;
+        }
+        
+        .month-headers {
+            display: grid;
+            grid-template-columns: repeat(13, 1fr);
+            text-align: center;
+        }
+        
+        .contribution-grid-container {
+            display: flex;
+        }
+        
+        .day-labels {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding-right: 8px;
+            height: 100px;
+        }
+        
+        .contribution-cells {
+            display: grid;
+            grid-template-columns: repeat(53, 1fr);
+            grid-template-rows: repeat(7, 1fr);
+            gap: 2px;
+            width: 100%;
+        }
+        
+        .contribution-cell {
+            width: 10px;
+            height: 10px;
+            border-radius: 2px;
+            transition: transform 0.1s ease-in-out;
+        }
+        
+        .contribution-cell:hover {
+            transform: scale(1.2);
+        }
+        
+        .grid-cols-53 {
+            grid-template-columns: repeat(53, 1fr);
+        }
+        
+        @media (max-width: 768px) {
+            .contribution-cells {
+                grid-template-columns: repeat(53, 1fr);
+                gap: 1px;
             }
             
             .contribution-cell {
-                width: 10px;
-                height: 10px;
-                border-radius: 2px;
+                width: 8px;
+                height: 8px;
             }
-            
-            @media (max-width: 768px) {
-                .contribution-grid {
-                    grid-gap: 1px;
-                }
-                
-                .contribution-cell {
-                    width: 8px;
-                    height: 8px;
-                }
-            }
-        </style>
-    `);
-    
-    let gridHTML = '<div class="contribution-grid">';
-    
-    // Flatten the data for easier rendering
-    const flatData = data.contributions.flatMap((week, weekIndex) => 
-        week.map((day, dayIndex) => ({...day, x: weekIndex, y: dayIndex}))
-    );
-    
-    // Generate all cells (52 weeks × 7 days)
-    for (let i = 0; i < 364; i++) {
-        const weekIndex = Math.floor(i / 7);
-        const dayIndex = i % 7;
-        const dataPoint = flatData.find(d => d.x === weekIndex && d.y === dayIndex) || { level: 0 };
-        
-        const colorClass = getContributionColorClass(dataPoint.level);
-        const title = dataPoint.count > 0 ? `${dataPoint.count} contributions` : 'No contributions';
-        
-        gridHTML += `
-            <div class="contribution-cell ${colorClass}" 
-                 title="${title}"></div>
-        `;
-    }
-    
-    gridHTML += '</div>';
-    cellsContainer.innerHTML = gridHTML;
-    
-    calendarGrid.appendChild(dayLabels);
-    calendarGrid.appendChild(cellsContainer);
-    calendarContainer.appendChild(calendarGrid);
-    
-    // Color scale legend
-    const legend = document.createElement('div');
-    legend.className = 'flex justify-end mt-2';
-    legend.innerHTML = `
-        <div class="flex items-center text-xs text-gray-500">
-            <span class="mr-2">Less</span>
-            <div class="flex space-x-1">
-                <div class="w-3 h-3 bg-gray-800 border border-gray-700 rounded-sm"></div>
-                <div class="w-3 h-3 bg-green-900 rounded-sm"></div>
-                <div class="w-3 h-3 bg-green-700 rounded-sm"></div>
-                <div class="w-3 h-3 bg-green-500 rounded-sm"></div>
-                <div class="w-3 h-3 bg-green-300 rounded-sm"></div>
-            </div>
-            <span class="ml-2">More</span>
-        </div>
+        }
     `;
-    calendarContainer.appendChild(legend);
+    document.head.appendChild(style);
     
-    calendarSection.appendChild(calendarContainer);
-    container.appendChild(calendarSection);
+    // Initialize the GitHub activity display
+    fetchGitHubContributions();
     
-    // Add event listener to the year selector
-    const yearSelector = calendarSection.querySelector('#year-selector');
-    if (yearSelector) {
-        yearSelector.addEventListener('change', (e) => {
-            const selectedYear = parseInt(e.target.value);
-            // In a real implementation, you would fetch data for the selected year
-            alert(`Fetching data for year: ${selectedYear}`);
-            // For demo purposes we're just showing an alert
-            // In production, you would call a function to update the calendar with new data
+    // Add click event for GitHub profile link
+    const profileLink = document.querySelector('[data-github-profile]');
+    if (profileLink) {
+        profileLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            window.open(`https://github.com/${username}`, '_blank');
         });
     }
-}
-
-/**
- * Get color class based on contribution level
- */
-function getContributionColorClass(level) {
-    const colors = [
-        'bg-gray-800 border border-gray-700', // 0 contributions
-        'bg-green-900',                       // 1-3 contributions
-        'bg-green-700',                       // 4-6 contributions
-        'bg-green-500',                       // 7-9 contributions
-        'bg-green-300'                        // 10+ contributions
-    ];
-    return colors[level];
-}
-
-/**
- * Render recent activity (latest repositories)
- */
-async function renderRecentActivity(container) {
-    const repos = await fetchUserRepos(config.username);
-    
-    const activitySection = document.createElement('div');
-    activitySection.className = 'space-y-4 mb-8';
-
-    const activityHeader = document.createElement('h4');
-    activityHeader.className = 'text-sm font-medium text-gray-300 mb-3';
-    activityHeader.textContent = 'Recent Activity';
-    activitySection.appendChild(activityHeader);
-
-    const recentRepos = repos.slice(0, 3);
-    for (const repo of recentRepos) {
-        const repoEl = document.createElement('div');
-        repoEl.className = 'bg-gray-800 bg-opacity-50 rounded-lg p-3';
-
-        repoEl.innerHTML = `
-            <div class="flex justify-between items-start">
-                <div>
-                    <a href="${repo.html_url}" class="font-medium text-blue-400 hover:text-blue-300">
-                        ${repo.name}
-                    </a>
-                    <p class="text-xs text-gray-400 mt-1">${repo.description || 'No description'}</p>
-                </div>
-                <div class="flex items-center text-gray-500 text-xs">
-                    <span class="flex items-center mr-3">
-                        <i class="fas fa-star mr-1"></i> ${repo.stargazers_count}
-                    </span>
-                    <span class="flex items-center">
-                        <i class="fas fa-code-branch mr-1"></i> ${repo.forks_count}
-                    </span>
-                </div>
-            </div>
-        `;
-        activitySection.appendChild(repoEl);
-    }
-    container.appendChild(activitySection);
-}
-
-/**
- * Render activity overview chart (similar to GitHub's language/activity breakdown)
- */
-function renderActivityOverview(container) {
-    const overviewSection = document.createElement('div');
-    overviewSection.className = 'mb-8';
-    
-    // Activity overview header
-    const overviewHeader = document.createElement('h4');
-    overviewHeader.className = 'text-sm font-medium text-gray-300 mb-3';
-    overviewHeader.textContent = 'Activity Overview';
-    overviewSection.appendChild(overviewHeader);
-    
-    // Activity metrics
-    const metrics = document.createElement('div');
-    metrics.className = 'grid grid-cols-1 md:grid-cols-2 gap-6';
-    
-    // Contribution types
-    const contributionTypes = document.createElement('div');
-    contributionTypes.innerHTML = `
-        <div class="text-sm text-gray-400 mb-2">Contribution types</div>
-        <div class="flex items-center mb-2">
-            <i class="fas fa-code-commit mr-2 text-gray-500"></i>
-            <div class="flex-grow">
-                <div class="flex justify-between text-xs mb-1">
-                    <span>Commits</span>
-                    <span>96%</span>
-                </div>
-                <div class="h-2 bg-gray-700 rounded-full overflow-hidden">
-                    <div class="h-full bg-green-500 rounded-full" style="width: 96%"></div>
-                </div>
-            </div>
-        </div>
-        <div class="flex items-center mb-2">
-            <i class="fas fa-code-pull-request mr-2 text-gray-500"></i>
-            <div class="flex-grow">
-                <div class="flex justify-between text-xs mb-1">
-                    <span>Pull requests</span>
-                    <span>3%</span>
-                </div>
-                <div class="h-2 bg-gray-700 rounded-full overflow-hidden">
-                    <div class="h-full bg-green-500 rounded-full" style="width: 3%"></div>
-                </div>
-            </div>
-        </div>
-        <div class="flex items-center">
-            <i class="fas fa-exclamation-circle mr-2 text-gray-500"></i>
-            <div class="flex-grow">
-                <div class="flex justify-between text-xs mb-1">
-                    <span>Issues</span>
-                    <span>1%</span>
-                </div>
-                <div class="h-2 bg-gray-700 rounded-full overflow-hidden">
-                    <div class="h-full bg-green-500 rounded-full" style="width: 1%"></div>
-                </div>
-            </div>
-        </div>
-    `;
-    
-    // Organizations/Collaborators
-    const collaborators = document.createElement('div');
-    collaborators.innerHTML = `
-        <div class="text-sm text-gray-400 mb-2">Collaborated with</div>
-        <div class="flex space-x-2">
-            <a href="#" class="block">
-                <img src="/api/placeholder/32/32" alt="Collaborator" class="w-8 h-8 rounded-full border-2 border-gray-700">
-            </a>
-            <a href="#" class="block">
-                <img src="/api/placeholder/32/32" alt="Collaborator" class="w-8 h-8 rounded-full border-2 border-gray-700">
-            </a>
-            <a href="#" class="block">
-                <img src="/api/placeholder/32/32" alt="Collaborator" class="w-8 h-8 rounded-full border-2 border-gray-700">
-            </a>
-            <a href="#" class="flex items-center justify-center w-8 h-8 rounded-full bg-gray-800 border-2 border-gray-700 text-xs text-gray-400">
-                +2
-            </a>
-        </div>
-    `;
-    
-    metrics.appendChild(contributionTypes);
-    metrics.appendChild(collaborators);
-    overviewSection.appendChild(metrics);
-    
-    container.appendChild(overviewSection);
-}
-
-/**
- * Render error message in the container
- */
-function renderError(container, error) {
-    container.innerHTML = `
-        <div class="flex items-center justify-center h-64">
-            <div class="text-red-400 text-center">
-                <i class="fas fa-exclamation-circle text-2xl mb-2"></i>
-                <p>Could not load GitHub activity.</p>
-                <p class="text-sm text-gray-500 mt-1">${error.message}</p>
-            </div>
-        </div>
-    `;
-}
+});
