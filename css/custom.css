@@ -353,13 +353,13 @@ html {
   transition: transform 0.3s ease;
 }
 
-.sticker[alt="Brainstorm"] {
+.sticker[alt="Creeper"] {
   cursor: pointer;
   transition: all 0.3s ease;
   z-index: 100;
 }
 
-.sticker[alt="Brainstorm"]:hover {
+.sticker[alt="Creeper"]:hover {
   filter: brightness(1.2);
   transform: scale(1.15) rotate(0deg);
 }

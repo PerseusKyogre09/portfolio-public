@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", function() {
       positionStickers();
     });
     
-    const creeperSticker = document.querySelector('.sticker[alt="Brainstorm"]');
+    const creeperSticker = document.querySelector('.sticker[alt="Creeper"]');
     if (creeperSticker) {
       creeperSticker.addEventListener('click', function() {
         createBlockingOverlay();
