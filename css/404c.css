@@ -1,0 +1,137 @@
+@font-face {
+    font-family: 'Minecraft';
+    src: url('../assets/font/minecraft.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    background-color: #282c34;
+    color: #ffffff;
+    font-family: 'Minecraft', monospace, sans-serif;
+    overflow: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.minecraft-font {
+    font-family: 'Minecraft', monospace, sans-serif;
+}
+
+/* Explosion crater */
+.explosion-area {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.crater {
+    background-color: #1a1c22;
+    border-radius: 50%;
+    position: absolute;
+    transform: rotate(45deg);
+}
+
+.main-crater {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60vh;
+    height: 60vh;
+    background: radial-gradient(circle, #1a1c22 0%, #201e2d 60%, transparent 100%);
+    border-radius: 50%;
+    z-index: 1;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.floating {
+    animation: float 3s ease-in-out infinite;
+}
+
+.pixel {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background-color: #53C753;
+    box-shadow: 0 0 8px #53C753;
+    opacity: 0.8;
+}
+
+@keyframes glitch {
+    0% { 
+        transform: translate(0);
+        text-shadow: 0 0 0 #ff0000;
+    }
+    20% { 
+        transform: translate(-5px, 5px);
+        text-shadow: -2px 2px 0 #00ff00;
+    }
+    40% { 
+        transform: translate(5px, -5px);
+        text-shadow: 2px -2px 0 #0000ff;
+    }
+    60% { 
+        transform: translate(-5px, -5px);
+        text-shadow: -2px -2px 0 #ff00ff;
+    }
+    80% { 
+        transform: translate(5px, 5px);
+        text-shadow: 2px 2px 0 #00ffff;
+    }
+    100% { 
+        transform: translate(0);
+        text-shadow: 0 0 0 #ff0000;
+    }
+}
+
+.glitch {
+    animation: glitch 1s ease-in-out infinite;
+}
+
+.block {
+    width: 30px;
+    height: 30px;
+    background-color: #53C753;
+    position: absolute;
+    opacity: 0.8;
+    box-shadow: inset 3px 3px rgba(255,255,255,0.3), inset -3px -3px rgba(0,0,0,0.3);
+}
+
+.minecraft-button {
+    position: relative;
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: #1f581d;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: 2px solid #135114;
+    box-shadow: inset 3px 3px rgba(255,255,255,0.3), inset -3px -3px rgba(0,0,0,0.3);
+    transition: all 0.1s;
+}
+
+.minecraft-button:hover {
+    background-color: #2a7f26;
+    transform: translateY(-2px);
+}
+
+.minecraft-button:active {
+    background-color: #184a14;
+    transform: translateY(1px);
+    box-shadow: inset -3px -3px rgba(255,255,255,0.3), inset 3px 3px rgba(0,0,0,0.3);
+}

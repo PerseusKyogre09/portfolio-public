@@ -282,20 +282,40 @@
             </div>
         </section>
 
-        <!-- GitHub Activity Section -->
-        <section class="py-20 bg-gradient-to-r from-gray-800 via-gray-700 to-gray-800 bg-opacity-50">
-            <div class="container mx-auto px-6 text-center">
-            <h2 class="text-3xl font-bold text-indigo-400 mb-4">Explore More on GitHub</h2>
-            <p class="text-gray-400 mb-8">Discover my latest projects, contributions, and repositories.</p>
-            <div class="mt-8 flex justify-center">
-                <a href="https://github.com/PerseusKyogre09" data-github-profile 
-                class="flex items-center px-8 py-4 rounded-full bg-indigo-600 hover:bg-indigo-500 text-white font-medium text-lg shadow-lg transform hover:scale-105 transition-all duration-300">
-                <i class="fab fa-github mr-3 text-2xl"></i>
-                <span>Visit My GitHub Profile</span>
-                </a>
+        <!-- GitHub Activity Section with Stickers -->
+        <section id="github-section" class="py-20 bg-gradient-to-r from-gray-800 via-gray-700 to-gray-800 bg-opacity-50 relative overflow-hidden">
+            <div class="container mx-auto px-6 text-center relative z-10">
+                <img src="../assets/stickers/octocat.png" alt="Octocat" class="mx-auto mb-6 w-64 h-64 animate-fade-in" data-github-octocat>
+                <h2 class="text-3xl font-bold text-indigo-400 mb-4">Explore More on GitHub</h2>
+                <p class="text-gray-400 mb-8">Discover my latest projects, contributions, and repositories.</p>
+                <div class="mt-8 flex justify-center">
+                    <a href="https://github.com/PerseusKyogre09" data-github-profile 
+                    class="flex items-center px-8 py-4 rounded-full bg-indigo-600 hover:bg-indigo-500 text-white font-medium text-lg shadow-lg transform hover:scale-105 transition-all duration-300">
+                    <i class="fab fa-github mr-3 text-2xl"></i>
+                    <span>Visit My GitHub Profile</span>
+                    </a>
+                </div>
             </div>
+        
+            <!-- Stickers -->
+            <div class="sticker-container relative w-full h-full">
+                <img src="../assets/stickers/python.png" alt="Python" class="sticker">
+                <img src="../assets/stickers/vscode.png" alt="VSCode" class="sticker">
+                <img src="../assets/stickers/blockchain.png" alt="Blockchain" class="sticker">
+                <img src="../assets/stickers/postman.png" alt="Postman" class="sticker">
+                <img src="../assets/stickers/ai.png" alt="AI" class="sticker">
+                <img src="../assets/stickers/hacktoberfest.png" alt="Hacktoberfest" class="sticker">
+                <img src="../assets/stickers/java.png" alt="Java" class="sticker">
+                <img src="../assets/stickers/coffee.png" alt="Coffee" class="sticker">
+                <img src="../assets/stickers/pizza.png" alt="Coding" class="sticker">
+                <img src="../assets/stickers/perplexity.png" alt="Perplexity" class="sticker">
+                <img src="../assets/stickers/rust.png" alt="Space" class="sticker">
+                <img src="../assets/stickers/linux.png" alt="Galaxy" class="sticker">
+                <img src="../assets/stickers/git.png" alt="Bot" class="sticker">
+                <img src="../assets/stickers/terminal.png" alt="Terminal" class="sticker">
+                <img src="../assets/stickers/creeper.png" alt="Brainstorm" class="sticker">
             </div>
-        </section>
+        </section>                       
     </main>
 
     <footer class="bg-gray-900 py-10 border-t border-gray-800 z-10 relative">
@@ -343,5 +363,6 @@
     <script src="../js/animations.js"></script>
     <script src="../js/theme.js"></script>
     <script src="../js/projects.js"></script>
+    <script src="../js/stickers.js"></script>
 </body>
 </html>

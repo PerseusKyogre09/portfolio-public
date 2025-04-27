@@ -127,29 +127,3 @@ function expandGitHubContributionChart() {
         }
     }
 }
-
-// Show project details on click
-function showProjectDetails(projectId) {
-    // This would typically open a modal or navigate to a project detail page
-    console.log(`Opening project details for: ${projectId}`);
-    
-    // For a real implementation, you might have code like:
-    // const modal = document.getElementById('project-modal');
-    // const modalTitle = modal.querySelector('.modal-title');
-    // const modalContent = modal.querySelector('.modal-content');
-    // 
-    // // Get project data from an API or data attribute
-    // const projectData = getProjectData(projectId);
-    // 
-    // // Populate modal
-    // modalTitle.textContent = projectData.title;
-    // modalContent.innerHTML = projectData.description;
-    // 
-    // // Show modal
-    // modal.classList.remove('hidden');
-}
-
-// Export functions for use in other scripts
-window.projects = {
-    showProjectDetails
-};

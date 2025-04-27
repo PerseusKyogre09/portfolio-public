@@ -1,24 +1,10 @@
-// Main JavaScript functionality
-
-// Wait for the DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialize particle.js for background animation
     initParticles();
-    
-    // Initialize typed.js for the typing animation
     initTypedText();
-    
-    // Mobile menu toggle
     initMobileMenu();
-    
-    // Initialize scrolling animations
     initScrollAnimations();
-    
-    // Generate GitHub activity chart (expanded in the full implementation)
-    generateGitHubActivityChart();
 });
 
-// Particles.js initialization
 function initParticles() {
     if (typeof particlesJS !== 'undefined') {
         particlesJS('particles-js', {
@@ -81,7 +67,6 @@ function initParticles() {
     }
 }
 
-// Typed.js initialization for the typing animation
 function initTypedText() {
     const typedTextElement = document.querySelector('.typed-text');
     
@@ -102,7 +87,6 @@ function initTypedText() {
     }
 }
 
-// Mobile menu functionality
 function initMobileMenu() {
     const mobileMenuButton = document.getElementById('mobile-menu-button');
     const mobileMenu = document.getElementById('mobile-menu');
@@ -115,20 +99,14 @@ function initMobileMenu() {
     }
 }
 
-// Initialize scroll animations
 function initScrollAnimations() {
     const animatedElements = document.querySelectorAll('.animate-on-scroll');
-    
-    // Initial check for elements in viewport
     checkElementsInViewport(animatedElements);
-    
-    // Check on scroll
     window.addEventListener('scroll', () => {
         checkElementsInViewport(animatedElements);
     });
 }
 
-// Check if elements are in viewport and add animation class
 function checkElementsInViewport(elements) {
     elements.forEach(element => {
         const elementTop = element.getBoundingClientRect().top;
@@ -140,34 +118,17 @@ function checkElementsInViewport(elements) {
     });
 }
 
-// Generate GitHub activity chart
-function generateGitHubActivityChart() {
-    // In a real implementation, this could fetch data from GitHub API
-    // For now, we'll generate some random data for the demo
-    const gitHubChart = document.querySelector('.github-activity-chart g');
-    
-    if (gitHubChart) {
-        // Code to generate additional weeks of activity would go here
-        // This would typically be dynamic based on actual GitHub data
-        // For now, the sample SVG has two weeks hardcoded in the HTML
-    }
-}
-
-// Handle form submissions
+// Form Submission (Not complete)
 function handleFormSubmit(event, formId) {
     event.preventDefault();
     const form = document.getElementById(formId);
     
     if (form) {
-        // In a real implementation, this would send the form data to a server
-        // For now, we'll just show a success message
         const submitButton = form.querySelector('button[type="submit"]');
         const originalText = submitButton.innerHTML;
         
         submitButton.disabled = true;
         submitButton.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Sending...';
-        
-        // Simulate form submission
         setTimeout(() => {
             form.reset();
             submitButton.innerHTML = '<i class="fas fa-check mr-2"></i> Sent Successfully!';
@@ -180,7 +141,6 @@ function handleFormSubmit(event, formId) {
     }
 }
 
-// Export functions for use in other scripts
 window.portfolio = {
     handleFormSubmit
 };
