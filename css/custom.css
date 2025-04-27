@@ -482,3 +482,214 @@ html {
 .shake {
   animation: shake 0.8s ease-in-out;
 }
+
+/* TARDIS Effect Styles */
+.tardis-blur-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  filter: blur(5px);
+  transition: filter 2s ease;
+  z-index: 1;
+}
+
+.tardis-unblur {
+  filter: blur(0px) !important;
+  transition: filter 10s ease-out !important;
+}
+
+.blocking-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9998;
+  cursor: not-allowed;
+  background-color: transparent;
+}
+
+.tardis-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 0 50px 20px rgba(59, 130, 246, 0.7);
+  z-index: 10000;
+  max-width: 90vw;
+  opacity: 0;
+  transition: all 0.8s cubic-bezier(0.17, 0.84, 0.44, 1);
+}
+
+.tardis-container.tardis-visible {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+  animation: tardis-arrival 1s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+@keyframes tardis-arrival {
+  0% {
+    transform: translate(-50%, -50%) scale(0) rotate(-5deg);
+    opacity: 0;
+  }
+  20% {
+    transform: translate(-53%, -48%) scale(0.3) rotate(3deg);
+    opacity: 0.3;
+  }
+  40% {
+    transform: translate(-49%, -52%) scale(0.6) rotate(-2deg);
+    opacity: 0.6;
+  }
+  60% {
+    transform: translate(-51%, -49%) scale(0.8) rotate(1deg);
+    opacity: 0.8;
+  }
+  80% {
+    transform: translate(-50%, -51%) scale(0.95) rotate(-0.5deg);
+    opacity: 0.9;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+.tardis-img {
+  width: 200px;
+  height: auto;
+  margin-bottom: 20px;
+  filter: drop-shadow(0 0 15px rgba(59, 130, 246, 0.9));
+  animation: tardis-glow 2s infinite alternate;
+  transition: opacity 0.5s ease;
+}
+
+.tardis-img.tardis-departing {
+  animation: tardis-departure 31s ease-in-out forwards;
+}
+
+@keyframes tardis-glow {
+  from {
+    filter: drop-shadow(0 0 15px rgba(59, 130, 246, 0.7));
+  }
+  to {
+    filter: drop-shadow(0 0 25px rgba(132, 177, 255, 0.9));
+  }
+}
+
+@keyframes tardis-departure {
+  0% {
+    opacity: 1;
+    filter: drop-shadow(0 0 25px rgba(132, 177, 255, 0.9));
+    transform: scale(1) rotate(0deg);
+  }
+  10% {
+    opacity: 0.95;
+    filter: drop-shadow(0 0 30px rgba(132, 177, 255, 1));
+    transform: scale(1.05) rotate(-1deg);
+  }
+  20% {
+    opacity: 1;
+    filter: drop-shadow(0 0 35px rgba(132, 177, 255, 1));
+    transform: scale(1.1) rotate(1deg);
+  }
+  30% {
+    opacity: 0.95;
+    filter: drop-shadow(0 0 32px rgba(132, 177, 255, 0.95));
+    transform: scale(1.08) rotate(-0.5deg);
+  }
+  40% {
+    opacity: 0.97;
+    filter: drop-shadow(0 0 36px rgba(132, 177, 255, 0.97));
+    transform: scale(1.12) rotate(0.5deg);
+  }
+  50% {
+    opacity: 0.93;
+    filter: drop-shadow(0 0 30px rgba(132, 177, 255, 0.93));
+    transform: scale(1.07) rotate(-0.3deg);
+  }
+  60% {
+    opacity: 0.9;
+    filter: drop-shadow(0 0 28px rgba(132, 177, 255, 0.9));
+    transform: scale(1.05) rotate(0.3deg);
+  }
+  70% {
+    opacity: 0.85;
+    filter: drop-shadow(0 0 25px rgba(132, 177, 255, 0.85));
+    transform: scale(1.03) rotate(-0.2deg);
+  }
+  80% {
+    opacity: 0.7;
+    filter: drop-shadow(0 0 20px rgba(132, 177, 255, 0.7));
+    transform: scale(1) rotate(0.2deg);
+  }
+  90% {
+    opacity: 0.5;
+    filter: drop-shadow(0 0 15px rgba(132, 177, 255, 0.5));
+    transform: scale(0.97) rotate(-0.1deg);
+  }
+  95% {
+    opacity: 0.3;
+    filter: drop-shadow(0 0 10px rgba(132, 177, 255, 0.3));
+    transform: scale(0.95) rotate(0deg);
+  }
+  100% {
+    opacity: 0;
+    filter: drop-shadow(0 0 5px rgba(132, 177, 255, 0));
+    transform: scale(0.9) rotate(0deg);
+  }
+}
+
+.tardis-message {
+  color: white;
+  font-size: 1.5rem;
+  text-align: center;
+  margin-bottom: 25px;
+  font-weight: 500;
+  text-shadow: 0 0 10px rgba(59, 130, 246, 0.7);
+  max-width: 80%;
+  transition: opacity 1s ease;
+}
+
+.tardis-button {
+  background-color: #3b82f6;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease, opacity 1s ease;
+  box-shadow: 0 0 15px rgba(59, 130, 246, 0.7);
+}
+
+.tardis-button:hover {
+  background-color: #2563eb;
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.9);
+}
+
+.tardis-button:active {
+  transform: scale(0.98);
+}
+
+/* Add special styling for the TARDIS sticker */
+.sticker[alt="TARDIS"] {
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 100;
+}
+
+.sticker[alt="TARDIS"]:hover {
+  filter: brightness(1.2) drop-shadow(0 0 8px rgba(59, 130, 246, 0.7));
+  transform: scale(1.15) rotate(0deg);
+}
