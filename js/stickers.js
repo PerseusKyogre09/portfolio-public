@@ -265,3 +265,164 @@ function removeTardisEffect() {
     }, 31000); // Match the 31-second sound
   }
 }
+
+// Add this code to your stickers.js file, after the existing event listeners
+
+const masterballSticker = document.querySelector('.sticker[alt="MasterBall"]');
+if (masterballSticker) {
+  masterballSticker.addEventListener('click', function() {
+    createMasterballEffect();
+  });
+}
+
+function createMasterballEffect() {
+  // Create blocking overlay
+  const blockingOverlay = document.createElement('div');
+  blockingOverlay.className = 'blocking-overlay';
+  document.body.appendChild(blockingOverlay);
+  
+  // Create MasterBall animation container
+  const masterballContainer = document.createElement('div');
+  masterballContainer.className = 'masterball-container';
+  
+  // Create MasterBall image
+  const masterballImg = document.createElement('img');
+  masterballImg.src = '../assets/masterball.png';
+  masterballImg.alt = 'MasterBall';
+  masterballImg.className = 'masterball-img';
+  
+  // Add masterball to container and body
+  masterballContainer.appendChild(masterballImg);
+  document.body.appendChild(masterballContainer);
+  
+  // Play MasterBall throw sound
+  const throwSound = new Audio('../assets/sounds/masterball-throw.mp3');
+  throwSound.volume = 0.5;
+  throwSound.play().catch(e => console.log('Audio playback prevented: ', e));
+  
+  // Add throw animation
+  setTimeout(() => {
+    masterballContainer.classList.add('masterball-throw');
+    
+    // Wait for throw animation to complete
+    setTimeout(() => {
+      // Play capture sound
+      const captureSound = new Audio('../assets/sounds/masterball-capture.mp3');
+      captureSound.volume = 0.5;
+      captureSound.play().catch(e => console.log('Audio playback prevented: ', e));
+      
+      // Start shake animation
+      masterballContainer.classList.add('masterball-shake');
+      
+      // Wait for shake, then start Mewtwo sequence
+      setTimeout(() => {
+        // Remove masterball
+        masterballContainer.remove();
+        
+        // Create Mewtwo container
+        const mewtwoContainer = document.createElement('div');
+        mewtwoContainer.className = 'mewtwo-container';
+        
+        // Create Mewtwo image
+        const mewtwoImg = document.createElement('img');
+        mewtwoImg.src = '../assets/mewtwo.png';
+        mewtwoImg.alt = 'Mewtwo';
+        mewtwoImg.className = 'mewtwo-img';
+        
+        // Add Mewtwo to page
+        mewtwoContainer.appendChild(mewtwoImg);
+        document.body.appendChild(mewtwoContainer);
+        
+        // Play Mewtwo cry sound
+        const mewtwoSound = new Audio('../assets/sounds/mewtwo-cry.mp3');
+        mewtwoSound.volume = 0.5;
+        mewtwoSound.play().catch(e => console.log('Audio playback prevented: ', e));
+        
+        // Start Mewtwo appearance animation
+        setTimeout(() => {
+          mewtwoContainer.classList.add('mewtwo-appear');
+          
+          // Add psychic effect after appearance
+          setTimeout(() => {
+            // Apply psychic effect to page
+            document.body.classList.add('psychic-effect');
+            
+            // Play psychic attack sound
+            const psychicSound = new Audio('../assets/sounds/psychic-attack.mp3');
+            psychicSound.volume = 0.5;
+            psychicSound.play().catch(e => console.log('Audio playback prevented: ', e));
+            
+            // Create psychic energy waves
+            createPsychicWaves();
+            
+            // Add pulsing glow to Mewtwo
+            mewtwoImg.classList.add('psychic-glow');
+            
+            // Redirect to 404m.html after effect completes
+            setTimeout(() => {
+              window.location.href = "../404m.html";
+            }, 4000);
+          }, 1500);
+        }, 500);
+      }, 3000); // After masterball shake animation
+    }, 1000); // After throw animation
+  }, 100);
+}
+
+function createPsychicWaves() {
+  // Create psychic wave container
+  const waveContainer = document.createElement('div');
+  waveContainer.className = 'psychic-wave-container';
+  document.body.appendChild(waveContainer);
+  
+  // Create multiple psychic waves
+  for (let i = 0; i < 5; i++) {
+    const wave = document.createElement('div');
+    wave.className = 'psychic-wave';
+    wave.style.animationDelay = `${i * 0.2}s`;
+    waveContainer.appendChild(wave);
+  }
+  
+  // Create psychic particles
+  for (let i = 0; i < 40; i++) {
+    createPsychicParticle();
+  }
+}
+
+function createPsychicParticle() {
+  const particle = document.createElement('div');
+  particle.className = 'psychic-particle';
+  
+  // Random position around the center
+  const centerX = window.innerWidth / 2;
+  const centerY = window.innerHeight / 2;
+  const angle = Math.random() * Math.PI * 2;
+  const distance = 100 + Math.random() * 150;
+  
+  const xPos = centerX + Math.cos(angle) * distance;
+  const yPos = centerY + Math.sin(angle) * distance;
+  
+  // Random size
+  const size = Math.random() * 15 + 5;
+  
+  particle.style.left = `${xPos}px`;
+  particle.style.top = `${yPos}px`;
+  particle.style.width = `${size}px`;
+  particle.style.height = `${size}px`;
+  
+  document.body.appendChild(particle);
+  
+  // Animate particle movement
+  setTimeout(() => {
+    const moveDistance = 300 + Math.random() * 400;
+    const xMove = Math.cos(angle) * moveDistance;
+    const yMove = Math.sin(angle) * moveDistance;
+    
+    particle.style.transform = `translate(${xMove}px, ${yMove}px)`;
+    particle.style.opacity = '0';
+    
+    setTimeout(() => {
+      document.body.removeChild(particle);
+    }, 2000);
+  }, 10);
+}
