@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Create psychic particles
     const createParticles = () => {
         const body = document.querySelector('body');
         const numParticles = 100;
@@ -31,7 +30,6 @@ document.addEventListener('DOMContentLoaded', () => {
     
     createParticles();
     
-    // Add occasional psychic flash
     const addPsychicFlash = () => {
         const flashInterval = setInterval(() => {
             const flash = document.createElement('div');
@@ -54,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     document.body.removeChild(flash);
                 }, 500);
             }, 200);
-        }, Math.random() * 5000 + 3000); // Random flash between 3-8 seconds
+        }, Math.random() * 5000 + 3000);
     };
     
     addPsychicFlash();

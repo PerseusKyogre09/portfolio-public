@@ -682,7 +682,6 @@ html {
   transform: scale(0.98);
 }
 
-/* Add special styling for the TARDIS sticker */
 .sticker[alt="TARDIS"] {
   cursor: pointer;
   transition: all 0.3s ease;
@@ -875,7 +874,6 @@ html {
   box-shadow: 0 0 10px rgba(255, 0, 255, 0.8);
 }
 
-/* Add special styling for the MasterBall sticker */
 .sticker[alt="MasterBall"] {
   cursor: pointer;
   transition: all 0.3s ease;

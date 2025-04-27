@@ -90,14 +90,12 @@ body {
     animation: psychic-pulse 2s ease-in-out infinite;
 }
 
-/* Fixed Mewtwo image size */
 .mewtwo-img {
     width: 150px;
     height: auto;
     margin: 0 auto 20px;
 }
 
-/* Fixed button styling */
 .pokeball-button {
     position: relative;
     display: inline-block;
