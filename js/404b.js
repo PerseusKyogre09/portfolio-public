@@ -431,79 +431,56 @@ function createWebLines() {
     const effectsContainer = document.getElementById('effect-elements');
     effectsContainer.innerHTML = '';
     
-    for (let i = 0; i < 15; i++) {
-        const web = document.createElement('div');
-        web.className = 'effect-element';
+    // Create a full-screen web overlay using the image
+    const webOverlay = document.createElement('div');
+    webOverlay.className = 'effect-element web-overlay';
+    webOverlay.style.position = 'absolute';
+    webOverlay.style.top = '0';
+    webOverlay.style.left = '0';
+    webOverlay.style.width = '100%';
+    webOverlay.style.height = '100%';
+    webOverlay.style.backgroundImage = 'url("./assets/effects/web-overlay.png")';
+    webOverlay.style.backgroundSize = 'cover';
+    webOverlay.style.opacity = '0.1';
+    webOverlay.style.pointerEvents = 'none';
+    webOverlay.style.zIndex = '-1'; // Set to negative z-index to appear behind everything
+    
+    // Add a subtle animation
+    const keyframeId = 'web-sway';
+    const styleSheet = document.createElement('style');
+    styleSheet.textContent = `
+        @keyframes ${keyframeId} {
+            0% { transform: scale(1.0); }
+            50% { transform: scale(1.03); }
+            100% { transform: scale(1.0); }
+        }
+    `;
+    document.head.appendChild(styleSheet);
+    webOverlay.style.animation = `${keyframeId} 10s infinite ease-in-out`;
+    
+    effectsContainer.appendChild(webOverlay);
+    
+    // Add a few individual web strands for extra effect
+    for (let i = 0; i < 5; i++) {
+        const webStrand = document.createElement('div');
+        webStrand.className = 'effect-element';
         
-        // Create a thin white line
-        web.style.width = '1px';
+        webStrand.style.width = '1px';
         const height = Math.random() * 150 + 50;
-        web.style.height = `${height}px`;
-        web.style.backgroundColor = 'rgba(255, 255, 255, 0.8)';
-        web.style.boxShadow = '0 0 5px rgba(255, 255, 255, 0.5)';
+        webStrand.style.height = `${height}px`;
+        webStrand.style.backgroundColor = 'rgba(255, 255, 255, 0.8)';
         
         const left = Math.random() * 100;
         const top = Math.random() * 100;
         
-        web.style.left = `${left}%`;
-        web.style.top = `${top}%`;
+        webStrand.style.left = `${left}%`;
+        webStrand.style.top = `${top}%`;
         
         const rotation = Math.random() * 360;
-        web.style.transform = `rotate(${rotation}deg)`;
-        web.style.transformOrigin = '0 0';
+        webStrand.style.transform = `rotate(${rotation}deg)`;
+        webStrand.style.zIndex = '-1'; // Also set individual web strands behind everything
         
-        // Add a circular web node at the end
-        const webNode = document.createElement('div');
-        webNode.className = 'web-node';
-        webNode.style.width = '5px';
-        webNode.style.height = '5px';
-        webNode.style.backgroundColor = 'white';
-        webNode.style.borderRadius = '50%';
-        webNode.style.position = 'absolute';
-        webNode.style.bottom = '0';
-        webNode.style.left = '-2px';
-        
-        web.appendChild(webNode);
-        effectsContainer.appendChild(web);
-    }
-    
-    // Create some circular web structures
-    for (let i = 0; i < 3; i++) {
-        const circularWeb = document.createElement('div');
-        circularWeb.className = 'effect-element circular-web';
-        
-        const size = Math.random() * 150 + 100;
-        circularWeb.style.width = `${size}px`;
-        circularWeb.style.height = `${size}px`;
-        circularWeb.style.border = '1px solid rgba(255, 255, 255, 0.5)';
-        circularWeb.style.borderRadius = '50%';
-        circularWeb.style.boxShadow = '0 0 10px rgba(255, 255, 255, 0.3)';
-        
-        const left = Math.random() * 70 + 15;
-        const top = Math.random() * 70 + 15;
-        
-        circularWeb.style.left = `${left}%`;
-        circularWeb.style.top = `${top}%`;
-        
-        // Add web spokes
-        for (let j = 0; j < 8; j++) {
-            const spoke = document.createElement('div');
-            spoke.className = 'web-spoke';
-            spoke.style.width = '1px';
-            spoke.style.height = `${size / 2}px`;
-            spoke.style.backgroundColor = 'rgba(255, 255, 255, 0.5)';
-            spoke.style.position = 'absolute';
-            spoke.style.top = '50%';
-            spoke.style.left = '50%';
-            spoke.style.transformOrigin = '0 0';
-            
-            const angle = (j / 8) * 360;
-            spoke.style.transform = `rotate(${angle}deg)`;
-            
-            circularWeb.appendChild(spoke);
-        }
-        
-        effectsContainer.appendChild(circularWeb);
+        effectsContainer.appendChild(webStrand);
     }
 }
 

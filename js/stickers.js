@@ -907,40 +907,157 @@ document.addEventListener("DOMContentLoaded", function() {
     overlay.className = 'freeze-overlay';
     document.body.appendChild(overlay);
     
+    // Add ice texture from assets
+    overlay.style.backgroundImage = 'url("../assets/effects/ice-effect.png")';
+    overlay.style.backgroundSize = 'cover';
+    
     const frostParticles = document.createElement('div');
     frostParticles.className = 'frost-particles';
     document.body.appendChild(frostParticles);
     
-    for (let i = 0; i < 100; i++) {
+    // Add snowflake particles
+    for (let i = 0; i < 50; i++) {
       const particle = document.createElement('div');
       particle.className = 'frost-particle';
       particle.style.left = `${Math.random() * 100}%`;
       particle.style.top = `${Math.random() * 100}%`;
-      particle.style.animationDuration = `${1 + Math.random() * 3}s`;
+      particle.style.animationDuration = `${2 + Math.random() * 4}s`;
       particle.style.animationDelay = `${Math.random()}s`;
+      
+      // Use snowflake images from assets
+      particle.style.backgroundImage = `url("../assets/effects/snowflake.png")`;
+      particle.style.backgroundSize = 'contain';
+      particle.style.backgroundRepeat = 'no-repeat';
+      particle.style.opacity = '0.2';
+      // Vary the size and rotation to create visual diversity with a single image
+      const scale = 0.5 + Math.random();
+      const rotation = Math.random() * 360;
+      particle.style.transform = `scale(${scale}) rotate(${rotation}deg)`;
+      
       frostParticles.appendChild(particle);
     }
     
-    // Generate ice cracks
+    // Generate ice cracks using crack images
     setTimeout(() => {
-      for (let i = 0; i < 20; i++) {
+      for (let i = 0; i < 10; i++) {
         const crack = document.createElement('div');
         crack.className = 'ice-crack';
-        crack.style.left = `${Math.random() * 100}%`;
-        crack.style.top = `${Math.random() * 100}%`;
-        crack.style.width = `${20 + Math.random() * 150}px`;
+        // Keep cracks within visible area by using percentage from 20-80%
+        crack.style.left = `${20 + Math.random() * 60}%`;
+        crack.style.top = `${20 + Math.random() * 60}%`;
+        crack.style.width = `${50 + Math.random() * 200}px`;
         crack.style.transform = `rotate(${Math.random() * 360}deg)`;
+        
+        // Use ice crack images from assets
+        const crackNum = Math.floor(Math.random() * 3) + 1;
+        crack.style.backgroundImage = `url("../assets/effects/ice-crack${crackNum}.png")`;
+        crack.style.backgroundSize = 'contain';
+        crack.style.backgroundRepeat = 'no-repeat';
+        
         overlay.appendChild(crack);
       }
+      
+      // Add frost border effect
+      const frostBorder = document.createElement('div');
+      frostBorder.className = 'frost-border';
+      frostBorder.style.backgroundImage = 'url("../assets/effects/frost-border.png")';
+      frostBorder.style.backgroundSize = 'cover';
+      document.body.appendChild(frostBorder);
       
       const freezeSound = new Audio('../assets/sounds/freeze.mp3');
       freezeSound.volume = 0.5;
       freezeSound.play().catch(e => console.log('Audio playback prevented: ', e));
+      
+      // Create blackout effect overlay that will transition to black
+      const blackoutOverlay = document.createElement('div');
+      blackoutOverlay.className = 'blackout-overlay';
+      blackoutOverlay.style.position = 'fixed';
+      blackoutOverlay.style.top = '0';
+      blackoutOverlay.style.left = '0';
+      blackoutOverlay.style.width = '100%';
+      blackoutOverlay.style.height = '100%';
+      blackoutOverlay.style.backgroundColor = 'black';
+      blackoutOverlay.style.opacity = '0';
+      blackoutOverlay.style.transition = 'opacity 1.5s ease-in';
+      blackoutOverlay.style.zIndex = '99999';
+      document.body.appendChild(blackoutOverlay);
+      
+      // Activate the blackout effect before redirecting
+      setTimeout(() => {
+        blackoutOverlay.style.opacity = '1';
+        
+        // Play ice crack sound as screen fades to black
+        const crackSound = new Audio('../assets/sounds/ice-crack.mp3');
+        crackSound.volume = 0.4;
+        crackSound.play().catch(e => console.log('Audio playback prevented: ', e));
+      }, 4500);
     }, 500);
     
     setTimeout(() => {
       document.body.classList.add('shatter-freeze');
-    }, 2000);
+      
+      // Create a container for shards to ensure better positioning control
+      const shardContainer = document.createElement('div');
+      shardContainer.className = 'ice-shard-container';
+      shardContainer.style.position = 'fixed';
+      shardContainer.style.left = '0';
+      shardContainer.style.top = '0';
+      shardContainer.style.width = '100vw';
+      shardContainer.style.height = '100vh';
+      shardContainer.style.pointerEvents = 'none';
+      shardContainer.style.zIndex = '10000';
+      document.body.appendChild(shardContainer);
+      
+      // Add shattering effect with ice shards
+      for (let i = 0; i < 15; i++) {
+        const shard = document.createElement('div');
+        shard.className = 'ice-shard';
+        
+        // Position shards more centrally
+        // Use viewport width and height to ensure shards start in visible area
+        const viewportWidth = window.innerWidth;
+        const viewportHeight = window.innerHeight;
+        
+        // Position in center area (30-70% of viewport)
+        const startX = viewportWidth * (0.3 + Math.random() * 0.4);
+        const startY = viewportHeight * (0.3 + Math.random() * 0.4);
+        
+        shard.style.position = 'absolute';
+        shard.style.left = `${startX}px`;
+        shard.style.top = `${startY}px`;
+        
+        // Use the same ice shard image for all shards
+        shard.style.backgroundImage = `url("../assets/effects/ice-shard.png")`;
+        shard.style.backgroundSize = 'contain';
+        shard.style.backgroundRepeat = 'no-repeat';
+        
+        // Vary rotation and scale to create visual diversity with a single image
+        shard.style.transform = `rotate(${Math.random() * 360}deg) scale(${0.5 + Math.random() * 1.5})`;
+        
+        shardContainer.appendChild(shard);
+        
+        // Add flying animation - keeping shards within reasonable bounds
+        setTimeout(() => {
+          const angle = Math.random() * Math.PI * 2;
+          
+          // Limit distance to ensure shards don't fly too far off-screen
+          // Use percentage of viewport for responsive behavior
+          const maxDistance = Math.min(viewportWidth, viewportHeight) * 0.5;
+          const distance = 100 + Math.random() * maxDistance;
+          
+          const xMove = Math.cos(angle) * distance;
+          const yMove = Math.sin(angle) * distance;
+          
+          shard.style.transition = 'transform 2s ease-out, opacity 2s ease-out';
+          shard.style.transform = `translate(${xMove}px, ${yMove}px) rotate(${Math.random() * 720}deg) scale(0)`;
+          shard.style.opacity = '0';
+        }, 100 + Math.random() * 500);
+      }
+      
+      const shatterSound = new Audio('../assets/sounds/ice-shatter.mp3');
+      shatterSound.volume = 0.4;
+      shatterSound.play().catch(e => console.log('Audio playback prevented: ', e));
+    }, 2500);
   }
   
   function createEnergyBeamEffect() {
@@ -1031,6 +1148,9 @@ document.addEventListener("DOMContentLoaded", function() {
     setTimeout(() => {
       const webOverlay = document.createElement('div');
       webOverlay.className = 'web-overlay';
+      webOverlay.style.backgroundImage = 'url("../assets/effects/web-overlay.png")';
+      webOverlay.style.backgroundSize = 'cover';
+      webOverlay.style.backgroundPosition = 'center';
       document.body.appendChild(webOverlay);
     }, 1500);
   }
