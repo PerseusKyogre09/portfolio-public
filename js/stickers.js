@@ -655,7 +655,7 @@ document.addEventListener("DOMContentLoaded", function() {
       omnitrixFaceplate.style.visibility = 'hidden';
       
       // Move selected alien to center & enlarge
-      selectedAlien.style.transform = 'translate(0px, 0px) scale(1.5)';  // Center position
+      selectedAlien.style.transform = 'translate(0px, 0px) scale(5)';  // Center position
       selectedAlien.classList.add('centered');
       
       // Change appearance to indicate ready for selection

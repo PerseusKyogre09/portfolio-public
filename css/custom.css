@@ -961,8 +961,8 @@ body.dark {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 100px; /* Increased size */
-  height: 100px; /* Increased size */
+  width: 300px; /* Increased size */
+  height: 300px; /* Increased size */
   background: #000;
   border-radius: 50%;
   border: 5px solid #333;
