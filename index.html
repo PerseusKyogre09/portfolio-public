@@ -23,9 +23,9 @@
                 
                 <div class="hidden md:flex space-x-8 text-sm">
                     <a href="index.html" class="text-indigo-400 font-medium nav-link active">Home</a>
-                    <a href="pages/projects.html" class="text-gray-300 hover:text-indigo-400 transition-colors nav-link">Projects</a>
-                    <a href="pages/skills.html" class="text-gray-300 hover:text-indigo-400 transition-colors nav-link">Skills</a>
                     <a href="pages/about.html" class="text-gray-300 hover:text-indigo-400 transition-colors nav-link">About</a>
+                    <a href="pages/skills.html" class="text-gray-300 hover:text-indigo-400 transition-colors nav-link">Skills</a>
+                    <a href="pages/projects.html" class="text-gray-300 hover:text-indigo-400 transition-colors nav-link">Projects</a>
                     <a href="pages/contact.html" class="text-gray-300 hover:text-indigo-400 transition-colors nav-link">Contact</a>
                 </div>
                 
@@ -44,9 +44,9 @@
             <div id="mobile-menu" class="md:hidden hidden mt-4 pb-2 border-t border-gray-700">
                 <div class="flex flex-col space-y-3 mt-3">
                     <a href="index.html" class="text-indigo-400 font-medium py-2">Home</a>
-                    <a href="pages/projects.html" class="text-gray-300 hover:text-indigo-400 transition-colors py-2">Projects</a>
-                    <a href="pages/skills.html" class="text-gray-300 hover:text-indigo-400 transition-colors py-2">Skills</a>
                     <a href="pages/about.html" class="text-gray-300 hover:text-indigo-400 transition-colors py-2">About</a>
+                    <a href="pages/skills.html" class="text-gray-300 hover:text-indigo-400 transition-colors py-2">Skills</a>
+                    <a href="pages/projects.html" class="text-gray-300 hover:text-indigo-400 transition-colors py-2">Projects</a>
                     <a href="pages/contact.html" class="text-gray-300 hover:text-indigo-400 transition-colors py-2">Contact</a>
                 </div>
             </div>
@@ -109,191 +109,195 @@
             </div>
         </section>
 
-        <!-- Featured Projects -->
+        <!-- About/Skills Section -->
         <section class="py-20 bg-gray-800 bg-opacity-50">
             <div class="container mx-auto px-6">
+                <div class="max-w-4xl mx-auto">
+                    <div class="text-center mb-16">
+                    <h2 class="text-3xl font-bold mb-4">About Me</h2>
+                    <div class="w-24 h-1 bg-indigo-500 mx-auto rounded-full"></div>
+                    </div>
+            
+                    <div class="bg-gray-800 rounded-2xl p-8 shadow-lg relative overflow-hidden">
+                    <div class="absolute top-0 right-0 -mr-16 -mt-16 w-64 h-64 rounded-full bg-indigo-900 opacity-10"></div>
+                    <div class="absolute bottom-0 left-0 -ml-16 -mb-16 w-64 h-64 rounded-full bg-purple-900 opacity-10"></div>
+            
+                    <div class="relative">
+                        <p class="text-gray-300 leading-relaxed mb-6">
+                        I'm a passionate Computer Science student at SRMIST with a focus on web/app development and blockchain. I love building applications that make a difference.
+                        </p>
+            
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+                        <!-- Skill 1 -->
+                        <div class="text-center">
+                            <div class="skill-circle relative mx-auto">
+                            <svg width="80" height="80">
+                                <circle cx="40" cy="40" r="36" fill="none" stroke="#1f2937" stroke-width="8"></circle>
+                                <circle cx="40" cy="40" r="36" fill="none" stroke="#818cf8" stroke-width="8" stroke-dasharray="226" stroke-dashoffset="22.6" class="skill-circle-progress"></circle>
+                                <text x="40" y="45" text-anchor="middle" fill="white" class="font-bold text-sm">90%</text>
+                            </svg>
+                            </div>
+                            <p class="mt-2 text-sm font-medium text-indigo-400">Python</p>
+                        </div>
+            
+                        <!-- Skill 2 -->
+                        <div class="text-center">
+                            <div class="skill-circle relative mx-auto">
+                            <svg width="80" height="80">
+                                <circle cx="40" cy="40" r="36" fill="none" stroke="#1f2937" stroke-width="8"></circle>
+                                <circle cx="40" cy="40" r="36" fill="none" stroke="#818cf8" stroke-width="8" stroke-dasharray="226" stroke-dashoffset="33.9" class="skill-circle-progress"></circle>
+                                <text x="40" y="45" text-anchor="middle" fill="white" class="font-bold text-sm">85%</text>
+                            </svg>
+                            </div>
+                            <p class="mt-2 text-sm font-medium text-indigo-400">HTML/CSS</p>
+                        </div>
+            
+                        <!-- Skill 3 -->
+                        <div class="text-center">
+                            <div class="skill-circle relative mx-auto">
+                            <svg width="80" height="80">
+                                <circle cx="40" cy="40" r="36" fill="none" stroke="#1f2937" stroke-width="8"></circle>
+                                <circle cx="40" cy="40" r="36" fill="none" stroke="#818cf8" stroke-width="8" stroke-dasharray="226" stroke-dashoffset="113" class="skill-circle-progress"></circle>
+                                <text x="40" y="45" text-anchor="middle" fill="white" class="font-bold text-sm">50%</text>
+                            </svg>
+                            </div>
+                            <p class="mt-2 text-sm font-medium text-indigo-400">Frontend</p>
+                        </div>
+            
+                        <!-- Skill 4 -->
+                        <div class="text-center">
+                            <div class="skill-circle relative mx-auto">
+                            <svg width="80" height="80">
+                                <circle cx="40" cy="40" r="36" fill="none" stroke="#1f2937" stroke-width="8"></circle>
+                                <circle cx="40" cy="40" r="36" fill="none" stroke="#818cf8" stroke-width="8" stroke-dasharray="226" stroke-dashoffset="56.5" class="skill-circle-progress"></circle>
+                                <text x="40" y="45" text-anchor="middle" fill="white" class="font-bold text-sm">75%</text>
+                            </svg>
+                            </div>
+                            <p class="mt-2 text-sm font-medium text-indigo-400">Backend</p>
+                        </div>
+                        </div>
+            
+                        <div class="text-center">
+                        <a href="pages/skills.html" class="inline-flex items-center text-indigo-400 hover:text-indigo-300 font-medium">
+                            <span>View Full Skill Set</span>
+                            <i class="fas fa-chevron-right ml-1 text-xs"></i>
+                        </a>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </section>
+            
+            <!-- Featured Projects Section -->
+            <section class="py-20">
+                <div class="container mx-auto px-6">
                 <div class="text-center mb-16">
                     <h2 class="text-3xl font-bold mb-4">Featured Projects</h2>
                     <div class="w-24 h-1 bg-indigo-500 mx-auto rounded-full"></div>
                 </div>
-                
+            
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     <!-- Project Card 1 -->
                     <div class="project-card bg-gray-800 rounded-xl overflow-hidden shadow-lg transform hover:-translate-y-2 transition-all duration-300" data-category="hpc">
-                        <div class="relative overflow-hidden h-48">
-                            <div class="bg-indigo-900 h-full w-full flex items-center justify-center">
-                                <i class="fas fa-microchip text-5xl text-indigo-300"></i>
-                            </div>
-                            <div class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-70"></div>
-                            <div class="absolute bottom-0 left-0 p-4">
-                                <span class="bg-indigo-600 text-xs px-2 py-1 rounded-md text-white">High Processing Compute</span>
-                            </div>
+                    <div class="relative overflow-hidden h-48">
+                        <div class="bg-indigo-900 h-full w-full flex items-center justify-center">
+                        <i class="fas fa-microchip text-5xl text-indigo-300"></i>
                         </div>
-                        <div class="p-6">
-                            <h3 class="text-xl font-bold mb-2 text-white">Image Processing with Intel oneAPI</h3>
-                            <p class="text-gray-400 mb-4 text-sm">Applies basic image processing using Intel oneAPI DPC++ to compare serial processing & parallel processing.</p>
-                            <div class="flex space-x-2 text-xs mb-4">
-                                <span class="bg-gray-700 px-2 py-1 rounded text-gray-300">C++</span>
-                                <span class="bg-gray-700 px-2 py-1 rounded text-gray-300">Shell</span>
-                                <span class="bg-gray-700 px-2 py-1 rounded text-gray-300">Makefile</span>
-                            </div>
-                            <div class="flex justify-between">
-                                <a href="https://github.com/PerseusKyogre09/oneapi-compare" class="text-indigo-400 hover:text-indigo-300 text-sm flex items-center">
-                                    <span>View Project</span>
-                                    <i class="fas fa-arrow-right ml-1"></i>
-                                </a>
-                                <a href="https://github.com/PerseusKyogre09/oneapi-compare" class="text-gray-400 hover:text-white">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                            </div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-70"></div>
+                        <div class="absolute bottom-0 left-0 p-4">
+                        <span class="bg-indigo-600 text-xs px-2 py-1 rounded-md text-white">High Processing Compute</span>
                         </div>
                     </div>
-                    
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-white">Image Processing with Intel oneAPI</h3>
+                        <p class="text-gray-400 mb-4 text-sm">Applies basic image processing using Intel oneAPI DPC++ to compare serial processing & parallel processing.</p>
+                        <div class="flex space-x-2 text-xs mb-4">
+                        <span class="bg-gray-700 px-2 py-1 rounded text-gray-300">C++</span>
+                        <span class="bg-gray-700 px-2 py-1 rounded text-gray-300">Shell</span>
+                        <span class="bg-gray-700 px-2 py-1 rounded text-gray-300">Makefile</span>
+                        </div>
+                        <div class="flex justify-between">
+                        <a href="https://github.com/PerseusKyogre09/oneapi-compare" class="text-indigo-400 hover:text-indigo-300 text-sm flex items-center">
+                            <span>View Project</span>
+                            <i class="fas fa-arrow-right ml-1"></i>
+                        </a>
+                        <a href="https://github.com/PerseusKyogre09/oneapi-compare" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        </div>
+                    </div>
+                    </div>
+            
                     <!-- Project Card 2 -->
                     <div class="project-card bg-gray-800 rounded-xl overflow-hidden shadow-lg transform hover:-translate-y-2 transition-all duration-300" data-category="desktop">
-                        <div class="relative overflow-hidden h-48">
-                            <div class="bg-purple-900 h-full w-full flex items-center justify-center">
-                                <i class="fas fa-desktop text-5xl text-purple-300"></i>
-                            </div>
-                            <div class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-70"></div>
-                            <div class="absolute bottom-0 left-0 p-4">
-                                <span class="bg-purple-600 text-xs px-2 py-1 rounded-md text-white">Desktop App</span>
-                            </div>
+                    <div class="relative overflow-hidden h-48">
+                        <div class="bg-purple-900 h-full w-full flex items-center justify-center">
+                        <i class="fas fa-desktop text-5xl text-purple-300"></i>
                         </div>
-                        <div class="p-6">
-                            <h3 class="text-xl font-bold mb-2 text-white">Widgets App</h3>
-                            <p class="text-gray-400 mb-4 text-sm">A desktop application to demonstrate different widgets made using PyQt5. Includes a clock, current weather of user's city and music player.</p>
-                            <div class="flex space-x-2 text-xs mb-4">
-                                <span class="bg-gray-700 px-2 py-1 rounded text-gray-300">Python</span>
-                                <span class="bg-gray-700 px-2 py-1 rounded text-gray-300">PyQt5</span>
-                            </div>
-                            <div class="flex justify-between">
-                                <a href="https://github.com/PerseusKyogre09/desktop-widgets" class="text-indigo-400 hover:text-indigo-300 text-sm flex items-center">
-                                    <span>View Project</span>
-                                    <i class="fas fa-arrow-right ml-1"></i>
-                                </a>
-                                <a href="https://github.com/PerseusKyogre09/desktop-widgets" class="text-gray-400 hover:text-white">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                            </div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-70"></div>
+                        <div class="absolute bottom-0 left-0 p-4">
+                        <span class="bg-purple-600 text-xs px-2 py-1 rounded-md text-white">Desktop App</span>
                         </div>
                     </div>
-                    
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-white">Widgets App</h3>
+                        <p class="text-gray-400 mb-4 text-sm">A desktop application to demonstrate different widgets made using PyQt5. Includes a clock, current weather of user's city and music player.</p>
+                        <div class="flex space-x-2 text-xs mb-4">
+                        <span class="bg-gray-700 px-2 py-1 rounded text-gray-300">Python</span>
+                        <span class="bg-gray-700 px-2 py-1 rounded text-gray-300">PyQt5</span>
+                        </div>
+                        <div class="flex justify-between">
+                        <a href="https://github.com/PerseusKyogre09/desktop-widgets" class="text-indigo-400 hover:text-indigo-300 text-sm flex items-center">
+                            <span>View Project</span>
+                            <i class="fas fa-arrow-right ml-1"></i>
+                        </a>
+                        <a href="https://github.com/PerseusKyogre09/desktop-widgets" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        </div>
+                    </div>
+                    </div>
+            
                     <!-- Project Card 3 -->
                     <div class="project-card bg-gray-800 rounded-xl overflow-hidden shadow-lg transform hover:-translate-y-2 transition-all duration-300" data-category="desktop">
-                        <div class="relative overflow-hidden h-48">
-                            <div class="bg-yellow-900 h-full w-full flex items-center justify-center">
-                                <i class="fas fa-cloud-sun text-5xl text-yellow-300"></i>
-                            </div>
-                            <div class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-70"></div>
-                            <div class="absolute bottom-0 left-0 p-4">
-                                <span class="bg-yellow-600 text-xs px-2 py-1 rounded-md text-white">Desktop App</span>
-                            </div>
+                    <div class="relative overflow-hidden h-48">
+                        <div class="bg-yellow-900 h-full w-full flex items-center justify-center">
+                        <i class="fas fa-cloud-sun text-5xl text-yellow-300"></i>
                         </div>
-                        <div class="p-6">
-                            <h3 class="text-xl font-bold mb-2 text-white">Weather App</h3>
-                            <p class="text-gray-400 mb-4 text-sm">A desktop application which shows current weather in any city and shows 3 days weather forecast. Uses OpenWeatherMap API.</p>
-                            <div class="flex space-x-2 text-xs mb-4">
-                                <span class="bg-gray-700 px-2 py-1 rounded text-gray-300">Python</span>
-                                <span class="bg-gray-700 px-2 py-1 rounded text-gray-300">Custom Tkinter</span>
-                            </div>
-                            <div class="flex justify-between">
-                                <a href="https://github.com/PerseusKyogre09/weather-project" class="text-indigo-400 hover:text-indigo-300 text-sm flex items-center">
-                                    <span>View Project</span>
-                                    <i class="fas fa-arrow-right ml-1"></i>
-                                </a>
-                                <a href="https://github.com/PerseusKyogre09/weather-project" class="text-gray-400 hover:text-white">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                            </div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-70"></div>
+                        <div class="absolute bottom-0 left-0 p-4">
+                        <span class="bg-yellow-600 text-xs px-2 py-1 rounded-md text-white">Desktop App</span>
                         </div>
                     </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-white">Weather App</h3>
+                        <p class="text-gray-400 mb-4 text-sm">A desktop application which shows current weather in any city and shows 3 days weather forecast. Uses OpenWeatherMap API.</p>
+                        <div class="flex space-x-2 text-xs mb-4">
+                        <span class="bg-gray-700 px-2 py-1 rounded text-gray-300">Python</span>
+                        <span class="bg-gray-700 px-2 py-1 rounded text-gray-300">Custom Tkinter</span>
+                        </div>
+                        <div class="flex justify-between">
+                        <a href="https://github.com/PerseusKyogre09/weather-project" class="text-indigo-400 hover:text-indigo-300 text-sm flex items-center">
+                            <span>View Project</span>
+                            <i class="fas fa-arrow-right ml-1"></i>
+                        </a>
+                        <a href="https://github.com/PerseusKyogre09/weather-project" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        </div>
+                    </div>
+                    </div>
                 </div>
-                
+            
                 <div class="text-center mt-12">
                     <a href="pages/projects.html" class="inline-flex items-center px-6 py-3 rounded-full bg-gray-800 hover:bg-gray-700 text-indigo-400 font-medium transition-all duration-300">
-                        <span>View All Projects</span>
-                        <i class="fas fa-arrow-right ml-2"></i>
+                    <span>View All Projects</span>
+                    <i class="fas fa-arrow-right ml-2"></i>
                     </a>
                 </div>
             </div>
-        </section>
-
-        <!-- About/Skills Preview -->
-        <section class="py-20">
-            <div class="container mx-auto px-6">
-                <div class="max-w-4xl mx-auto">
-                    <div class="text-center mb-16">
-                        <h2 class="text-3xl font-bold mb-4">About Me</h2>
-                        <div class="w-24 h-1 bg-indigo-500 mx-auto rounded-full"></div>
-                    </div>
-                    
-                    <div class="bg-gray-800 rounded-2xl p-8 shadow-lg relative overflow-hidden">
-                        <div class="absolute top-0 right-0 -mr-16 -mt-16 w-64 h-64 rounded-full bg-indigo-900 opacity-10"></div>
-                        <div class="absolute bottom-0 left-0 -ml-16 -mb-16 w-64 h-64 rounded-full bg-purple-900 opacity-10"></div>
-                        
-                        <div class="relative">
-                            <p class="text-gray-300 leading-relaxed mb-6">
-                                I'm a passionate Computer Science student at SRMIST with a focus on web/app development and blockchain. I love building applications that make a difference.
-                            </p>
-                            
-                            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-                                <div class="text-center">
-                                    <div class="skill-circle relative mx-auto">
-                                        <svg width="80" height="80">
-                                            <circle cx="40" cy="40" r="36" fill="none" stroke="#1f2937" stroke-width="8" />
-                                            <circle cx="40" cy="40" r="36" fill="none" stroke="#818cf8" stroke-width="8" stroke-dasharray="226" stroke-dashoffset="22.6" class="skill-circle-progress" />
-                                            <text x="40" y="45" text-anchor="middle" fill="white" class="font-bold">90%</text>
-                                        </svg>
-                                    </div>
-                                    <p class="mt-2 text-sm font-medium text-indigo-400">Python</p>
-                                </div>
-                                
-                                <div class="text-center">
-                                    <div class="skill-circle relative mx-auto">
-                                        <svg width="80" height="80">
-                                            <circle cx="40" cy="40" r="36" fill="none" stroke="#1f2937" stroke-width="8" />
-                                            <circle cx="40" cy="40" r="36" fill="none" stroke="#818cf8" stroke-width="8" stroke-dasharray="226" stroke-dashoffset="33.9" class="skill-circle-progress" />
-                                            <text x="40" y="45" text-anchor="middle" fill= "white" class="font-bold">85%</text>
-                                        </svg>
-                                    </div>
-                                    <p class="mt-2 text-sm font-medium text-indigo-400">HTML/CSS</p>
-                                </div>
-                                
-                                <div class="text-center">
-                                    <div class="skill-circle relative mx-auto">
-                                        <svg width="80" height="80">
-                                            <circle cx="40" cy="40" r="36" fill="none" stroke="#1f2937" stroke-width="8" />
-                                            <circle cx="40" cy="40" r="36" fill="none" stroke="#818cf8" stroke-width="8" stroke-dasharray="226" stroke-dashoffset="113" class="skill-circle-progress" />
-                                            <text x="40" y="45" text-anchor="middle" fill= "white" class="font-bold">50%</text>
-                                        </svg>
-                                    </div>
-                                    <p class="mt-2 text-sm font-medium text-indigo-400">Frontend</p>
-                                </div>
-                                
-                                <div class="text-center">
-                                    <div class="skill-circle relative mx-auto">
-                                        <svg width="80" height="80">
-                                            <circle cx="40" cy="40" r="36" fill="none" stroke="#1f2937" stroke-width="8" />
-                                            <circle cx="40" cy="40" r="36" fill="none" stroke="#818cf8" stroke-width="8" stroke-dasharray="226" stroke-dashoffset="56.5" class="skill-circle-progress" />
-                                            <text x="40" y="45" text-anchor="middle" fill= "white" class="font-bold">75%</text>
-                                        </svg>
-                                    </div>
-                                    <p class="mt-2 text-sm font-medium text-indigo-400">Backend</p>
-                                </div>
-                            </div>
-                            
-                            <div class="text-center">
-                                <a href="pages/skills.html" class="inline-flex items-center text-indigo-400 hover:text-indigo-300 font-medium">
-                                    <span>View Full Skill Set</span>
-                                    <i class="fas fa-chevron-right ml-1 text-xs"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+          </section>          
 
         <!-- Contact Preview -->
         <section class="py-20 bg-indigo-900 bg-opacity-20">
@@ -342,10 +346,10 @@
                 
                 <div class="flex flex-col md:flex-row md:space-x-10 space-y-4 md:space-y-0 text-sm">
                     <a href="../index.html" class="text-gray-400 hover:text-indigo-400 transition-colors">Home</a>
-                    <a href="projects.html" class="text-gray-400 hover:text-indigo-400 transition-colors">Projects</a>
-                    <a href="skills.html" class="text-gray-400 hover:text-indigo-400 transition-colors">Skills</a>
-                    <a href="about.html" class="text-gray-400 hover:text-indigo-400 transition-colors">About</a>
-                    <a href="contact.html" class="text-gray-400 hover:text-indigo-400 transition-colors">Contact</a>
+                    <a href="pages/about.html" class="text-gray-400 hover:text-indigo-400 transition-colors">About</a>
+                    <a href="pages/skills.html" class="text-gray-400 hover:text-indigo-400 transition-colors">Skills</a>
+                    <a href="pages/projects.html" class="text-gray-400 hover:text-indigo-400 transition-colors">Projects</a>
+                    <a href="pages/contact.html" class="text-gray-400 hover:text-indigo-400 transition-colors">Contact</a>
                 </div>
             </div>
             
