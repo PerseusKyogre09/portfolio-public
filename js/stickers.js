@@ -540,20 +540,7 @@ document.addEventListener("DOMContentLoaded", function() {
       });
     });
     
-    // Rotation controls
-    const rotateLeft = document.createElement('button');
-    rotateLeft.className = 'rotate-button rotate-left';
-    rotateLeft.textContent = '⟲';
-    rotateLeft.addEventListener('click', () => {
-      rotateHolograms('left');
-    });
-    
-    const rotateRight = document.createElement('button');
-    rotateRight.className = 'rotate-button rotate-right';
-    rotateRight.textContent = '⟳';
-    rotateRight.addEventListener('click', () => {
-      rotateHolograms('right');
-    });
+    // No rotation buttons needed anymore - removed
     
     // Add Omnitrix faceplate - make it bigger and more prominent
     const faceplate = document.createElement('div');
@@ -568,8 +555,6 @@ document.addEventListener("DOMContentLoaded", function() {
     omnitrixDial.appendChild(hologramDisplay);
     omnitrixBody.appendChild(omnitrixDial);
     omnitrixBody.appendChild(faceplate); // Place faceplate after dial for proper z-indexing
-    omnitrixBody.appendChild(rotateLeft);
-    omnitrixBody.appendChild(rotateRight);
     omnitrixInterface.appendChild(omnitrixBody);
     
     document.body.appendChild(omnitrixInterface);
@@ -603,6 +588,21 @@ document.addEventListener("DOMContentLoaded", function() {
         hologram.style.transform = `translate(${x}px, ${y}px)`;
       });
     }
+    
+    // Add keyboard event listener for left/right arrow keys
+    function handleKeyDown(event) {
+      if (event.key === "ArrowLeft") {
+        rotateHolograms('left');
+      } else if (event.key === "ArrowRight") {
+        rotateHolograms('right');
+      }
+    }
+    
+    // Add the keyboard event listener when the Omnitrix interface is shown
+    document.addEventListener('keydown', handleKeyDown);
+    
+    // Store the event listener reference on the omnitrix interface to remove it later
+    omnitrixInterface.keyboardListener = handleKeyDown;
   }
   
   // Function to handle alien selection
@@ -623,6 +623,11 @@ document.addEventListener("DOMContentLoaded", function() {
       // Hide the Omnitrix interface
       const omnitrixInterface = document.querySelector('.omnitrix-interface');
       if (omnitrixInterface) {
+        // Remove keyboard event listener
+        if (omnitrixInterface.keyboardListener) {
+          document.removeEventListener('keydown', omnitrixInterface.keyboardListener);
+        }
+        
         omnitrixInterface.classList.add('fade-out');
         
         setTimeout(() => {
@@ -643,18 +648,14 @@ document.addEventListener("DOMContentLoaded", function() {
         }
       });
       
-      // Hide rotation buttons
-      document.querySelectorAll('.rotate-button').forEach(button => {
-        button.style.opacity = '0';
-        button.style.pointerEvents = 'none';
-      });
+      // No need to hide rotation buttons anymore since they've been removed
       
       // Hide the Omnitrix faceplate
       omnitrixFaceplate.style.opacity = '0';
       omnitrixFaceplate.style.visibility = 'hidden';
       
       // Move selected alien to center & enlarge
-      selectedAlien.style.transform = 'translate(0px, 0px) scale(1.5)';  // Center position (was -60px Y offset)
+      selectedAlien.style.transform = 'translate(0px, 0px) scale(1.5)';  // Center position
       selectedAlien.classList.add('centered');
       
       // Change appearance to indicate ready for selection
