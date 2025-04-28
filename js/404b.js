@@ -3,61 +3,61 @@ const aliens = [
     {
         name: "swampfire",
         message: "Looks like this page has been burned to a crisp. Even Swampfire's regenerative abilities can't bring it back.",
-        imagePath: "assets/images/swampfire.png",
+        imagePath: "assets/aliens/swampfire.png",
         createEffect: createFireParticles
     },
     {
         name: "echo-echo",
         message: "Echo Echo... Echo Echo... No matter how many times we search, we can't find this page.",
-        imagePath: "assets/images/echo-echo.png",
+        imagePath: "assets/aliens/echoecho.png",
         createEffect: createSoundWaves
     },
     {
         name: "humungousaur",
         message: "Even with Humungousaur's strength, we couldn't dig up the page you're looking for.",
-        imagePath: "assets/images/humungousaur.png",
+        imagePath: "assets/aliens/humungousaur.png",
         createEffect: createRockyDebris
     },
     {
         name: "jetray",
         message: "Jetray searched at the speed of light, but this page seems to have vanished into hyperspace.",
-        imagePath: "assets/images/jetray.png",
+        imagePath: "assets/aliens/jetray.png",
         createEffect: createEnergyStreaks
     },
     {
         name: "big-chill",
         message: "This page seems to have phased out of existence, even Big Chill can't make it tangible again.",
-        imagePath: "assets/images/big-chill.png",
+        imagePath: "assets/aliens/bigchill.png",
         createEffect: createFrostyEffect
     },
     {
         name: "chromastone",
         message: "Even Chromastone's ability to absorb energy couldn't power up this missing page.",
-        imagePath: "assets/images/chromastone.png",
+        imagePath: "assets/aliens/cromastone.png",
         createEffect: createCrystalShards
     },
     {
         name: "brainstorm",
         message: "After extensive cerebral contemplation, Brainstorm concludes that this page is indubitably non-existent.",
-        imagePath: "assets/images/brainstorm.png",
+        imagePath: "assets/aliens/brainstorm.png",
         createEffect: createElectricityEffect
     },
     {
         name: "spidermonkey",
         message: "Spidermonkey swung through our entire network but couldn't catch this page in his web.",
-        imagePath: "assets/images/spidermonkey.png",
+        imagePath: "assets/aliens/spidermonkey.png",
         createEffect: createWebLines
     },
     {
         name: "goop",
         message: "This page has slipped through our fingers like Goop without his anti-gravity projector.",
-        imagePath: "assets/images/goop.png",
+        imagePath: "assets/aliens/goop.png",
         createEffect: createSlimeDrops
     },
     {
         name: "alien-x",
         message: "Even with the reality-altering powers of Alien X, we couldn't create the page you're looking for.",
-        imagePath: "assets/images/alien-x.png",
+        imagePath: "assets/aliens/alienx.png",
         createEffect: createStarryBackground
     }
 ];
@@ -718,3 +718,47 @@ function createStarryBackground() {
         effectsContainer.appendChild(symbol);
     }
 }
+
+// Function to choose an alien and initialize the page
+function initializeAlien() {
+    // Check if there's a selected alien in sessionStorage
+    const selectedAlienName = sessionStorage.getItem('selectedAlien');
+    let selectedAlien;
+    
+    if (selectedAlienName) {
+        // Convert the alien name from storage to match our naming convention
+        const normalizedName = selectedAlienName.toLowerCase()
+            .replace(' ', '-') // Convert "Alien X" to "alien-x"
+            .replace('echo echo', 'echo-echo') // Special handling for Echo Echo
+            .replace('big chill', 'big-chill'); // Special handling for Big Chill
+        
+        // Find the alien in our aliens array
+        selectedAlien = aliens.find(alien => alien.name === normalizedName);
+        
+        // If we somehow don't have a match, fall back to random
+        if (!selectedAlien) {
+            selectedAlien = aliens[Math.floor(Math.random() * aliens.length)];
+        }
+    } else {
+        // No stored alien, choose randomly
+        selectedAlien = aliens[Math.floor(Math.random() * aliens.length)];
+    }
+    
+    // Apply the alien theme to the page
+    document.body.className = `${selectedAlien.name}-theme`;
+    
+    // Set the alien message
+    document.getElementById('alien-message').textContent = selectedAlien.message;
+    
+    // Set the alien image
+    const alienImage = document.getElementById('alien-image');
+    alienImage.src = selectedAlien.imagePath;
+    alienImage.alt = selectedAlien.name.charAt(0).toUpperCase() + selectedAlien.name.slice(1);
+    
+    // Create the alien's special effect
+    createParticles();
+    selectedAlien.createEffect();
+}
+
+// Initialize the page when the DOM is loaded
+document.addEventListener('DOMContentLoaded', initializeAlien);
