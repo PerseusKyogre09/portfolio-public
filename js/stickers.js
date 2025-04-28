@@ -147,8 +147,6 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   });
 
-// Add this code to your stickers.js file, after the existing sticker event listeners
-
 const tardisSticker = document.querySelector('.sticker[alt="TARDIS"]');
 if (tardisSticker) {
   tardisSticker.addEventListener('click', function() {
@@ -426,3 +424,672 @@ function createPsychicParticle() {
     }, 2000);
   }, 10);
 }
+
+// Omnitrix functionality
+document.addEventListener("DOMContentLoaded", function() {
+  // Select Omnitrix sticker by class and alt attribute
+  // Also add a more generic selector as fallback
+  const omnitrixSticker = document.querySelector('.sticker[alt="Omnitrix"]') || 
+                         document.querySelector('img[alt="Omnitrix"]');
+  
+  console.log('Omnitrix element found:', omnitrixSticker);
+  
+  if (omnitrixSticker) {
+    console.log('Adding click event to Omnitrix');
+    omnitrixSticker.style.cursor = 'pointer'; // Add pointer cursor to indicate it's clickable
+    
+    omnitrixSticker.addEventListener('click', function() {
+      console.log('Omnitrix clicked!');
+      createBlockingOverlay();
+      const activationSound = new Audio('../assets/sounds/omnitrix-activation.mp3');
+      activationSound.volume = 0.5;
+      activationSound.play().catch(e => console.log('Audio playback prevented: ', e));
+      showOmnitrixInterface();
+    });
+  } else {
+    console.error('Omnitrix sticker not found in DOM');
+  }
+  
+  // Create blocking overlay to prevent other interactions
+  function createBlockingOverlay() {
+    const blockingOverlay = document.createElement('div');
+    blockingOverlay.className = 'blocking-overlay';
+    document.body.appendChild(blockingOverlay);
+  }
+  
+  // Show the Omnitrix interface
+  function showOmnitrixInterface() {
+    // Create main Omnitrix container
+    const omnitrixInterface = document.createElement('div');
+    omnitrixInterface.className = 'omnitrix-interface';
+    
+    // Create the Omnitrix body
+    const omnitrixBody = document.createElement('div');
+    omnitrixBody.className = 'omnitrix-body';
+    
+    // Create the selection dial
+    const omnitrixDial = document.createElement('div');
+    omnitrixDial.className = 'omnitrix-dial';
+    
+    // Create hologram display area
+    const hologramDisplay = document.createElement('div');
+    hologramDisplay.className = 'hologram-display';
+
+    // Alien Force aliens - Fix the Chromastone typo
+    const aliens = [
+      { name: "Swampfire", color: "#8BC34A", power: "fireBlast" },
+      { name: "Echo Echo", color: "#E0E0E0", power: "soundWave" },
+      { name: "Humungousaur", color: "#795548", power: "smash" },
+      { name: "Jetray", color: "#F44336", power: "laserBeam" },
+      { name: "Big Chill", color: "#2196F3", power: "freeze" },
+      { name: "Chromastone", color: "#9C27B0", power: "energyBeam" }, // Fixed the name spelling
+      { name: "Brainstorm", color: "#FFC107", power: "electricShock" },
+      { name: "Spidermonkey", color: "#1565C0", power: "webShot" },
+      { name: "Goop", color: "#4CAF50", power: "acidMelt" },
+      { name: "Alien X", color: "#000000", power: "realityWarp" }
+    ];
+    
+    // Create alien holograms
+    const hologramContainer = document.createElement('div');
+    hologramContainer.className = 'hologram-container';
+    
+    aliens.forEach((alien, index) => {
+      const hologram = document.createElement('div');
+      hologram.className = 'alien-hologram';
+      hologram.dataset.alien = alien.name;
+      hologram.dataset.power = alien.power;
+      // Set all backgrounds to green for better contrast with silhouettes
+      hologram.style.backgroundColor = "rgba(0, 255, 0, 0.5)";
+      
+      // Position in a circle
+      const angle = (index / aliens.length) * Math.PI * 2;
+      const radius = 180; // Increased radius to position silhouettes further out
+      const x = Math.cos(angle) * radius;
+      const y = Math.sin(angle) * radius;
+      
+      hologram.style.transform = `translate(${x}px, ${y}px)`;
+      
+      // Add alien name
+      const nameLabel = document.createElement('div');
+      nameLabel.className = 'alien-name';
+      nameLabel.textContent = alien.name;
+      hologram.appendChild(nameLabel);
+      
+      // Add alien silhouette - make sure silhouettes are dark/blacked out
+      const silhouette = document.createElement('div');
+      silhouette.className = 'alien-silhouette';
+      
+      // Fix path for Chromastone and make sure all silhouettes use correct filenames
+      let alienFileName = alien.name.toLowerCase().replace(' ', '');
+      
+      // Special handling for Chromastone to use cromastone.png
+      if (alienFileName === "chromastone") {
+        alienFileName = "cromastone"; // Match the actual filename in assets/aliens/
+      }
+      
+      silhouette.style.backgroundImage = `url('../assets/aliens/${alienFileName}.png')`;
+      silhouette.style.filter = 'brightness(0)'; // This will make silhouettes appear black
+      hologram.appendChild(silhouette);
+      
+      hologramContainer.appendChild(hologram);
+      
+      // Make clickable
+      hologram.addEventListener('click', function() {
+        console.log(`Clicked on ${alien.name}`);
+        selectAlien(alien.name, alien.power);
+      });
+    });
+    
+    // Rotation controls
+    const rotateLeft = document.createElement('button');
+    rotateLeft.className = 'rotate-button rotate-left';
+    rotateLeft.textContent = '⟲';
+    rotateLeft.addEventListener('click', () => {
+      rotateHolograms('left');
+    });
+    
+    const rotateRight = document.createElement('button');
+    rotateRight.className = 'rotate-button rotate-right';
+    rotateRight.textContent = '⟳';
+    rotateRight.addEventListener('click', () => {
+      rotateHolograms('right');
+    });
+    
+    // Add Omnitrix faceplate - make it bigger and more prominent
+    const faceplate = document.createElement('div');
+    faceplate.className = 'omnitrix-faceplate';
+    
+    const faceplateSymbol = document.createElement('div');
+    faceplateSymbol.className = 'omnitrix-symbol';
+    faceplate.appendChild(faceplateSymbol);
+    
+    // Assemble the components - restructured to ensure proper layering
+    hologramDisplay.appendChild(hologramContainer);
+    omnitrixDial.appendChild(hologramDisplay);
+    omnitrixBody.appendChild(omnitrixDial);
+    omnitrixBody.appendChild(faceplate); // Place faceplate after dial for proper z-indexing
+    omnitrixBody.appendChild(rotateLeft);
+    omnitrixBody.appendChild(rotateRight);
+    omnitrixInterface.appendChild(omnitrixBody);
+    
+    document.body.appendChild(omnitrixInterface);
+    
+    // Animation to reveal
+    setTimeout(() => {
+      omnitrixInterface.classList.add('active');
+      omnitrixDial.classList.add('glow');
+    }, 100);
+    
+    // Make the holograms rotatable
+    let currentRotation = 0;
+    
+    function rotateHolograms(direction) {
+      const rotateSound = new Audio('../assets/sounds/omnitrix-rotate.mp3');
+      rotateSound.volume = 0.3;
+      rotateSound.play().catch(e => console.log('Audio playback prevented: ', e));
+      
+      const rotationAmount = direction === 'left' ? 36 : -36;
+      currentRotation += rotationAmount;
+      
+      // Instead of rotating the container, we'll adjust each alien's position
+      document.querySelectorAll('.alien-hologram').forEach((hologram, index) => {
+        // Calculate the new position in the circle
+        const angle = ((index / aliens.length) * Math.PI * 2) + (currentRotation * Math.PI / 180);
+        const radius = 180; // Keep the same radius as initial setup
+        const x = Math.cos(angle) * radius;
+        const y = Math.sin(angle) * radius;
+        
+        // Set the new position while keeping silhouettes upright
+        hologram.style.transform = `translate(${x}px, ${y}px)`;
+      });
+    }
+  }
+  
+  // Function to handle alien selection
+  function selectAlien(alienName, power) {
+    console.log(`Selected: ${alienName} with power: ${power}`);
+    
+    // Get the selected alien element and other needed elements
+    const selectedAlien = document.querySelector(`.alien-hologram[data-alien="${alienName}"]`);
+    const hologramContainer = document.querySelector('.hologram-container');
+    const omnitrixFaceplate = document.querySelector('.omnitrix-faceplate');
+    
+    // If already in center/enlarged state, proceed with transformation
+    if (selectedAlien.classList.contains('centered')) {
+      const transformSound = new Audio('../assets/sounds/transformation.mp3');
+      transformSound.volume = 0.5;
+      transformSound.play().catch(e => console.log('Audio playback prevented: ', e));
+      
+      // Hide the Omnitrix interface
+      const omnitrixInterface = document.querySelector('.omnitrix-interface');
+      if (omnitrixInterface) {
+        omnitrixInterface.classList.add('fade-out');
+        
+        setTimeout(() => {
+          document.body.removeChild(omnitrixInterface);
+          showTransformation(alienName, power);
+        }, 1000);
+      }
+    } else {
+      // First click - center and enlarge the alien silhouette
+      const rotateSound = new Audio('../assets/sounds/omnitrix-rotate.mp3');
+      rotateSound.volume = 0.3;
+      rotateSound.play().catch(e => console.log('Audio playback prevented: ', e));
+      
+      // Hide other aliens
+      document.querySelectorAll('.alien-hologram').forEach(hologram => {
+        if (hologram !== selectedAlien) {
+          hologram.style.opacity = '0';
+        }
+      });
+      
+      // Hide rotation buttons
+      document.querySelectorAll('.rotate-button').forEach(button => {
+        button.style.opacity = '0';
+        button.style.pointerEvents = 'none';
+      });
+      
+      // Hide the Omnitrix faceplate
+      omnitrixFaceplate.style.opacity = '0';
+      omnitrixFaceplate.style.visibility = 'hidden';
+      
+      // Move selected alien to center & enlarge
+      selectedAlien.style.transform = 'translate(0px, 0px) scale(1.5)';  // Center position (was -60px Y offset)
+      selectedAlien.classList.add('centered');
+      
+      // Change appearance to indicate ready for selection
+      selectedAlien.style.boxShadow = '0 0 30px rgba(0, 255, 0, 0.8)';
+      selectedAlien.style.backgroundColor = 'rgba(0, 255, 0, 0.7)';
+      
+      // Make the background pulse to indicate it's ready
+      const omnitrixDial = document.querySelector('.omnitrix-dial');
+      if (omnitrixDial) {
+        omnitrixDial.classList.add('pulse-ready');
+      }
+      
+      // Allow click anywhere to transform
+      const clickHandler = function() {
+        document.removeEventListener('click', clickHandler); // Remove listener to prevent multiple calls
+        selectAlien(alienName, power); // Call selectAlien again to trigger transformation
+      };
+      
+      // Add click listener for the entire interface with a small delay to prevent immediate triggering
+      setTimeout(() => {
+        document.addEventListener('click', clickHandler);
+      }, 500);
+    }
+  }
+  
+  // Show transformation sequence
+  function showTransformation(alienName, power) {
+    // Create transformation flash
+    const flash = document.createElement('div');
+    flash.className = 'transformation-flash';
+    document.body.appendChild(flash);
+    
+    setTimeout(() => {
+      flash.classList.add('active');
+      
+      setTimeout(() => {
+        flash.classList.remove('active');
+        showAlien(alienName, power);
+      }, 2000);
+    }, 100);
+  }
+  
+  // Show the selected alien
+  function showAlien(alienName, power) {
+    const alien = document.createElement('div');
+    alien.className = 'alien ' + alienName.toLowerCase().replace(' ', '-');
+    
+    const alienImage = document.createElement('img');
+    // Fix path for Chromastone and other aliens
+    let alienFileName = alienName.toLowerCase().replace(' ', '');
+    
+    // Special case for the misspelled file
+    if (alienFileName === "chromastone") {
+      alienFileName = "cromastone"; // Match the actual filename in assets/aliens/
+    }
+    
+    alienImage.src = `../assets/aliens/${alienFileName}.png`;
+    alienImage.alt = alienName;
+    alien.appendChild(alienImage);
+    
+    document.body.appendChild(alien);
+    
+    setTimeout(() => {
+      alien.classList.add('active');
+      
+      // Alien's catchphrase
+      const catchphraseElement = document.createElement('div');
+      catchphraseElement.className = 'alien-catchphrase';
+      catchphraseElement.textContent = getAlienCatchphrase(alienName);
+      document.body.appendChild(catchphraseElement);
+      
+      setTimeout(() => {
+        catchphraseElement.classList.add('active');
+        
+        setTimeout(() => {
+          // Trigger destruction animation
+          executePower(power);
+          
+          // Store selected alien in sessionStorage for the 404 page
+          sessionStorage.setItem('selectedAlien', alienName);
+          
+          setTimeout(() => {
+            window.location.href = "../404b.html";
+          }, 3000);
+        }, 2000);
+      }, 500);
+    }, 100);
+  }
+  
+  // Get alien catchphrase
+  function getAlienCatchphrase(alienName) {
+    const catchphrases = {
+      "Swampfire": "Time to bring the heat!",
+      "Echo Echo": "Echo Echo! Wall! Of! Sound!",
+      "Humungousaur": "Humungousaur! Time to go big!",
+      "Jetray": "Jetray! Faster than light!",
+      "Big Chill": "Big Chill! Cool it down!",
+      "Chromastone": "Chromastone! Light it up!",
+      "Brainstorm": "Brainstorm! Let me tell you, quite frankly...",
+      "Spidermonkey": "Spidermonkey! Ready to swing into action!",
+      "Goop": "Goop! Time to get sticky!",
+      "Alien X": "Alien X! Reality is mine to command!"
+    };
+    
+    return catchphrases[alienName] || `It's ${alienName} time!`;
+  }
+  
+  // Execute alien power destruction animation
+  function executePower(power) {
+    document.body.classList.add('power-active');
+    
+    switch (power) {
+      case 'fireBlast':
+        createFireEffect();
+        break;
+      case 'soundWave':
+        createSoundWaveEffect();
+        break;
+      case 'smash':
+        createSmashEffect();
+        break;
+      case 'laserBeam':
+        createLaserEffect();
+        break;
+      case 'freeze':
+        createFreezeEffect();
+        break;
+      case 'energyBeam':
+        createEnergyBeamEffect();
+        break;
+      case 'electricShock':
+        createElectricEffect();
+        break;
+      case 'webShot':
+        createWebEffect();
+        break;
+      case 'acidMelt':
+        createAcidEffect();
+        break;
+      case 'realityWarp':
+        createRealityWarpEffect();
+        break;
+      default:
+        createGenericEffect();
+    }
+  }
+  
+  // Different destruction effects
+  function createFireEffect() {
+    const overlay = document.createElement('div');
+    overlay.className = 'destruction-overlay fire-overlay';
+    document.body.appendChild(overlay);
+    
+    for (let i = 0; i < 50; i++) {
+      const flame = document.createElement('div');
+      flame.className = 'flame-particle';
+      flame.style.left = `${Math.random() * 100}%`;
+      flame.style.animationDuration = `${0.5 + Math.random() * 2}s`;
+      flame.style.animationDelay = `${Math.random() * 0.5}s`;
+      overlay.appendChild(flame);
+    }
+    
+    const burnSound = new Audio('../assets/sounds/fire-burn.mp3');
+    burnSound.volume = 0.5;
+    burnSound.play().catch(e => console.log('Audio playback prevented: ', e));
+  }
+  
+  function createSoundWaveEffect() {
+    const container = document.createElement('div');
+    container.className = 'sound-wave-container';
+    document.body.appendChild(container);
+    
+    for (let i = 0; i < 8; i++) {
+      const wave = document.createElement('div');
+      wave.className = 'sound-wave';
+      container.appendChild(wave);
+      
+      setTimeout(() => {
+        wave.classList.add('expand');
+      }, i * 300);
+    }
+    
+    const soundWaveAudio = new Audio('../assets/sounds/sound-wave.mp3');
+    soundWaveAudio.volume = 0.5;
+    soundWaveAudio.play().catch(e => console.log('Audio playback prevented: ', e));
+    
+    setTimeout(() => {
+      document.body.classList.add('shatter');
+    }, 1500);
+  }
+  
+  function createSmashEffect() {
+    document.body.classList.add('shake-heavy');
+    
+    const cracks = document.createElement('div');
+    cracks.className = 'screen-cracks';
+    document.body.appendChild(cracks);
+    
+    for (let i = 0; i < 15; i++) {
+      const crack = document.createElement('div');
+      crack.className = 'crack';
+      
+      const startX = 50 + (Math.random() - 0.5) * 20;
+      const startY = 50 + (Math.random() - 0.5) * 20;
+      
+      crack.style.left = `${startX}%`;
+      crack.style.top = `${startY}%`;
+      crack.style.transform = `rotate(${Math.random() * 360}deg)`;
+      crack.style.animationDelay = `${i * 0.1}s`;
+      
+      cracks.appendChild(crack);
+    }
+    
+    const smashSound = new Audio('../assets/sounds/smash.mp3');
+    smashSound.volume = 0.5;
+    smashSound.play().catch(e => console.log('Audio playback prevented: ', e));
+  }
+  
+  function createLaserEffect() {
+    const laser = document.createElement('div');
+    laser.className = 'laser-beam';
+    document.body.appendChild(laser);
+    
+    setTimeout(() => {
+      laser.classList.add('active');
+      
+      const laserSound = new Audio('../assets/sounds/laser.mp3');
+      laserSound.volume = 0.4;
+      laserSound.play().catch(e => console.log('Audio playback prevented: ', e));
+      
+      setTimeout(() => {
+        document.body.classList.add('burn-out');
+      }, 1000);
+    }, 100);
+  }
+  
+  function createFreezeEffect() {
+    const overlay = document.createElement('div');
+    overlay.className = 'freeze-overlay';
+    document.body.appendChild(overlay);
+    
+    const frostParticles = document.createElement('div');
+    frostParticles.className = 'frost-particles';
+    document.body.appendChild(frostParticles);
+    
+    for (let i = 0; i < 100; i++) {
+      const particle = document.createElement('div');
+      particle.className = 'frost-particle';
+      particle.style.left = `${Math.random() * 100}%`;
+      particle.style.top = `${Math.random() * 100}%`;
+      particle.style.animationDuration = `${1 + Math.random() * 3}s`;
+      particle.style.animationDelay = `${Math.random()}s`;
+      frostParticles.appendChild(particle);
+    }
+    
+    // Generate ice cracks
+    setTimeout(() => {
+      for (let i = 0; i < 20; i++) {
+        const crack = document.createElement('div');
+        crack.className = 'ice-crack';
+        crack.style.left = `${Math.random() * 100}%`;
+        crack.style.top = `${Math.random() * 100}%`;
+        crack.style.width = `${20 + Math.random() * 150}px`;
+        crack.style.transform = `rotate(${Math.random() * 360}deg)`;
+        overlay.appendChild(crack);
+      }
+      
+      const freezeSound = new Audio('../assets/sounds/freeze.mp3');
+      freezeSound.volume = 0.5;
+      freezeSound.play().catch(e => console.log('Audio playback prevented: ', e));
+    }, 500);
+    
+    setTimeout(() => {
+      document.body.classList.add('shatter-freeze');
+    }, 2000);
+  }
+  
+  function createEnergyBeamEffect() {
+    const beams = document.createElement('div');
+    beams.className = 'energy-beams';
+    document.body.appendChild(beams);
+    
+    for (let i = 0; i < 8; i++) {
+      const beam = document.createElement('div');
+      beam.className = 'energy-beam';
+      beam.style.transform = `rotate(${i * 45}deg)`;
+      beams.appendChild(beam);
+    }
+    
+    setTimeout(() => {
+      beams.classList.add('active');
+      
+      const energySound = new Audio('../assets/sounds/energy-beam.mp3');
+      energySound.volume = 0.5;
+      energySound.play().catch(e => console.log('Audio playback prevented: ', e));
+      
+      setTimeout(() => {
+        document.body.classList.add('disintegrate');
+      }, 1000);
+    }, 100);
+  }
+  
+  function createElectricEffect() {
+    const container = document.createElement('div');
+    container.className = 'electric-container';
+    document.body.appendChild(container);
+    
+    for (let i = 0; i < 20; i++) {
+      createLightning(container);
+    }
+    
+    const electricSound = new Audio('../assets/sounds/electric.mp3');
+    electricSound.volume = 0.4;
+    electricSound.play().catch(e => console.log('Audio playback prevented: ', e));
+    
+    setTimeout(() => {
+      document.body.classList.add('electrify');
+    }, 1000);
+  }
+  
+  function createLightning(container) {
+    const lightning = document.createElement('div');
+    lightning.className = 'lightning';
+    
+    const startX = Math.random() * 100;
+    lightning.style.left = `${startX}%`;
+    lightning.style.top = '0';
+    lightning.style.animationDelay = `${Math.random() * 1}s`;
+    
+    container.appendChild(lightning);
+    
+    setTimeout(() => {
+      container.removeChild(lightning);
+      createLightning(container);
+    }, 1000 + Math.random() * 2000);
+  }
+  
+  function createWebEffect() {
+    const webContainer = document.createElement('div');
+    webContainer.className = 'web-container';
+    document.body.appendChild(webContainer);
+    
+    // Create web strands from different angles
+    for (let i = 0; i < 15; i++) {
+      const web = document.createElement('div');
+      web.className = 'web-strand';
+      
+      const startAngle = Math.random() * 360;
+      const startX = 50 + Math.cos(startAngle) * 50;
+      const startY = 50 + Math.sin(startAngle) * 50;
+      
+      web.style.left = `${startX}%`;
+      web.style.top = `${startY}%`;
+      web.style.transform = `rotate(${startAngle}deg)`;
+      
+      webContainer.appendChild(web);
+    }
+    
+    const webSound = new Audio('../assets/sounds/web.mp3');
+    webSound.volume = 0.4;
+    webSound.play().catch(e => console.log('Audio playback prevented: ', e));
+    
+    setTimeout(() => {
+      const webOverlay = document.createElement('div');
+      webOverlay.className = 'web-overlay';
+      document.body.appendChild(webOverlay);
+    }, 1500);
+  }
+  
+  function createAcidEffect() {
+    const acid = document.createElement('div');
+    acid.className = 'acid-overlay';
+    document.body.appendChild(acid);
+    
+    for (let i = 0; i < 30; i++) {
+      const drop = document.createElement('div');
+      drop.className = 'acid-drop';
+      drop.style.left = `${Math.random() * 100}%`;
+      drop.style.animationDuration = `${1 + Math.random()}s`;
+      drop.style.animationDelay = `${Math.random() * 1.5}s`;
+      acid.appendChild(drop);
+    }
+    
+    const acidSound = new Audio('../assets/sounds/acid.mp3');
+    acidSound.volume = 0.4;
+    acidSound.play().catch(e => console.log('Audio playback prevented: ', e));
+    
+    setTimeout(() => {
+      document.body.classList.add('melt');
+    }, 1000);
+  }
+  
+  function createRealityWarpEffect() {
+    const warp = document.createElement('div');
+    warp.className = 'reality-warp';
+    document.body.appendChild(warp);
+    
+    const stars = document.createElement('div');
+    stars.className = 'cosmic-stars';
+    warp.appendChild(stars);
+    
+    for (let i = 0; i < 200; i++) {
+      const star = document.createElement('div');
+      star.className = 'cosmic-star';
+      star.style.left = `${Math.random() * 100}%`;
+      star.style.top = `${Math.random() * 100}%`;
+      star.style.animationDuration = `${0.5 + Math.random() * 2}s`;
+      star.style.animationDelay = `${Math.random() * 2}s`;
+      stars.appendChild(star);
+    }
+    
+    setTimeout(() => {
+      warp.classList.add('active');
+      
+      const warpSound = new Audio('../assets/sounds/reality-warp.mp3');
+      warpSound.volume = 0.5;
+      warpSound.play().catch(e => console.log('Audio playback prevented: ', e));
+      
+      setTimeout(() => {
+        const ripple = document.createElement('div');
+        ripple.className = 'reality-ripple';
+        document.body.appendChild(ripple);
+        
+        document.body.classList.add('dissolve');
+      }, 1500);
+    }, 500);
+  }
+  
+  function createGenericEffect() {
+    const explosion = document.createElement('div');
+    explosion.className = 'generic-explosion';
+    document.body.appendChild(explosion);
+    
+    const explosionSound = new Audio('../assets/sounds/explosion.mp3');
+    explosionSound.volume = 0.4;
+    explosionSound.play().catch(e => console.log('Audio playback prevented: ', e));
+  }
+});

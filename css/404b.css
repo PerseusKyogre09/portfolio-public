@@ -1,0 +1,281 @@
+:root {
+    --alien-primary: #00c853;
+    --alien-secondary: #69f0ae;
+    --alien-accent: #2e7d32;
+    --text-color: #fff;
+    --bg-main: #121212;
+    --alien-glow: 0 0 20px rgba(0, 200, 0, 0.7);
+}
+
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: var(--bg-main);
+    color: var(--text-color);
+    min-height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    position: relative;
+    transition: all 0.5s ease;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Omnitrix symbol */
+.omnitrix-symbol {
+    width: 80px;
+    height: 80px;
+    background: var(--alien-primary);
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    animation: pulse 2s infinite;
+    margin-bottom: 2rem;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.omnitrix-symbol:hover {
+    transform: scale(1.1);
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); background-color: var(--alien-primary); }
+    50% { transform: scale(1.1); background-color: var(--alien-secondary); }
+    100% { transform: scale(1); background-color: var(--alien-primary); }
+}
+
+/* Alien effect area */
+.alien-effect-area {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.omnitrix-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60vh;
+    height: 60vh;
+    background: radial-gradient(circle, var(--alien-primary) 0%, transparent 70%);
+    border-radius: 50%;
+    opacity: 0.2;
+    z-index: 1;
+    animation: pulse-glow 4s infinite;
+}
+
+@keyframes pulse-glow {
+    0%, 100% { opacity: 0.2; transform: translate(-50%, -50%) scale(1); }
+    50% { opacity: 0.3; transform: translate(-50%, -50%) scale(1.1); }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.floating {
+    animation: float 3s ease-in-out infinite;
+}
+
+.particle {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background-color: var(--alien-primary);
+    box-shadow: 0 0 8px var(--alien-primary);
+    opacity: 0.8;
+}
+
+.effect-element {
+    position: absolute;
+    opacity: 0.8;
+}
+
+.pulse-text {
+    animation: pulse-text 2s infinite;
+    text-shadow: var(--alien-glow);
+}
+
+@keyframes pulse-text {
+    0%, 100% { text-shadow: 0 0 10px var(--alien-primary); }
+    50% { text-shadow: 0 0 20px var(--alien-secondary), 0 0 30px var(--alien-primary); }
+}
+
+.alien-button {
+    position: relative;
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: var(--alien-primary);
+    color: #000;
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: 2px solid var(--alien-secondary);
+    box-shadow: 0 0 10px var(--alien-primary);
+    transition: all 0.3s;
+}
+
+.alien-button:hover {
+    background-color: var(--alien-secondary);
+    transform: scale(1.05);
+    box-shadow: 0 0 20px var(--alien-primary);
+}
+
+.alien-image {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    height: 70vh;
+    z-index: 1;
+    opacity: 0.7;
+    filter: drop-shadow(0 0 20px var(--alien-primary));
+    pointer-events: none;
+}
+
+/* Swampfire theme */
+body.swampfire-theme {
+    --alien-primary: #ff6d00;
+    --alien-secondary: #ff9e40;
+    --alien-accent: #e65100;
+    --alien-glow: 0 0 20px rgba(255, 109, 0, 0.7);
+    background: radial-gradient(circle, #331800 0%, #121200 100%);
+}
+
+/* Echo Echo theme */
+body.echo-echo-theme {
+    --alien-primary: #e0e0e0;
+    --alien-secondary: #bdbdbd;
+    --alien-accent: #757575;
+    --alien-glow: 0 0 20px rgba(200, 200, 200, 0.7);
+    background: radial-gradient(circle, #303030 0%, #121212 100%);
+}
+
+/* Humungousaur theme */
+body.humungousaur-theme {
+    --alien-primary: #8d6e63;
+    --alien-secondary: #a1887f;
+    --alien-accent: #5d4037;
+    --alien-glow: 0 0 20px rgba(141, 110, 99, 0.7);
+    background: radial-gradient(circle, #3e2723 0%, #121212 100%);
+}
+
+/* Jetray theme */
+body.jetray-theme {
+    --alien-primary: #f44336;
+    --alien-secondary: #ef9a9a;
+    --alien-accent: #c62828;
+    --alien-glow: 0 0 20px rgba(244, 67, 54, 0.7);
+    background: radial-gradient(circle, #330000 0%, #120000 100%);
+}
+
+/* Big Chill theme */
+body.big-chill-theme {
+    --alien-primary: #2196f3;
+    --alien-secondary: #90caf9;
+    --alien-accent: #1565c0;
+    --alien-glow: 0 0 20px rgba(33, 150, 243, 0.7);
+    background: radial-gradient(circle, #001833 0%, #000a12 100%);
+}
+
+/* Chromastone theme */
+body.chromastone-theme {
+    --alien-primary: #9c27b0;
+    --alien-secondary: #ce93d8;
+    --alien-accent: #6a1b9a;
+    --alien-glow: 0 0 20px rgba(156, 39, 176, 0.7);
+    background: radial-gradient(circle, #260033 0%, #12001a 100%);
+}
+
+/* Brainstorm theme */
+body.brainstorm-theme {
+    --alien-primary: #ffc107;
+    --alien-secondary: #ffe082;
+    --alien-accent: #ff8f00;
+    --alien-glow: 0 0 20px rgba(255, 193, 7, 0.7);
+    background: radial-gradient(circle, #332600 0%, #121100 100%);
+}
+
+/* Spidermonkey theme */
+body.spidermonkey-theme {
+    --alien-primary: #1565c0;
+    --alien-secondary: #64b5f6;
+    --alien-accent: #0d47a1;
+    --alien-glow: 0 0 20px rgba(21, 101, 192, 0.7);
+    background: radial-gradient(circle, #002171 0%, #000a12 100%);
+}
+
+/* Goop theme */
+body.goop-theme {
+    --alien-primary: #4caf50;
+    --alien-secondary: #a5d6a7;
+    --alien-accent: #2e7d32;
+    --alien-glow: 0 0 20px rgba(76, 175, 80, 0.7);
+    background: radial-gradient(circle, #003300 0%, #001a00 100%);
+}
+
+/* Alien X theme */
+body.alien-x-theme {
+    --alien-primary: #ffffff;
+    --alien-secondary: #9e9e9e;
+    --alien-accent: #424242;
+    --alien-glow: 0 0 20px rgba(255, 255, 255, 0.7);
+    background: #000;
+}
+
+/* Special effects for each alien */
+/* Swampfire fire effect */
+.fire-particle {
+    position: absolute;
+    border-radius: 50%;
+    bottom: 0;
+    animation: riseAndFade linear infinite;
+    filter: blur(2px);
+}
+
+@keyframes riseAndFade {
+    0% { transform: translateY(0) scale(1); opacity: 0.8; }
+    100% { transform: translateY(-100vh) scale(0.5); opacity: 0; }
+}
+
+/* Echo Echo sound waves */
+.sound-wave-circle {
+    position: absolute;
+    border: 2px solid var(--alien-primary);
+    border-radius: 50%;
+    opacity: 0;
+    transform: translate(-50%, -50%);
+    animation: soundWave 4s infinite;
+}
+
+@keyframes soundWave {
+    0% { width: 50px; height: 50px; opacity: 0.8; }
+    100% { width: 500px; height: 500px; opacity: 0; }
+}
+
+/* Alien X stars */
+.star {
+    position: absolute;
+    background-color: white;
+    border-radius: 50%;
+    animation: twinkle 3s infinite ease-in-out;
+}
+
+@keyframes twinkle {
+    0% { opacity: 0.2; }
+    50% { opacity: 1; }
+    100% { opacity: 0.2; }
+}
