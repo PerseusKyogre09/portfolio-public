@@ -721,27 +721,37 @@ document.addEventListener("DOMContentLoaded", function() {
     setTimeout(() => {
       alien.classList.add('active');
       
-      // Alien's catchphrase
-      const catchphraseElement = document.createElement('div');
-      catchphraseElement.className = 'alien-catchphrase';
-      catchphraseElement.textContent = getAlienCatchphrase(alienName);
-      document.body.appendChild(catchphraseElement);
-      
+      // Play alien's cry sound - new code
       setTimeout(() => {
-        catchphraseElement.classList.add('active');
+        const alienCrySound = new Audio(`../assets/sounds/aliens/${alienFileName}-cry.mp3`);
+        alienCrySound.volume = 0.7;
+        alienCrySound.play().catch(e => console.log('Alien cry sound playback prevented: ', e));
         
+        // Alien's catchphrase - moved inside to sequence after the cry sound
         setTimeout(() => {
-          // Trigger destruction animation
-          executePower(power);
-          
-          // Store selected alien in sessionStorage for the 404 page
-          sessionStorage.setItem('selectedAlien', alienName);
+          const catchphraseElement = document.createElement('div');
+          catchphraseElement.className = 'alien-catchphrase';
+          catchphraseElement.textContent = getAlienCatchphrase(alienName);
+          document.body.appendChild(catchphraseElement);
           
           setTimeout(() => {
-            window.location.href = "../404b.html";
-          }, 3000);
-        }, 2000);
-      }, 500);
+            catchphraseElement.classList.add('active');
+            
+            setTimeout(() => {
+              // Trigger destruction animation - now at least 5 seconds after the alien cry
+              executePower(power);
+              
+              // Store selected alien in sessionStorage for the 404 page
+              sessionStorage.setItem('selectedAlien', alienName);
+              
+              // Extended cutscene duration
+              setTimeout(() => {
+                window.location.href = "../404b.html";
+              }, 7000);
+            }, 3000);
+          }, 1000);
+        }, 2000); // Wait 2 seconds after the cry sound before showing catchphrase
+      }, 1000);
     }, 100);
   }
   
