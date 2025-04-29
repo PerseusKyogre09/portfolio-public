@@ -264,8 +264,6 @@ function removeTardisEffect() {
   }
 }
 
-// Add this code to your stickers.js file, after the existing event listeners
-
 const masterballSticker = document.querySelector('.sticker[alt="MasterBall"]');
 if (masterballSticker) {
   masterballSticker.addEventListener('click', function() {
@@ -427,8 +425,6 @@ function createPsychicParticle() {
 
 // Omnitrix functionality
 document.addEventListener("DOMContentLoaded", function() {
-  // Select Omnitrix sticker by class and alt attribute
-  // Also add a more generic selector as fallback
   const omnitrixSticker = document.querySelector('.sticker[alt="Omnitrix"]') || 
                          document.querySelector('img[alt="Omnitrix"]');
   
@@ -436,7 +432,7 @@ document.addEventListener("DOMContentLoaded", function() {
   
   if (omnitrixSticker) {
     console.log('Adding click event to Omnitrix');
-    omnitrixSticker.style.cursor = 'pointer'; // Add pointer cursor to indicate it's clickable
+    omnitrixSticker.style.cursor = 'pointer';
     
     omnitrixSticker.addEventListener('click', function() {
       console.log('Omnitrix clicked!');
@@ -450,7 +446,6 @@ document.addEventListener("DOMContentLoaded", function() {
     console.error('Omnitrix sticker not found in DOM');
   }
   
-  // Create blocking overlay to prevent other interactions
   function createBlockingOverlay() {
     const blockingOverlay = document.createElement('div');
     blockingOverlay.className = 'blocking-overlay';
@@ -459,37 +454,28 @@ document.addEventListener("DOMContentLoaded", function() {
   
   // Show the Omnitrix interface
   function showOmnitrixInterface() {
-    // Create main Omnitrix container
     const omnitrixInterface = document.createElement('div');
     omnitrixInterface.className = 'omnitrix-interface';
-    
-    // Create the Omnitrix body
     const omnitrixBody = document.createElement('div');
     omnitrixBody.className = 'omnitrix-body';
-    
-    // Create the selection dial
     const omnitrixDial = document.createElement('div');
     omnitrixDial.className = 'omnitrix-dial';
-    
-    // Create hologram display area
     const hologramDisplay = document.createElement('div');
     hologramDisplay.className = 'hologram-display';
-
-    // Alien Force aliens - Fix the Chromastone typo
     const aliens = [
       { name: "Swampfire", color: "#8BC34A", power: "fireBlast" },
       { name: "Echo Echo", color: "#E0E0E0", power: "soundWave" },
       { name: "Humungousaur", color: "#795548", power: "smash" },
       { name: "Jetray", color: "#F44336", power: "laserBeam" },
       { name: "Big Chill", color: "#2196F3", power: "freeze" },
-      { name: "Chromastone", color: "#9C27B0", power: "energyBeam" }, // Fixed the name spelling
+      { name: "Chromastone", color: "#9C27B0", power: "energyBeam" },
       { name: "Brainstorm", color: "#FFC107", power: "electricShock" },
       { name: "Spidermonkey", color: "#1565C0", power: "webShot" },
       { name: "Goop", color: "#4CAF50", power: "acidMelt" },
       { name: "Alien X", color: "#000000", power: "realityWarp" }
     ];
     
-    // Create alien holograms
+    // Alien holograms
     const hologramContainer = document.createElement('div');
     hologramContainer.className = 'hologram-container';
     
@@ -498,51 +484,38 @@ document.addEventListener("DOMContentLoaded", function() {
       hologram.className = 'alien-hologram';
       hologram.dataset.alien = alien.name;
       hologram.dataset.power = alien.power;
-      // Set all backgrounds to green for better contrast with silhouettes
       hologram.style.backgroundColor = "rgba(0, 255, 0, 0.5)";
       
       // Position in a circle
       const angle = (index / aliens.length) * Math.PI * 2;
-      const radius = 180; // Increased radius to position silhouettes further out
+      const radius = 180;
       const x = Math.cos(angle) * radius;
       const y = Math.sin(angle) * radius;
       
       hologram.style.transform = `translate(${x}px, ${y}px)`;
       
-      // Add alien name
       const nameLabel = document.createElement('div');
       nameLabel.className = 'alien-name';
       nameLabel.textContent = alien.name;
       hologram.appendChild(nameLabel);
-      
-      // Add alien silhouette - make sure silhouettes are dark/blacked out
       const silhouette = document.createElement('div');
       silhouette.className = 'alien-silhouette';
-      
-      // Fix path for Chromastone and make sure all silhouettes use correct filenames
       let alienFileName = alien.name.toLowerCase().replace(' ', '');
-      
-      // Special handling for Chromastone to use cromastone.png
       if (alienFileName === "chromastone") {
-        alienFileName = "cromastone"; // Match the actual filename in assets/aliens/
+        alienFileName = "cromastone";
       }
       
       silhouette.style.backgroundImage = `url('../assets/aliens/${alienFileName}.png')`;
-      silhouette.style.filter = 'brightness(0)'; // This will make silhouettes appear black
+      silhouette.style.filter = 'brightness(0)';
       hologram.appendChild(silhouette);
       
       hologramContainer.appendChild(hologram);
-      
-      // Make clickable
       hologram.addEventListener('click', function() {
         console.log(`Clicked on ${alien.name}`);
         selectAlien(alien.name, alien.power);
       });
     });
     
-    // No rotation buttons needed anymore - removed
-    
-    // Add Omnitrix faceplate - make it bigger and more prominent
     const faceplate = document.createElement('div');
     faceplate.className = 'omnitrix-faceplate';
     
@@ -550,22 +523,20 @@ document.addEventListener("DOMContentLoaded", function() {
     faceplateSymbol.className = 'omnitrix-symbol';
     faceplate.appendChild(faceplateSymbol);
     
-    // Assemble the components - restructured to ensure proper layering
     hologramDisplay.appendChild(hologramContainer);
     omnitrixDial.appendChild(hologramDisplay);
     omnitrixBody.appendChild(omnitrixDial);
-    omnitrixBody.appendChild(faceplate); // Place faceplate after dial for proper z-indexing
+    omnitrixBody.appendChild(faceplate);
     omnitrixInterface.appendChild(omnitrixBody);
     
     document.body.appendChild(omnitrixInterface);
     
-    // Animation to reveal
     setTimeout(() => {
       omnitrixInterface.classList.add('active');
       omnitrixDial.classList.add('glow');
     }, 100);
     
-    // Make the holograms rotatable
+    // Rotatable Holograms
     let currentRotation = 0;
     
     function rotateHolograms(direction) {
@@ -576,20 +547,14 @@ document.addEventListener("DOMContentLoaded", function() {
       const rotationAmount = direction === 'left' ? 36 : -36;
       currentRotation += rotationAmount;
       
-      // Instead of rotating the container, we'll adjust each alien's position
       document.querySelectorAll('.alien-hologram').forEach((hologram, index) => {
-        // Calculate the new position in the circle
         const angle = ((index / aliens.length) * Math.PI * 2) + (currentRotation * Math.PI / 180);
-        const radius = 180; // Keep the same radius as initial setup
+        const radius = 180;
         const x = Math.cos(angle) * radius;
         const y = Math.sin(angle) * radius;
-        
-        // Set the new position while keeping silhouettes upright
         hologram.style.transform = `translate(${x}px, ${y}px)`;
       });
     }
-    
-    // Add keyboard event listener for left/right arrow keys
     function handleKeyDown(event) {
       if (event.key === "ArrowLeft") {
         rotateHolograms('left');
@@ -598,10 +563,7 @@ document.addEventListener("DOMContentLoaded", function() {
       }
     }
     
-    // Add the keyboard event listener when the Omnitrix interface is shown
     document.addEventListener('keydown', handleKeyDown);
-    
-    // Store the event listener reference on the omnitrix interface to remove it later
     omnitrixInterface.keyboardListener = handleKeyDown;
   }
   
@@ -609,21 +571,15 @@ document.addEventListener("DOMContentLoaded", function() {
   function selectAlien(alienName, power) {
     console.log(`Selected: ${alienName} with power: ${power}`);
     
-    // Get the selected alien element and other needed elements
     const selectedAlien = document.querySelector(`.alien-hologram[data-alien="${alienName}"]`);
     const hologramContainer = document.querySelector('.hologram-container');
     const omnitrixFaceplate = document.querySelector('.omnitrix-faceplate');
-    
-    // If already in center/enlarged state, proceed with transformation
     if (selectedAlien.classList.contains('centered')) {
       const transformSound = new Audio('../assets/sounds/transformation.mp3');
       transformSound.volume = 0.5;
       transformSound.play().catch(e => console.log('Audio playback prevented: ', e));
-      
-      // Hide the Omnitrix interface
       const omnitrixInterface = document.querySelector('.omnitrix-interface');
       if (omnitrixInterface) {
-        // Remove keyboard event listener
         if (omnitrixInterface.keyboardListener) {
           document.removeEventListener('keydown', omnitrixInterface.keyboardListener);
         }
@@ -636,33 +592,25 @@ document.addEventListener("DOMContentLoaded", function() {
         }, 1000);
       }
     } else {
-      // First click - center and enlarge the alien silhouette
       const rotateSound = new Audio('../assets/sounds/omnitrix-rotate.mp3');
       rotateSound.volume = 0.3;
       rotateSound.play().catch(e => console.log('Audio playback prevented: ', e));
       
-      // Hide other aliens
       document.querySelectorAll('.alien-hologram').forEach(hologram => {
         if (hologram !== selectedAlien) {
           hologram.style.opacity = '0';
         }
       });
       
-      // No need to hide rotation buttons anymore since they've been removed
-      
-      // Hide the Omnitrix faceplate
       omnitrixFaceplate.style.opacity = '0';
       omnitrixFaceplate.style.visibility = 'hidden';
       
-      // Move selected alien to center & enlarge
-      selectedAlien.style.transform = 'translate(0px, 0px) scale(5)';  // Center position
+      selectedAlien.style.transform = 'translate(0px, 0px) scale(5)';
       selectedAlien.classList.add('centered');
       
-      // Change appearance to indicate ready for selection
       selectedAlien.style.boxShadow = '0 0 30px rgba(0, 255, 0, 0.8)';
       selectedAlien.style.backgroundColor = 'rgba(0, 255, 0, 0.7)';
       
-      // Make the background pulse to indicate it's ready
       const omnitrixDial = document.querySelector('.omnitrix-dial');
       if (omnitrixDial) {
         omnitrixDial.classList.add('pulse-ready');
@@ -670,11 +618,10 @@ document.addEventListener("DOMContentLoaded", function() {
       
       // Allow click anywhere to transform
       const clickHandler = function() {
-        document.removeEventListener('click', clickHandler); // Remove listener to prevent multiple calls
-        selectAlien(alienName, power); // Call selectAlien again to trigger transformation
+        document.removeEventListener('click', clickHandler);
+        selectAlien(alienName, power);
       };
       
-      // Add click listener for the entire interface with a small delay to prevent immediate triggering
       setTimeout(() => {
         document.addEventListener('click', clickHandler);
       }, 500);
@@ -704,12 +651,10 @@ document.addEventListener("DOMContentLoaded", function() {
     alien.className = 'alien ' + alienName.toLowerCase().replace(' ', '-');
     
     const alienImage = document.createElement('img');
-    // Fix path for Chromastone and other aliens
     let alienFileName = alienName.toLowerCase().replace(' ', '');
     
-    // Special case for the misspelled file
     if (alienFileName === "chromastone") {
-      alienFileName = "cromastone"; // Match the actual filename in assets/aliens/
+      alienFileName = "cromastone";
     }
     
     alienImage.src = `../assets/aliens/${alienFileName}.png`;
@@ -721,13 +666,11 @@ document.addEventListener("DOMContentLoaded", function() {
     setTimeout(() => {
       alien.classList.add('active');
       
-      // Play alien's cry sound - new code
+      // Play alien's cry sound
       setTimeout(() => {
         const alienCrySound = new Audio(`../assets/sounds/aliens/${alienFileName}-cry.mp3`);
         alienCrySound.volume = 0.7;
         alienCrySound.play().catch(e => console.log('Alien cry sound playback prevented: ', e));
-        
-        // Alien's catchphrase - moved inside to sequence after the cry sound
         setTimeout(() => {
           const catchphraseElement = document.createElement('div');
           catchphraseElement.className = 'alien-catchphrase';
@@ -738,19 +681,17 @@ document.addEventListener("DOMContentLoaded", function() {
             catchphraseElement.classList.add('active');
             
             setTimeout(() => {
-              // Trigger destruction animation - now at least 5 seconds after the alien cry
               executePower(power);
               
               // Store selected alien in sessionStorage for the 404 page
               sessionStorage.setItem('selectedAlien', alienName);
               
-              // Extended cutscene duration
               setTimeout(() => {
                 window.location.href = "../404b.html";
               }, 7000);
             }, 3000);
           }, 1000);
-        }, 2000); // Wait 2 seconds after the cry sound before showing catchphrase
+        }, 2000);
       }, 1000);
     }, 100);
   }
