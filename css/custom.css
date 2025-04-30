@@ -1641,3 +1641,205 @@ body.dark {
   0% { transform: translate(-50%, -50%) scale(1); opacity: 0.8; }
   100% { transform: translate(-50%, -50%) scale(50); opacity: 0; }
 }
+
+/* Add these styles to your custom.css file */
+
+/* Blocking overlay */
+.blocking-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 9990;
+  pointer-events: all;
+}
+
+/* Paper tear effect */
+.paper-tear-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 0%;
+  height: 0%;
+  z-index: 9991;
+  overflow: hidden;
+  transition: all 1.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.paper-tear-container.tear-animate {
+  width: 90%;
+  height: 70%;
+}
+
+.paper-tear {
+  width: 100%;
+  height: 100%;
+  transform: scaleY(0);
+  transform-origin: top center;
+  transition: transform 1.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.paper-tear-container.tear-animate .paper-tear {
+  transform: scaleY(1);
+}
+
+/* Truck approaching animation */
+.truck-container {
+  position: fixed;
+  z-index: 9992;
+  top: 50%;
+  left: 100%;
+  transform: translate(0, -50%) scale(0.1);
+  transition: all 2.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.truck-container.truck-animate {
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.truck-container.hide {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(1.5);
+  transition: all 0.5s ease;
+}
+
+.truck-img {
+  width: 400px;
+  height: auto;
+}
+
+/* Transform flash */
+.transform-flash {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  z-index: 9993;
+  animation: flashAnimation 0.5s ease-out;
+}
+
+@keyframes flashAnimation {
+  0% { opacity: 0; }
+  50% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* Robot animation */
+.robot-container {
+  position: fixed;
+  z-index: 9992;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.8);
+  opacity: 0;
+  transition: all 1s ease;
+}
+
+.robot-container.robot-animate {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+}
+
+.robot-img {
+  width: 500px;
+  height: auto;
+}
+
+/* Quote styling */
+.quote-container {
+  position: fixed;
+  z-index: 9994;
+  bottom: 20%;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 1s ease;
+}
+
+.quote-container.quote-animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.quote-text {
+  display: inline-block;
+  padding: 20px 40px;
+  border-radius: 10px;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+}
+
+.autobot-quote .quote-text {
+  background-color: rgba(0, 0, 150, 0.7);
+  border: 2px solid #ff0000;
+  box-shadow: 0 0 20px rgba(0, 0, 255, 0.5);
+}
+
+.decepticon-quote .quote-text {
+  background-color: rgba(75, 0, 130, 0.7);
+  border: 2px solid #800080;
+  box-shadow: 0 0 20px rgba(128, 0, 128, 0.5);
+}
+
+/* Megatron animations */
+.dark-energy {
+  position: fixed;
+  z-index: 9992;
+  top: 50%;
+  right: 20%;
+  width: 0;
+  height: 0;
+  background: radial-gradient(circle, rgba(128, 0, 128, 0.8) 0%, rgba(0, 0, 0, 0) 70%);
+  border-radius: 50%;
+  opacity: 0;
+  transition: all 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.dark-energy-animate {
+  width: 400px;
+  height: 400px;
+  opacity: 1;
+  transform: translate(50%, -50%);
+}
+
+.megatron-container {
+  position: fixed;
+  z-index: 9992;
+  top: 50%;
+  right: 20%;
+  transform: translate(50%, -50%) scale(0.1) rotate(10deg);
+  opacity: 0;
+  transition: all 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.megatron-container.megatron-animate {
+  transform: translate(50%, -50%) scale(1) rotate(0deg);
+  opacity: 1;
+}
+
+.megatron-img {
+  width: 450px;
+  height: auto;
+}
+
+.sticker[alt="Autobots"] {
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 100;
+}
+
+.sticker[alt="Autobots"]:hover {
+  filter: brightness(1.2) drop-shadow(0 0 8px rgba(255, 0, 255, 0.7));
+  transform: scale(1.15) rotate(0deg);
+}

@@ -1165,3 +1165,202 @@ document.addEventListener("DOMContentLoaded", function() {
     explosionSound.play().catch(e => console.log('Audio playback prevented: ', e));
   }
 });
+
+document.addEventListener("DOMContentLoaded", function() {
+  // Your existing sticker code...
+  
+  // Add Optimus Prime sticker interaction
+  const optimusSticker = document.querySelector('.sticker[alt="Autobots"]');
+  if (optimusSticker) {
+    optimusSticker.addEventListener('click', function() {
+      createBlockingOverlay();
+      playTransformersSequence();
+    });
+  }
+  
+  // Create the Transformers sequence
+  function playTransformersSequence() {
+    // Play transformation sound
+    const transformSound = new Audio('../assets/sounds/transform-sound.mp3');
+    transformSound.volume = 0.5;
+    transformSound.play().catch(e => console.log('Audio playback prevented: ', e));
+    
+    // Create paper tear effect
+    createPaperTearEffect();
+    
+    // After tear effect, show the truck approaching
+    setTimeout(function() {
+      showTruckApproaching();
+    }, 1500);
+    
+    // Then transform to robot
+    setTimeout(function() {
+      showRobotTransformation();
+    }, 4000);
+    
+    // Show Optimus Prime quote
+    setTimeout(function() {
+      showOptimusQuote("Freedom is the right of all sentient beings.");
+    }, 6000);
+    
+    // Show Megatron appearing
+    setTimeout(function() {
+      showMegatronAppearing();
+    }, 8500);
+    
+    // Show Megatron quote
+    setTimeout(function() {
+      showMegatronQuote("Peace through tyranny!");
+    }, 10000);
+    
+    // Finally, redirect to the glitching 404 page
+    setTimeout(function() {
+      window.location.href = "../404t.html"; // New Transformers themed 404 page
+    }, 12000);
+  }
+  
+  function createBlockingOverlay() {
+    const blockingOverlay = document.createElement('div');
+    blockingOverlay.className = 'blocking-overlay';
+    document.body.appendChild(blockingOverlay);
+  }
+  
+  function createPaperTearEffect() {
+    // Create paper tear container
+    const tearContainer = document.createElement('div');
+    tearContainer.className = 'paper-tear-container';
+    
+    // Create tear SVG element
+    const tearSVG = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    tearSVG.setAttribute("class", "paper-tear");
+    tearSVG.setAttribute("viewBox", "0 0 100 100");
+    tearSVG.setAttribute("preserveAspectRatio", "none");
+    
+    // Create jagged path for the tear
+    const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    path.setAttribute("d", "M0,0 L100,0 L100,40 C80,35 70,45 60,40 C50,35 40,45 30,40 C20,35 10,45 0,40 Z");
+    path.setAttribute("fill", "#333");
+    
+    tearSVG.appendChild(path);
+    tearContainer.appendChild(tearSVG);
+    document.body.appendChild(tearContainer);
+    
+    // Add animation class
+    setTimeout(() => {
+      tearContainer.classList.add('tear-animate');
+    }, 100);
+  }
+  
+  function showTruckApproaching() {
+    const truckContainer = document.createElement('div');
+    truckContainer.className = 'truck-container';
+    
+    const truckImg = document.createElement('img');
+    truckImg.src = '../assets/transformers/optimus-truck.png';
+    truckImg.alt = 'Optimus Truck';
+    truckImg.className = 'truck-img';
+    
+    truckContainer.appendChild(truckImg);
+    document.body.appendChild(truckContainer);
+    
+    // Add animation class
+    setTimeout(() => {
+      truckContainer.classList.add('truck-animate');
+    }, 100);
+  }
+  
+  function showRobotTransformation() {
+    // Hide truck
+    const truckContainer = document.querySelector('.truck-container');
+    if (truckContainer) {
+      truckContainer.classList.add('hide');
+    }
+    
+    // Show transformation flash
+    const flash = document.createElement('div');
+    flash.className = 'transform-flash';
+    document.body.appendChild(flash);
+    
+    setTimeout(() => {
+      // Remove flash
+      document.body.removeChild(flash);
+      
+      // Show robot
+      const robotContainer = document.createElement('div');
+      robotContainer.className = 'robot-container';
+      
+      const robotImg = document.createElement('img');
+      robotImg.src = '../assets/transformers/optimus-robot.png';
+      robotImg.alt = 'Optimus Robot';
+      robotImg.className = 'robot-img';
+      
+      robotContainer.appendChild(robotImg);
+      document.body.appendChild(robotContainer);
+      
+      setTimeout(() => {
+        robotContainer.classList.add('robot-animate');
+      }, 100);
+    }, 500);
+  }
+  
+  function showOptimusQuote(quote) {
+    const quoteContainer = document.createElement('div');
+    quoteContainer.className = 'quote-container autobot-quote';
+    
+    const quoteText = document.createElement('div');
+    quoteText.className = 'quote-text';
+    quoteText.textContent = quote;
+    
+    quoteContainer.appendChild(quoteText);
+    document.body.appendChild(quoteContainer);
+    
+    setTimeout(() => {
+      quoteContainer.classList.add('quote-animate');
+    }, 100);
+  }
+  
+  function showMegatronAppearing() {
+    // Create dark energy effect
+    const darkEnergy = document.createElement('div');
+    darkEnergy.className = 'dark-energy';
+    document.body.appendChild(darkEnergy);
+    
+    setTimeout(() => {
+      darkEnergy.classList.add('dark-energy-animate');
+      
+      setTimeout(() => {
+        // Show Megatron
+        const megatronContainer = document.createElement('div');
+        megatronContainer.className = 'megatron-container';
+        
+        const megatronImg = document.createElement('img');
+        megatronImg.src = '../assets/transformers/megatron.png';
+        megatronImg.alt = 'Megatron';
+        megatronImg.className = 'megatron-img';
+        
+        megatronContainer.appendChild(megatronImg);
+        document.body.appendChild(megatronContainer);
+        
+        setTimeout(() => {
+          megatronContainer.classList.add('megatron-animate');
+        }, 100);
+      }, 1000);
+    }, 100);
+  }
+  
+  function showMegatronQuote(quote) {
+    const quoteContainer = document.createElement('div');
+    quoteContainer.className = 'quote-container decepticon-quote';
+    
+    const quoteText = document.createElement('div');
+    quoteText.className = 'quote-text';
+    quoteText.textContent = quote;
+    
+    quoteContainer.appendChild(quoteText);
+    document.body.appendChild(quoteContainer);
+    
+    setTimeout(() => {
+      quoteContainer.classList.add('quote-animate');
+    }, 100);
+  }
+});

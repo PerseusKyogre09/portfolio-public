@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Transformers</title>
+    <style>
+        @font-face {
+            font-family: 'Transformers';
+            src: url('assets/font/transformers.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+        
+        :root {
+            --autobot-primary: #0066cc;
+            --autobot-secondary: #ff0000;
+            --decepticon-primary: #800080;
+            --decepticon-secondary: #00cc00;
+            --transition-speed: 0.5s;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Transformers', 'Orbitron', sans-serif;
+            background-color: #000;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            overflow: hidden;
+            position: relative;
+            transition: background-color var(--transition-speed);
+            background-image: url('assets/transformers/cybertron.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 0;
+        }
+        
+        .bg-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.15;
+            background-size: 100px;
+            background-repeat: repeat;
+            z-index: 1;
+            mix-blend-mode: overlay;
+            transition: opacity 0.3s;
+        }
+        
+        .grid {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(rgba(0, 102, 204, 0.2) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(0, 102, 204, 0.2) 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: 1;
+            opacity: 0.3;
+            transition: all var(--transition-speed);
+        }
+        
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            max-width: 1200px;
+            transition: all var(--transition-speed);
+        }
+        
+        .logo {
+            width: 120px;
+            height: 120px;
+            margin-bottom: 20px;
+            transition: transform 0.3s, filter 0.3s;
+            filter: drop-shadow(0 0 10px var(--autobot-primary));
+        }
+        
+        .error-code {
+            font-size: 8rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+            position: relative;
+            text-shadow: 0 0 10px var(--autobot-primary);
+            transition: all var(--transition-speed);
+        }
+        
+        .error-text {
+            font-size: 1.5rem;
+            margin-bottom: 40px;
+            text-align: center;
+            max-width: 600px;
+            text-shadow: 0 0 5px var(--autobot-primary);
+            transition: all var(--transition-speed);
+        }
+        
+        .content-wrapper {
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .left-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .robot-container {
+            position: relative;
+            width: 400px;
+            height: 400px;
+            perspective: 1000px;
+            overflow: hidden;
+        }
+        
+        .robot {
+            width: auto;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            filter: drop-shadow(0 0 15px var(--autobot-primary));
+            transition: transform 0.3s, filter 0.3s, opacity 0.3s;
+            opacity: 0.7;
+            mix-blend-mode: screen;
+            pointer-events: none;
+        }
+        
+        #optimus {
+            opacity: 1;
+            z-index: 2;
+        }
+        
+        #megatron {
+            opacity: 0;
+            z-index: 1;
+        }
+        
+        .cube-button {
+            position: relative;
+            width: 80px;
+            height: 80px;
+            perspective: 1000px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .cube {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transform: translateZ(-40px);
+            transition: transform 0.5s;
+            animation: rotate 20s infinite linear;
+        }
+        
+        .cube:hover {
+            animation-play-state: paused;
+        }
+        
+        .cube__face {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            background: rgba(0, 153, 255, 0.3);
+            border: 2px solid #0099ff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 15px #0099ff, inset 0 0 15px #0099ff;
+            color: white;
+            text-transform: uppercase;
+            font-weight: bold;
+            transition: all var(--transition-speed);
+        }
+        
+        .cube__face--front  { transform: rotateY(0deg) translateZ(40px); }
+        .cube__face--right  { transform: rotateY(90deg) translateZ(40px); }
+        .cube__face--back   { transform: rotateY(180deg) translateZ(40px); }
+        .cube__face--left   { transform: rotateY(-90deg) translateZ(40px); }
+        .cube__face--top    { transform: rotateX(90deg) translateZ(40px); }
+        .cube__face--bottom { transform: rotateX(-90deg) translateZ(40px); }
+        
+        @keyframes rotate {
+            0% { transform: translateZ(-40px) rotateY(0deg) rotateX(0deg); }
+            100% { transform: translateZ(-40px) rotateY(360deg) rotateX(360deg); }
+        }
+        
+        .button-text {
+            margin-top: 20px;
+            font-size: 1rem;
+            text-transform: uppercase;
+            color: #0099ff;
+            text-shadow: 0 0 5px #0099ff;
+            transition: all var(--transition-speed);
+        }
+        
+        .glitch {
+            animation: glitch 0.3s ease-in-out;
+        }
+        
+        @keyframes glitch {
+            0% { transform: translate(0); }
+            20% { transform: translate(-5px, 5px); filter: hue-rotate(90deg); }
+            40% { transform: translate(-5px, -5px); filter: hue-rotate(180deg); }
+            60% { transform: translate(5px, 5px); filter: hue-rotate(270deg); }
+            80% { transform: translate(5px, -5px); filter: hue-rotate(360deg); }
+            100% { transform: translate(0); }
+        }
+        
+        /* Glitch Lines */
+        .glitch-lines {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            z-index: 10;
+            pointer-events: none;
+            opacity: 0;
+        }
+        
+        .glitch-line {
+            position: absolute;
+            height: 1px;
+            width: 100%;
+            background-color: rgba(0, 153, 255, 0.5);
+            box-shadow: 0 0 5px rgba(0, 153, 255, 0.5);
+        }
+        
+        /* Decepticon Theme */
+        body.decepticon {
+            background-color: #0a0a0a;
+        }
+        
+        body.decepticon .grid {
+            background-image: linear-gradient(rgba(128, 0, 128, 0.2) 1px, transparent 1px),
+                             linear-gradient(90deg, rgba(128, 0, 128, 0.2) 1px, transparent 1px);
+        }
+        
+        body.decepticon .logo {
+            filter: drop-shadow(0 0 15px var(--decepticon-primary));
+        }
+        
+        body.decepticon .robot {
+            filter: drop-shadow(0 0 15px var(--decepticon-primary));
+            opacity: 0.7;
+        }
+        
+        body.decepticon .error-code,
+        body.decepticon .error-text {
+            text-shadow: 0 0 10px var(--decepticon-primary);
+        }
+        
+                    @media (max-width: 768px) {
+            .content-wrapper {
+                flex-direction: column-reverse;
+            }
+            
+            .robot-container {
+                width: 300px;
+                height: 300px;
+                margin-bottom: 30px;
+            }
+            
+            .left-section {
+                margin-top: 30px;
+            }
+            
+            .error-code {
+                font-size: 5rem;
+            }
+            
+            .error-text {
+                font-size: 1.2rem;
+            }
+            
+            .logo {
+                width: 80px;
+                height: 80px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-overlay"></div>
+    <div class="grid"></div>
+    
+    <div class="container">
+        <img id="faction-logo" class="logo" src="assets/transformers/autobots.png" alt="Autobot Logo">
+        
+        <h1 class="error-code">404</h1>
+        
+        <p class="error-text">
+            <span id="error-message">Autobot intelligence cannot locate the requested file. Sector scan complete - target missing.</span>
+        </p>
+        
+        <div class="content-wrapper">
+            <div class="left-section">
+                <a href="index.html" class="cube-button">
+                    <div class="cube">
+                        <div class="cube__face cube__face--front"></div>
+                        <div class="cube__face cube__face--back"></div>
+                        <div class="cube__face cube__face--right"></div>
+                        <div class="cube__face cube__face--left"></div>
+                        <div class="cube__face cube__face--top"></div>
+                        <div class="cube__face cube__face--bottom"></div>
+                    </div>
+                    <div class="button-text" id="button-text">Fallback Autobots</div>
+                </a>
+            </div>
+            
+            <div class="robot-container">
+                <img id="optimus" class="robot" src="assets/transformers/optimus-robot.png" alt="Optimus Prime">
+                <img id="megatron" class="robot" src="assets/transformers/megatron.png" alt="Megatron">
+            </div>
+        </div>
+    </div>
+    
+    <div class="glitch-lines" id="glitch-lines"></div>
+    
+    <script>
+        // DOM Elements
+        const body = document.body;
+        const factionLogo = document.getElementById('faction-logo');
+        const optimus = document.getElementById('optimus');
+        const megatron = document.getElementById('megatron');
+        const errorMessage = document.getElementById('error-message');
+        const buttonText = document.getElementById('button-text');
+        const glitchLines = document.getElementById('glitch-lines');
+        
+        // Variables
+        let isAutobot = true;
+        let glitchTimeout;
+        let factionSwitchInterval;
+        
+        // Messages
+        const autobotMessages = [
+            "Autobot intelligence cannot locate the requested file. Sector scan complete - target missing.",
+            "Prime directive failed: The resource you're looking for has been lost in the Matrix.",
+            "Autobot security protocols engaged: This page does not exist in our archives."
+        ];
+        
+        const decepticonMessages = [
+            "Decepticon systems report failure: The requested file has been destroyed or never existed.",
+            "Target acquisition failed: The resource has been obliterated or relocated.",
+            "Megatron demands an explanation: This cyber-path leads nowhere."
+        ];
+        
+        // Initialize glitch lines
+        function createGlitchLines() {
+            for (let i = 0; i < 10; i++) {
+                const line = document.createElement('div');
+                line.className = 'glitch-line';
+                line.style.top = `${Math.random() * 100}%`;
+                line.style.opacity = Math.random() * 0.8 + 0.2;
+                line.style.height = `${Math.random() * 3}px`;
+                glitchLines.appendChild(line);
+            }
+        }
+        
+        // Trigger glitch effect
+        function triggerGlitch() {
+            // Show glitch lines
+            glitchLines.style.opacity = 0.7;
+            
+            // Add glitch class to elements
+            document.querySelector('.error-code').classList.add('glitch');
+            document.querySelector('.error-text').classList.add('glitch');
+            factionLogo.classList.add('glitch');
+            optimus.classList.add('glitch');
+            megatron.classList.add('glitch');
+            
+            // Random digital distortion
+            const container = document.querySelector('.container');
+            container.style.transform = `translate(${(Math.random() - 0.5) * 10}px, ${(Math.random() - 0.5) * 10}px)`;
+            
+            // Additional glitch effects for robots
+            if (Math.random() > 0.5) {
+                if (isAutobot) {
+                    optimus.style.filter = `hue-rotate(${Math.random() * 360}deg) brightness(1.5) drop-shadow(0 0 15px var(--autobot-primary))`;
+                } else {
+                    megatron.style.filter = `hue-rotate(${Math.random() * 360}deg) brightness(1.5) drop-shadow(0 0 15px var(--decepticon-primary))`;
+                }
+            }
+            
+            // Remove glitch effects
+            setTimeout(() => {
+                glitchLines.style.opacity = 0;
+                document.querySelector('.error-code').classList.remove('glitch');
+                document.querySelector('.error-text').classList.remove('glitch');
+                factionLogo.classList.remove('glitch');
+                optimus.classList.remove('glitch');
+                megatron.classList.remove('glitch');
+                container.style.transform = 'translate(0, 0)';
+                
+                // Reset robot filters
+                if (isAutobot) {
+                    optimus.style.filter = 'drop-shadow(0 0 15px var(--autobot-primary))';
+                } else {
+                    megatron.style.filter = 'drop-shadow(0 0 15px var(--decepticon-primary))';
+                }
+            }, 300);
+        }
+        
+        // Switch between Autobot and Decepticon themes
+        function switchFaction() {
+            triggerGlitch();
+            
+            setTimeout(() => {
+                isAutobot = !isAutobot;
+                
+                if (isAutobot) {
+                    // Switch to Autobot
+                    body.classList.remove('decepticon');
+                    factionLogo.alt = "Autobot Logo";
+                    factionLogo.src = "assets/transformers/autobots.png";
+                    optimus.style.opacity = '0.7';
+                    megatron.style.opacity = '0';
+                    buttonText.textContent = 'Fallback Autobots';
+                    errorMessage.textContent = autobotMessages[Math.floor(Math.random() * autobotMessages.length)];
+                } else {
+                    // Switch to Decepticon
+                    body.classList.add('decepticon');
+                    factionLogo.alt = "Decepticon Logo";
+                    factionLogo.src = "assets/transformers/decepticons.png";
+                    optimus.style.opacity = '0';
+                    megatron.style.opacity = '0.7';
+                    buttonText.textContent = 'Retreat Decepticons';
+                    errorMessage.textContent = decepticonMessages[Math.floor(Math.random() * decepticonMessages.length)];
+                }
+            }, 150);
+        }
+        
+        // Random glitch timing
+        function scheduleRandomGlitch() {
+            const minTime = 1000; // 1 second
+            const maxTime = 3000; // 3 seconds
+            const randomTime = Math.random() * (maxTime - minTime) + minTime;
+            
+            clearTimeout(glitchTimeout);
+            glitchTimeout = setTimeout(() => {
+                triggerGlitch();
+                scheduleRandomGlitch();
+            }, randomTime);
+        }
+        
+        // Initialize
+        window.onload = function() {
+            createGlitchLines();
+            scheduleRandomGlitch();
+            
+            // Set initial theme to Autobot
+            isAutobot = true;
+            
+            // Schedule faction switches
+            factionSwitchInterval = setInterval(switchFaction, 8000); // Switch every 8 seconds
+            
+            // Add hover effect for cube button
+            const cubeButton = document.querySelector('.cube-button');
+            cubeButton.addEventListener('mouseover', () => {
+                document.querySelector('.cube').style.animationPlayState = 'paused';
+            });
+            cubeButton.addEventListener('mouseout', () => {
+                document.querySelector('.cube').style.animationPlayState = 'running';
+            });
+        };
+    </script>
+</body>
+</html>
