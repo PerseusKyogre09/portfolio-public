@@ -2,20 +2,103 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Light mode styles */
 body.light {
   --bg-primary: #f8f9fa;
   --bg-secondary: #e9ecef;
-  --text-primary: #212529;
-  --text-secondary: #495057;
+  --text-primary: #111827;
+  --text-secondary: #374151; 
   --accent: #6366f1;
   --accent-hover: #4f46e5;
+  background-color: #f8f9fa !important;
+  color: #111827 !important;
 }
 
+/* Improve text visibility in light mode */
+body.light .text-gray-200,
+body.light .text-gray-300,
+body.light .text-gray-400 {
+  color: #4b5563 !important; /* Medium-dark gray for better contrast on light backgrounds */
+}
+
+body.light .animate-fade-in-up,
+body.light .animate-fade-in {
+  color: #374151 !important;
+}
+
+/* Ensure proper contrast for hero section text in light mode */
+body.light section p.text-gray-300,
+body.light section p.text-gray-400 {
+  color: #4b5563 !important;
+}
+
+body.light header {
+  background-color: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+body.light .nav-link {
+  color: #374151;
+}
+
+body.light .project-card {
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+body.light .project-card h3 {
+  color: #111827;
+}
+
+body.light .project-card p {
+  color: #4b5563;
+}
+
+body.light section.bg-gray-800 {
+  background-color: #f3f4f6 !important;
+}
+
+body.light section.bg-indigo-900 {
+  background-color: #e0e7ff !important;
+}
+
+body.light section.bg-gray-800 .bg-gray-800 {
+  background-color: #ffffff !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+body.light section.bg-gray-800 .text-gray-300 {
+  color: #4b5563 !important;
+}
+
+body.light footer {
+  background-color: #f3f4f6;
+  border-top: 1px solid #e5e7eb;
+}
+
+body.light footer .border-gray-800 {
+  border-color: #e5e7eb;
+}
+
+body.light svg text {
+  fill: #111827 !important;
+}
+
+body.light svg circle[stroke="#1f2937"] {
+  stroke: #e5e7eb;
+}
+
+body.light .code-animation::after {
+  background-color: #1e293b;
+}
+
+/* Dark mode styles */
 body.dark {
   --bg-primary: #111827;
   --bg-secondary: #1f2937;
-  --text-primary: #f3f4f6;
-  --text-secondary: #d1d5db;
+  --text-primary: #f8f9fa;
+  --text-secondary: #e2e8f0;
   --accent: #818cf8;
   --accent-hover: #6366f1;
 }
@@ -185,7 +268,6 @@ body.dark {
   25%, 75% { width: 0; }
   43.75%, 93.75% { width: 100%; }
 }
-/* Project Cards */
 .project-card {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -679,6 +761,7 @@ body.dark {
 }
 
 .tardis-button:hover {
+  background-color: #256
   background-color: #2563eb;
   transform: scale(1.05);
   box-shadow: 0 0 20px rgba(59, 130, 246, 0.9);
@@ -1842,4 +1925,230 @@ body.dark {
 .sticker[alt="Autobots"]:hover {
   filter: brightness(1.2) drop-shadow(0 0 8px rgba(255, 0, 0, 0.7));
   transform: scale(1.15) rotate(0deg);
+}
+
+/* Project tag styling for light/dark modes */
+body.light .project-card .bg-gray-700 {
+  background-color: #e5e7eb !important;
+  color: #4b5563 !important;
+  border: 1px solid #d1d5db;
+}
+
+body.dark .project-card .bg-gray-700 {
+  background-color: #374151 !important;
+  color: #e5e7eb !important;
+  border: none;
+}
+
+/* Add hover effect for project tags */
+.project-card .bg-gray-700 {
+  transition: all 0.2s ease;
+}
+
+.project-card .bg-gray-700:hover {
+  transform: translateY(-2px);
+}
+
+body.light .project-card .bg-gray-700:hover {
+  background-color: #d1d5db !important;
+}
+
+body.dark .project-card .bg-gray-700:hover {
+  background-color: #4b5563 !important;
+}
+
+/* Contact page styling for light/dark modes */
+body.light .bg-gray-800 {
+  background-color: #ffffff !important;
+  border: 1px solid #e5e7eb !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1) !important;
+}
+
+body.light .bg-gray-700 {
+  background-color: #f3f4f6 !important;
+  border: 1px solid #e5e7eb !important;
+}
+
+body.light input.bg-gray-700, 
+body.light textarea.bg-gray-700 {
+  background-color: #f9fafb !important;
+  border: 1px solid #e5e7eb !important;
+  color: #374151 !important;
+}
+
+body.light .text-gray-300,
+body.light .text-gray-200,
+body.light .text-white,
+body.light .text-xl {
+  color: #1f2937 !important;
+}
+
+body.light .border-gray-600 {
+  border-color: #d1d5db !important;
+}
+
+/* Preserve colored text */
+body.light .text-indigo-300,
+body.light .text-indigo-400,
+body.light .text-purple-400,
+body.light .text-blue-400,
+body.light .text-green-400,
+body.light .text-yellow-400,
+body.light .text-red-400,
+body.light .text-pink-400 {
+  color: inherit !important;
+}
+
+/* Preserve form elements styling */
+body.light .bg-indigo-600,
+body.light .bg-indigo-600 p-3,
+body.light .bg-purple-600 p-3,
+body.light .bg-blue-600 p-3,
+body.light .bg-yellow-500 p-3,
+body.light .bg-pink-500 p-3,
+body.light .bg-indigo-500 p-3 {
+  background-color: inherit !important;
+}
+
+/* Specific to connect section on contact page */
+body.light .bg-gray-700.hover\:bg-indigo-700 {
+  background-color: #e5e7eb !important;
+}
+
+body.light .bg-gray-700.hover\:bg-indigo-700:hover {
+  background-color: #6366f1 !important;
+}
+
+body.light .bg-gray-700.bg-opacity-50 {
+  background-color: #f3f4f6 !important;
+  border-color: #d1d5db !important;
+}
+
+/* Social icons in footer */
+body.light .social-icon.bg-gray-700 {
+  background-color: #e5e7eb !important;
+}
+
+body.light .social-icon.bg-gray-700:hover {
+  background-color: #d1d5db !important;
+}
+
+/* About page specific styling */
+/* "Let's Build Something Amazing Together" CTA section */
+.bg-gradient-to-r.from-indigo-900.to-purple-900 {
+  background: linear-gradient(to right, #4338ca, #7e22ce) !important;
+}
+
+body.light .bg-gradient-to-r.from-indigo-900.to-purple-900 {
+  background: linear-gradient(to right, #4f46e5, #9333ea) !important;
+}
+
+/* Future Goals sections */
+body.light .bg-purple-900 {
+  background-color: #6d28d9 !important;
+}
+
+body.light .text-purple-400 {
+  color: #7e22ce !important;
+}
+
+/* Hobby cards */
+body.light .bg-gray-100,
+body.light .bg-gray-200 {
+  background-color: #f9fafb !important;
+}
+
+/* "Who am I?" section */
+body.light .bg-indigo-900 {
+  background-color: #4338ca !important;
+}
+
+/* Resume button */
+.resume-btn {
+  transition: all 0.3s ease;
+}
+
+.resume-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+/* Social link buttons */
+body.light .social-link {
+  background-color: #f3f4f6 !important;
+  color: #4b5563 !important;
+}
+
+body.light .social-link:hover {
+  background-color: #4f46e5 !important;
+  color: #ffffff !important;
+}
+
+/* Icon visibility fixes for About page */
+/* Future Goals section icons */
+body.light .md\:w-1\/4 .w-16.h-16.bg-purple-900 {
+  background-color: #6d28d9 !important; /* Brighter purple in light mode */
+  box-shadow: 0 0 15px rgba(109, 40, 217, 0.3);
+}
+
+body.light .md\:w-1\/4 .w-16.h-16.bg-purple-900 i {
+  color: #ffffff !important; /* White icons for contrast */
+}
+
+/* Hobby cards icons */
+body.light .w-16.h-16.bg-indigo-900 {
+  background-color: #4f46e5 !important; /* Brighter indigo in light mode */
+  box-shadow: 0 0 15px rgba(79, 70, 229, 0.3);
+}
+
+body.light .w-16.h-16.bg-indigo-900 i {
+  color: #ffffff !important; /* White icons for contrast */
+}
+
+/* Make sure the FA icons are visible */
+body.light .text-indigo-400.mr-3,
+body.light .text-purple-400.mr-3,
+body.light .text-2xl.text-indigo-400,
+body.light .text-2xl.text-purple-400 {
+  color: #5b21b6 !important; /* Darker purple for better contrast on light bg */
+}
+
+/* Social icon circles in About page */
+body.light .social-icon.bg-gray-700 i.text-indigo-400 {
+  color: #4f46e5 !important; /* Brighter indigo for better visibility */
+}
+
+/* Ensure icons show in "Who am I?" section */
+body.light .fas.fa-calendar-alt.text-indigo-400,
+body.light .fas.fa-map-marker-alt.text-indigo-400,
+body.light .fas.fa-graduation-cap.text-indigo-400,
+body.light .fas.fa-envelope.text-indigo-400 {
+  color: #4f46e5 !important; /* Brighter indigo for contrast */
+}
+
+/* Preserve profile badge */
+body.light .absolute.-bottom-4.-right-4 {
+  background-color: #4f46e5 !important;
+  color: #ffffff !important;
+}
+
+/* GitHub section specific styling for light mode */
+body.light #github-section {
+  background: linear-gradient(to right, #f1f5f9, #e2e8f0, #f1f5f9) !important;
+}
+
+body.light #github-section .text-indigo-400 {
+  color: #4f46e5 !important;
+}
+
+body.light #github-section .text-gray-400 {
+  color: #4b5563 !important;
+}
+
+body.light #github-section .bg-indigo-600 {
+  background-color: #4f46e5 !important;
+}
+
+body.light #github-section .bg-indigo-600:hover {
+  background-color: #4338ca !important;
 }

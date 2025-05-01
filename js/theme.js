@@ -35,8 +35,12 @@ function setupThemeToggle() {
 function setDarkTheme() {
     document.documentElement.classList.add('dark');
     document.documentElement.classList.remove('light');
+    document.body.classList.add('dark');
+    document.body.classList.remove('light');
     document.body.classList.add('bg-gray-900');
+    document.body.classList.add('text-gray-200');
     document.body.classList.remove('bg-white');
+    document.body.classList.remove('text-gray-800');
     localStorage.setItem('theme', 'dark');
 }
 
@@ -44,8 +48,12 @@ function setDarkTheme() {
 function setLightTheme() {
     document.documentElement.classList.remove('dark');
     document.documentElement.classList.add('light');
+    document.body.classList.remove('dark');
+    document.body.classList.add('light');
     document.body.classList.remove('bg-gray-900');
+    document.body.classList.remove('text-gray-200');
     document.body.classList.add('bg-white');
+    document.body.classList.add('text-gray-800');
     localStorage.setItem('theme', 'light');
 }
 
