@@ -7,6 +7,144 @@
     <link rel="stylesheet" href="css/tailwind.css">
     <link rel="stylesheet" href="css/custom.css">
     <link rel="stylesheet" href="css/404c.css">
+    <style>
+        /* Mobile-friendly additions */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .floating {
+                padding: 1.5rem;
+            }
+            
+            img.w-32 {
+                width: 80px;
+                height: 80px;
+            }
+            
+            h1.text-5xl {
+                font-size: 3.5rem;
+            }
+            
+            h2.text-3xl {
+                font-size: 2rem;
+            }
+            
+            p.text-xl {
+                font-size: 1.1rem;
+                padding: 0 0.5rem;
+            }
+            
+            .minecraft-button {
+                padding: 0.75rem 1.5rem;
+                font-size: 1.1rem;
+            }
+            
+            /* Adjust explosion effects */
+            #blocks .block {
+                width: 20px;
+                height: 20px;
+            }
+            
+            #pixels .pixel {
+                width: 2px;
+                height: 2px;
+            }
+            
+            .main-crater {
+                width: 200px;
+                height: 200px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            img.w-32 {
+                width: 60px;
+                height: 60px;
+            }
+            
+            h1.text-5xl {
+                font-size: 3rem;
+            }
+            
+            h2.text-3xl {
+                font-size: 1.75rem;
+            }
+            
+            p.text-xl {
+                font-size: 1rem;
+                margin-bottom: 0.5rem;
+            }
+            
+            .minecraft-button {
+                padding: 0.75rem 1.25rem;
+                font-size: 1rem;
+            }
+            
+            /* Reduce effect density */
+            #blocks .block {
+                width: 15px;
+                height: 15px;
+            }
+            
+            .main-crater {
+                width: 150px;
+                height: 150px;
+            }
+        }
+        
+        /* Landscape mode */
+        @media (max-height: 600px) and (orientation: landscape) {
+            .container {
+                padding: 0.5rem;
+            }
+            
+            .floating {
+                padding: 1rem;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                text-align: left;
+                max-width: none;
+            }
+            
+            .creeper-side {
+                margin-right: 1.5rem;
+            }
+            
+            .content-side {
+                flex: 1;
+            }
+            
+            img.w-32 {
+                width: 70px;
+                height: 70px;
+                margin-bottom: 0;
+            }
+            
+            h1.text-5xl {
+                font-size: 2.5rem;
+                margin-bottom: 0.5rem;
+            }
+            
+            h2.text-3xl {
+                font-size: 1.5rem;
+                margin-bottom: 0.5rem;
+            }
+            
+            p.text-xl {
+                font-size: 0.9rem;
+                margin-bottom: 0.5rem;
+            }
+            
+            .minecraft-button {
+                padding: 0.5rem 1rem;
+                font-size: 0.9rem;
+                margin-top: 0.5rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="explosion-area">
@@ -17,19 +155,23 @@
     
     <div class="container flex flex-col items-center justify-center min-h-screen relative z-10">
         <div class="floating text-center max-w-xl p-8">
-            <img src="assets/creeper.png" alt="Creeper" class="w-32 h-32 mx-auto mb-6">
+            <div class="creeper-side">
+                <img src="assets/creeper.png" alt="Creeper" class="w-32 h-32 mx-auto mb-6">
+            </div>
             
-            <h1 class="text-5xl font-bold text-red-500 mb-4 glitch">BOOM!</h1>
-            
-            <h2 class="text-3xl font-bold text-green-400 mb-6">You Exploded the Portfolio!</h2>
-            
-            <p class="text-xl text-gray-300 mb-2">That creeper was unstable!</p>
-            <p class="text-xl text-gray-300 mb-8">Your explosion created a hole in the digital space-time continuum.</p>
-            
-            <div class="mt-8 flex justify-center">
-                <a href="index.html" class="minecraft-button">
-                    Respawn
-                </a>
+            <div class="content-side">
+                <h1 class="text-5xl font-bold text-red-500 mb-4 glitch">BOOM!</h1>
+                
+                <h2 class="text-3xl font-bold text-green-400 mb-6">You Exploded the Portfolio!</h2>
+                
+                <p class="text-xl text-gray-300 mb-2">That creeper was unstable!</p>
+                <p class="text-xl text-gray-300 mb-8">Your explosion created a hole in the digital space-time continuum.</p>
+                
+                <div class="mt-8 flex justify-center">
+                    <a href="index.html" class="minecraft-button">
+                        Respawn
+                    </a>
+                </div>
             </div>
         </div>
     </div>

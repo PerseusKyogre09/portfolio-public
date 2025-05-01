@@ -119,6 +119,58 @@
             max-width: 600px;
             text-shadow: 0 0 5px var(--autobot-primary);
             transition: all var(--transition-speed);
+            min-height: 5rem; /* Ensure consistent height during typing */
+            position: relative;
+        }
+        
+        /* Typed text cursor effect */
+        .typing-cursor {
+            display: inline-block;
+            width: 10px;
+            height: 20px;
+            background-color: #0099ff;
+            margin-left: 5px;
+            vertical-align: middle;
+            animation: blink 0.7s infinite;
+        }
+        
+        .decepticon .typing-cursor {
+            background-color: var(--decepticon-primary);
+        }
+        
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        
+        /* Character glitch effect */
+        .char {
+            display: inline-block;
+            position: relative;
+            transition: all 0.1s ease;
+        }
+        
+        .char.glitch {
+            animation: char-glitch 0.2s ease-in-out;
+            color: transparent;
+            text-shadow: 0 0 5px var(--autobot-primary), 
+                         2px 2px 0 rgba(0, 153, 255, 0.7),
+                         -1px -1px 0 rgba(255, 0, 0, 0.5);
+        }
+        
+        .decepticon .char.glitch {
+            text-shadow: 0 0 5px var(--decepticon-primary), 
+                        2px 2px 0 rgba(128, 0, 128, 0.7),
+                        -1px -1px 0 rgba(0, 204, 0, 0.5);
+        }
+        
+        @keyframes char-glitch {
+            0% { transform: translate(0); }
+            20% { transform: translate(-2px, 1px); }
+            40% { transform: translate(2px, -1px); }
+            60% { transform: translate(-1px, -1px); }
+            80% { transform: translate(1px, 1px); }
+            100% { transform: translate(0); }
         }
         
         .content-wrapper {
@@ -287,16 +339,18 @@
                     @media (max-width: 768px) {
             .content-wrapper {
                 flex-direction: column-reverse;
+                padding: 0 20px;
             }
             
             .robot-container {
-                width: 300px;
-                height: 300px;
+                width: 250px;
+                height: 250px;
                 margin-bottom: 30px;
             }
             
             .left-section {
-                margin-top: 30px;
+                margin-top: 20px;
+                margin-bottom: 20px;
             }
             
             .error-code {
@@ -305,11 +359,140 @@
             
             .error-text {
                 font-size: 1.2rem;
+                padding: 0 15px;
+                min-height: 4rem;
             }
             
             .logo {
-                width: 80px;
-                height: 80px;
+                width: 70px;
+                height: 70px;
+            }
+            
+            .container {
+                padding: 20px 10px;
+            }
+            
+            .cube-button {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .cube__face {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .cube__face--front  { transform: rotateY(0deg) translateZ(30px); }
+            .cube__face--right  { transform: rotateY(90deg) translateZ(30px); }
+            .cube__face--back   { transform: rotateY(180deg) translateZ(30px); }
+            .cube__face--left   { transform: rotateY(-90deg) translateZ(30px); }
+            .cube__face--top    { transform: rotateX(90deg) translateZ(30px); }
+            .cube__face--bottom { transform: rotateX(-90deg) translateZ(30px); }
+            
+            @keyframes rotate {
+                0% { transform: translateZ(-30px) rotateY(0deg) rotateX(0deg); }
+                100% { transform: translateZ(-30px) rotateY(360deg) rotateX(360deg); }
+            }
+            
+            .button-text {
+                font-size: 0.9rem;
+            }
+        }
+        
+        /* Small mobile devices */
+        @media (max-width: 480px) {
+            .robot-container {
+                width: 200px;
+                height: 200px;
+            }
+            
+            .error-code {
+                font-size: 4rem;
+                margin-bottom: 15px;
+            }
+            
+            .error-text {
+                font-size: 1rem;
+                margin-bottom: 25px;
+                min-height: 5rem;
+            }
+            
+            .cube-button {
+                width: 50px;
+                height: 50px;
+            }
+            
+            .cube__face {
+                width: 50px;
+                height: 50px;
+            }
+            
+            .cube__face--front  { transform: rotateY(0deg) translateZ(25px); }
+            .cube__face--right  { transform: rotateY(90deg) translateZ(25px); }
+            .cube__face--back   { transform: rotateY(180deg) translateZ(25px); }
+            .cube__face--left   { transform: rotateY(-90deg) translateZ(25px); }
+            .cube__face--top    { transform: rotateX(90deg) translateZ(25px); }
+            .cube__face--bottom { transform: rotateX(-90deg) translateZ(25px); }
+            
+            @keyframes rotate {
+                0% { transform: translateZ(-25px) rotateY(0deg) rotateX(0deg); }
+                100% { transform: translateZ(-25px) rotateY(360deg) rotateX(360deg); }
+            }
+            
+            .logo {
+                width: 60px;
+                height: 60px;
+                margin-bottom: 15px;
+            }
+            
+            .button-text {
+                font-size: 0.8rem;
+                margin-top: 15px;
+            }
+            
+            .grid {
+                background-size: 30px 30px;
+            }
+            
+            body::before {
+                background-color: rgba(0, 0, 0, 0.8); /* Darken background a bit more on mobile */
+            }
+        }
+        
+        /* Portrait orientation adjustment */
+        @media (max-height: 600px) and (orientation: landscape) {
+            .container {
+                padding-top: 10px;
+                padding-bottom: 10px;
+            }
+            
+            .content-wrapper {
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-around;
+            }
+            
+            .robot-container {
+                width: 180px;
+                height: 180px;
+                margin-bottom: 0;
+            }
+            
+            .error-code {
+                font-size: 3.5rem;
+                margin-bottom: 10px;
+            }
+            
+            .error-text {
+                font-size: 0.9rem;
+                margin-bottom: 15px;
+                min-height: 3rem;
+            }
+            
+            .logo {
+                width: 50px;
+                height: 50px;
+                margin-bottom: 10px;
             }
         }
     </style>
@@ -324,7 +507,8 @@
         <h1 class="error-code">404</h1>
         
         <p class="error-text">
-            <span id="error-message">Autobot intelligence cannot locate the requested file. Sector scan complete - target missing.</span>
+            <span id="error-message"></span>
+            <span class="typing-cursor" id="cursor"></span>
         </p>
         
         <div class="content-wrapper">
@@ -358,6 +542,7 @@
         const optimus = document.getElementById('optimus');
         const megatron = document.getElementById('megatron');
         const errorMessage = document.getElementById('error-message');
+        const cursor = document.getElementById('cursor');
         const buttonText = document.getElementById('button-text');
         const glitchLines = document.getElementById('glitch-lines');
         
@@ -365,6 +550,7 @@
         let isAutobot = true;
         let glitchTimeout;
         let factionSwitchInterval;
+        let currentTypingInterval;
         
         // Messages
         const autobotMessages = [
@@ -378,6 +564,66 @@
             "Target acquisition failed: The resource has been obliterated or relocated.",
             "Megatron demands an explanation: This cyber-path leads nowhere."
         ];
+        
+        // Type text with glitching effect
+        function typeMessage(message, callback) {
+            // Clear any previous typing
+            if (currentTypingInterval) {
+                clearInterval(currentTypingInterval);
+            }
+            
+            // Reset message display
+            errorMessage.innerHTML = '';
+            
+            // Set typing speed
+            const typingSpeed = 30; // milliseconds per character
+            let charIndex = 0;
+            
+            // Start typing
+            currentTypingInterval = setInterval(() => {
+                if (charIndex < message.length) {
+                    // Create span for the character
+                    const charSpan = document.createElement('span');
+                    charSpan.className = 'char';
+                    
+                    // Preserve the actual character, including spaces
+                    charSpan.textContent = message[charIndex];
+                    
+                    // For spaces, add specific class to maintain proper word spacing
+                    if (message[charIndex] === ' ') {
+                        charSpan.classList.add('space-char');
+                        charSpan.innerHTML = '&nbsp;';
+                    }
+                    
+                    errorMessage.appendChild(charSpan);
+                    
+                    // Random glitch on characters (only for non-space characters)
+                    if (message[charIndex] !== ' ' && Math.random() < 0.1) {
+                        setTimeout(() => {
+                            charSpan.classList.add('glitch');
+                            setTimeout(() => {
+                                charSpan.classList.remove('glitch');
+                            }, 200);
+                        }, Math.random() * 500);
+                    }
+                    
+                    charIndex++;
+                    
+                    // Add mechanical sound for typing (only for non-space characters)
+                    if (message[charIndex - 1] !== ' ' && Math.random() < 0.3) {
+                        const sounds = ['assets/sounds/transform-sound.mp3', 'assets/sounds/electric.mp3'];
+                        const randomSound = new Audio(sounds[Math.floor(Math.random() * sounds.length)]);
+                        randomSound.volume = 0.05;
+                        randomSound.playbackRate = 2 + Math.random();
+                        randomSound.play().catch(e => console.log("Audio play prevented", e));
+                    }
+                    
+                } else {
+                    clearInterval(currentTypingInterval);
+                    if (callback) callback();
+                }
+            }, typingSpeed);
+        }
         
         // Initialize glitch lines
         function createGlitchLines() {
@@ -398,10 +644,20 @@
             
             // Add glitch class to elements
             document.querySelector('.error-code').classList.add('glitch');
-            document.querySelector('.error-text').classList.add('glitch');
             factionLogo.classList.add('glitch');
             optimus.classList.add('glitch');
             megatron.classList.add('glitch');
+            
+            // Glitch some random characters
+            const chars = document.querySelectorAll('.char');
+            chars.forEach(char => {
+                if (Math.random() < 0.3) {
+                    char.classList.add('glitch');
+                    setTimeout(() => {
+                        char.classList.remove('glitch');
+                    }, 300);
+                }
+            });
             
             // Random digital distortion
             const container = document.querySelector('.container');
@@ -420,7 +676,6 @@
             setTimeout(() => {
                 glitchLines.style.opacity = 0;
                 document.querySelector('.error-code').classList.remove('glitch');
-                document.querySelector('.error-text').classList.remove('glitch');
                 factionLogo.classList.remove('glitch');
                 optimus.classList.remove('glitch');
                 megatron.classList.remove('glitch');
@@ -442,6 +697,11 @@
             setTimeout(() => {
                 isAutobot = !isAutobot;
                 
+                // Play transformation sound
+                const transSound = new Audio('assets/sounds/transformation.mp3');
+                transSound.volume = 0.2;
+                transSound.play().catch(e => console.log("Audio play prevented", e));
+                
                 if (isAutobot) {
                     // Switch to Autobot
                     body.classList.remove('decepticon');
@@ -450,7 +710,10 @@
                     optimus.style.opacity = '0.7';
                     megatron.style.opacity = '0';
                     buttonText.textContent = 'Fallback Autobots';
-                    errorMessage.textContent = autobotMessages[Math.floor(Math.random() * autobotMessages.length)];
+                    
+                    // Type out new message
+                    const randomMessage = autobotMessages[Math.floor(Math.random() * autobotMessages.length)];
+                    typeMessage(randomMessage);
                 } else {
                     // Switch to Decepticon
                     body.classList.add('decepticon');
@@ -459,7 +722,10 @@
                     optimus.style.opacity = '0';
                     megatron.style.opacity = '0.7';
                     buttonText.textContent = 'Retreat Decepticons';
-                    errorMessage.textContent = decepticonMessages[Math.floor(Math.random() * decepticonMessages.length)];
+                    
+                    // Type out new message
+                    const randomMessage = decepticonMessages[Math.floor(Math.random() * decepticonMessages.length)];
+                    typeMessage(randomMessage);
                 }
             }, 150);
         }
@@ -484,6 +750,9 @@
             
             // Set initial theme to Autobot
             isAutobot = true;
+            
+            // Type initial message
+            typeMessage(autobotMessages[Math.floor(Math.random() * autobotMessages.length)]);
             
             // Schedule faction switches
             factionSwitchInterval = setInterval(switchFaction, 8000); // Switch every 8 seconds

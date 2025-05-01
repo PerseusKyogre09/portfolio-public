@@ -7,6 +7,118 @@
     <link rel="stylesheet" href="css/tailwind.css">
     <link rel="stylesheet" href="css/custom.css">
     <link rel="stylesheet" href="css/404b.css">
+    <style>
+        /* Mobile-friendly additions */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .floating {
+                padding: 1.5rem;
+            }
+            
+            .omnitrix-symbol {
+                width: 80px;
+                height: 80px;
+            }
+            
+            h1.text-5xl {
+                font-size: 3.5rem;
+            }
+            
+            h2.text-3xl {
+                font-size: 2rem;
+            }
+            
+            p.text-xl {
+                font-size: 1.1rem;
+                padding: 0 0.5rem;
+            }
+            
+            .alien-image {
+                max-height: 50vh;
+                right: -15%;
+                opacity: 0.7;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .omnitrix-symbol {
+                width: 60px;
+                height: 60px;
+            }
+            
+            h1.text-5xl {
+                font-size: 3rem;
+            }
+            
+            h2.text-3xl {
+                font-size: 1.75rem;
+            }
+            
+            p.text-xl {
+                font-size: 1rem;
+            }
+            
+            .alien-image {
+                max-height: 40vh;
+                right: -20%;
+                opacity: 0.6;
+            }
+            
+            .alien-button {
+                padding: 0.75rem 1.5rem;
+            }
+        }
+        
+        /* Landscape mode */
+        @media (max-height: 600px) and (orientation: landscape) {
+            .container {
+                padding: 0.5rem;
+            }
+            
+            .floating {
+                padding: 1rem;
+                max-width: 60%;
+                margin-left: 1rem;
+            }
+            
+            .omnitrix-symbol {
+                width: 50px;
+                height: 50px;
+                margin-bottom: 0.5rem;
+            }
+            
+            h1.text-5xl {
+                font-size: 2.5rem;
+                margin-bottom: 0.5rem;
+            }
+            
+            h2.text-3xl {
+                font-size: 1.5rem;
+                margin-bottom: 0.5rem;
+            }
+            
+            p.text-xl {
+                font-size: 0.9rem;
+                margin-bottom: 0.5rem;
+            }
+            
+            .alien-button {
+                padding: 0.5rem 1rem;
+                font-size: 0.9rem;
+                margin-top: 0.5rem;
+            }
+            
+            .alien-image {
+                max-height: 80vh;
+                right: 0;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="alien-effect-area">
