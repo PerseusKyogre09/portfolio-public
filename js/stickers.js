@@ -449,6 +449,8 @@ document.addEventListener("DOMContentLoaded", function() {
   function createBlockingOverlay() {
     const blockingOverlay = document.createElement('div');
     blockingOverlay.className = 'blocking-overlay';
+    // Make overlay clickable by setting pointer-events to none
+    blockingOverlay.style.pointerEvents = 'none';
     document.body.appendChild(blockingOverlay);
   }
   
@@ -456,6 +458,9 @@ document.addEventListener("DOMContentLoaded", function() {
   function showOmnitrixInterface() {
     const omnitrixInterface = document.createElement('div');
     omnitrixInterface.className = 'omnitrix-interface';
+    // Ensure the interface has higher z-index
+    omnitrixInterface.style.zIndex = '10000';
+    
     const omnitrixBody = document.createElement('div');
     omnitrixBody.className = 'omnitrix-body';
     const omnitrixDial = document.createElement('div');
@@ -484,7 +489,11 @@ document.addEventListener("DOMContentLoaded", function() {
       hologram.className = 'alien-hologram';
       hologram.dataset.alien = alien.name;
       hologram.dataset.power = alien.power;
-      hologram.style.backgroundColor = "rgba(0, 255, 0, 0.5)";
+      hologram.style.backgroundColor = "rgba(0, 255, 0, 0.7)"; // Brighter green
+      hologram.style.boxShadow = "0 0 15px rgba(0, 255, 0, 0.8)"; // Add glow effect
+      // Ensure holograms are clickable
+      hologram.style.cursor = 'pointer';
+      hologram.style.pointerEvents = 'auto';
       
       // Position in a circle
       const angle = (index / aliens.length) * Math.PI * 2;
@@ -497,6 +506,7 @@ document.addEventListener("DOMContentLoaded", function() {
       const nameLabel = document.createElement('div');
       nameLabel.className = 'alien-name';
       nameLabel.textContent = alien.name;
+      nameLabel.style.textShadow = "0 0 5px rgba(0, 255, 0, 0.8)"; // Add text glow
       hologram.appendChild(nameLabel);
       const silhouette = document.createElement('div');
       silhouette.className = 'alien-silhouette';
@@ -506,11 +516,14 @@ document.addEventListener("DOMContentLoaded", function() {
       }
       
       silhouette.style.backgroundImage = `url('../assets/aliens/${alienFileName}.png')`;
-      silhouette.style.filter = 'brightness(0)';
+      silhouette.style.filter = 'brightness(0)'; // Keep silhouettes completely black
       hologram.appendChild(silhouette);
       
       hologramContainer.appendChild(hologram);
-      hologram.addEventListener('click', function() {
+      
+      // Add specific click event listener to each hologram
+      hologram.addEventListener('click', function(event) {
+        event.stopPropagation(); // Prevent event bubbling
         console.log(`Clicked on ${alien.name}`);
         selectAlien(alien.name, alien.power);
       });
@@ -555,6 +568,7 @@ document.addEventListener("DOMContentLoaded", function() {
         hologram.style.transform = `translate(${x}px, ${y}px)`;
       });
     }
+    
     function handleKeyDown(event) {
       if (event.key === "ArrowLeft") {
         rotateHolograms('left');
@@ -565,6 +579,21 @@ document.addEventListener("DOMContentLoaded", function() {
     
     document.addEventListener('keydown', handleKeyDown);
     omnitrixInterface.keyboardListener = handleKeyDown;
+    
+    // Add a small instruction for keyboard navigation
+    const instruction = document.createElement('div');
+    instruction.className = 'keyboard-instruction';
+    instruction.textContent = 'Use ← → arrow keys to rotate';
+    instruction.style.position = 'absolute';
+    instruction.style.bottom = '20px';
+    instruction.style.left = '50%';
+    instruction.style.transform = 'translateX(-50%)';
+    instruction.style.color = 'rgba(0, 255, 0, 0.8)';
+    instruction.style.fontSize = '14px';
+    instruction.style.fontWeight = 'bold';
+    instruction.style.textShadow = '0 0 5px rgba(0, 255, 0, 0.5)';
+    instruction.style.zIndex = '11000';
+    omnitrixInterface.appendChild(instruction);
   }
   
   // Function to handle alien selection
@@ -616,15 +645,23 @@ document.addEventListener("DOMContentLoaded", function() {
         omnitrixDial.classList.add('pulse-ready');
       }
       
-      // Allow click anywhere to transform
-      const clickHandler = function() {
-        document.removeEventListener('click', clickHandler);
-        selectAlien(alienName, power);
-      };
+      // Make the silhouette clickable for transformation
+      const silhouette = selectedAlien.querySelector('.alien-silhouette');
+      if (silhouette) {
+        silhouette.style.cursor = 'pointer';
+        silhouette.addEventListener('click', function(e) {
+          e.stopPropagation();
+          selectAlien(alienName, power);
+        });
+      }
       
-      setTimeout(() => {
-        document.addEventListener('click', clickHandler);
-      }, 500);
+      // Make the entire centered alien clickable for transformation
+      selectedAlien.addEventListener('click', function(e) {
+        if (selectedAlien.classList.contains('centered')) {
+          e.stopPropagation();
+          selectAlien(alienName, power);
+        }
+      });
     }
   }
   
