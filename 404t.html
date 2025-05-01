@@ -611,7 +611,7 @@
                     
                     // Add mechanical sound for typing (only for non-space characters)
                     if (message[charIndex - 1] !== ' ' && Math.random() < 0.3) {
-                        const sounds = ['assets/sounds/transform-sound.mp3', 'assets/sounds/electric.mp3'];
+                        const sounds = ['assets/sounds/transform-sound.mp3', 'assets/sounds/glitch.mp3'];
                         const randomSound = new Audio(sounds[Math.floor(Math.random() * sounds.length)]);
                         randomSound.volume = 0.05;
                         randomSound.playbackRate = 2 + Math.random();
@@ -698,7 +698,7 @@
                 isAutobot = !isAutobot;
                 
                 // Play transformation sound
-                const transSound = new Audio('assets/sounds/transformation.mp3');
+                const transSound = new Audio('assets/sounds/transform-sound.mp3');
                 transSound.volume = 0.2;
                 transSound.play().catch(e => console.log("Audio play prevented", e));
                 

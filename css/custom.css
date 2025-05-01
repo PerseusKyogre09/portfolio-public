@@ -1691,7 +1691,7 @@ body.dark {
   position: fixed;
   z-index: 9992;
   top: 50%;
-  left: 100%;
+  left: 120%;
   transform: translate(0, -50%) scale(0.1);
   transition: all 2.5s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
@@ -1840,6 +1840,6 @@ body.dark {
 }
 
 .sticker[alt="Autobots"]:hover {
-  filter: brightness(1.2) drop-shadow(0 0 8px rgba(255, 0, 255, 0.7));
+  filter: brightness(1.2) drop-shadow(0 0 8px rgba(255, 0, 0, 0.7));
   transform: scale(1.15) rotate(0deg);
 }

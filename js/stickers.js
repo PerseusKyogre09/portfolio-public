@@ -1167,9 +1167,6 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 document.addEventListener("DOMContentLoaded", function() {
-  // Your existing sticker code...
-  
-  // Add Optimus Prime sticker interaction
   const optimusSticker = document.querySelector('.sticker[alt="Autobots"]');
   if (optimusSticker) {
     optimusSticker.addEventListener('click', function() {
@@ -1180,75 +1177,53 @@ document.addEventListener("DOMContentLoaded", function() {
   
   // Create the Transformers sequence
   function playTransformersSequence() {
-    // Play transformation sound
-    const transformSound = new Audio('../assets/sounds/transform-sound.mp3');
-    transformSound.volume = 0.5;
-    transformSound.play().catch(e => console.log('Audio playback prevented: ', e));
+    // Play truck engine sound
+    const engineSound = new Audio('../assets/sounds/truck-engine.mp3');
+    engineSound.volume = 0.5;
+    engineSound.play().catch(e => console.log('Audio playback prevented: ', e));
     
-    // Create paper tear effect
-    createPaperTearEffect();
+    // Show the truck approaching
+    showTruckApproaching();
     
-    // After tear effect, show the truck approaching
+    // Then transform to robot with transformation sound
     setTimeout(function() {
-      showTruckApproaching();
-    }, 1500);
-    
-    // Then transform to robot
-    setTimeout(function() {
+      const transformSound = new Audio('../assets/sounds/transform-sound.mp3');
+      transformSound.volume = 0.5;
+      transformSound.play().catch(e => console.log('Audio playback prevented: ', e));
       showRobotTransformation();
-    }, 4000);
+    }, 3000);
     
-    // Show Optimus Prime quote
+    // Show Optimus Prime quote with Peter Cullen voice
     setTimeout(function() {
+      const optimusVoice = new Audio('../assets/sounds/optimus-quote.mp3');
+      optimusVoice.volume = 0.6;
+      optimusVoice.play().catch(e => console.log('Audio playback prevented: ', e));
       showOptimusQuote("Freedom is the right of all sentient beings.");
-    }, 6000);
+    }, 5000);
     
     // Show Megatron appearing
     setTimeout(function() {
       showMegatronAppearing();
-    }, 8500);
+    }, 8000);
     
-    // Show Megatron quote
+    // Show Megatron quote with Frank Welker voice
     setTimeout(function() {
-      showMegatronQuote("Peace through tyranny!");
-    }, 10000);
+      const megatronVoice = new Audio('../assets/sounds/megatron-quote.mp3');
+      megatronVoice.volume = 0.6;
+      megatronVoice.play().catch(e => console.log('Audio playback prevented: ', e));
+      showMegatronQuote("They cannot handle the wrath of Decepticon Tyranny... Huhuhahahahahahaha!!");
+    }, 9500);
     
-    // Finally, redirect to the glitching 404 page
+    // Finally, redirect to the Transformers themed 404 page
     setTimeout(function() {
-      window.location.href = "../404t.html"; // New Transformers themed 404 page
-    }, 12000);
+      window.location.href = "../404t.html";
+    }, 16500);
   }
   
   function createBlockingOverlay() {
     const blockingOverlay = document.createElement('div');
     blockingOverlay.className = 'blocking-overlay';
     document.body.appendChild(blockingOverlay);
-  }
-  
-  function createPaperTearEffect() {
-    // Create paper tear container
-    const tearContainer = document.createElement('div');
-    tearContainer.className = 'paper-tear-container';
-    
-    // Create tear SVG element
-    const tearSVG = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-    tearSVG.setAttribute("class", "paper-tear");
-    tearSVG.setAttribute("viewBox", "0 0 100 100");
-    tearSVG.setAttribute("preserveAspectRatio", "none");
-    
-    // Create jagged path for the tear
-    const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
-    path.setAttribute("d", "M0,0 L100,0 L100,40 C80,35 70,45 60,40 C50,35 40,45 30,40 C20,35 10,45 0,40 Z");
-    path.setAttribute("fill", "#333");
-    
-    tearSVG.appendChild(path);
-    tearContainer.appendChild(tearSVG);
-    document.body.appendChild(tearContainer);
-    
-    // Add animation class
-    setTimeout(() => {
-      tearContainer.classList.add('tear-animate');
-    }, 100);
   }
   
   function showTruckApproaching() {
