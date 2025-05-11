@@ -38,6 +38,20 @@ function initProjectFilters() {
 
 // Filter projects based on category
 function filterProjects(filterValue, projectCards) {
+    // Add a subtle visual effect to the container
+    const container = document.getElementById('projects-container');
+    if (container) {
+        container.style.transition = 'transform 0.3s ease';
+        container.style.transform = 'scale(0.98)';
+        
+        setTimeout(() => {
+            container.style.transform = 'scale(1)';
+        }, 300);
+    }
+    
+    // Count for staggered animations
+    let visibleCount = 0;
+    
     projectCards.forEach(card => {
         // Get the card's category
         const cardCategory = card.getAttribute('data-category');
@@ -47,26 +61,35 @@ function filterProjects(filterValue, projectCards) {
             // Show the card with animation
             card.style.display = 'block';
             card.style.opacity = '0';
-            card.style.transform = 'translateY(20px)';
+            card.style.transform = 'translateY(30px) scale(0.95)';
             
-            // Animate the card
+            // Animate the card with staggered delay
             setTimeout(() => {
                 card.style.opacity = '1';
-                card.style.transform = 'translateY(0)';
-                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-            }, 10);
+                card.style.transform = 'translateY(0) scale(1)';
+                card.style.transition = 'opacity 0.6s ease, transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)';
+            }, 50 + (visibleCount * 100)); // Staggered delay
+            
+            visibleCount++;
         } else {
             // Hide the card with animation
             card.style.opacity = '0';
-            card.style.transform = 'translateY(20px)';
-            card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            card.style.transform = 'translateY(20px) scale(0.95)';
+            card.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
             
             // Remove from DOM after animation
             setTimeout(() => {
                 card.style.display = 'none';
-            }, 500);
+            }, 400);
         }
     });
+    
+    // Update ScrollCue if available
+    if (typeof ScrollCue !== 'undefined') {
+        setTimeout(() => {
+            ScrollCue.update();
+        }, 600);
+    }
 }
 
 // Initialize animations for project cards
@@ -74,12 +97,55 @@ function initProjectCardAnimations() {
     const projectCards = document.querySelectorAll('.project-card');
     
     projectCards.forEach((card, index) => {
-        // Add delay based on index for staggered animation
-        card.style.animationDelay = `${index * 0.1}s`;
+        // Add staggered entrance animations
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(30px)';
         
-        // Add animation class
-        card.classList.add('animate-fade-in');
+        // Create a more sophisticated hover effect
+        card.addEventListener('mouseenter', () => {
+            // Elevate the card slightly higher than its natural hover state
+            card.style.transform = 'translateY(-12px) scale(1.02)';
+            card.style.boxShadow = '0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(99, 102, 241, 0.1) inset';
+            card.style.transition = 'transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease';
+            
+            // Add a subtle glow to the card border
+            card.style.borderColor = 'rgba(99, 102, 241, 0.3)';
+            
+            // Animate the project image/icon with a subtle scale
+            const imageContainer = card.querySelector('.relative.overflow-hidden');
+            if (imageContainer) {
+                imageContainer.style.transform = 'scale(1.05)';
+                imageContainer.style.transition = 'transform 0.5s ease';
+            }
+        });
+        
+        card.addEventListener('mouseleave', () => {
+            // Return to normal state but maintain smooth transition
+            card.style.transform = '';
+            card.style.boxShadow = '';
+            card.style.borderColor = '';
+            
+            // Reset image container
+            const imageContainer = card.querySelector('.relative.overflow-hidden');
+            if (imageContainer) {
+                imageContainer.style.transform = '';
+            }
+        });
+        
+        // Trigger the entrance animation with staggered timing
+        setTimeout(() => {
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0)';
+            card.style.transition = 'opacity 0.8s ease, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1)';
+        }, 100 + (index * 120)); // Staggered delay based on card index
     });
+    
+    // Re-initialize ScrollCue after animations have completed
+    if (typeof ScrollCue !== 'undefined') {
+        setTimeout(() => {
+            ScrollCue.update();
+        }, 100 + (projectCards.length * 120) + 800); // Wait for all cards to animate
+    }
 }
 
 // Expand GitHub contribution chart with more weeks

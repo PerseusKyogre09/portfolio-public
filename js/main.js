@@ -3,7 +3,54 @@ document.addEventListener('DOMContentLoaded', function() {
     initTypedText();
     initMobileMenu();
     initScrollAnimations();
+    initScrollCue();
+    initPageTransitions();
 });
+
+// Also add load event to ensure ScrollCue is initialized even if scripts load asynchronously
+window.addEventListener('load', function() {
+    deferAnimation(() => {
+        // Re-initialize ScrollCue on load to ensure all elements are properly animated
+        initScrollCue();
+        
+        // Rerun any other animations that need to be deferred
+        if (typeof animateSkillCircles === 'function') {
+            animateSkillCircles();
+        }
+    });
+});
+
+function initScrollCue() {
+    if (typeof ScrollCue !== 'undefined') {
+        ScrollCue.init({
+            duration: 800,          // Duration of the animation
+            interval: 0.12,         // Time between animations of elements
+            percentage: 0.70,       // When to trigger the animation
+            parentSelector: '',     
+            childSelector: '.scrollcue',
+            easing: 'easeOutExpo', // Smooth easing function
+            once: false,           // Allow animations to repeat
+            docSlider: false,
+            breakpoint: 768,       // Mobile breakpoint
+            // Add new options for better performance
+            delayTime: 100,        // Small delay after elements become visible
+            skipMobile: false,     // Keep animations on mobile but simplify them
+            beforeReveal: (element) => {
+                // Ensure smooth interaction with page transitions
+                element.style.willChange = 'opacity, transform';
+            },
+            afterReveal: (element) => {
+                // Cleanup
+                element.style.willChange = 'auto';
+            }
+        });
+        
+        // Re-run ScrollCue after all animations are complete
+        ScrollCue.update();
+    } else {
+        console.warn('ScrollCue.js library not loaded yet. Will retry on window load.');
+    }
+}
 
 function initParticles() {
     if (typeof particlesJS !== 'undefined') {
@@ -139,6 +186,73 @@ function handleFormSubmit(event, formId) {
             }, 3000);
         }, 1500);
     }
+}
+
+function initPageTransitions() {
+    // Create transition element if it doesn't exist
+    let transitionElement = document.getElementById('page-transition');
+    if (!transitionElement) {
+        transitionElement = document.createElement('div');
+        transitionElement.id = 'page-transition';
+        transitionElement.className = 'page-transition';
+        document.body.appendChild(transitionElement);
+    }
+
+    // Add transition to all internal links
+    document.querySelectorAll('a').forEach(link => {
+        // Only add transition to internal links and not anchor links
+        if (link.hostname === window.location.hostname && !link.hash) {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const href = this.getAttribute('href');
+                
+                // Show transition
+                transitionElement.classList.add('active');
+                
+                // Wait for transition animation to complete before navigating
+                setTimeout(() => {
+                    window.location.href = href;
+                }, 600); // Match with CSS transition duration
+            });
+        }
+    });
+
+    // Handle back/forward browser navigation
+    window.addEventListener('pageshow', function(event) {
+        if (event.persisted) {
+            // Page was loaded from back/forward cache
+            transitionElement.classList.remove('active');
+        }
+    });
+
+    // Add initial page load animation
+    document.body.classList.add('page-loaded');
+
+    // Ensure main content has animation class
+    const mainContent = document.querySelector('main');
+    if (mainContent) {
+        mainContent.classList.add('main-content');
+    }
+}
+
+// Helper function to defer animations until page transition is complete
+function deferAnimation(callback, delay = 100) {
+    // Wait for any ongoing page transitions
+    const transitionElement = document.getElementById('page-transition');
+    if (transitionElement && transitionElement.classList.contains('active')) {
+        setTimeout(() => deferAnimation(callback, delay), 100);
+        return;
+    }
+    
+    // Execute the animation with a small delay
+    setTimeout(callback, delay);
+}
+
+// Helper to manage animations in batches
+function batchAnimations(elements, animationCallback, interval = 100) {
+    elements.forEach((element, index) => {
+        deferAnimation(() => animationCallback(element), index * interval);
+    });
 }
 
 window.portfolio = {

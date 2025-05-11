@@ -10,16 +10,16 @@
 </head>
 <body class="dark bg-gray-900 text-gray-200 min-h-screen flex flex-col transition-colors duration-300">
     <!-- Particle Background -->
-    <div id="particles-js" class="fixed inset-0 z-0"></div>    <header class="floating-nav">
+    <div id="particles-js" class="fixed inset-0 z-0"></div>    <header class="floating-nav scrollcue" data-cue="fade-in">
         <nav class="container mx-auto">
             <div class="flex items-center justify-between">
-                <div class="text-xl font-bold">
+                <div class="text-xl font-bold scrollcue" data-cue="slide-right" data-delay="100">
                     <a href="../index.html" class="text-indigo-400 hover:text-indigo-300 flex items-center gap-2 transition-colors">
                         <span class="text-2xl">&lt;/&gt;</span> Pradeepto Pal
                     </a>
                 </div>
                 
-                <div class="hidden md:flex space-x-8 text-sm">
+                <div class="hidden md:flex space-x-8 text-sm scrollcue" data-cue="slide-left" data-delay="200">
                     <a href="../index.html" class="hover:text-indigo-400 transition-colors nav-link">Home</a>
                     <a href="about.html" class="text-indigo-400 font-medium nav-link active">About</a>
                     <a href="skills.html" class="hover:text-indigo-400 transition-colors nav-link">Skills</a>
@@ -27,7 +27,7 @@
                     <a href="contact.html" class="hover:text-indigo-400 transition-colors nav-link">Contact</a>
                 </div>
                 
-                <div class="flex items-center">
+                <div class="flex items-center scrollcue" data-cue="fade-in" data-delay="300">
                     <button id="theme-toggle" class="hover:text-indigo-400 mr-4 transition-colors focus:outline-none">
                         <i class="fas fa-moon text-xl"></i>
                     </button>
@@ -36,15 +36,14 @@
                         <i class="fas fa-bars text-xl"></i>
                     </button>
                 </div>
-            </div>
-              <!-- Mobile Menu -->
-            <div id="mobile-menu" class="md:hidden hidden mt-4 mb-2 px-4 pt-2 pb-3">
+            </div>            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="md:hidden hidden mt-4 mb-2 px-4 pt-2 pb-3 scrollcue" data-cue="fade-in">
                 <div class="flex flex-col space-y-3">
-                    <a href="../index.html" class="hover:text-indigo-400 transition-colors py-2">Home</a>
-                    <a href="about.html" class="text-indigo-400 font-medium py-2">About</a>
-                    <a href="skills.html" class="hover:text-indigo-400 transition-colors py-2">Skills</a>
-                    <a href="projects.html" class="hover:text-indigo-400 transition-colors py-2">Projects</a>
-                    <a href="contact.html" class="hover:text-indigo-400 transition-colors py-2">Contact</a>
+                    <a href="../index.html" class="hover:text-indigo-400 transition-colors py-2 scrollcue" data-cue="slide-up" data-delay="100">Home</a>
+                    <a href="about.html" class="text-indigo-400 font-medium py-2 scrollcue" data-cue="slide-up" data-delay="200">About</a>
+                    <a href="skills.html" class="hover:text-indigo-400 transition-colors py-2 scrollcue" data-cue="slide-up" data-delay="300">Skills</a>
+                    <a href="projects.html" class="hover:text-indigo-400 transition-colors py-2 scrollcue" data-cue="slide-up" data-delay="400">Projects</a>
+                    <a href="contact.html" class="hover:text-indigo-400 transition-colors py-2 scrollcue" data-cue="slide-up" data-delay="500">Contact</a>
                 </div>
             </div>
         </nav>    </header>
@@ -53,22 +52,19 @@
         <!-- Hero Section -->
         <section class="relative py-20 overflow-hidden">
             <div class="container mx-auto px-6 relative">
-                <div class="max-w-4xl mx-auto">
-                    <div class="text-center mb-16 animate-fade-in">
-                        <h1 class="text-4xl md:text-5xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-500">About Me</h1>
-                        <div class="w-24 h-1 bg-indigo-500 mx-auto rounded-full"></div>
+                <div class="max-w-4xl mx-auto">                    <div class="text-center mb-16 scrollcue" data-cue="fade-in">
+                        <h1 class="text-4xl md:text-5xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-500 scrollcue" data-cue="slide-up" data-delay="200">About Me</h1>
+                        <div class="w-24 h-1 bg-indigo-500 mx-auto rounded-full scrollcue" data-cue="zoom-in" data-delay="400"></div>
                     </div>
                 </div>
             </div>
-        </section>
-
-        <!-- About Content -->
+        </section>        <!-- About Content -->
         <section class="py-10">
             <div class="container mx-auto px-6">
                 <div class="max-w-5xl mx-auto">
-                    <div class="bg-gray-800 rounded-3xl p-8 md:p-12 shadow-2xl mb-20 animate-fade-in-up">
+                    <div class="bg-gray-800 rounded-3xl p-8 md:p-12 shadow-2xl mb-20 scrollcue" data-cue="fade-in">
                         <div class="flex flex-col lg:flex-row gap-10 items-center">
-                            <div class="lg:w-1/3 mb-8 lg:mb-0">
+                            <div class="lg:w-1/3 mb-8 lg:mb-0 scrollcue" data-cue="slide-right" data-delay="300">
                                 <div class="relative">
                                     <div class="aspect-w-1 aspect-h-1 overflow-hidden rounded-2xl border-4 border-gray-700 shadow-xl">
                                         <div class="bg-indigo-900 h-full w-full flex items-center justify-center">
@@ -79,8 +75,7 @@
                                         <span class="text-2xl font-bold text-white">1st</span>
                                     </div>
                                 </div>
-                                
-                                <div class="flex justify-center space-x-4 mt-8">
+                                  <div class="flex justify-center space-x-4 mt-8 scrollcue" data-cue="fade-in" data-delay="600">
                                     <a href="https://github.com/PerseusKyogre09" class="social-icon bg-gray-700 hover:bg-gray-600 w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300" aria-label="GitHub">
                                         <i class="fab fa-github text-lg text-indigo-400"></i>
                                     </a>
@@ -93,7 +88,7 @@
                                 </div>
                             </div>
 
-                            <div class="lg:w-2/3">
+                            <div class="lg:w-2/3 scrollcue" data-cue="slide-left" data-delay="400">
                                 <h2 class="text-3xl font-bold mb-6 text-indigo-400">Who am I?</h2>
                                 <p class="text-gray-300 leading-relaxed mb-4">
                                     Hello! I'm Pradeepto Pal, a first-year CSE student at SRMIST'2028. I have a passion for creating digital solutions that make a positive impact.
@@ -133,16 +128,14 @@
                             </div>
                         </div>
                     </div>
-                    
-                    <!-- Interests & Hobbies -->
-                    <div class="bg-gray-800 rounded-2xl p-8 shadow-xl mb-20 animate-fade-in">
-                        <div class="text-center mb-10">
+                      <!-- Interests & Hobbies -->
+                    <div class="bg-gray-800 rounded-2xl p-8 shadow-xl mb-20 scrollcue" data-cue="fade-in">
+                        <div class="text-center mb-10 scrollcue" data-cue="slide-up">
                             <h3 class="text-2xl font-bold text-white mb-2">Interests & Hobbies</h3>
                             <p class="text-gray-400">When I'm not coding, you can find me exploring these activities</p>
                         </div>
-                        
-                        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-                            <div class="bg-gray-700 bg-opacity-40 rounded-xl p-6 text-center transform hover:-translate-y-2 transition-all duration-300">
+                          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                            <div class="bg-gray-700 bg-opacity-40 rounded-xl p-6 text-center transform hover:-translate-y-2 transition-all duration-300 scrollcue" data-cue="zoom-in" data-delay="100">
                                 <div class="w-16 h-16 bg-indigo-900 rounded-full flex items-center justify-center mx-auto mb-4">
                                     <i class="fas fa-book text-2xl text-indigo-400"></i>
                                 </div>
@@ -151,8 +144,7 @@
                                     I enjoy reading novels like "Percy Jackson", "Harry Potter", "The Hunger Games", and "The Maze Runner". These stories fuel my imagination and provide endless inspiration.
                                 </p>
                             </div>
-                            
-                            <div class="bg-gray-700 bg-opacity-40 rounded-xl p-6 text-center transform hover:-translate-y-2 transition-all duration-300">
+                              <div class="bg-gray-700 bg-opacity-40 rounded-xl p-6 text-center transform hover:-translate-y-2 transition-all duration-300 scrollcue" data-cue="zoom-in" data-delay="200">
                                 <div class="w-16 h-16 bg-indigo-900 rounded-full flex items-center justify-center mx-auto mb-4">
                                     <i class="fas fa-gamepad text-2xl text-indigo-400"></i>
                                 </div>
@@ -161,8 +153,7 @@
                                     I enjoy playing Pokemon games and engaging in competitive Pokemon battles that test my strategic thinking and adaptability. I also like playing Minecraft, providing endless creativity.
                                 </p>
                             </div>
-                            
-                            <div class="bg-gray-700 bg-opacity-40 rounded-xl p-6 text-center transform hover:-translate-y-2 transition-all duration-300">
+                              <div class="bg-gray-700 bg-opacity-40 rounded-xl p-6 text-center transform hover:-translate-y-2 transition-all duration-300 scrollcue" data-cue="zoom-in" data-delay="300">
                                 <div class="w-16 h-16 bg-indigo-900 rounded-full flex items-center justify-center mx-auto mb-4">
                                     <i class="fas fa-music text-2xl text-indigo-400"></i>
                                 </div>
@@ -171,8 +162,7 @@
                                     I enjoy singing in my free time and listening to my playlists in spotify. Music helps me relax and stay creative.
                                 </p>
                             </div>
-                            
-                            <div class="bg-gray-700 bg-opacity-40 rounded-xl p-6 text-center transform hover:-translate-y-2 transition-all duration-300">
+                              <div class="bg-gray-700 bg-opacity-40 rounded-xl p-6 text-center transform hover:-translate-y-2 transition-all duration-300 scrollcue" data-cue="zoom-in" data-delay="400">
                                 <div class="w-16 h-16 bg-indigo-900 rounded-full flex items-center justify-center mx-auto mb-4">
                                     <i class="fas fa-film text-2xl text-indigo-400"></i>
                                 </div>
@@ -181,8 +171,7 @@
                                     I'm a fan of sci-fi and tech-themed movies and TV shows. I also enjoy watching Marvel movies. Currently, I am watching Doctor Who.
                                 </p>
                             </div>
-                            
-                            <div class="bg-gray-700 bg-opacity-40 rounded-xl p-6 text-center transform hover:-translate-y-2 transition-all duration-300">
+                              <div class="bg-gray-700 bg-opacity-40 rounded-xl p-6 text-center transform hover:-translate-y-2 transition-all duration-300 scrollcue" data-cue="zoom-in" data-delay="500">
                                 <div class="w-16 h-16 bg-indigo-900 rounded-full flex items-center justify-center mx-auto mb-4">
                                     <i class="fas fa-landmark text-2xl text-indigo-400"></i>
                                 </div>
@@ -191,8 +180,7 @@
                                     I enjoy delving into ancient mythologies like Hindu, Greek, Egyptian Norse etc., through books and shows, exploring the fascinating stories and cultures that shaped human history.
                                 </p>
                             </div>
-                            
-                            <div class="bg-gray-700 bg-opacity-40 rounded-xl p-6 text-center transform hover:-translate-y-2 transition-all duration-300">
+                              <div class="bg-gray-700 bg-opacity-40 rounded-xl p-6 text-center transform hover:-translate-y-2 transition-all duration-300 scrollcue" data-cue="zoom-in" data-delay="600">
                                 <div class="w-16 h-16 bg-indigo-900 rounded-full flex items-center justify-center mx-auto mb-4">
                                     <i class="fas fa-pencil-alt text-2xl text-indigo-400"></i>
                                 </div>
@@ -203,16 +191,14 @@
                             </div>
                         </div>
                     </div>
-                    
-                    <!-- Quotes from Favorites -->
-                    <div class="mb-20 animate-fade-in">
-                        <div class="text-center mb-10">
+                      <!-- Quotes from Favorites -->
+                    <div class="mb-20 scrollcue" data-cue="fade-in">
+                        <div class="text-center mb-10 scrollcue" data-cue="slide-up">
                             <h3 class="text-2xl font-bold text-white mb-2">Quotes That Inspire Me</h3>
                             <p class="text-gray-400">Memorable lines from my favorite books, shows, and movies</p>
                         </div>
-                        
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                            <div class="bg-gray-800 rounded-2xl p-8 shadow-xl relative border-l-4 border-indigo-500">
+                          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <div class="bg-gray-800 rounded-2xl p-8 shadow-xl relative border-l-4 border-indigo-500 scrollcue" data-cue="slide-right" data-delay="200">
                                 <div class="absolute -top-4 -left-4 w-10 h-10 bg-indigo-600 rounded-full flex items-center justify-center shadow-lg">
                                     <i class="fas fa-quote-left text-white"></i>
                                 </div>
@@ -221,8 +207,7 @@
                                 </blockquote>
                                 <p class="text-indigo-400 font-medium">- Albus Dumbledore, Harry Potter</p>
                             </div>
-                            
-                            <div class="bg-gray-800 rounded-2xl p-8 shadow-xl relative border-l-4 border-purple-500">
+                              <div class="bg-gray-800 rounded-2xl p-8 shadow-xl relative border-l-4 border-purple-500 scrollcue" data-cue="slide-right" data-delay="400">
                                 <div class="absolute -top-4 -left-4 w-10 h-10 bg-purple-600 rounded-full flex items-center justify-center shadow-lg">
                                     <i class="fas fa-quote-left text-white"></i>
                                 </div>
@@ -231,8 +216,7 @@
                                 </blockquote>
                                 <p class="text-purple-400 font-medium">- The Twelfth Doctor, Doctor Who</p>
                             </div>
-                            
-                            <div class="bg-gray-800 rounded-2xl p-8 shadow-xl relative border-l-4 border-blue-500">
+                              <div class="bg-gray-800 rounded-2xl p-8 shadow-xl relative border-l-4 border-blue-500 scrollcue" data-cue="slide-left" data-delay="300">
                                 <div class="absolute -top-4 -left-4 w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center shadow-lg">
                                     <i class="fas fa-quote-left text-white"></i>
                                 </div>
@@ -241,8 +225,7 @@
                                 </blockquote>
                                 <p class="text-blue-400 font-medium">- Percy Jackson, Percy Jackson & The Olympians</p>
                             </div>
-                            
-                            <div class="bg-gray-800 rounded-2xl p-8 shadow-xl relative border-l-4 border-green-500">
+                              <div class="bg-gray-800 rounded-2xl p-8 shadow-xl relative border-l-4 border-green-500 scrollcue" data-cue="slide-right" data-delay="600">
                                 <div class="absolute -top-4 -left-4 w-10 h-10 bg-green-600 rounded-full flex items-center justify-center shadow-lg">
                                     <i class="fas fa-quote-left text-white"></i>
                                 </div>
@@ -251,8 +234,7 @@
                                 </blockquote>
                                 <p class="text-green-400 font-medium">- N, Pokémon Black & White</p>
                             </div>
-                            
-                            <div class="bg-gray-800 rounded-2xl p-8 shadow-xl relative border-l-4 border-red-500">
+                              <div class="bg-gray-800 rounded-2xl p-8 shadow-xl relative border-l-4 border-red-500 scrollcue" data-cue="slide-left" data-delay="800">
                                 <div class="absolute -top-4 -left-4 w-10 h-10 bg-red-600 rounded-full flex items-center justify-center shadow-lg">
                                     <i class="fas fa-quote-left text-white"></i>
                                 </div>
@@ -261,8 +243,7 @@
                                 </blockquote>
                                 <p class="text-red-400 font-medium">- Ben Tennyson, Ben 10</p>
                             </div>
-                            
-                            <div class="bg-gray-800 rounded-2xl p-8 shadow-xl relative border-l-4 border-yellow-500">
+                              <div class="bg-gray-800 rounded-2xl p-8 shadow-xl relative border-l-4 border-yellow-500 scrollcue" data-cue="slide-right" data-delay="1000">
                                 <div class="absolute -top-4 -left-4 w-10 h-10 bg-yellow-600 rounded-full flex items-center justify-center shadow-lg">
                                     <i class="fas fa-quote-left text-white"></i>
                                 </div>
@@ -273,15 +254,13 @@
                             </div>
                         </div>
                     </div>
-                    
-                    <!-- Future Goals -->
-                    <div class="bg-gray-800 rounded-2xl p-8 shadow-xl mb-20 animate-fade-in">
-                        <div class="text-center mb-10">
+                      <!-- Future Goals -->
+                    <div class="bg-gray-800 rounded-2xl p-8 shadow-xl mb-20 scrollcue" data-cue="fade-in">
+                        <div class="text-center mb-10 scrollcue" data-cue="slide-up">
                             <h3 class="text-2xl font-bold text-white mb-2">Future Goals</h3>
                         </div>
-                        
-                        <div class="space-y-8">
-                            <div class="flex flex-col md:flex-row">
+                          <div class="space-y-8">
+                            <div class="flex flex-col md:flex-row scrollcue" data-cue="slide-left" data-delay="200">
                                 <div class="md:w-1/4 mb-4 md:mb-0 flex justify-center md:justify-start">
                                     <div class="w-16 h-16 bg-purple-900 rounded-full flex items-center justify-center">
                                         <i class="fas fa-laptop-code text-2xl text-purple-400"></i>
@@ -294,8 +273,7 @@
                                     </p>
                                 </div>
                             </div>
-                            
-                            <div class="flex flex-col md:flex-row">
+                              <div class="flex flex-col md:flex-row scrollcue" data-cue="slide-right" data-delay="400">
                                 <div class="md:w-1/4 mb-4 md:mb-0 flex justify-center md:justify-start">
                                     <div class="w-16 h-16 bg-purple-900 rounded-full flex items-center justify-center">
                                         <i class="fas fa-project-diagram text-2xl text-purple-400"></i>
@@ -308,8 +286,7 @@
                                     </p>
                                 </div>
                             </div>
-                            
-                            <div class="flex flex-col md:flex-row">
+                              <div class="flex flex-col md:flex-row scrollcue" data-cue="slide-left" data-delay="600">
                                 <div class="md:w-1/4 mb-4 md:mb-0 flex justify-center md:justify-start">
                                     <div class="w-16 h-16 bg-purple-900 rounded-full flex items-center justify-center">
                                         <i class="fas fa-briefcase text-2xl text-purple-400"></i>
@@ -322,8 +299,7 @@
                                     </p>
                                 </div>
                             </div>
-                            
-                            <div class="flex flex-col md:flex-row">
+                              <div class="flex flex-col md:flex-row scrollcue" data-cue="slide-right" data-delay="800">
                                 <div class="md:w-1/4 mb-4 md:mb-0 flex justify-center md:justify-start">
                                     <div class="w-16 h-16 bg-purple-900 rounded-full flex items-center justify-center">
                                         <i class="fas fa-hands-helping text-2xl text-purple-400"></i>
@@ -340,16 +316,14 @@
                             
                         </div>
                     </div>
-                    
-                    <!-- Testimonials/Quotes -->
-                    <div class="mb-20 animate-fade-in">
-                        <div class="text-center mb-10">
+                      <!-- Testimonials/Quotes -->
+                    <div class="mb-20 scrollcue" data-cue="fade-in">
+                        <div class="text-center mb-10 scrollcue" data-cue="slide-up">
                             <h3 class="text-2xl font-bold text-white mb-2">Words I Live By</h3>
                             <p class="text-gray-400">Quotes that inspire my journey in tech and life</p>
                         </div>
                         
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                            <div class="bg-gray-800 rounded-2xl p-8 shadow-xl relative border-l-4 border-indigo-500">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">                            <div class="bg-gray-800 rounded-2xl p-8 shadow-xl relative border-l-4 border-indigo-500 scrollcue" data-cue="slide-right" data-delay="200">
                                 <div class="absolute -top-4 -left-4 w-10 h-10 bg-indigo-600 rounded-full flex items-center justify-center shadow-lg">
                                     <i class="fas fa-quote-left text-white"></i>
                                 </div>
@@ -358,8 +332,7 @@
                                 </blockquote>
                                 <p class="text-indigo-400 font-medium">- Alan Kay</p>
                             </div>
-                            
-                            <div class="bg-gray-800 rounded-2xl p-8 shadow-xl relative border-l-4 border-purple-500">
+                              <div class="bg-gray-800 rounded-2xl p-8 shadow-xl relative border-l-4 border-purple-500 scrollcue" data-cue="slide-left" data-delay="400">
                                 <div class="absolute -top-4 -left-4 w-10 h-10 bg-purple-600 rounded-full flex items-center justify-center shadow-lg">
                                     <i class="fas fa-quote-left text-white"></i>
                                 </div>
@@ -368,8 +341,7 @@
                                 </blockquote>
                                 <p class="text-purple-400 font-medium">- Leonardo da Vinci</p>
                             </div>
-                            
-                            <div class="bg-gray-800 rounded-2xl p-8 shadow-xl relative border-l-4 border-blue-500">
+                              <div class="bg-gray-800 rounded-2xl p-8 shadow-xl relative border-l-4 border-blue-500 scrollcue" data-cue="slide-right" data-delay="600">
                                 <div class="absolute -top-4 -left-4 w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center shadow-lg">
                                     <i class="fas fa-quote-left text-white"></i>
                                 </div>
@@ -378,8 +350,7 @@
                                 </blockquote>
                                 <p class="text-blue-400 font-medium">- Cory House</p>
                             </div>
-                            
-                            <div class="bg-gray-800 rounded-2xl p-8 shadow-xl relative border-l-4 border-green-500">
+                              <div class="bg-gray-800 rounded-2xl p-8 shadow-xl relative border-l-4 border-green-500 scrollcue" data-cue="slide-left" data-delay="800">
                                 <div class="absolute -top-4 -left-4 w-10 h-10 bg-green-600 rounded-full flex items-center justify-center shadow-lg">
                                     <i class="fas fa-quote-left text-white"></i>
                                 </div>
@@ -390,14 +361,13 @@
                             </div>
                         </div>
                     </div>
-                    
-                    <!-- CTA Section -->
-                    <div class="bg-gradient-to-r from-indigo-900 to-purple-900 rounded-3xl p-10 text-center shadow-2xl animate-fade-in">
+                      <!-- CTA Section -->
+                    <div class="bg-gradient-to-r from-indigo-900 to-purple-900 rounded-3xl p-10 text-center shadow-2xl scrollcue" data-cue="zoom-in">
                         <h3 class="text-3xl font-bold text-white mb-4">Let's Build Something Amazing Together</h3>
                         <p class="text-indigo-200 mb-8 max-w-2xl mx-auto">
                             I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision. Let's connect and explore how we can collaborate!
                         </p>
-                        <div class="flex flex-col sm:flex-row justify-center gap-4">
+                        <div class="flex flex-col sm:flex-row justify-center gap-4 scrollcue" data-cue="fade-in" data-delay="300">
                             <a href="projects.html" class="px-8 py-3 rounded-full bg-white text-indigo-900 font-medium transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-indigo-500/30">
                                 View My Projects
                             </a>
@@ -409,11 +379,9 @@
                 </div>
             </div>
         </section>
-    </main>
-
-    <footer class="bg-gray-900 py-10 border-t border-gray-800 z-10 relative">
+    </main>    <footer class="bg-gray-900 py-10 border-t border-gray-800 z-10 relative">
         <div class="container mx-auto px-6">
-            <div class="flex flex-col md:flex-row justify-between items-center">
+            <div class="flex flex-col md:flex-row justify-between items-center scrollcue" data-cue="fade-in">
                 <div class="mb-6 md:mb-0">
                     <div class="text-lg font-bold text-indigo-400 flex items-center">
                         <span class="text-xl mr-1">&lt;/&gt;</span> Pradeepto
@@ -421,7 +389,7 @@
                     <p class="text-gray-500 text-sm mt-1">Computer Science Student</p>
                 </div>
                 
-                <div class="flex flex-col md:flex-row md:space-x-10 space-y-4 md:space-y-0 text-sm">
+                <div class="flex flex-col md:flex-row md:space-x-10 space-y-4 md:space-y-0 text-sm scrollcue" data-cue="fade-in" data-delay="200">
                     <a href="../index.html" class="text-gray-400 hover:text-indigo-400 transition-colors">Home</a>
                     <a href="about.html" class="text-gray-400 hover:text-indigo-400 transition-colors">About</a>
                     <a href="skills.html" class="text-gray-400 hover:text-indigo-400 transition-colors">Skills</a>
@@ -430,8 +398,8 @@
                 </div>
             </div>
             
-            <div class="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
-                  <div class="flex space-x-6">
+            <div class="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center scrollcue" data-cue="fade-in" data-delay="400">
+                  <div class="flex space-x-6 scrollcue" data-cue="slide-up" data-delay="600">
                     <a href="https://github.com/PerseusKyogre09" class="text-gray-500 hover:text-indigo-400 transition-colors" aria-label="GitHub">
                         <i class="fab fa-github"></i>
                     </a>
@@ -450,9 +418,8 @@
                 </div>
             </div>
         </div>
-    </footer>
-
-    <!-- Scripts -->    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+    </footer>    <!-- Scripts -->    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://unpkg.com/scrollcue.js@latest/scrollcue.all-in-one.min.js"></script>
     <script src="../js/main.js"></script>
     <script src="../js/animations.js"></script>
     <script src="../js/theme.js"></script>
