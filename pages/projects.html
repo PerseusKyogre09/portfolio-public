@@ -3,17 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio | Projects</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <title>Portfolio | Projects</title>    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/custom.css">
+    <link rel="stylesheet" href="../css/floating-nav.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body class="dark bg-gray-900 text-gray-200 min-h-screen flex flex-col transition-colors duration-300">
     <!-- Particle Background -->
-    <div id="particles-js" class="fixed inset-0 z-0"></div>
-
-    <header class="sticky top-0 bg-opacity-95 backdrop-filter backdrop-blur-sm z-50 shadow-lg">
-        <nav class="container mx-auto px-6 py-4">
+    <div id="particles-js" class="fixed inset-0 z-0"></div>    <header class="floating-nav">
+        <nav class="container mx-auto">
             <div class="flex items-center justify-between">
                 <div class="text-xl font-bold">
                     <a href="../index.html" class="text-indigo-400 hover:text-indigo-300 flex items-center gap-2 transition-colors">
@@ -39,10 +37,9 @@
                     </button>
                 </div>
             </div>
-            
-            <!-- Mobile Menu -->
-            <div id="mobile-menu" class="md:hidden hidden mt-4 pb-2 border-t">
-                <div class="flex flex-col space-y-3 mt-3">
+              <!-- Mobile Menu -->
+            <div id="mobile-menu" class="md:hidden hidden mt-4 mb-2 px-4 pt-2 pb-3">
+                <div class="flex flex-col space-y-3">
                     <a href="../index.html" class="hover:text-indigo-400 transition-colors py-2">Home</a>
                     <a href="about.html" class="hover:text-indigo-400 transition-colors py-2">About</a>
                     <a href="skills.html" class="hover:text-indigo-400 transition-colors py-2">Skills</a>
@@ -50,10 +47,9 @@
                     <a href="contact.html" class="hover:text-indigo-400 transition-colors py-2">Contact</a>
                 </div>
             </div>
-        </nav>
-    </header>
+        </nav>    </header>
 
-    <main class="flex-grow z-10 relative">
+    <main class="flex-grow z-10 relative with-floating-nav">
         <!-- Projects Header -->
         <section class="py-16 relative overflow-hidden">
             <div class="container mx-auto px-6">
@@ -411,11 +407,11 @@
         </div>
     </footer>
 
-    <!-- Scripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+    <!-- Scripts -->    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
     <script src="../js/main.js"></script>
     <script src="../js/animations.js"></script>
     <script src="../js/theme.js"></script>
+    <script src="../js/floating-nav.js"></script>
     <script src="../js/projects.js"></script>
     <script src="../js/stickers.js"></script>
 </body>
