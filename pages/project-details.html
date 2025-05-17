@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Details - Pradeepto Pal</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/custom.css">
+    <link rel="stylesheet" href="../css/floating-nav.css">
+    <link rel="stylesheet" href="../css/project-details.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/github-dark.min.css">
+    <script src="https://unpkg.com/scrollcue.js@latest/scrollcue.all-in-one.min.js"></script>
+</head>
+<body class="dark bg-gray-900 text-gray-200 min-h-screen flex flex-col transition-colors duration-300">
+    <!-- Particle Background -->
+    <div id="particles-js" class="fixed inset-0 z-0"></div>
+    
+    <header class="floating-nav scrollcue" data-cue="fade-in">
+        <nav class="container mx-auto">
+            <div class="flex items-center justify-between">
+                <div class="text-xl font-bold scrollcue" data-cue="slide-right" data-delay="100">
+                    <a href="../index.html" class="text-indigo-400 hover:text-indigo-300 flex items-center gap-2 transition-colors">
+                        <span class="text-2xl">&lt;/&gt;</span> Pradeepto Pal
+                    </a>
+                </div>
+                
+                <div class="hidden md:flex space-x-8 text-sm scrollcue" data-cue="slide-left" data-delay="200">
+                    <a href="../index.html" class="hover:text-indigo-400 transition-colors nav-link">Home</a>
+                    <a href="about.html" class="hover:text-indigo-400 transition-colors nav-link">About</a>
+                    <a href="skills.html" class="hover:text-indigo-400 transition-colors nav-link">Skills</a>
+                    <a href="projects.html" class="text-indigo-400 font-medium nav-link active">Projects</a>
+                    <a href="contact.html" class="hover:text-indigo-400 transition-colors nav-link">Contact</a>
+                </div>
+                
+                <div class="flex items-center scrollcue" data-cue="fade-in" data-delay="300">
+                    <button id="theme-toggle" class="hover:text-indigo-400 mr-4 transition-colors focus:outline-none">
+                        <i class="fas fa-moon text-xl"></i>
+                    </button>
+                    
+                    <button id="mobile-menu-button" class="md:hidden hover:text-indigo-400 transition-colors focus:outline-none">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="md:hidden hidden mt-4 mb-2 px-4 pt-2 pb-3 scrollcue" data-cue="fade-in">
+                <div class="flex flex-col space-y-3">
+                    <a href="../index.html" class="hover:text-indigo-400 transition-colors py-2 scrollcue" data-cue="slide-up" data-delay="100">Home</a>
+                    <a href="about.html" class="hover:text-indigo-400 transition-colors py-2 scrollcue" data-cue="slide-up" data-delay="200">About</a>
+                    <a href="skills.html" class="hover:text-indigo-400 transition-colors py-2 scrollcue" data-cue="slide-up" data-delay="300">Skills</a>
+                    <a href="projects.html" class="text-indigo-400 font-medium py-2 scrollcue" data-cue="slide-up" data-delay="400">Projects</a>
+                    <a href="contact.html" class="hover:text-indigo-400 transition-colors py-2 scrollcue" data-cue="slide-up" data-delay="500">Contact</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="flex-grow z-10 relative with-floating-nav">
+        <section class="py-16 relative overflow-hidden">
+            <div class="container mx-auto px-6">
+                <div class="max-w-4xl mx-auto">
+                    <a href="projects.html" class="inline-flex items-center mb-8 text-indigo-400 hover:text-indigo-300 transition-colors scrollcue" data-cue="slide-right">
+                        <i class="fas fa-arrow-left mr-2"></i>
+                        <span>Back to Projects</span>
+                    </a>
+                    
+                    <div class="bg-gray-800 rounded-xl overflow-hidden shadow-2xl mb-8 scrollcue" data-cue="fade-in">
+                        <div id="project-header" class="relative overflow-hidden h-48">
+                            <div id="project-hero" class="h-full w-full flex items-center justify-center">
+                                <i id="project-icon" class="fas fa-code text-5xl text-indigo-300"></i>
+                            </div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-70"></div>
+                            <div class="absolute bottom-0 left-0 p-4">
+                                <span id="project-category-badge" class="bg-indigo-600 text-xs px-2 py-1 rounded-md text-white">Project</span>
+                            </div>
+                        </div>
+                        
+                        <div class="p-8">
+                            <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
+                                <h1 id="project-title" class="text-3xl font-bold text-white mb-4 md:mb-0">Project Title</h1>
+                                <div class="flex space-x-3">
+                                    <a id="github-link" href="#" class="text-gray-400 hover:text-white" target="_blank">
+                                        <i class="fab fa-github text-xl"></i>
+                                    </a>
+                                    <a id="gitlab-link" href="#" class="text-gray-400 hover:text-white" target="_blank">
+                                        <i class="fab fa-gitlab text-xl"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            
+                            <div id="project-tags" class="flex flex-wrap gap-2 text-xs mb-6">
+                                <!-- Tags will be inserted dynamically -->
+                            </div>
+                            
+                            <div id="project-description" class="text-gray-400 mb-6">
+                                <!-- Project description will be inserted dynamically -->
+                            </div>
+                        </div>
+                    </div>
+                      <div class="bg-gray-800 rounded-xl overflow-hidden shadow-2xl p-8 mb-8 scrollcue" data-cue="slide-up">
+                        <div class="flex flex-col md:flex-row md:items-center justify-between mb-6">
+                            <h2 class="text-xl font-bold text-white flex items-center">
+                                <i class="fab fa-readme text-indigo-400 mr-2"></i>
+                                README
+                            </h2>
+                            <div id="readme-actions" class="hidden mt-3 md:mt-0">
+                                <button id="toggle-toc" class="bg-gray-700 hover:bg-gray-600 text-gray-200 px-3 py-1 rounded-md text-sm flex items-center">
+                                    <i class="fas fa-list mr-2"></i>
+                                    <span>Toggle TOC</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div id="readme-content" class="prose prose-invert max-w-none">
+                            <div class="readme-loading">
+                                <div class="readme-loading-spinner"></div>
+                                <span class="ml-4 text-gray-400">Loading README...</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>    <footer class="bg-gray-900 py-10 border-t border-gray-800 z-10 relative">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center scrollcue" data-cue="fade-in">
+                <div class="mb-6 md:mb-0">
+                    <div class="text-lg font-bold text-indigo-400 flex items-center">
+                        <span class="text-xl mr-1">&lt;/&gt;</span> Pradeepto
+                    </div>
+                    <p class="text-gray-500 text-sm mt-1">Computer Science Student</p>
+                </div>
+                
+                <div class="flex flex-col md:flex-row md:space-x-10 space-y-4 md:space-y-0 text-sm scrollcue" data-cue="fade-in" data-delay="200">
+                    <a href="../index.html" class="text-gray-400 hover:text-indigo-400 transition-colors">Home</a>
+                    <a href="about.html" class="text-gray-400 hover:text-indigo-400 transition-colors">About</a>
+                    <a href="skills.html" class="text-gray-400 hover:text-indigo-400 transition-colors">Skills</a>
+                    <a href="projects.html" class="text-gray-400 hover:text-indigo-400 transition-colors">Projects</a>
+                    <a href="contact.html" class="text-gray-400 hover:text-indigo-400 transition-colors">Contact</a>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center scrollcue" data-cue="fade-in" data-delay="400">
+                <div class="flex space-x-6 scrollcue" data-cue="slide-up" data-delay="600">
+                    <a href="https://github.com/PerseusKyogre09" class="text-gray-500 hover:text-indigo-400 transition-colors" aria-label="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://gitlab.com/PerseusKyogre09" class="text-gray-500 hover:text-indigo-400 transition-colors" aria-label="GitLab">
+                        <i class="fab fa-gitlab"></i>
+                    </a>
+                    <a href="https://linkedin.com/in/pradeeptopal" class="text-gray-500 hover:text-indigo-400 transition-colors" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://twitter.com/KyogrePerseus" class="text-gray-500 hover:text-indigo-400 transition-colors" aria-label="Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="mailto:pradeepto.pal09@gmail.com" class="text-gray-500 hover:text-indigo-400 transition-colors" aria-label="Email">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer><!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.3.0/marked.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>    <script src="../js/main.js"></script>
+    <script src="../js/animations.js"></script>
+    <script src="../js/theme.js"></script>
+    <script src="../js/floating-nav.js"></script>
+    <script src="../js/project-details-improved.js"></script>
+    <script src="../js/stickers.js"></script>
+</body>
+</html>

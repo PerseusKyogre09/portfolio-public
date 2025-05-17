@@ -1,0 +1,80 @@
+/* Floating Navigation Bar Styles */
+.floating-nav {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 1200px;
+  z-index: 100;
+  border-radius: 18px;
+  backdrop-filter: blur(10px);
+  background-color: rgba(31, 41, 55, 0.8);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3),
+              0 10px 10px -5px rgba(0, 0, 0, 0.2),
+              0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+  transition: all 0.3s ease;
+}
+
+.light .floating-nav {
+  background-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1),
+              0 10px 10px -5px rgba(0, 0, 0, 0.04),
+              0 0 0 1px rgba(0, 0, 0, 0.05) inset;
+}
+
+.floating-nav .container {
+  padding: 0.75rem 1.5rem;
+}
+
+/* Apply a subtle animation when scrolling */
+.floating-nav.scrolled {
+  background-color: rgba(31, 41, 55, 0.9);
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.5),
+              0 10px 10px -5px rgba(0, 0, 0, 0.3),
+              0 0 0 1px rgba(255, 255, 255, 0.15) inset;
+}
+
+.light .floating-nav.scrolled {
+  background-color: rgba(255, 255, 255, 0.95);
+}
+
+/* Style for when mobile menu is open */
+.floating-nav.menu-open {
+  border-radius: 18px 18px 0 0;
+}
+
+/* Add some padding to the top of the main content to compensate for the fixed header */
+main.with-floating-nav {
+  padding-top: 6rem;
+}
+
+/* Mobile menu adjustments for floating nav */
+.floating-nav #mobile-menu {
+  border-bottom-left-radius: 18px;
+  border-bottom-right-radius: 18px;
+  background-color: rgba(31, 41, 55, 0.95);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.light .floating-nav #mobile-menu {
+  background-color: rgba(255, 255, 255, 0.95);
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Glow effect for active items */
+.floating-nav .nav-link.active {
+  position: relative;
+}
+
+.floating-nav .nav-link.active::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, #818cf8, #a78bfa);
+  border-radius: 2px;
+  box-shadow: 0 0 8px rgba(129, 140, 248, 0.6);
+}
