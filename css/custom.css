@@ -2228,3 +2228,98 @@ a:not(.no-hover):hover::after {
     transform: scaleX(1);
     transform-origin: left;
 }
+
+/* Connect card styles - Business Card-like appearance */
+.connect-card {
+  min-height: 380px;
+  width: 100%;
+  aspect-ratio: 1.58 / 1; /* Standard business card ratio */
+  border-radius: 12px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+  position: relative;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  backdrop-filter: blur(5px);
+  background-size: 200% 200%;
+}
+
+/* Glassy reflection effect */
+.connect-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 10px;
+  padding: 1.5px;
+  background: linear-gradient(
+    135deg, 
+    rgba(255, 255, 255, 0.4) 0%, 
+    rgba(255, 255, 255, 0.1) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  transition: all 0.4s ease;
+  opacity: 0.7;
+}
+
+/* Card chip styles */
+.card-chip {
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+.connect-card:hover {
+  transform: translateY(-10px) scale(1.03) rotateX(3deg) rotateY(3deg);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+.connect-card:hover::before {
+  background: linear-gradient(
+    135deg, 
+    rgba(255, 255, 255, 0.8) 0%, 
+    rgba(255, 255, 255, 0.2) 50%, 
+    rgba(255, 255, 255, 0) 100%
+  );
+  opacity: 1;
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+}
+
+/* 3D Pin Styles for Connection Cards */
+.card-pin {
+  transform-style: preserve-3d;
+  perspective: 500px;
+}
+
+/* Enhanced shadow effect for pinned cards */
+.connect-card {
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4), 2px 2px 5px rgba(0, 0, 0, 0.2);
+  transform-style: preserve-3d;
+  position: relative;
+}
+
+/* Shadow effect near pin to create the illusion of being pinned to wall */
+.connect-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40px;
+  height: 40px;
+  background: radial-gradient(circle at 20px 20px, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0) 70%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Hover effect to enhance 3D appearance */
+.connect-card:hover {
+  transform: scale(1.05) rotate(1deg);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 4px 4px 10px rgba(0, 0, 0, 0.3);
+}

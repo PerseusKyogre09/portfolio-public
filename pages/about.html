@@ -90,17 +90,17 @@
 
                             <div class="lg:w-2/3 scrollcue" data-cue="slide-left" data-delay="400">
                                 <h2 class="text-3xl font-bold mb-6 text-indigo-400">Who am I?</h2>
-                                <p class="text-gray-300 leading-relaxed mb-4">
+                                <p class="text-gray-300 leading-relaxed mb-4 scrollcue" data-cue="flip-in" data-delay="500">
                                     Hello! I'm Pradeepto Pal, a first-year CSE student at SRMIST'2028. I have a passion for creating digital solutions that make a positive impact.
                                 </p>
-                                <p class="text-gray-300 leading-relaxed mb-4">
+                                <p class="text-gray-300 leading-relaxed mb-4 scrollcue" data-cue="flip-in" data-delay="600">
                                     From an early age, I've been fascinated by how computers work and how code can build application. This curiosity drove me to pursue a degree in CSE, where I'm currently building a strong foundation in programming skills, data structures, and various languages.
                                 </p>
-                                <p class="text-gray-300 leading-relaxed mb-6">
+                                <p class="text-gray-300 leading-relaxed mb-6 scrollcue" data-cue="flip-in" data-delay="700">
                                     Even as a first year, I'm actively working on side projects to apply what I learn online and expand my skills beyond the curriculum. I believe in learning by doing and push myself to explore new technologies regularly.
                                 </p>
                                 
-                                <div class="grid grid-cols-2 gap-4 text-sm mb-6">
+                                <div class="grid grid-cols-2 gap-4 text-sm mb-6 scrollcue" data-cue="slide-up" data-delay="800">
                                     <div class="flex items-center">
                                         <i class="fas fa-calendar-alt text-indigo-400 mr-2"></i>
                                         <span class="text-gray-300">Age: 19</span>
@@ -120,7 +120,7 @@
                                 </div>
                                 
                                 <div class="flex space-x-4">
-                                    <a href="../assets/Resume%20Pradeepto%20Pal.pdf" class="inline-flex items-center px-6 py-3 rounded-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-indigo-500/30" target="_blank">
+                                    <a href="../assets/Resume%20Pradeepto%20Pal.pdf" class="inline-flex items-center px-6 py-3 rounded-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-indigo-500/30 scrollcue" data-cue="slide-left" data-delay="900" target="_blank">
                                         <span>Resume</span>
                                         <i class="fas fa-file-alt ml-2"></i>
                                     </a>
@@ -360,19 +360,119 @@
                                 <p class="text-green-400 font-medium">- Scott Hanselman</p>
                             </div>
                         </div>
-                    </div>
-                      <!-- CTA Section -->
-                    <div class="bg-gradient-to-r from-indigo-900 to-purple-900 rounded-3xl p-10 text-center shadow-2xl scrollcue" data-cue="zoom-in">
-                        <h3 class="text-3xl font-bold text-white mb-4">Let's Build Something Amazing Together</h3>
-                        <p class="text-indigo-200 mb-8 max-w-2xl mx-auto">
-                            I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision. Let's connect and explore how we can collaborate!
-                        </p>
-                        <div class="flex flex-col sm:flex-row justify-center gap-4 scrollcue" data-cue="fade-in" data-delay="300">
-                            <a href="projects.html" class="px-8 py-3 rounded-full bg-white text-indigo-900 font-medium transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-indigo-500/30">
-                                View My Projects
+                    </div>                    <!-- Connect With Me Section -->
+                    <div class="bg-gradient-to-r from-indigo-900 to-blue-900 rounded-2xl p-8 shadow-xl mb-20 scrollcue" data-cue="fade-in">
+                          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                            <!-- LinkedIn Card -->                              <a href="https://linkedin.com/in/pradeeptopal" target="_blank" class="block group">
+                                <div class="connect-card linkedin-card bg-gradient-to-br from-blue-900 to-blue-700 backdrop-filter backdrop-blur-lg rounded-lg p-8 transform hover:scale-105 transition-all duration-300 relative scrollcue h-full" data-cue="slide-right" data-delay="200">
+                                    <div class="card-pin absolute top-4 left-4 z-10">
+                                        <!-- Pin Head -->
+                                        <div class="w-6 h-6 rounded-full bg-gradient-to-br from-gray-300 to-gray-500 shadow-lg transform -rotate-12"></div>
+                                        <!-- Pin Shadow/Effect -->
+                                        <div class="absolute w-4 h-1 bg-black opacity-30 rounded-full top-5 left-1 blur-sm"></div>
+                                        <!-- Pin Shaft -->
+                                        <div class="absolute w-1.5 h-3 bg-gradient-to-b from-gray-400 to-gray-600 top-5 left-2.5 transform rotate-12 shadow-sm"></div>
+                                    </div>
+                                    
+                                    <div class="absolute top-8 right-8 text-sm text-blue-200 opacity-70 font-mono">CONNECT</div>
+                                    
+                                    <div class="mt-16 text-center text-2xl text-white tracking-wider mb-4 font-mono uppercase">LinkedIn</div>
+                                    
+                                    <div class="card-logo mx-auto my-6 flex justify-center">
+                                        <div class="w-20 h-20 bg-blue-600 rounded-full flex items-center justify-center">
+                                            <i class="fab fa-linkedin-in text-4xl text-white"></i>
+                                        </div>
+                                    </div>
+                                    
+                                    <p class="text-blue-100 text-center mb-6 text-base">
+                                        Connect with me professionally to stay updated on my career journey, projects, and educational milestones.
+                                    </p>
+                                    
+                                    <div class="card-number mt-6 text-center tracking-widest font-mono text-blue-200 opacity-80 text-sm">
+                                        PRADEEPTO PAL • OPEN SOURCE ENTHUSIAST • BLOCKCHAIN & AIML EXPLORER
+                                    </div>
+                                    
+                                    <div class="mt-8 flex justify-center">
+                                        <span class="inline-flex items-center px-6 py-3 rounded-lg bg-blue-600 group-hover:bg-blue-700 text-white font-medium transition-all">
+                                            <span>Connect on LinkedIn</span>
+                                            <i class="fas fa-external-link-alt ml-2 text-sm"></i>
+                                        </span>                                    </div>
+                                </div>
                             </a>
-                            <a href="contact.html" class="px-8 py-3 rounded-full border border-white text-white hover:bg-white hover:text-indigo-900 font-medium transition-all duration-300 transform hover:scale-105">
-                                Get In Touch
+                              <!-- Twitter/X Card -->                            <a href="https://twitter.com/KyogrePerseus" target="_blank" class="block group">
+                                <div class="connect-card twitter-card bg-gradient-to-br from-gray-900 to-gray-800 backdrop-filter backdrop-blur-lg rounded-lg p-8 transform hover:scale-105 transition-all duration-300 relative scrollcue h-full" data-cue="slide-left" data-delay="200">
+                                    <div class="card-pin absolute top-4 left-4 z-10">
+                                        <!-- Pin Head -->
+                                        <div class="w-6 h-6 rounded-full bg-gradient-to-br from-gray-300 to-gray-500 shadow-lg transform -rotate-12"></div>
+                                        <!-- Pin Shadow/Effect -->
+                                        <div class="absolute w-4 h-1 bg-black opacity-30 rounded-full top-5 left-1 blur-sm"></div>
+                                        <!-- Pin Shaft -->
+                                        <div class="absolute w-1.5 h-3 bg-gradient-to-b from-gray-400 to-gray-600 top-5 left-2.5 transform rotate-12 shadow-sm"></div>
+                                    </div>
+                                    
+                                    <div class="absolute top-8 right-8 text-sm text-gray-400 opacity-70 font-mono">FOLLOW</div>
+                                    
+                                    <div class="mt-16 text-center text-2xl text-white tracking-wider mb-4 font-mono uppercase">X (Twitter)</div>
+                                    
+                                    <div class="card-logo mx-auto my-6 flex justify-center">
+                                        <div class="w-20 h-20 bg-black rounded-full flex items-center justify-center">
+                                            <i class="fab fa-twitter text-4xl text-white"></i>
+                                        </div>
+                                    </div>
+                                    
+                                    <p class="text-gray-300 text-center mb-6 text-base">
+                                        Follow me on X for tech thoughts, project updates, and to join conversations about programming and tech trends.
+                                    </p>
+                                    
+                                    <div class="card-number mt-6 text-center tracking-widest font-mono text-gray-400 opacity-80 text-sm">
+                                        @KYOGREPERSEUS
+                                    </div>
+                                    
+                                    <div class="mt-8 flex justify-center">
+                                        <span class="inline-flex items-center px-6 py-3 rounded-lg bg-black group-hover:bg-gray-900 text-white font-medium transition-all">
+                                            <span>Follow on X</span>
+                                            <i class="fas fa-external-link-alt ml-2 text-sm"></i>
+                                        </span>                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <!-- Second row with centered Gravatar card -->
+                        <div class="flex justify-center">
+                              <!-- Gravatar Card -->
+                            <a href="https://gravatar.com/impossiblyfb1fb0f4d4" target="_blank" class="block w-full md:w-1/2 group">                                <div class="connect-card gravatar-card bg-gradient-to-br from-purple-900 to-purple-700 backdrop-filter backdrop-blur-lg rounded-lg p-8 transform hover:scale-105 transition-all duration-300 relative scrollcue h-full" data-cue="slide-up" data-delay="400">
+                                    <div class="card-pin absolute top-4 left-4 z-10">
+                                        <!-- Pin Head -->
+                                        <div class="w-6 h-6 rounded-full bg-gradient-to-br from-gray-300 to-gray-500 shadow-lg transform -rotate-12"></div>
+                                        <!-- Pin Shadow/Effect -->
+                                        <div class="absolute w-4 h-1 bg-black opacity-30 rounded-full top-5 left-1 blur-sm"></div>
+                                        <!-- Pin Shaft -->
+                                        <div class="absolute w-1.5 h-3 bg-gradient-to-b from-gray-400 to-gray-600 top-5 left-2.5 transform rotate-12 shadow-sm"></div>
+                                    </div>
+                                    
+                                    <div class="absolute top-8 right-8 text-sm text-purple-200 opacity-70 font-mono">VIEW</div>
+                                    
+                                    <div class="mt-16 text-center text-2xl text-white tracking-wider mb-4 font-mono uppercase">Gravatar</div>
+                                      <div class="card-logo mx-auto my-6 flex justify-center">
+                                        <div class="w-20 h-20 overflow-hidden rounded-full border-2 border-purple-300 shadow-lg">
+                                            <img src="../assets/PerseusKyogre09.jpg" alt="Profile Picture" class="w-full h-full object-cover">
+                                        </div>
+                                    </div>
+                                    
+                                    <p class="text-purple-100 text-center mb-6 text-base">
+                                        Check out my Gravatar profile to learn more about me and see my presence across various platforms.
+                                    </p>
+                                    
+                                    <div class="card-number mt-6 text-center tracking-widest font-mono text-purple-200 opacity-80 text-sm">
+                                        PERSEUSKYOGRE09
+                                    </div>
+                                    
+                                    <div class="mt-8 flex justify-center">
+                                        <span class="inline-flex items-center px-6 py-3 rounded-lg bg-purple-600 group-hover:bg-purple-700 text-white font-medium transition-all">
+                                            <span>View Gravatar Profile</span>
+                                            <i class="fas fa-external-link-alt ml-2 text-sm"></i>
+                                        </span>
+                                    </div>
+                                </div>
                             </a>
                         </div>
                     </div>
