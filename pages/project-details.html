@@ -17,8 +17,61 @@
             max-width: 980px;
             margin: 0 auto;
             padding: 45px;
-            color: #e5e7eb;
+            color: #111827; /* Default dark text for light mode */
             background-color: transparent;
+        }
+        
+        /* Dark mode styles */
+        .dark .markdown-body {
+            color: #e5e7eb; /* Light text for dark mode */
+        }
+        
+        /* Ensure good contrast for light mode */
+        .light .markdown-body {
+            color: #111827; /* Dark text for light mode */
+        }
+        
+        /* Style headings and text elements for both modes */
+        .markdown-body h1,
+        .markdown-body h2,
+        .markdown-body h3,
+        .markdown-body h4,
+        .markdown-body h5,
+        .markdown-body h6 {
+            color: inherit;
+            margin-top: 1.5em;
+            margin-bottom: 0.5em;
+        }
+        
+        /* Style code blocks */
+        .markdown-body pre,
+        .markdown-body code {
+            background-color: rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        .markdown-body pre {
+            padding: 1em;
+            overflow-x: auto;
+            margin: 1.5em 0;
+        }
+        
+        /* Light mode specific styles */
+        .light .markdown-body pre,
+        .light .markdown-body code {
+            background-color: #f3f4f6;
+            color: #111827;
+            border: 1px solid #e5e7eb;
+        }
+        
+        /* Dark mode specific styles */
+        .dark .markdown-body pre,
+        .dark .markdown-body code {
+            background-color: #1f2937;
+            color: #e5e7eb;
+            border: 1px solid #374151;
         }
         @media (max-width: 767px) {
             .markdown-body {
