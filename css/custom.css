@@ -2079,14 +2079,18 @@ body.light .social-link {
   color: #4b5563 !important;
 }
 
-body.light .social-link:hover {
-  background-color: #4f46e5 !important;
-  color: #ffffff !important;
+/* Remove focus outlines and hover underlines */
+*:focus,
+*:focus-visible {
+  outline: none !important;
+  box-shadow: none !important;
 }
 
-/* Icon visibility fixes for About page */
-/* Future Goals section icons */
-body.light .md\:w-1\/4 .w-16.h-16.bg-purple-900 {
+a:hover {
+  text-decoration: none !important;
+}
+
+body.light .social-link:hover {
   background-color: #6d28d9 !important; /* Brighter purple in light mode */
   box-shadow: 0 0 15px rgba(109, 40, 217, 0.3);
 }
