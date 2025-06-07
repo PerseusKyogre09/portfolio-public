@@ -8,10 +8,104 @@ body.light {
   --bg-secondary: #e9ecef;
   --text-primary: #111827;
   --text-secondary: #374151; 
-  --accent: #6366f1;
-  --accent-hover: #4f46e5;
+  --accent: #6d28d9; /* More vibrant purple */
+  --accent-hover: #5b21b6;
+  --card-bg: #ffffff;
+  --card-border: #e5e7eb;
+  --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --card-hover-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
   background-color: #f8f9fa !important;
   color: #111827 !important;
+}
+
+/* Light mode adjustments for cards */
+body.light .card-3d {
+  background: var(--card-bg) !important;
+  border-color: var(--card-border) !important;
+  box-shadow: var(--card-shadow) !important;
+  transition: all 0.3s ease;
+}
+
+body.light .card-3d:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--card-hover-shadow) !important;
+}
+
+/* Light mode text colors */
+body.light .text-gray-300,
+body.light .text-gray-400 {
+  color: #4b5563 !important;
+}
+
+body.light .text-purple-100,
+body.light .text-indigo-100,
+body.light .text-purple-300,
+body.light .text-indigo-300 {
+  color: #4b5563 !important;
+}
+
+/* Light mode card content */
+body.light .card-3d h3,
+body.light .card-3d p {
+  color: #111827 !important;
+}
+
+/* Light mode card hover effects */
+body.light .card-3d:hover {
+  border-color: #d1d5db !important;
+}
+
+/* Light mode card gradients */
+body.light .bg-gradient-to-br {
+  background: var(--card-bg) !important;
+}
+
+/* Light mode card borders */
+body.light .border-gray-700\/30,
+body.light .border-blue-500\/20,
+body.light .border-purple-500\/20 {
+  border-color: #e5e7eb !important;
+}
+
+/* Light mode gradients */
+body.light .bg-gradient-to-br.from-purple-900\/50.to-indigo-900\/30,
+body.light .bg-gradient-to-br.from-blue-900\/50.to-blue-800\/30,
+body.light .bg-gradient-to-br.from-gray-900\/50.to-gray-800\/30 {
+  background: var(--card-bg) !important;
+}
+
+/* Light mode borders */
+body.light .border-purple-500\/20,
+body.light .border-blue-500\/20,
+body.light .border-gray-700\/30 {
+  border-color: var(--card-border) !important;
+}
+
+/* Light mode hover states */
+body.light .card-3d:hover {
+  transform: translateY(-5px) !important;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05) !important;
+}
+
+/* Light mode text gradients */
+body.light .bg-clip-text.bg-gradient-to-r.from-purple-300.to-indigo-200,
+body.light .bg-clip-text.bg-gradient-to-r.from-blue-300.to-blue-100,
+body.light .bg-clip-text.bg-gradient-to-r.from-gray-200.to-gray-100 {
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: #4f46e5 !important; /* Using indigo-600 for better contrast */
+  background-image: none !important;
+}
+
+/* Light mode social icons */
+body.light .social-icon {
+  background-color: #f3f4f6 !important;
+  color: #4b5563 !important;
+}
+
+body.light .social-icon:hover {
+  background-color: #e5e7eb !important;
+  color: #4f46e5 !important;
 }
 
 /* Improve text visibility in light mode */
@@ -761,7 +855,6 @@ body.dark {
 }
 
 .tardis-button:hover {
-  background-color: #256
   background-color: #2563eb;
   transform: scale(1.05);
   box-shadow: 0 0 20px rgba(59, 130, 246, 0.9);
