@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../css/floating-nav.css">    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="https://unpkg.com/scrollcue.js@1.2.0/scrollcue.all-in-one.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 </head>
 <body class="dark bg-gray-900 text-gray-200 min-h-screen flex flex-col transition-colors duration-300">
     <!-- Particle Background -->
@@ -78,7 +79,7 @@
                                 Send Me a Message
                             </h2>
                             
-                            <form id="contactForm" class="space-y-6">
+                            <form id="contactForm" class="space-y-6" onsubmit="return sendEmail(event)">
                                 <div>
                                     <label for="name" class="block text-sm font-medium text-gray-300 mb-1">Name</label>
                                     <input type="text" id="name" name="name" class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-md focus:ring-indigo-500 focus:border-indigo-500 text-gray-200" required>
@@ -100,10 +101,18 @@
                                 </div>
                                 
                                 <div>
-                                    <button type="submit" class="w-full py-3 px-6 bg-indigo-600 hover:bg-indigo-700 transition-colors rounded-md text-white font-medium flex items-center justify-center transform hover:scale-105 duration-300 shadow-lg hover:shadow-indigo-500/30">
-                                        <span>Send Message</span>
-                                        <i class="fas fa-paper-plane ml-2"></i>
-                                    </button>
+                                    <div class="relative">
+                                        <button type="submit" id="submitBtn" class="w-full py-3 px-6 bg-indigo-600 hover:bg-indigo-700 transition-colors rounded-md text-white font-medium flex items-center justify-center transform hover:scale-105 duration-300 shadow-lg hover:shadow-indigo-500/30">
+                                            <span id="submitText">Send Message</span>
+                                            <i class="fas fa-paper-plane ml-2"></i>
+                                        </button>
+                                        <div id="successMessage" class="hidden mt-4 p-3 bg-green-600 bg-opacity-20 text-green-400 rounded-md text-sm">
+                                            Message sent successfully! I'll get back to you soon.
+                                        </div>
+                                        <div id="errorMessage" class="hidden mt-4 p-3 bg-red-600 bg-opacity-20 text-red-400 rounded-md text-sm">
+                                            Failed to send message. Please try again later.
+                                        </div>
+                                    </div>
                                 </div>
                             </form>
                         </div>
@@ -255,5 +264,58 @@
         });
     </script>
     <script src="../js/floating-nav.js"></script>
+    <script>
+        // Initialize EmailJS with your public key
+        (function() {
+            emailjs.init("j1x9GanHylSWb2qYS");
+        })();
+
+        function sendEmail(e) {
+            e.preventDefault();
+            
+            // Show loading state
+            const submitBtn = document.getElementById('submitBtn');
+            const submitText = document.getElementById('submitText');
+            const successMessage = document.getElementById('successMessage');
+            const errorMessage = document.getElementById('errorMessage');
+            
+            submitBtn.disabled = true;
+            submitText.textContent = 'Sending...';
+            
+            // Hide any previous messages
+            successMessage.classList.add('hidden');
+            errorMessage.classList.add('hidden');
+            
+            // Get form data
+            const form = e.target;
+            const now = new Date();
+            const formData = {
+                name: form.name.value,
+                email: form.email.value,
+                subject: form.subject.value,
+                message: form.message.value,
+                from_name: form.name.value,
+                from_email: form.email.value,
+                time: now.toLocaleString()
+            };
+            
+            // Send email using EmailJS
+            emailjs.send('service_ir5f1q1', 'template_g7sutat', formData)
+                .then(function(response) {
+                    console.log('SUCCESS!', response.status, response.text);
+                    successMessage.classList.remove('hidden');
+                    form.reset();
+                }, function(error) {
+                    console.error('FAILED...', error);
+                    errorMessage.classList.remove('hidden');
+                })
+                .finally(() => {
+                    submitBtn.disabled = false;
+                    submitText.textContent = 'Send Message';
+                });
+                
+            return false;
+        }
+    </script>
 </body>
 </html>
