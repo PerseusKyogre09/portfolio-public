@@ -5,7 +5,8 @@
     <title>Portfolio | Projects</title>    
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/custom.css">
-    <link rel="stylesheet" href="../css/floating-nav.css">      
+    <link rel="stylesheet" href="../css/floating-nav.css">
+    <link rel="stylesheet" href="../css/project-cards.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="https://unpkg.com/scrollcue.js@1.2.0/scrollcue.all-in-one.min.js"></script>
 </head>
@@ -93,304 +94,321 @@
         <section class="pb-20">
             <div class="container mx-auto px-6">
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="projects-container">                    <!-- Project Card 1 -->
-                    <div class="project-card bg-gray-800 rounded-xl overflow-hidden shadow-lg transform hover:-translate-y-2 transition-all duration-300 scrollcue" data-cue="zoom-in" data-category="hpc">
-                        <div class="relative overflow-hidden h-48">
-                            <div class="bg-indigo-900 h-full w-full flex items-center justify-center">
-                                <i class="fas fa-microchip text-5xl text-indigo-300"></i>
+                    <div class="project-card scrollcue" data-cue="zoom-in" data-category="hpc">
+                        <!-- Preview Image -->
+                        <img src="../assets/projects/oneapi-process.png" alt="Intel oneAPI Project Preview" class="project-card-preview">
+                        
+                        <div class="project-card-content">
+                            <div class="project-card-header">
+                                <span class="inline-block bg-indigo-600 text-white text-xs px-2 py-1 rounded-md mb-2">High Processing Compute</span>
+                                <h3 class="text-xl font-bold mb-2">Image Processing with Intel oneAPI</h3>
+                                <p class="text-sm mb-4">Applies basic image processing using Intel oneAPI DPC++ to compare serial processing & parallel processing.</p>
                             </div>
-                            <div class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-70"></div>
-                            <div class="absolute bottom-0 left-0 p-4">
-                                <span class="bg-indigo-600 text-xs px-2 py-1 rounded-md text-white">High Processing Compute</span>
-                            </div>
-                        </div>
-                        <div class="p-6">
-                            <h3 class="text-xl font-bold mb-2 text-white">Image Processing with Intel oneAPI</h3>
-                            <p class="text-gray-400 mb-4 text-sm">Applies basic image processing using Intel oneAPI DPC++ to compare serial processing & parallel processing.</p>
-                            <div class="flex space-x-2 text-xs mb-4">
-                                <span class="bg-gray-700 px-2 py-1 rounded text-gray-300">C++</span>
-                                <span class="bg-gray-700 px-2 py-1 rounded text-gray-300">Shell</span>
-                                <span class="bg-gray-700 px-2 py-1 rounded text-gray-300">Makefile</span>
-                            </div>                            <div class="flex justify-between">
-                                <a href="project-details.html?owner=PerseusKyogre09&repo=oneapi-compare&title=Image Processing with Intel oneAPI&category=High Processing Compute&description=Applies basic image processing using Intel oneAPI DPC++ to compare serial processing & parallel processing.&tags=C++,Shell,Makefile&icon=fas fa-microchip&bgcolor=indigo-900&iconcolor=indigo-300&badgecolor=indigo-600" class="text-indigo-400 hover:text-indigo-300 text-sm flex items-center">
-                                    <span>View Project</span>
-                                    <i class="fas fa-arrow-right ml-1"></i>
-                                </a>
-                                <div class="flex space-x-3">
-                                    <a href="https://github.com/PerseusKyogre09/oneapi-compare" class="text-gray-400 hover:text-white">
-                                        <i class="fab fa-github"></i>
+                            
+                            <div class="project-card-footer">
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    <span class="bg-gray-700 bg-opacity-50 text-xs px-2 py-1 rounded">C++</span>
+                                    <span class="bg-gray-700 bg-opacity-50 text-xs px-2 py-1 rounded">Shell</span>
+                                    <span class="bg-gray-700 bg-opacity-50 text-xs px-2 py-1 rounded">Makefile</span>
+                                </div>
+                                
+                                <div class="flex justify-between items-center">
+                                    <a href="project-details.html?owner=PerseusKyogre09&repo=oneapi-compare&title=Image Processing with Intel oneAPI&category=High Processing Compute&description=Applies basic image processing using Intel oneAPI DPC++ to compare serial processing & parallel processing.&tags=C++,Shell,Makefile&icon=fas fa-microchip&bgcolor=indigo-900&iconcolor=indigo-300&badgecolor=indigo-600" class="text-indigo-400 hover:text-indigo-300 text-sm font-medium inline-flex items-center group">
+                                        View Project
+                                        <i class="fas fa-arrow-right ml-1 group-hover:translate-x-1 transition-transform"></i>
                                     </a>
-                                    <a href="https://gitlab.com/PerseusKyogre09/oneapi-compare" class="text-gray-400 hover:text-white">
-                                        <i class="fab fa-gitlab"></i>
-                                    </a>
+                                    <div class="flex space-x-3">
+                                        <a href="https://github.com/PerseusKyogre09/oneapi-compare" class="text-gray-400 hover:text-white transition-colors" aria-label="GitHub">
+                                            <i class="fab fa-github"></i>
+                                        </a>
+                                        <a href="https://gitlab.com/PerseusKyogre09/oneapi-compare" class="text-gray-400 hover:text-white transition-colors" aria-label="GitLab">
+                                            <i class="fab fa-gitlab"></i>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                       <!-- Project Card 2 -->
-                    <div class="project-card bg-gray-800 rounded-xl overflow-hidden shadow-lg transform hover:-translate-y-2 transition-all duration-300 scrollcue" data-cue="zoom-in" data-delay="300" data-category="desktop">
-                        <div class="relative overflow-hidden h-48">
-                            <div class="bg-purple-900 h-full w-full flex items-center justify-center">
-                                <i class="fas fa-desktop text-5xl text-purple-300"></i>
+                    <div class="project-card scrollcue" data-cue="zoom-in" data-delay="300" data-category="desktop">
+                        <!-- Preview Image -->
+                        <img src="../assets/projects/desktop-widgets.png" alt="Desktop Widgets Preview" class="project-card-preview">
+                        
+                        <div class="project-card-content">
+                            <div class="project-card-header">
+                                <span class="inline-block bg-purple-600 text-white text-xs px-2 py-1 rounded-md mb-2">Desktop App</span>
+                                <h3 class="text-xl font-bold mb-2">Widgets App</h3>
+                                <p class="text-sm mb-4">A desktop application to demonstrate different widgets made using PyQt5. Includes a clock, current weather of user's city and music player.</p>
                             </div>
-                            <div class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-70"></div>
-                            <div class="absolute bottom-0 left-0 p-4">
-                                <span class="bg-purple-600 text-xs px-2 py-1 rounded-md text-white">Desktop App</span>
-                            </div>
-                        </div>
-                        <div class="p-6">
-                            <h3 class="text-xl font-bold mb-2 text-white">Widgets App</h3>
-                            <p class="text-gray-400 mb-4 text-sm">A desktop application to demonstrate different widgets made using PyQt5. Includes a clock, current weather of user's city and music player.</p>
-                            <div class="flex space-x-2 text-xs mb-4">
-                                <span class="bg-gray-700 px-2 py-1 rounded text-gray-300">Python</span>
-                                <span class="bg-gray-700 px-2 py-1 rounded text-gray-300">PyQt5</span>
-                            </div>                            <div class="flex justify-between">
-                                <a href="project-details.html?owner=PerseusKyogre09&repo=desktop-widgets&title=Widgets App&category=Desktop App&description=A desktop application to demonstrate different widgets made using PyQt5. Includes a clock, current weather of user's city and music player.&tags=Python,PyQt5&icon=fas fa-desktop&bgcolor=purple-900&iconcolor=purple-300&badgecolor=purple-600" class="text-indigo-400 hover:text-indigo-300 text-sm flex items-center">
-                                    <span>View Project</span>
-                                    <i class="fas fa-arrow-right ml-1"></i>
-                                </a>
-                                <div class="flex space-x-3">
-                                    <a href="https://github.com/PerseusKyogre09/desktop-widgets" class="text-gray-400 hover:text-white">
-                                        <i class="fab fa-github"></i>
+                            
+                            <div class="project-card-footer">
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    <span class="bg-gray-700 bg-opacity-50 text-xs px-2 py-1 rounded">Python</span>
+                                    <span class="bg-gray-700 bg-opacity-50 text-xs px-2 py-1 rounded">PyQt5</span>
+                                </div>
+                                
+                                <div class="flex justify-between items-center">
+                                    <a href="project-details.html?owner=PerseusKyogre09&repo=desktop-widgets&title=Widgets App&category=Desktop App&description=A desktop application to demonstrate different widgets made using PyQt5. Includes a clock, current weather of user's city and music player.&tags=Python,PyQt5&icon=fas fa-desktop&bgcolor=purple-900&iconcolor=purple-300&badgecolor=purple-600" class="text-indigo-400 hover:text-indigo-300 text-sm font-medium inline-flex items-center group">
+                                        View Project
+                                        <i class="fas fa-arrow-right ml-1 group-hover:translate-x-1 transition-transform"></i>
                                     </a>
-                                    <a href="https://gitlab.com/PerseusKyogre09/desktop-widgets" class="text-gray-400 hover:text-white">
-                                        <i class="fab fa-gitlab"></i>
-                                    </a>
+                                    <div class="flex space-x-3">
+                                        <a href="https://github.com/PerseusKyogre09/desktop-widgets" class="text-gray-400 hover:text-white transition-colors" aria-label="GitHub">
+                                            <i class="fab fa-github"></i>
+                                        </a>
+                                        <a href="https://gitlab.com/PerseusKyogre09/desktop-widgets" class="text-gray-400 hover:text-white transition-colors" aria-label="GitLab">
+                                            <i class="fab fa-gitlab"></i>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <!-- Project Card 3 -->
-                    <div class="project-card bg-gray-800 rounded-xl overflow-hidden shadow-lg transform hover:-translate-y-2 transition-all duration-300 scrollcue" data-cue="zoom-in" data-delay="600" data-category="web">
-                        <div class="relative overflow-hidden h-48">
-                            <div class="bg-pink-900 h-full w-full flex items-center justify-center">
-                                <i class="fas fa-code text-5xl text-pink-300"></i>
+                    <div class="project-card scrollcue" data-cue="zoom-in" data-delay="600" data-category="web">
+                        <!-- Preview Image -->
+                        <img src="../assets/projects/scrollcue.png" alt="ScrollCue.js Preview" class="project-card-preview">
+                        
+                        <div class="project-card-content">
+                            <div class="project-card-header">
+                                <span class="inline-block bg-pink-600 text-white text-xs px-2 py-1 rounded-md mb-2">Web Library</span>
+                                <h3 class="text-xl font-bold mb-2">ScrollCue.js</h3>
+                                <p class="text-sm mb-4">An open source web library for scrolling animations! Used in this portfolio as well!</p>
                             </div>
-                            <div class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-70"></div>
-                            <div class="absolute bottom-0 left-0 p-4">
-                                <span class="bg-pink-600 text-xs px-2 py-1 rounded-md text-white">Web Library</span>
-                            </div>
-                        </div>
-                        <div class="p-6">
-                            <h3 class="text-xl font-bold mb-2 text-white">ScrollCue.js</h3>
-                            <p class="text-gray-400 mb-4 text-sm">An open source web library for scrolling animations! Used in this portfolio as well!</p>
-                            <div class="flex space-x-2 text-xs mb-4">
-                                <span class="bg-gray-700 px-2 py-1 rounded text-gray-300">Javascript</span>
-                                <span class="bg-gray-700 px-2 py-1 rounded text-gray-300">CSS</span>
-                            </div>                            <div class="flex justify-between">
-                                <a href="project-details.html?owner=PerseusKyogre09&repo=ScrollCue.js&title=ScrollCue.js&category=Web Library&description=An open source web library for scrolling animations! Used in this portfolio as well!&tags=Javascript,CSS&icon=fas fa-code&bgcolor=pink-900&iconcolor=pink-300&badgecolor=pink-600" class="text-indigo-400 hover:text-indigo-300 text-sm flex items-center">
-                                    <span>View Project</span>
-                                    <i class="fas fa-arrow-right ml-1"></i>
-                                </a>
-                                <div class="flex space-x-3">
-                                    <a href="https://github.com/PerseusKyogre09/ScrollCue.js" class="text-gray-400 hover:text-white">
-                                        <i class="fab fa-github"></i>
+                            
+                            <div class="project-card-footer">
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    <span class="bg-gray-700 bg-opacity-50 text-xs px-2 py-1 rounded">JavaScript</span>
+                                    <span class="bg-gray-700 bg-opacity-50 text-xs px-2 py-1 rounded">CSS</span>
+                                </div>
+                                
+                                <div class="flex justify-between items-center">
+                                    <a href="project-details.html?owner=PerseusKyogre09&repo=ScrollCue.js&title=ScrollCue.js&category=Web Library&description=An open source web library for scrolling animations! Used in this portfolio as well!&tags=Javascript,CSS&icon=fas fa-code&bgcolor=pink-900&iconcolor=pink-300&badgecolor=pink-600" class="text-indigo-400 hover:text-indigo-300 text-sm font-medium inline-flex items-center group">
+                                        View Project
+                                        <i class="fas fa-arrow-right ml-1 group-hover:translate-x-1 transition-transform"></i>
                                     </a>
-                                    <a href="https://gitlab.com/PerseusKyogre09/ScrollCue.js" class="text-gray-400 hover:text-white">
-                                        <i class="fab fa-gitlab"></i>
-                                    </a>
+                                    <div class="flex space-x-3">
+                                        <a href="https://github.com/PerseusKyogre09/ScrollCue.js" class="text-gray-400 hover:text-white transition-colors" aria-label="GitHub">
+                                            <i class="fab fa-github"></i>
+                                        </a>
+                                        <a href="https://gitlab.com/PerseusKyogre09/ScrollCue.js" class="text-gray-400 hover:text-white transition-colors" aria-label="GitLab">
+                                            <i class="fab fa-gitlab"></i>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                       <!-- Project Card 4 -->
-                    <div class="project-card bg-gray-800 rounded-xl overflow-hidden shadow-lg transform hover:-translate-y-2 transition-all duration-300 scrollcue" data-cue="zoom-in" data-delay="600" data-category="blockchain">
-                        <div class="relative overflow-hidden h-48">
-                            <div class="bg-blue-900 h-full w-full flex items-center justify-center">
-                                <i class="fab fa-bitcoin text-5xl text-blue-300"></i>
+                    <div class="project-card scrollcue" data-cue="zoom-in" data-delay="600" data-category="blockchain">
+                        <!-- Preview Image -->
+                        <img src="../assets/projects/blockchain-messenger.png" alt="Blockchain Messenger Preview" class="project-card-preview">
+                        
+                        <div class="project-card-content">
+                            <div class="project-card-header">
+                                <span class="inline-block bg-blue-600 text-white text-xs px-2 py-1 rounded-md mb-2">Blockchain</span>
+                                <h3 class="text-xl font-bold mb-2">Blockchain Messenger</h3>
+                                <p class="text-sm mb-4">A simple blockchain implementation in Solidity-Ethereum with basic mining and transaction functionality.</p>
                             </div>
-                            <div class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-70"></div>
-                            <div class="absolute bottom-0 left-0 p-4">
-                                <span class="bg-blue-600 text-xs px-2 py-1 rounded-md text-white">Blockchain</span>
-                            </div>
-                        </div>
-                        <div class="p-6">
-                            <h3 class="text-xl font-bold mb-2 text-white">Blockchain Messenger</h3>
-                            <p class="text-gray-400 mb-4 text-sm">A beginner project in blockchain, using smart contracts.</p>
-                            <div class="flex space-x-2 text-xs mb-4">
-                                <span class="bg-gray-700 px-2 py-1 rounded text-gray-300">Solidity</span>
-                                <span class="bg-gray-700 px-2 py-1 rounded text-gray-300">Typescript</span>
-                                <span class="bg-gray-700 px-2 py-1 rounded text-gray-300">Javascript</span>
-                            </div>                            <div class="flex justify-between">
-                                <a href="project-details.html?owner=PerseusKyogre09&repo=blockchain-messenger&title=Blockchain Messenger&category=Blockchain&description=A beginner project in blockchain, using smart contracts.&tags=Solidity,Typescript,Javascript&icon=fab fa-bitcoin&bgcolor=blue-900&iconcolor=blue-300&badgecolor=blue-600" class="text-indigo-400 hover:text-indigo-300 text-sm flex items-center">
-                                    <span>View Project</span>
-                                    <i class="fas fa-arrow-right ml-1"></i>
-                                </a>
-                                <div class="flex space-x-3">
-                                    <a href="https://github.com/PerseusKyogre09/blockchain-messenger" class="text-gray-400 hover:text-white">
-                                        <i class="fab fa-github"></i>
+                            
+                            <div class="project-card-footer">
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    <span class="bg-gray-700 bg-opacity-50 text-xs px-2 py-1 rounded">Solidity</span>
+                                    <span class="bg-gray-700 bg-opacity-50 text-xs px-2 py-1 rounded">JavaScript</span>
+                                </div>
+                                
+                                <div class="flex justify-between items-center">
+                                    <a href="project-details.html?owner=PerseusKyogre09&repo=blockchain-messenger&title=Blockchain%20Messenger&category=Blockchain&description=A%20beginner%20project%20in%20blockchain,%20using%20smart%20contracts.&tags=Solidity,Typescript,Javascript&icon=fab%20fa-bitcoin&bgcolor=blue-900&iconcolor=blue-300&badgecolor=blue-600" class="text-indigo-400 hover:text-indigo-300 text-sm font-medium inline-flex items-center group">
+                                        View Project
+                                        <i class="fas fa-arrow-right ml-1 group-hover:translate-x-1 transition-transform"></i>
                                     </a>
-                                    <a href="https://gitlab.com/PerseusKyogre09/blockchain-messenger" class="text-gray-400 hover:text-white">
-                                        <i class="fab fa-gitlab"></i>
-                                    </a>
+                                    <div class="flex space-x-3">
+                                        <a href="https://github.com/PerseusKyogre09/blockchain-messenger" class="text-gray-400 hover:text-white transition-colors" aria-label="GitHub">
+                                            <i class="fab fa-github"></i>
+                                        </a>
+                                        <a href="https://gitlab.com/PerseusKyogre09/blockchain-messenger" class="text-gray-400 hover:text-white transition-colors" aria-label="GitLab">
+                                            <i class="fab fa-gitlab"></i>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                       <!-- Project Card 5 -->
-                    <div class="project-card bg-gray-800 rounded-xl overflow-hidden shadow-lg transform hover:-translate-y-2 transition-all duration-300 scrollcue" data-cue="zoom-in" data-delay="900" data-category="web">
-                        <div class="relative overflow-hidden h-48">
-                            <div class="bg-green-900 h-full w-full flex items-center justify-center">
-                                <i class="fas fa-gamepad text-5xl text-green-300"></i>
+                    <div class="project-card scrollcue" data-cue="zoom-in" data-delay="900" data-category="web">
+                        <!-- Preview Image -->
+                        <img src="../assets/projects/pokemon-battle.png" alt="Pokemon Battle Simulator Preview" class="project-card-preview">
+                        
+                        <div class="project-card-content">
+                            <div class="project-card-header">
+                                <span class="inline-block bg-green-600 text-white text-xs px-2 py-1 rounded-md mb-2">Web App</span>
+                                <h3 class="text-xl font-bold mb-2">Pokemon Battle Simulator</h3>
+                                <p class="text-sm mb-4">A simple pokemon battle game similar in style to Pokemon Showdown.</p>
                             </div>
-                            <div class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-70"></div>
-                            <div class="absolute bottom-0 left-0 p-4">
-                                <span class="bg-green-600 text-xs px-2 py-1 rounded-md text-white">Web App</span>
-                            </div>
-                        </div>
-                        <div class="p-6">
-                            <h3 class="text-xl font-bold mb-2 text-white">Pokemon Battle Simulator</h3>
-                            <p class="text-gray-400 mb-4 text-sm">A simple pokemon battle game similar in style to Pokemon Showdown.</p>
-                            <div class="flex space-x-2 text-xs mb-4">
-                                <span class="bg-gray-700 px-2 py-1 rounded text-gray-300">HTML/CSS</span>
-                                <span class="bg-gray-700 px-2 py-1 rounded text-gray-300">Python</span>
-                                <span class="bg-gray-700 px-2 py-1 rounded text-gray-300">Flask</span>
-                                <span class="bg-gray-700 px-2 py-1 rounded text-gray-300">Javascript</span>
-                            </div>                            <div class="flex justify-between">
-                                <a href="project-details.html?owner=PerseusKyogre09&repo=pokemon-battle-sim&title=Pokemon Battle Simulator&category=Web App&description=A simple pokemon battle game similar in style to Pokemon Showdown.&tags=HTML/CSS,Python,Flask,Javascript&icon=fas fa-gamepad&bgcolor=green-900&iconcolor=green-300&badgecolor=green-600" class="text-indigo-400 hover:text-indigo-300 text-sm flex items-center">
-                                    <span>View Project</span>
-                                    <i class="fas fa-arrow-right ml-1"></i>
-                                </a>
-                                <div class="flex space-x-3">
-                                    <a href="https://github.com/PerseusKyogre09/pokemon-battle-sim" class="text-gray-400 hover:text-white">
-                                        <i class="fab fa-github"></i>
+                            
+                            <div class="project-card-footer">
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    <span class="bg-gray-700 bg-opacity-50 text-xs px-2 py-1 rounded">HTML/CSS</span>
+                                    <span class="bg-gray-700 bg-opacity-50 text-xs px-2 py-1 rounded">Python</span>
+                                    <span class="bg-gray-700 bg-opacity-50 text-xs px-2 py-1 rounded">Flask</span>
+                                    <span class="bg-gray-700 bg-opacity-50 text-xs px-2 py-1 rounded">JavaScript</span>
+                                </div>
+                                
+                                <div class="flex justify-between items-center">
+                                    <a href="project-details.html?owner=PerseusKyogre09&repo=pokemon-battle-sim&title=Pokemon Battle Simulator&category=Web App&description=A simple pokemon battle game similar in style to Pokemon Showdown.&tags=HTML/CSS,Python,Flask,Javascript&icon=fas fa-gamepad&bgcolor=green-900&iconcolor=green-300&badgecolor=green-600" class="text-indigo-400 hover:text-indigo-300 text-sm font-medium inline-flex items-center group">
+                                        View Project
+                                        <i class="fas fa-arrow-right ml-1 group-hover:translate-x-1 transition-transform"></i>
                                     </a>
-                                    <a href="https://gitlab.com/PerseusKyogre09/pokemon-battle-sim" class="text-gray-400 hover:text-white">
-                                        <i class="fab fa-gitlab"></i>
-                                    </a>
+                                    <div class="flex space-x-3">
+                                        <a href="https://github.com/PerseusKyogre09/pokemon-battle-sim" class="text-gray-400 hover:text-white transition-colors" aria-label="GitHub">
+                                            <i class="fab fa-github"></i>
+                                        </a>
+                                        <a href="https://gitlab.com/PerseusKyogre09/pokemon-battle-sim" class="text-gray-400 hover:text-white transition-colors" aria-label="GitLab">
+                                            <i class="fab fa-gitlab"></i>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                       <!-- Project Card 6 -->
-                    <div class="project-card bg-gray-800 rounded-xl overflow-hidden shadow-lg transform hover:-translate-y-2 transition-all duration-300 scrollcue" data-cue="zoom-in" data-delay="1200" data-category="desktop">
-                        <div class="relative overflow-hidden h-48">
-                            <div class="bg-yellow-900 h-full w-full flex items-center justify-center">
-                                <i class="fas fa-cloud-sun text-5xl text-yellow-300"></i>
+                    <div class="project-card scrollcue" data-cue="zoom-in" data-delay="1200" data-category="desktop">
+                        <!-- Preview Image -->
+                        <img src="../assets/projects/weather.png" alt="Weather App Preview" class="project-card-preview">
+                        
+                        <div class="project-card-content">
+                            <div class="project-card-header">
+                                <span class="inline-block bg-yellow-600 text-white text-xs px-2 py-1 rounded-md mb-2">Desktop App</span>
+                                <h3 class="text-xl font-bold mb-2">Weather App</h3>
+                                <p class="text-sm mb-4">A desktop application which shows current weather in any city and shows 3 days weather forecast. Uses OpenWeatherMap API.</p>
                             </div>
-                            <div class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-70"></div>
-                            <div class="absolute bottom-0 left-0 p-4">
-                                <span class="bg-yellow-600 text-xs px-2 py-1 rounded-md text-white">Desktop App</span>
-                            </div>
-                        </div>
-                        <div class="p-6">
-                            <h3 class="text-xl font-bold mb-2 text-white">Weather App</h3>
-                            <p class="text-gray-400 mb-4 text-sm">A desktop application which shows current weather in any city and shows 3 days weather forecast. Uses OpenWeatherMap API.</p>
-                            <div class="flex space-x-2 text-xs mb-4">
-                                <span class="bg-gray-700 px-2 py-1 rounded text-gray-300">Python</span>
-                                <span class="bg-gray-700 px-2 py-1 rounded text-gray-300">Custom Tkinter</span>
-                            </div>                            <div class="flex justify-between">
-                                <a href="project-details.html?owner=PerseusKyogre09&repo=weather-project&title=Weather App&category=Desktop App&description=A desktop application which shows current weather in any city and shows 3 days weather forecast. Uses OpenWeatherMap API.&tags=Python,Custom Tkinter&icon=fas fa-cloud-sun&bgcolor=yellow-900&iconcolor=yellow-300&badgecolor=yellow-600" class="text-indigo-400 hover:text-indigo-300 text-sm flex items-center">
-                                    <span>View Project</span>
-                                    <i class="fas fa-arrow-right ml-1"></i>
-                                </a>
-                                <div class="flex space-x-3">
-                                    <a href="https://github.com/PerseusKyogre09/weather-project" class="text-gray-400 hover:text-white">
-                                        <i class="fab fa-github"></i>
+                            
+                            <div class="project-card-footer">
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    <span class="bg-gray-700 bg-opacity-50 text-xs px-2 py-1 rounded">Python</span>
+                                    <span class="bg-gray-700 bg-opacity-50 text-xs px-2 py-1 rounded">Custom Tkinter</span>
+                                </div>
+                                
+                                <div class="flex justify-between items-center">
+                                    <a href="project-details.html?owner=PerseusKyogre09&repo=weather-project&title=Weather App&category=Desktop App&description=A desktop application which shows current weather in any city and shows 3 days weather forecast. Uses OpenWeatherMap API.&tags=Python,Custom Tkinter&icon=fas fa-cloud-sun&bgcolor=yellow-900&iconcolor=yellow-300&badgecolor=yellow-600" class="text-indigo-400 hover:text-indigo-300 text-sm font-medium inline-flex items-center group">
+                                        View Project
+                                        <i class="fas fa-arrow-right ml-1 group-hover:translate-x-1 transition-transform"></i>
                                     </a>
-                                    <a href="https://gitlab.com/PerseusKyogre09/weather-project" class="text-gray-400 hover:text-white">
-                                        <i class="fab fa-gitlab"></i>
-                                    </a>
+                                    <div class="flex space-x-3">
+                                        <a href="https://github.com/PerseusKyogre09/weather-project" class="text-gray-400 hover:text-white transition-colors" aria-label="GitHub">
+                                            <i class="fab fa-github"></i>
+                                        </a>
+                                        <a href="https://gitlab.com/PerseusKyogre09/weather-project" class="text-gray-400 hover:text-white transition-colors" aria-label="GitLab">
+                                            <i class="fab fa-gitlab"></i>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                       <!-- Project Card 7 -->
-                    <div class="project-card bg-gray-800 rounded-xl overflow-hidden shadow-lg transform hover:-translate-y-2 transition-all duration-300 scrollcue" data-cue="zoom-in" data-delay="1500" data-category="cybersecurity">
-                        <div class="relative overflow-hidden h-48">
-                            <div class="bg-red-900 h-full w-full flex items-center justify-center">
-                                <i class="fas fa-network-wired text-5xl text-red-300"></i>
+                    <div class="project-card scrollcue" data-cue="zoom-in" data-delay="1500" data-category="cybersecurity">
+                        <!-- Preview Image -->
+                        <img src="../assets/projects/port-sniffer.png" alt="Port Sniffer CLI Preview" class="project-card-preview">
+                        
+                        <div class="project-card-content">
+                            <div class="project-card-header">
+                                <span class="inline-block bg-red-600 text-white text-xs px-2 py-1 rounded-md mb-2">Cybersecurity</span>
+                                <h3 class="text-xl font-bold mb-2">Port Sniffer CLI</h3>
+                                <p class="text-sm mb-4">A simple, multi-threaded TCP port scanner.</p>
                             </div>
-                            <div class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-70"></div>
-                            <div class="absolute bottom-0 left-0 p-4">
-                                <span class="bg-red-600 text-xs px-2 py-1 rounded-md text-white">Cybersecurity</span>
-                            </div>
-                        </div>
-                        <div class="p-6">
-                            <h3 class="text-xl font-bold mb-2 text-white">Port Sniffer CLI</h3>
-                            <p class="text-gray-400 mb-4 text-sm">A simple, multi-threaded TCP port scanner.</p>
-                            <div class="flex space-x-2 text-xs mb-4">
-                                <span class="bg-gray-700 px-2 py-1 rounded text-gray-300">Rust</span>
-                            </div>                            <div class="flex justify-between">
-                                <a href="project-details.html?owner=PerseusKyogre09&repo=ip_sniffer&title=Port Sniffer CLI&category=Cybersecurity&description=A simple, multi-threaded TCP port scanner.&tags=Rust&icon=fas fa-network-wired&bgcolor=red-900&iconcolor=red-300&badgecolor=red-600" class="text-indigo-400 hover:text-indigo-300 text-sm flex items-center">
-                                    <span>View Project</span>
-                                    <i class="fas fa-arrow-right ml-1"></i>
-                                </a>
-                                <div class="flex space-x-3">
-                                    <a href="https://github.com/PerseusKyogre09/ip_sniffer" class="text-gray-400 hover:text-white">
-                                        <i class="fab fa-github"></i>
+                            
+                            <div class="project-card-footer">
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    <span class="bg-gray-700 bg-opacity-50 text-xs px-2 py-1 rounded">Rust</span>
+                                </div>
+                                
+                                <div class="flex justify-between items-center">
+                                    <a href="project-details.html?owner=PerseusKyogre09&repo=ip_sniffer&title=Port Sniffer CLI&category=Cybersecurity&description=A simple, multi-threaded TCP port scanner.&tags=Rust&icon=fas fa-network-wired&bgcolor=red-900&iconcolor=red-300&badgecolor=red-600" class="text-indigo-400 hover:text-indigo-300 text-sm font-medium inline-flex items-center group">
+                                        View Project
+                                        <i class="fas fa-arrow-right ml-1 group-hover:translate-x-1 transition-transform"></i>
                                     </a>
-                                    <a href="https://gitlab.com/PerseusKyogre09/ip_sniffer" class="text-gray-400 hover:text-white">
-                                        <i class="fab fa-gitlab"></i>
-                                    </a>
+                                    <div class="flex space-x-3">
+                                        <a href="https://github.com/PerseusKyogre09/ip_sniffer" class="text-gray-400 hover:text-white transition-colors" aria-label="GitHub">
+                                            <i class="fab fa-github"></i>
+                                        </a>
+                                        <a href="https://gitlab.com/PerseusKyogre09/ip_sniffer" class="text-gray-400 hover:text-white transition-colors" aria-label="GitLab">
+                                            <i class="fab fa-gitlab"></i>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <!-- Project Card 8 -->
-                    <div class="project-card bg-gray-800 rounded-xl overflow-hidden shadow-lg transform hover:-translate-y-2 transition-all duration-300 scrollcue" data-cue="zoom-in" data-delay="1800" data-category="cybersecurity">
-                        <div class="relative overflow-hidden h-48">
-                            <div class="bg-purple-900 h-full w-full flex items-center justify-center">
-                                <i class="fas fa-lock text-5xl text-purple-300"></i>
+                    <div class="project-card scrollcue" data-cue="zoom-in" data-delay="1800" data-category="cybersecurity">
+                        <!-- Preview Image -->
+                        <img src="../assets/projects/steganography.png" alt="Steganography Preview" class="project-card-preview">
+                        
+                        <div class="project-card-content">
+                            <div class="project-card-header">
+                                <span class="inline-block bg-purple-600 text-white text-xs px-2 py-1 rounded-md mb-2">Cybersecurity</span>
+                                <h3 class="text-xl font-bold mb-2">Steganography</h3>
+                                <p class="text-sm mb-4">A tool that encodes text/files in images using LSB. Inspired from Cicada encoding!</p>
                             </div>
-                            <div class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-70"></div>
-                            <div class="absolute bottom-0 left-0 p-4">
-                                <span class="bg-purple-600 text-xs px-2 py-1 rounded-md text-white">Cybersecurity</span>
-                            </div>
-                        </div>
-                        <div class="p-6">
-                            <h3 class="text-xl font-bold mb-2 text-white">Steganography</h3>
-                            <p class="text-gray-400 mb-4 text-sm">A tool that encodes text/files in images using LSB. Inspired from Cicada encoding!</p>
-                            <div class="flex space-x-2 text-xs mb-4">
-                                <span class="bg-gray-700 px-2 py-1 rounded text-gray-300">Python</span>
-                                <span class="bg-gray-700 px-2 py-1 rounded text-gray-300">Javascript</span>
-                                <span class="bg-gray-700 px-2 py-1 rounded text-gray-300">Numpy</span>
-                            </div>                            <div class="flex justify-between">
-                                <a href="project-details.html?owner=PerseusKyogre09&repo=Steganography&title=Steganography&category=Cybersecurity&description=A tool that encodes text/files in images using LSB. Inspired from Cicada encoding!&tags=Python,Javascript,Numpy&icon=fas fa-lock&bgcolor=purple-900&iconcolor=purple-300&badgecolor=purple-600" class="text-indigo-400 hover:text-indigo-300 text-sm flex items-center">
-                                    <span>View Project</span>
-                                    <i class="fas fa-arrow-right ml-1"></i>
-                                </a>
-                                <div class="flex space-x-3">
-                                    <a href="https://github.com/PerseusKyogre09/Steganography" class="text-gray-400 hover:text-white">
-                                        <i class="fab fa-github"></i>
+                            
+                            <div class="project-card-footer">
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    <span class="bg-gray-700 bg-opacity-50 text-xs px-2 py-1 rounded">Python</span>
+                                    <span class="bg-gray-700 bg-opacity-50 text-xs px-2 py-1 rounded">JavaScript</span>
+                                    <span class="bg-gray-700 bg-opacity-50 text-xs px-2 py-1 rounded">NumPy</span>
+                                </div>
+                                
+                                <div class="flex justify-between items-center">
+                                    <a href="project-details.html?owner=PerseusKyogre09&repo=Steganography&title=Steganography&category=Cybersecurity&description=A tool that encodes text/files in images using LSB. Inspired from Cicada encoding!&tags=Python,Javascript,Numpy&icon=fas fa-lock&bgcolor=purple-900&iconcolor=purple-300&badgecolor=purple-600" class="text-indigo-400 hover:text-indigo-300 text-sm font-medium inline-flex items-center group">
+                                        View Project
+                                        <i class="fas fa-arrow-right ml-1 group-hover:translate-x-1 transition-transform"></i>
                                     </a>
-                                    <a href="https://gitlab.com/PerseusKyogre09/Steganography" class="text-gray-400 hover:text-white">
-                                        <i class="fab fa-gitlab"></i>
-                                    </a>
+                                    <div class="flex space-x-3">
+                                        <a href="https://github.com/PerseusKyogre09/Steganography" class="text-gray-400 hover:text-white transition-colors" aria-label="GitHub">
+                                            <i class="fab fa-github"></i>
+                                        </a>
+                                        <a href="https://gitlab.com/PerseusKyogre09/Steganography" class="text-gray-400 hover:text-white transition-colors" aria-label="GitLab">
+                                            <i class="fab fa-gitlab"></i>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <!-- Project Card 9 -->
-                    <div class="project-card bg-gray-800 rounded-xl overflow-hidden shadow-lg transform hover:-translate-y-2 transition-all duration-300 scrollcue" data-cue="zoom-in" data-delay="2100" data-category="web">
-                        <div class="relative overflow-hidden h-48">
-                            <div class="bg-yellow-900 h-full w-full flex items-center justify-center">
-                                <i class="fas fa-graduation-cap text-5xl text-yellow-300"></i>
+                    <div class="project-card scrollcue" data-cue="zoom-in" data-delay="2100" data-category="web">
+                        <!-- Preview Image -->
+                        <img src="../assets/projects/od-system.jpg" alt="OD System Preview" class="project-card-preview">
+                        
+                        <div class="project-card-content">
+                            <div class="project-card-header">
+                                <span class="inline-block bg-yellow-600 text-white text-xs px-2 py-1 rounded-md mb-2">Web App</span>
+                                <h3 class="text-xl font-bold mb-2">OD System</h3>
+                                <p class="text-sm mb-4">An On-Duty System. Enables students to submit OD requests, which can be reviewed and approved or rejected by teachers.</p>
                             </div>
-                            <div class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-70"></div>
-                            <div class="absolute bottom-0 left-0 p-4">
-                                <span class="bg-yellow-600 text-xs px-2 py-1 rounded-md text-white">Web App</span>
-                            </div>
-                        </div>
-                        <div class="p-6">
-                            <h3 class="text-xl font-bold mb-2 text-white">OD System</h3>
-                            <p class="text-gray-400 mb-4 text-sm">An On-Duty System. Enables students to submit OD requests, which can be reviewed and approved or rejected by teachers.</p>
-                            <div class="flex space-x-2 text-xs mb-4">
-                                <span class="bg-gray-700 px-2 py-1 rounded text-gray-300">Python</span>
-                                <span class="bg-gray-700 px-2 py-1 rounded text-gray-300">Flask</span>
-                                <span class="bg-gray-700 px-2 py-1 rounded text-gray-300">HTML/CSS/Javascript</span>
-                                <span class="bg-gray-700 px-2 py-1 rounded text-gray-300">MySQL</span>
-                            </div>                            <div class="flex justify-between">
-                                <a href="project-details.html?owner=PerseusKyogre09&repo=OD-systems&title=OD%20System&category=Web%20App&description=An%20On-Duty%20System.%20Enables%20students%20to%20submit%20OD%20requests%2C%20which%20can%20be%20reviewed%20and%20approved%20or%20rejected%20by%20teachers.&tags=Python%2CFlask%2CHTML%2FCSS%2FJavascript%2CMySQL&icon=fa-graduation-cap&bgcolor=yellow-900&iconcolor=yellow-300&badgecolor=yellow-600" class="text-indigo-400 hover:text-indigo-300 text-sm flex items-center">
-                                    <span>View Project</span>
-                                    <i class="fas fa-arrow-right ml-1"></i>
-                                </a>
-                                <div class="flex space-x-3">
-                                    <a href="https://github.com/PerseusKyogre09/OD-systems" class="text-gray-400 hover:text-white">
-                                        <i class="fab fa-github"></i>
+                            
+                            <div class="project-card-footer">
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    <span class="bg-gray-700 bg-opacity-50 text-xs px-2 py-1 rounded">Python</span>
+                                    <span class="bg-gray-700 bg-opacity-50 text-xs px-2 py-1 rounded">Flask</span>
+                                    <span class="bg-gray-700 bg-opacity-50 text-xs px-2 py-1 rounded">HTML/CSS/JS</span>
+                                    <span class="bg-gray-700 bg-opacity-50 text-xs px-2 py-1 rounded">MySQL</span>
+                                </div>
+                                
+                                <div class="flex justify-between items-center">
+                                    <a href="project-details.html?owner=PerseusKyogre09&repo=OD-systems&title=OD%20System&category=Web%20App&description=An%20On-Duty%20System.%20Enables%20students%20to%20submit%20OD%20requests%2C%20which%20can%20be%20reviewed%20and%20approved%20or%20rejected%20by%20teachers.&tags=Python%2CFlask%2CHTML%2FCSS%2FJavascript%2CMySQL&icon=fa-graduation-cap&bgcolor=yellow-900&iconcolor=yellow-300&badgecolor=yellow-600" class="text-indigo-400 hover:text-indigo-300 text-sm font-medium inline-flex items-center group">
+                                        View Project
+                                        <i class="fas fa-arrow-right ml-1 group-hover:translate-x-1 transition-transform"></i>
                                     </a>
-                                    <a href="https://gitlab.com/PerseusKyogre09/OD-systems" class="text-gray-400 hover:text-white">
-                                        <i class="fab fa-gitlab"></i>
-                                    </a>
+                                    <div class="flex space-x-3">
+                                        <a href="https://github.com/PerseusKyogre09/OD-systems" class="text-gray-400 hover:text-white transition-colors" aria-label="GitHub">
+                                            <i class="fab fa-github"></i>
+                                        </a>
+                                        <a href="https://gitlab.com/PerseusKyogre09/OD-systems" class="text-gray-400 hover:text-white transition-colors" aria-label="GitLab">
+                                            <i class="fab fa-gitlab"></i>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>

@@ -2081,6 +2081,7 @@ body.light .border-gray-600 {
 }
 
 /* Preserve colored text */
+body.light .text-indigo-600,
 body.light .text-indigo-300,
 body.light .text-indigo-400,
 body.light .text-purple-400,
@@ -2093,7 +2094,7 @@ body.light .text-pink-400 {
 }
 
 /* Preserve form elements styling */
-body.light .bg-indigo-600,
+body.light .bg-indigo-600:not(.project-card *),
 body.light .bg-indigo-600 p-3,
 body.light .bg-purple-600 p-3,
 body.light .bg-blue-600 p-3,
@@ -2101,6 +2102,27 @@ body.light .bg-yellow-500 p-3,
 body.light .bg-pink-500 p-3,
 body.light .bg-indigo-500 p-3 {
   background-color: inherit !important;
+}
+
+/* Ensure all indigo-600 backgrounds are visible in light mode */
+body.light .bg-indigo-600,
+body.light .project-card .bg-indigo-600,
+body.light .absolute.-bottom-4.-right-4.bg-indigo-600,
+body.light .bg-indigo-600.rounded-full.flex.items-center.justify-center,
+body.light .bg-indigo-600.p-3.rounded-lg {
+  background-color: #4f46e5 !important;
+}
+
+/* Ensure indigo-600 text remains visible in light mode */
+body.light .text-indigo-600 {
+  color: #4f46e5 !important;
+}
+
+/* Ensure white text for icons inside indigo-600 elements in light mode */
+body.light .bg-indigo-600 .fas,
+body.light .bg-indigo-600 .fab,
+body.light .bg-indigo-600 .far {
+  color: white !important;
 }
 
 /* Specific to connect section on contact page */

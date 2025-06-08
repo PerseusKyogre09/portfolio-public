@@ -27,6 +27,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/custom.css">
     <link rel="stylesheet" href="css/floating-nav.css">
+    <link rel="stylesheet" href="css/project-cards.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body class="dark bg-gray-900 text-gray-200 min-h-screen flex flex-col transition-colors duration-300">    
@@ -76,7 +77,8 @@
         <section class="relative py-20 md:py-32 overflow-hidden">
             <div class="container mx-auto px-6 relative">
                 <div class="flex flex-col md:flex-row items-center">
-                    <div class="md:w-1/2 md:pr-10 mb-10 md:mb-0 text-center md:text-left parallax-bg" data-speed="3">                        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-500 scrollcue" data-cue="fade-in">
+                    <div class="md:w-1/2 md:pr-10 mb-10 md:mb-0 text-center md:text-left parallax-bg" data-speed="3">                        
+                        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-500 scrollcue" data-cue="fade-in">
                             Hey, I'm Pradeepto<span class="text-indigo-300">.</span>
                         </h1>
                         
@@ -212,106 +214,122 @@
                 </div>
             
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Project Card 1 -->
-                    <div class="project-card bg-gray-800 rounded-xl overflow-hidden shadow-lg transform hover:-translate-y-2 transition-all duration-300 scrollcue" data-cue="zoom-in" data-category="hpc">
-                    <div class="relative overflow-hidden h-48">
-                        <div class="bg-indigo-900 h-full w-full flex items-center justify-center">
-                        <i class="fas fa-microchip text-5xl text-indigo-300"></i>
-                        </div>
-                        <div class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-70"></div>
-                        <div class="absolute bottom-0 left-0 p-4">
-                        <span class="bg-indigo-600 text-xs px-2 py-1 rounded-md text-white">High Processing Compute</span>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2 text-white">Image Processing with Intel oneAPI</h3>
-                        <p class="text-gray-400 mb-4 text-sm">Applies basic image processing using Intel oneAPI DPC++ to compare serial processing & parallel processing.</p>
-                        <div class="flex space-x-2 text-xs mb-4">
-                        <span class="bg-gray-700 px-2 py-1 rounded text-gray-300">C++</span>
-                        <span class="bg-gray-700 px-2 py-1 rounded text-gray-300">Shell</span>
-                        <span class="bg-gray-700 px-2 py-1 rounded text-gray-300">Makefile</span>
-                        </div>                        <div class="flex justify-between">
-                        <a href="pages/project-details.html?owner=PerseusKyogre09&repo=oneapi-compare&title=Image Processing with Intel oneAPI&category=High Processing Compute&description=Applies basic image processing using Intel oneAPI DPC++ to compare serial processing & parallel processing.&tags=C++,Shell,Makefile&icon=fas fa-microchip&bgcolor=indigo-900&iconcolor=indigo-300&badgecolor=indigo-600" class="text-indigo-400 hover:text-indigo-300 text-sm flex items-center">
-                            <span>View Project</span>
-                            <i class="fas fa-arrow-right ml-1"></i>
-                        </a>
-                        <div class="flex space-x-3">
-                            <a href="https://github.com/PerseusKyogre09/oneapi-compare" class="text-gray-400 hover:text-white">
-                                <i class="fab fa-github"></i>
-                            </a>
-                            <a href="https://gitlab.com/PerseusKyogre09/oneapi-compare" class="text-gray-400 hover:text-white">
-                                <i class="fab fa-gitlab"></i>
-                            </a>
-                        </div>
-                        </div>
-                    </div>
-                    </div>                    
-                    <!-- Project Card 2 -->
-                    <div class="project-card bg-gray-800 rounded-xl overflow-hidden shadow-lg transform hover:-translate-y-2 transition-all duration-300 scrollcue" data-cue="zoom-in" data-delay="300" data-category="desktop">
-                    <div class="relative overflow-hidden h-48">
-                        <div class="bg-purple-900 h-full w-full flex items-center justify-center">
-                        <i class="fas fa-desktop text-5xl text-purple-300"></i>
-                        </div>
-                        <div class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-70"></div>
-                        <div class="absolute bottom-0 left-0 p-4">
-                        <span class="bg-purple-600 text-xs px-2 py-1 rounded-md text-white">Desktop App</span>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2 text-white">Widgets App</h3>
-                        <p class="text-gray-400 mb-4 text-sm">A desktop application to demonstrate different widgets made using PyQt5. Includes a clock, current weather of user's city and music player.</p>
-                        <div class="flex space-x-2 text-xs mb-4">
-                        <span class="bg-gray-700 px-2 py-1 rounded text-gray-300">Python</span>
-                        <span class="bg-gray-700 px-2 py-1 rounded text-gray-300">PyQt5</span>
-                        </div>                        <div class="flex justify-between">
-                        <a href="pages/project-details.html?owner=PerseusKyogre09&repo=desktop-widgets&title=Widgets App&category=Desktop App&description=A desktop application to demonstrate different widgets made using PyQt5. Includes a clock, current weather of user's city and music player.&tags=Python,PyQt5&icon=fas fa-desktop&bgcolor=purple-900&iconcolor=purple-300&badgecolor=purple-600" class="text-indigo-400 hover:text-indigo-300 text-sm flex items-center">
-                            <span>View Project</span>
-                            <i class="fas fa-arrow-right ml-1"></i>
-                        </a>
-                        <div class="flex space-x-3">
-                            <a href="https://github.com/PerseusKyogre09/desktop-widgets" class="text-gray-400 hover:text-white">
-                                <i class="fab fa-github"></i>
-                            </a>
-                            <a href="https://gitlab.com/PerseusKyogre09/desktop-widgets" class="text-gray-400 hover:text-white">
-                                <i class="fab fa-gitlab"></i>
-                            </a>
-                        </div>
-                        </div>
-                    </div>
-                    </div>                    
-                    <!-- Project Card 3 -->
-                    <div class="project-card bg-gray-800 rounded-xl overflow-hidden shadow-lg transform hover:-translate-y-2 transition-all duration-300 scrollcue" data-cue="zoom-in" data-delay="600" data-category="web">
-                        <div class="relative overflow-hidden h-48">
-                            <div class="bg-pink-900 h-full w-full flex items-center justify-center">
-                                <i class="fas fa-code text-5xl text-pink-300"></i>
-                            </div>
-                            <div class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-70"></div>
-                            <div class="absolute bottom-0 left-0 p-4">
-                                <span class="bg-pink-600 text-xs px-2 py-1 rounded-md text-white">Web Library</span>
-                            </div>
-                        </div>
-                        <div class="p-6">
-                            <h3 class="text-xl font-bold mb-2 text-white">ScrollCue.js</h3>
-                            <p class="text-gray-400 mb-4 text-sm">An open source web library for scrolling animations! Used in this portfolio as well!</p>
-                            <div class="flex space-x-2 text-xs mb-4">
-                                <span class="bg-gray-700 px-2 py-1 rounded text-gray-300">Javascript</span>
-                                <span class="bg-gray-700 px-2 py-1 rounded text-gray-300">CSS</span>
-                            </div>                            <div class="flex justify-between">
-                                <a href="pages/project-details.html?owner=PerseusKyogre09&repo=ScrollCue.js&title=ScrollCue.js&category=Web Library&description=An open source web library for scrolling animations! Used in this portfolio as well!&tags=Javascript,CSS&icon=fas fa-code&bgcolor=pink-900&iconcolor=pink-300&badgecolor=pink-600" class="text-indigo-400 hover:text-indigo-300 text-sm flex items-center">
-                                    <span>View Project</span>
-                                    <i class="fas fa-arrow-right ml-1"></i>
-                                </a>
-                                <div class="flex space-x-3">
-                                    <a href="https://github.com/PerseusKyogre09/ScrollCue.js" class="text-gray-400 hover:text-white">
-                                        <i class="fab fa-github"></i>
-                                    </a>
-                                    <a href="https://gitlab.com/PerseusKyogre09/ScrollCue.js" class="text-gray-400 hover:text-white">
-                                        <i class="fab fa-gitlab"></i>
-                                    </a>
+                    <!-- Project Card 1 - Intel oneAPI -->
+                    <div class="project-card scrollcue" data-cue="zoom-in" data-category="hpc">
+                        <!-- Preview Image -->
+                        <img src="assets/projects/oneapi-process.png" alt="Intel oneAPI Project Preview" class="project-card-preview">
+                        
+                        <div class="project-card-content">
+                            <div class="project-card-header">
+                                <!-- Category Badge -->
+                                <span class="bg-indigo-600 text-xs px-2 py-1 rounded-md text-white inline-block mb-2">High Performance Computing</span>
+                                <!-- Project Title -->
+                                <h3 class="text-xl font-bold mb-2 text-white">Image Processing with Intel oneAPI</h3>
+                                <!-- Project Description -->
+                                <p class="text-gray-200 mb-3 text-sm">Applies basic image processing using Intel oneAPI DPC++ to compare serial processing & parallel processing.</p>
+                                <!-- Technologies -->
+                                <div class="flex flex-wrap gap-2 mb-3">
+                                    <span class="bg-indigo-500/30 px-2 py-1 rounded text-indigo-100 text-xs">C++</span>
+                                    <span class="bg-indigo-500/30 px-2 py-1 rounded text-indigo-100 text-xs">Shell</span>
+                                    <span class="bg-indigo-500/30 px-2 py-1 rounded text-indigo-100 text-xs">Makefile</span>
                                 </div>
                             </div>
-                        </div>                    
-                    </div>                
+                            
+                            <div class="project-card-footer">
+                                <div class="flex justify-between items-center">
+                                    <a href="pages/project-details.html?owner=PerseusKyogre09&repo=oneapi-compare&title=Image%20Processing%20with%20Intel%20oneAPI&category=High%20Performance%20Computing&description=Applies%20basic%20image%20processing%20using%20Intel%20oneAPI%20DPC++%20to%20compare%20serial%20processing%20&%20parallel%20processing.&tags=C++,Shell,Makefile&icon=fas%20fa-microchip&bgcolor=indigo-900&iconcolor=indigo-300&badgecolor=indigo-600" class="text-white hover:text-indigo-300 text-sm font-medium flex items-center group transition-colors">
+                                        <span>View Project</span>
+                                        <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-1 transition-transform"></i>
+                                    </a>
+                                    <div class="flex space-x-3">
+                                        <a href="https://github.com/PerseusKyogre09/oneapi-compare" class="text-white/70 hover:text-white transition-colors" aria-label="GitHub Repository">
+                                            <i class="fab fa-github"></i>
+                                        </a>
+                                        <a href="https://gitlab.com/PerseusKyogre09/oneapi-compare" class="text-white/70 hover:text-white transition-colors" aria-label="GitLab Repository">
+                                            <i class="fab fa-gitlab"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>                    
+                    <!-- Project Card 2 - Desktop Widgets -->
+                    <div class="project-card scrollcue" data-cue="zoom-in" data-delay="300" data-category="desktop">
+                        <!-- Preview Image -->
+                        <img src="assets/projects/desktop-widgets.png" alt="Desktop Widgets Preview" class="project-card-preview">
+                        
+                        <div class="project-card-content">
+                            <div class="project-card-header">
+                                <!-- Category Badge -->
+                                <span class="bg-purple-600 text-xs px-2 py-1 rounded-md text-white inline-block mb-2">Desktop App</span>
+                                <!-- Project Title -->
+                                <h3 class="text-xl font-bold mb-2 text-white">Widgets App</h3>
+                                <!-- Project Description -->
+                                <p class="text-gray-200 mb-3 text-sm">A desktop application to demonstrate different widgets made using PyQt5. Includes a clock, current weather of user's city and music player.</p>
+                                <!-- Technologies -->
+                                <div class="flex flex-wrap gap-2 mb-3">
+                                    <span class="bg-purple-500/30 px-2 py-1 rounded text-purple-100 text-xs">Python</span>
+                                    <span class="bg-purple-500/30 px-2 py-1 rounded text-purple-100 text-xs">PyQt5</span>
+                                </div>
+                            </div>
+                            
+                            <div class="project-card-footer">
+                                <div class="flex justify-between items-center">
+                                    <a href="pages/project-details.html?owner=PerseusKyogre09&repo=desktop-widgets&title=Widgets%20App&category=Desktop%20App&description=A%20desktop%20application%20to%20demonstrate%20different%20widgets%20made%20using%20PyQt5.%20Includes%20a%20clock,%20current%20weather%20of%20user's%20city%20and%20music%20player.&tags=Python,PyQt5&icon=fas%20fa-desktop&bgcolor=purple-900&iconcolor=purple-300&badgecolor=purple-600" class="text-white hover:text-purple-300 text-sm font-medium flex items-center group transition-colors">
+                                        <span>View Project</span>
+                                        <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-1 transition-transform"></i>
+                                    </a>
+                                    <div class="flex space-x-3">
+                                        <a href="https://github.com/PerseusKyogre09/desktop-widgets" class="text-white/70 hover:text-white transition-colors" aria-label="GitHub Repository">
+                                            <i class="fab fa-github"></i>
+                                        </a>
+                                        <a href="https://gitlab.com/PerseusKyogre09/desktop-widgets" class="text-white/70 hover:text-white transition-colors" aria-label="GitLab Repository">
+                                            <i class="fab fa-gitlab"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>                    
+                    <!-- Project Card 3 - ScrollCue.js -->
+                    <div class="project-card scrollcue" data-cue="zoom-in" data-delay="600" data-category="web">
+                        <!-- Preview Image -->
+                        <img src="assets/projects/scrollcue.png" alt="ScrollCue.js Preview" class="project-card-preview">
+                        
+                        <div class="project-card-content">
+                            <div class="project-card-header">
+                                <!-- Category Badge -->
+                                <span class="bg-pink-600 text-xs px-2 py-1 rounded-md text-white inline-block mb-2">Web Library</span>
+                                <!-- Project Title -->
+                                <h3 class="text-xl font-bold mb-2 text-white">ScrollCue.js</h3>
+                                <!-- Project Description -->
+                                <p class="text-gray-200 mb-3 text-sm">An open source web library for scrolling animations! Used in this portfolio as well!</p>
+                                <!-- Technologies -->
+                                <div class="flex flex-wrap gap-2 mb-3">
+                                    <span class="bg-pink-500/30 px-2 py-1 rounded text-pink-100 text-xs">JavaScript</span>
+                                    <span class="bg-pink-500/30 px-2 py-1 rounded text-pink-100 text-xs">CSS</span>
+                                </div>
+                            </div>
+                            
+                            <div class="project-card-footer">
+                                <div class="flex justify-between items-center">
+                                    <a href="pages/project-details.html?owner=PerseusKyogre09&repo=ScrollCue.js&title=ScrollCue.js&category=Web%20Library&description=An%20open%20source%20web%20library%20for%20scrolling%20animations!%20Used%20in%20this%20portfolio%20as%20well!&tags=JavaScript,CSS&icon=fas%20fa-code&bgcolor=pink-900&iconcolor=pink-300&badgecolor=pink-600" class="text-white hover:text-pink-300 text-sm font-medium flex items-center group transition-colors">
+                                        <span>View Project</span>
+                                        <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-1 transition-transform"></i>
+                                    </a>
+                                    <div class="flex space-x-3">
+                                        <a href="https://github.com/PerseusKyogre09/ScrollCue.js" class="text-white/70 hover:text-white transition-colors" aria-label="GitHub Repository">
+                                            <i class="fab fa-github"></i>
+                                        </a>
+                                        <a href="https://gitlab.com/PerseusKyogre09/ScrollCue.js" class="text-white/70 hover:text-white transition-colors" aria-label="GitLab Repository">
+                                            <i class="fab fa-gitlab"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>                
                 </div>
                 
                 <div class="text-center mt-12 scrollcue" data-cue="fade-in" data-delay="800">

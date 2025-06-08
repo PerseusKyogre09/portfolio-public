@@ -41,6 +41,12 @@ function setDarkTheme() {
     document.body.classList.add('text-gray-200');
     document.body.classList.remove('bg-white');
     document.body.classList.remove('text-gray-800');
+    
+    // Ensure indigo colors stay consistent
+    document.documentElement.style.setProperty('--indigo-500', '#6366f1');
+    document.documentElement.style.setProperty('--indigo-600', '#4f46e5');
+    document.documentElement.style.setProperty('--indigo-700', '#4338ca');
+    
     localStorage.setItem('theme', 'dark');
 }
 
@@ -54,6 +60,12 @@ function setLightTheme() {
     document.body.classList.remove('text-gray-200');
     document.body.classList.add('bg-white');
     document.body.classList.add('text-gray-800');
+    
+    // Ensure indigo colors stay consistent
+    document.documentElement.style.setProperty('--indigo-500', '#6366f1');
+    document.documentElement.style.setProperty('--indigo-600', '#4f46e5');
+    document.documentElement.style.setProperty('--indigo-700', '#4338ca');
+    
     localStorage.setItem('theme', 'light');
 }
 
