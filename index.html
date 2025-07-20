@@ -341,6 +341,126 @@
             </div>
           </section>
 
+        <!-- Experience Section -->
+        <section class="py-20 bg-gray-800 bg-opacity-30" id="experience-section">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16 scrollcue" data-cue="slide-up">
+                    <h2 class="text-3xl font-bold mb-4">Experience</h2>
+                    <div class="w-24 h-1 bg-indigo-500 mx-auto rounded-full"></div>
+                </div>
+
+                <!-- Experience Cards Container -->
+                <div class="experience-container" data-enable-scroll="false">
+                    <div class="experience-wrapper">
+                        <!-- Experience Card 1 -->
+                        <div class="experience-card scrollcue" data-cue="slide-right">
+                            <div class="experience-card-content">
+                                <div class="experience-header">
+                                    <div class="experience-icon">
+                                        <img src="assets/logo/hackskill.png" alt="HackSkill Logo" class="experience-logo">
+                                    </div>
+                                    <div class="experience-info">
+                                        <h3 class="text-xl font-bold text-white mb-1">Technical Staff</h3>
+                                        <p class="text-indigo-400 font-medium mb-1">HackSkill</p>
+                                        <p class="text-gray-400 text-sm">April 2025 - Present</p>
+                                    </div>
+                                </div>
+                                <div class="experience-description">
+                                    <p class="text-gray-300 text-sm leading-relaxed">
+                                        Responsible for maintaining the technical aspects of HackSkill, including managing the codebase, and website updates.
+                                    </p>
+                                </div>
+                                <div class="experience-skills">
+                                    <span class="skill-tag">Web Development</span>
+                                    <span class="skill-tag">Code Management</span>
+                                    <span class="skill-tag">Technical Maintenance</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Experience Card 2 -->
+                        <div class="experience-card scrollcue" data-cue="slide-right" data-delay="300">
+                            <div class="experience-card-content">
+                                <div class="experience-header">
+                                    <div class="experience-icon">
+                                        <img src="assets/logo/csi.png" alt="CSI Logo" class="experience-logo">
+                                    </div>
+                                    <div class="experience-info">
+                                        <h3 class="text-xl font-bold text-white mb-1">App Developer</h3>
+                                        <p class="text-indigo-400 font-medium mb-1">Computer Society of India - SRMIST Chapter</p>
+                                        <p class="text-gray-400 text-sm">January 2025 - Present</p>
+                                    </div>
+                                </div>
+                                <div class="experience-description">
+                                    <p class="text-gray-300 text-sm leading-relaxed">
+                                        Contributing to the technical club, assisting with events and hackathons.
+                                    </p>
+                                </div>
+                                <div class="experience-skills">
+                                    <span class="skill-tag">App Development</span>
+                                    <span class="skill-tag">Event Management</span>
+                                    <span class="skill-tag">Team Collaboration</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Placeholder cards for when scrolling is enabled -->
+                        <div class="experience-card scrollcue hidden-card" data-cue="slide-right" data-delay="600">
+                            <div class="experience-card-content">
+                                <div class="experience-header">
+                                    <div class="experience-icon">
+                                        <i class="fas fa-laptop-code text-2xl"></i>
+                                    </div>
+                                    <div class="experience-info">
+                                        <h3 class="text-xl font-bold text-white mb-1">Frontend Developer</h3>
+                                        <p class="text-indigo-400 font-medium mb-1">Company Name</p>
+                                        <p class="text-gray-400 text-sm">2024 - Present</p>
+                                    </div>
+                                </div>
+                                <div class="experience-description">
+                                    <p class="text-gray-300 text-sm leading-relaxed">
+                                        Future experience placeholder. This card will be shown when scrolling is enabled 
+                                        and you have more experiences to showcase.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="experience-card scrollcue hidden-card" data-cue="slide-right" data-delay="900">
+                            <div class="experience-card-content">
+                                <div class="experience-header">
+                                    <div class="experience-icon">
+                                        <i class="fas fa-database text-2xl"></i>
+                                    </div>
+                                    <div class="experience-info">
+                                        <h3 class="text-xl font-bold text-white mb-1">Backend Developer</h3>
+                                        <p class="text-indigo-400 font-medium mb-1">Another Company</p>
+                                        <p class="text-gray-400 text-sm">2024 - Present</p>
+                                    </div>
+                                </div>
+                                <div class="experience-description">
+                                    <p class="text-gray-300 text-sm leading-relaxed">
+                                        Another future experience placeholder. Add more experience cards as needed 
+                                        and enable scrolling when you have 4-5 experiences.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Scroll indicators (only shown when scrolling is enabled) -->
+                    <div class="scroll-indicators">
+                        <button class="scroll-btn scroll-left" aria-label="Scroll left">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="scroll-btn scroll-right" aria-label="Scroll right">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Contact Preview -->
         <section class="py-20 bg-indigo-900 bg-opacity-20">
             <div class="container mx-auto px-6">
@@ -419,6 +539,7 @@
     <script src="https://unpkg.com/scrollcue.js@1.2.0/scrollcue.all-in-one.min.js"></script>
     <script src="js/main.js"></script>
     <script src="js/animations.js"></script>
+    <script src="js/experience.js"></script>
     <script src="js/theme.js"></script>
     <script src="js/floating-nav.js"></script>
     <!-- Structured Data -->
