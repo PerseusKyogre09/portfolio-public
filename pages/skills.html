@@ -356,103 +356,143 @@
                         </div>
                     </div>
                 </div>                <!-- Certificate & Achievements Section -->
-                <div class="mt-20 scrollcue" data-cue="fade-in">
-                    <h2 class="text-3xl font-bold mb-8 text-center scrollcue" data-cue="slide-up">Certifications & Achievements</h2>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="mt-20 relative py-16 overflow-hidden bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 rounded-2xl">
+                    <div class="container mx-auto px-4">
+                        <h2 class="text-3xl font-bold text-center mb-12 relative inline-block w-full scrollcue"
+                            data-cue="fade-in">
+                            <span class="relative z-10 px-4">Certifications & Achievements</span>
+                            <span
+                                class="absolute left-1/2 bottom-0 h-1 w-24 bg-gradient-to-r from-indigo-500 to-purple-500 transform -translate-x-1/2 -translate-y-1 scrollcue"
+                                data-cue="zoom-in" data-delay="300"></span>
+                        </h2>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8 relative z-10">
 
                         <!-- Certificate 1 -->
-                        <a href="https://cs50.harvard.edu/certificates/9b2ea42e-44dc-4caa-8ea0-6226198f9ab2" target="_blank" rel="noopener noreferrer">
-                            <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300 scrollcue" data-cue="elastic-in" data-delay="300" data-duration="1500">
-                                <div class="flex items-start">
-                                    <div class="bg-blue-500 p-3 rounded-full">
-                                        <i class="fas fa-certificate text-white"></i>
+                        <div class="card-3d-container group scrollcue" data-cue="slide-left" data-delay="300">
+                            <div class="card-3d bg-gradient-to-br from-red-900/50 to-red-800/30 backdrop-blur-sm border border-red-500/20 rounded-xl p-6 h-full flex flex-col relative overflow-hidden transition-all duration-500 hover:border-red-400/40">
+                                <div class="absolute inset-0 bg-gradient-to-br from-red-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                                <div class="card-content relative z-10">
+                                    <div class="flex items-center justify-between mb-4">
+                                        <i class="fas fa-code text-3xl text-blue-400"></i>
+                                        <span class="text-xs font-mono text-blue-300/70">CS50</span>
                                     </div>
-                                    <div class="ml-4">
-                                        <h3 class="text-xl font-semibold text-blue-400">CS50's Introduction Python and Programming</h3>
-                                        <p class="text-gray-400 mt-1">CS50P</p>
-                                        <p class="text-gray-300 mt-3">Completed a comprehensive course of CS50, including nine problem sets and one final project</p>
-                                        <p class="text-gray-500 mt-2">Issued: Mar 2025</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>                        <!-- Certificate 2 -->
-                        <a href="https://www.virtualbadge.io/certificate-validator?credential=e904f299-9bf9-4017-a505-66074061e999" target="_blank" rel="noopener noreferrer">
-                            <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300 scrollcue" data-cue="elastic-in" data-delay="600" data-duration="1500">
-                                <div class="flex items-start">
-                                    <div class="bg-green-500 p-3 rounded-full">
-                                        <i class="fas fa-certificate text-white"></i>
-                                    </div>
-                                    <div class="ml-4">
-                                        <h3 class="text-xl font-semibold text-green-400">Quantum Computing basics</h3>
-                                        <p class="text-gray-400 mt-1">Womanium x WISER</p>
-                                        <p class="text-gray-300 mt-3">Mastered quantum computing concepts and their applications. Also completed Pennywise LCU Challenge and Qiskit Bronze.</p>
-                                        <p class="text-gray-500 mt-2">Issued: Jul 2025</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-
-                        
-                        <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300 scrollcue" data-cue="elastic-in" data-delay="900" data-duration="1500">
-                            <div class="flex items-start">
-                                <div class="bg-red-500 p-3 rounded-full">
-                                    <i class="fas fa-file-alt text-white"></i>
-                                </div>
-                                <div class="ml-4">
-                                    <h3 class="text-xl font-semibold text-red-400">Research on Gravastar</h3>
-                                    <p class="text-gray-400 mt-1">Paper Presentation</p>
-                                    <p class="text-gray-300 mt-3">Presented research findings on Gravastar theory</p>
-                                    <p class="text-gray-500 mt-2">March-April 2025</p>
+                                    <h3 class="text-xl font-bold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-blue-300 to-blue-100">
+                                        CS50's Introduction to Python and Programming
+                                    </h3>
+                                    <p class="text-blue-100/80 text-sm mb-4">Completed a comprehensive course of CS50, including nine problem sets and one final project</p>
                                     
                                     <div class="mt-4 flex space-x-4">
-                                        <a href="../assets/certificate/Ktr Rsrch Ppr.jpg" target="_blank" class="block w-20 h-20 rounded-md overflow-hidden border border-gray-700 hover:border-indigo-500 transition-colors">
+                                        <a href="../assets/certificate/CS50P.png" target="_blank" class="block w-20 h-20 rounded-md overflow-hidden border border-blue-700/30 hover:border-blue-500/50 transition-colors">
+                                            <img src="../assets/certificate/CS50P.png" alt="Certificate CS50" class="w-full h-full object-cover">
+                                        </a>
+                                    </div>
+                                    
+                                    <a href="https://cs50.harvard.edu/certificates/9b2ea42e-44dc-4caa-8ea0-6226198f9ab2" target="_blank" class="flex items-center text-blue-300 text-sm mt-auto pt-4 border-t border-blue-500/20 group-hover:text-blue-200 transition-colors">
+                                        <span>View Certificate</span>
+                                        <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-1 transition-transform"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>                      
+                        <!-- Certificate 2 -->
+                        <div class="card-3d-container group scrollcue" data-cue="slide-left" data-delay="600">
+                            <div class="card-3d bg-gradient-to-br from-red-900/50 to-red-800/30 backdrop-blur-sm border border-red-500/20 rounded-xl p-6 h-full flex flex-col relative overflow-hidden transition-all duration-500 hover:border-red-400/40">
+                                <div class="absolute inset-0 bg-gradient-to-br from-red-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                                <div class="card-content relative z-10">
+                                    <div class="flex items-center justify-between mb-4">
+                                        <i class="fas fa-microchip text-3xl text-green-400"></i>
+                                        <span class="text-xs font-mono text-green-300/70">WISER x Womanium</span>
+                                    </div>
+                                    <h3 class="text-xl font-bold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-green-300 to-green-100">
+                                        Quantum Computing Basics
+                                    </h3>
+                                    <p class="text-green-100/80 text-sm mb-4">Mastered quantum computing concepts and their applications. Also completed Pennywise LCU Challenge and Qiskit Bronze.</p>
+                                    
+                                    <div class="mt-4 flex space-x-4">
+                                        <a href="../assets/certificate/WISER.png" target="_blank" class="block w-20 h-20 rounded-md overflow-hidden border border-green-700/30 hover:border-green-500/50 transition-colors">
+                                            <img src="../assets/certificate/WISER.png" alt="Certificate Quantum" class="w-full h-full object-cover">
+                                        </a>
+                                    </div>
+
+                                    <a href="https://www.virtualbadge.io/certificate-validator?credential=f0010de7-a76d-47a7-a745-9fd50f20051b" target="_blank" class="flex items-center text-green-300 text-sm mt-auto pt-4 border-t border-green-500/20 group-hover:text-green-200 transition-colors">
+                                        <span>View Certificate</span>
+                                        <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-1 transition-transform"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Research Achievement -->
+                        <div class="card-3d-container group scrollcue" data-cue="slide-left" data-delay="900">
+                            <div class="card-3d bg-gradient-to-br from-red-900/50 to-red-800/30 backdrop-blur-sm border border-red-500/20 rounded-xl p-6 h-full flex flex-col relative overflow-hidden transition-all duration-500 hover:border-red-400/40">
+                                <div class="absolute inset-0 bg-gradient-to-br from-red-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                                <div class="card-content relative z-10">
+                                    <div class="flex items-center justify-between mb-4">
+                                        <i class="fas fa-file-alt text-3xl text-red-400"></i>
+                                        <span class="text-xs font-mono text-red-300/70">Research</span>
+                                    </div>
+                                    <h3 class="text-xl font-bold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-red-300 to-red-100">
+                                        Research on Gravastar</h3>
+                                    <p class="text-red-100/80 text-sm mb-4">Presented research findings on Gravastar theory at academic conferences</p>
+                                    
+                                    <div class="mt-4 flex space-x-4">
+                                        <a href="../assets/certificate/Ktr Rsrch Ppr.jpg" target="_blank" class="block w-20 h-20 rounded-md overflow-hidden border border-red-700/30 hover:border-red-500/50 transition-colors">
                                             <img src="../assets/certificate/Ktr Rsrch Ppr.jpg" alt="Certificate 1" class="w-full h-full object-cover">
-                                            <span class="text-xs text-gray-500 block mt-1 text-center">March 2025</span>
                                         </a>
-                                        <a href="../assets/certificate/Viksit Bharat Rsrch Ppr.jpg" target="_blank" class="block w-20 h-20 rounded-md overflow-hidden border border-gray-700 hover:border-indigo-500 transition-colors">
+                                        <a href="../assets/certificate/Viksit Bharat Rsrch Ppr.jpg" target="_blank" class="block w-20 h-20 rounded-md overflow-hidden border border-red-700/30 hover:border-red-500/50 transition-colors">
                                             <img src="../assets/certificate/Viksit Bharat Rsrch Ppr.jpg" alt="Certificate 2" class="w-full h-full object-cover">
-                                            <span class="text-xs text-gray-500 block mt-1 text-center">April 2025</span>
                                         </a>
+                                    </div>
+                                    
+                                    <div class="flex items-center text-red-300 text-sm mt-auto pt-4 border-t border-red-500/20 group-hover:text-red-200 transition-colors">
+                                        <span>View Papers</span>
+                                        <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-1 transition-transform"></i>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        
-                        <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300 scrollcue" data-cue="elastic-in" data-delay="1200" data-duration="1500">
-                            <div class="flex items-start">
-                                <div class="bg-purple-500 p-3 rounded-full">
-                                    <i class="fas fa-code-branch text-white"></i>
-                                </div>
-                                <div class="ml-4">
-                                    <h3 class="text-xl font-semibold text-purple-400">Open Source Contributions</h3>
-                                    <p class="text-gray-400 mt-1">Community Participation & Achievements</p>
-                                    <p class="text-gray-300 mt-3">Active contributor to various open source projects.</p>
-                                    <p class="text-gray-500 mt-2">2024-2025</p>
+                        <!-- Open Source Contributions -->
+                        <div class="card-3d-container group scrollcue" data-cue="slide-right" data-delay="1200">
+                            <div class="card-3d bg-gradient-to-br from-purple-900/50 to-indigo-900/30 backdrop-blur-sm border border-purple-500/20 rounded-xl p-6 h-full flex flex-col relative overflow-hidden transition-all duration-500 hover:border-purple-400/40">
+                                <div class="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                                <div class="card-content relative z-10">
+                                    <div class="flex items-center justify-between mb-4">
+                                        <i class="fas fa-code-branch text-3xl text-purple-400"></i>
+                                        <span class="text-xs font-mono text-purple-300/70">Open Source</span>
+                                    </div>
+                                    <h3 class="text-xl font-bold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-purple-300 to-indigo-200">
+                                        Open Source Contributions</h3>
+                                    <p class="text-purple-100/80 text-sm mb-4">Active contributor to various open source projects and community events</p>
                                     
                                     <div class="mt-4 flex flex-wrap gap-3">
-                                        <a href="../assets/stickers/gssoc.png" target="_blank" class="block w-12 h-12 rounded-md overflow-hidden hover:scale-110 transition-transform" title="GSSoC">
+                                        <a href="../assets/stickers/gssoc.png" target="_blank" class="block w-12 h-12 rounded-md overflow-hidden hover:scale-110 transition-transform border border-purple-700/30 hover:border-purple-500/50" title="GSSoC">
                                             <img src="../assets/stickers/gssoc.png" alt="GSSoC" class="w-full h-full object-contain">
                                         </a>
-                                        <a href="../assets/stickers/hacktoberfest.png" target="_blank" class="block w-12 h-12 rounded-md overflow-hidden hover:scale-110 transition-transform" title="Hacktoberfest">
+                                        <a href="../assets/stickers/hacktoberfest.png" target="_blank" class="block w-12 h-12 rounded-md overflow-hidden hover:scale-110 transition-transform border border-purple-700/30 hover:border-purple-500/50" title="Hacktoberfest">
                                             <img src="../assets/stickers/hacktoberfest.png" alt="Hacktoberfest" class="w-full h-full object-contain">
                                         </a>
-                                        <a href="../assets/stickers/mlh.png" target="_blank" class="block w-12 h-12 rounded-md overflow-hidden hover:scale-110 transition-transform" title="MLH">
+                                        <a href="../assets/stickers/mlh.png" target="_blank" class="block w-12 h-12 rounded-md overflow-hidden hover:scale-110 transition-transform border border-purple-700/30 hover:border-purple-500/50" title="MLH">
                                             <img src="../assets/stickers/mlh.png" alt="MLH" class="w-full h-full object-contain">
                                         </a>
-                                        <a href="../assets/stickers/pull-shark.png" target="_blank" class="block w-12 h-12 rounded-md overflow-hidden hover:scale-110 transition-transform" title="GitHub Pull Shark">
+                                        <a href="../assets/stickers/pull-shark.png" target="_blank" class="block w-12 h-12 rounded-md overflow-hidden hover:scale-110 transition-transform border border-purple-700/30 hover:border-purple-500/50" title="GitHub Pull Shark">
                                             <img src="../assets/stickers/pull-shark.png" alt="GitHub Pull Shark" class="w-full h-full object-contain">
                                         </a>
-                                        <a href="../assets/stickers/ssoc.png" target="_blank" class="block w-12 h-12 rounded-md overflow-hidden hover:scale-110 transition-transform" title="SSOC">
+                                        <a href="../assets/stickers/ssoc.png" target="_blank" class="block w-12 h-12 rounded-md overflow-hidden hover:scale-110 transition-transform border border-purple-700/30 hover:border-purple-500/50" title="SSOC">
                                             <img src="../assets/stickers/ssoc.png" alt="SSOC" class="w-full h-full object-contain">
                                         </a>
-                                        <!-- More badges can be added here following the same pattern -->
+                                    </div>
+                                    
+                                    <div class="flex items-center text-purple-300 text-sm mt-auto pt-4 border-t border-purple-500/20 group-hover:text-purple-200 transition-colors">
+                                        <span>View Contributions</span>
+                                        <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-1 transition-transform"></i>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
         </section>               
     </main>    <footer class="bg-gray-900 py-10 border-t border-gray-800 z-10 relative">
         <div class="container mx-auto px-6">
