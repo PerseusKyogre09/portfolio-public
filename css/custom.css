@@ -490,6 +490,53 @@ body.dark {
   animation: slideDown 0.3s ease forwards;
 }
 
+/* Background image visibility classes */
+body.dark {
+  background: linear-gradient(rgba(17, 24, 39, 0.85), rgba(17, 24, 39, 0.85)), url('../assets/bg.png') !important;
+  background-size: cover !important;
+  background-attachment: fixed !important;
+  background-position: center !important;
+}
+
+body.light {
+  background: linear-gradient(rgba(248, 249, 250, 0.1), rgba(248, 249, 250, 0.1)), url('../assets/bg3.png') !important;
+  background-size: cover !important;
+  background-attachment: fixed !important;
+  background-position: center !important;
+}
+
+.bg-image-bg1 {
+  background: linear-gradient(rgba(17, 24, 39, 0.85), rgba(17, 24, 39, 0.85)), url('../assets/bg.png') !important;
+  background-size: cover !important;
+  background-attachment: fixed !important;
+  background-position: center !important;
+}
+
+.light .bg-image-bg1 {
+  background: linear-gradient(rgba(248, 249, 250, 0.1), rgba(248, 249, 250, 0.1)), url('../assets/bg3.png') !important;
+  background-size: cover !important;
+  background-attachment: fixed !important;
+  background-position: center !important;
+}
+
+.bg-image-bg2 {
+  background: linear-gradient(rgba(17, 24, 39, 0.85), rgba(17, 24, 39, 0.85)), url('../assets/bg2.png') !important;
+  background-size: cover !important;
+  background-attachment: fixed !important;
+  background-position: center !important;
+}
+
+.light .bg-image-bg2 {
+  background: linear-gradient(rgba(248, 249, 250, 0.1), rgba(248, 249, 250, 0.1)), url('../assets/bg4.png') !important;
+  background-size: cover !important;
+  background-attachment: fixed !important;
+  background-position: center !important;
+}
+
+.bg-image-hidden {
+  background-color: #111827 !important;
+}
+
 /* Media Queries */
 @media (max-width: 768px) {
   .animate-title, .animate-fade-in-up, .animate-fade-in {

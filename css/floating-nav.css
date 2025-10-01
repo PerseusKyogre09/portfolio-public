@@ -9,7 +9,7 @@
   z-index: 100;
   border-radius: 18px;
   backdrop-filter: blur(10px);
-  background-color: rgba(31, 41, 55, 0.8);
+  background-color: rgba(31, 41, 55, 0.3);
   box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3),
               0 10px 10px -5px rgba(0, 0, 0, 0.2),
               0 0 0 1px rgba(255, 255, 255, 0.1) inset;
@@ -17,7 +17,7 @@
 }
 
 .light .floating-nav {
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(255, 255, 255, 0.3);
   box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1),
               0 10px 10px -5px rgba(0, 0, 0, 0.04),
               0 0 0 1px rgba(0, 0, 0, 0.05) inset;
@@ -29,14 +29,14 @@
 
 /* Apply a subtle animation when scrolling */
 .floating-nav.scrolled {
-  background-color: rgba(31, 41, 55, 0.9);
+  background-color: rgba(31, 41, 55, 0.4);
   box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.5),
               0 10px 10px -5px rgba(0, 0, 0, 0.3),
               0 0 0 1px rgba(255, 255, 255, 0.15) inset;
 }
 
 .light .floating-nav.scrolled {
-  background-color: rgba(255, 255, 255, 0.95);
+  background-color: rgba(255, 255, 255, 0.4);
 }
 
 /* Style for when mobile menu is open */
@@ -53,12 +53,12 @@ main.with-floating-nav {
 .floating-nav #mobile-menu {
   border-bottom-left-radius: 18px;
   border-bottom-right-radius: 18px;
-  background-color: rgba(31, 41, 55, 0.95);
+  background-color: rgba(31, 41, 55, 0.4);
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .light .floating-nav #mobile-menu {
-  background-color: rgba(255, 255, 255, 0.95);
+  background-color: rgba(255, 255, 255, 0.4);
   border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
 
