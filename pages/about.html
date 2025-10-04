@@ -76,8 +76,9 @@
                 </div>
             </div>
         </section> <!-- About Content -->
-        <section class="py-10 bg-image-bg2">
-            <div class="container mx-auto px-6">
+        <section class="py-10 relative overflow-hidden">
+            <video autoplay loop muted class="bg-video absolute inset-0 w-full h-full object-cover z-0"><source src="../assets/race.mp4" type="video/mp4"></video>
+            <div class="container mx-auto px-6 relative z-10">
                 <div class="max-w-5xl mx-auto">
                     <div class="bg-gray-800 rounded-3xl p-8 md:p-12 shadow-2xl mb-20 scrollcue deck overflow-hidden" data-cue="fade-in">
                         <img src="../assets/gear.png" alt="Gear" class="absolute top-0 right-0 -mr-16 -mt-16 w-48 h-48 opacity-20 gear-slow gear-top">
@@ -167,6 +168,13 @@
                             </div>
                         </div>
                     </div>
+                </div>
+            </section>
+
+            <!-- Interests & Hobbies Section -->
+            <section class="py-20 bg-image-bg1">
+                <div class="container mx-auto px-6">
+                    <div class="max-w-4xl mx-auto">
                     <!-- Interests & Hobbies -->
                     <div class="bg-gray-800 rounded-2xl p-8 shadow-xl mb-20 scrollcue deck overflow-hidden" data-cue="fade-in">
                         <img src="../assets/gear.png" alt="Gear" class="absolute top-0 right-0 -mr-16 -mt-16 w-48 h-48 opacity-20 gear-slow gear-top">
@@ -253,7 +261,14 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Quotes from Favorites -->
+                        </div>
+                    </div>
+                </section>
+                <!-- Quotes from Favorites -->
+                <section class="bg-image-bg2 py-20 relative overflow-hidden">
+                    <video autoplay loop muted class="bg-video absolute inset-0 w-full h-full object-cover z-0"><source src="../assets/race.mp4" type="video/mp4"></video>
+                    <div class="container mx-auto px-6 relative z-10">
+                        <div class="max-w-4xl mx-auto">
                     <div class="mb-20 scrollcue" data-cue="fade-in">
                         <div class="text-center mb-10 scrollcue" data-cue="slide-up">
                             <h3 class="text-2xl font-bold text-white mb-2">Quotes That Inspire Me</h3>
@@ -332,7 +347,13 @@
                             </div>
                         </div>
                     </div>
+                        </div>
+                    </div>
+                </section>
                     <!-- Future Goals -->
+                <section class="bg-image-bg1 py-20">
+                    <div class="container mx-auto px-6">
+                        <div class="max-w-4xl mx-auto">
                     <div class="bg-gray-800 rounded-2xl p-8 shadow-xl mb-20 scrollcue deck overflow-hidden" data-cue="fade-in">
                         <img src="../assets/gear.png" alt="Gear" class="absolute top-0 right-0 -mr-16 -mt-16 w-48 h-48 opacity-20 gear-slow gear-top">
                         <img src="../assets/gear.png" alt="Gear" class="absolute bottom-0 left-0 -ml-16 -mb-16 w-48 h-48 opacity-20 gear-slow gear-bottom">
@@ -408,60 +429,68 @@
 
                         </div>
                     </div>
-                    <!-- Testimonials/Quotes -->
-                    <div class="mb-20 scrollcue" data-cue="fade-in">
-                        <div class="text-center mb-10 scrollcue" data-cue="slide-up">
-                            <h3 class="text-2xl font-bold text-white mb-2">Words I Live By</h3>
-                            <p class="text-gray-400">Quotes that inspire my journey in tech and life</p>
-                        </div>
-
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                            <div class="bg-gray-800 rounded-2xl p-8 shadow-xl relative border-l-4 border-indigo-500 scrollcue"
-                                data-cue="slide-right" data-delay="200">
-                                <div
-                                    class="absolute -top-4 -left-4 w-10 h-10 bg-indigo-600 rounded-full flex items-center justify-center shadow-lg">
-                                    <i class="fas fa-quote-left text-white"></i>
-                                </div>
-                                <blockquote class="text-gray-300 italic mb-4">
-                                    "The best way to predict the future is to invent it."
-                                </blockquote>
-                                <p class="text-indigo-400 font-medium">- Alan Kay</p>
-                            </div>
-                            <div class="bg-gray-800 rounded-2xl p-8 shadow-xl relative border-l-4 border-purple-500 scrollcue"
-                                data-cue="slide-left" data-delay="400">
-                                <div
-                                    class="absolute -top-4 -left-4 w-10 h-10 bg-purple-600 rounded-full flex items-center justify-center shadow-lg">
-                                    <i class="fas fa-quote-left text-white"></i>
-                                </div>
-                                <blockquote class="text-gray-300 italic mb-4">
-                                    "Simplicity is the ultimate sophistication."
-                                </blockquote>
-                                <p class="text-purple-400 font-medium">- Leonardo da Vinci</p>
-                            </div>
-                            <div class="bg-gray-800 rounded-2xl p-8 shadow-xl relative border-l-4 border-blue-500 scrollcue"
-                                data-cue="slide-right" data-delay="600">
-                                <div
-                                    class="absolute -top-4 -left-4 w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center shadow-lg">
-                                    <i class="fas fa-quote-left text-white"></i>
-                                </div>
-                                <blockquote class="text-gray-300 italic mb-4">
-                                    "Code is like humor. When you have to explain it, it's bad."
-                                </blockquote>
-                                <p class="text-blue-400 font-medium">- Cory House</p>
-                            </div>
-                            <div class="bg-gray-800 rounded-2xl p-8 shadow-xl relative border-l-4 border-green-500 scrollcue"
-                                data-cue="slide-left" data-delay="800">
-                                <div
-                                    class="absolute -top-4 -left-4 w-10 h-10 bg-green-600 rounded-full flex items-center justify-center shadow-lg">
-                                    <i class="fas fa-quote-left text-white"></i>
-                                </div>
-                                <blockquote class="text-gray-300 italic mb-4">
-                                    "The most powerful tool we have as developers is automation."
-                                </blockquote>
-                                <p class="text-green-400 font-medium">- Scott Hanselman</p>
-                            </div>
                         </div>
                     </div>
+                </section>
+                    <!-- Testimonials/Quotes -->
+                    <section class="bg-image-bg2 py-20 relative overflow-hidden">
+                        <video autoplay loop muted class="bg-video absolute inset-0 w-full h-full object-cover z-0"><source src="../assets/race.mp4" type="video/mp4"></video>
+                        <div class="container mx-auto px-6 relative z-10">
+                            <div class="max-w-4xl mx-auto">
+                        <div class="mb-20 scrollcue" data-cue="fade-in">
+                            <div class="text-center mb-10 scrollcue" data-cue="slide-up">
+                                <h3 class="text-2xl font-bold text-white mb-2">Words I Live By</h3>
+                                <p class="text-gray-400">Quotes that inspire my journey in tech and life</p>
+                            </div>
+
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                <div class="bg-gray-800 rounded-2xl p-8 shadow-xl relative border-l-4 border-indigo-500 scrollcue"
+                                    data-cue="slide-right" data-delay="200">
+                                    <div
+                                        class="absolute -top-4 -left-4 w-10 h-10 bg-indigo-600 rounded-full flex items-center justify-center shadow-lg">
+                                        <i class="fas fa-quote-left text-white"></i>
+                                    </div>
+                                    <blockquote class="text-gray-300 italic mb-4">
+                                        "The best way to predict the future is to invent it."
+                                    </blockquote>
+                                    <p class="text-indigo-400 font-medium">- Alan Kay</p>
+                                </div>
+                                <div class="bg-gray-800 rounded-2xl p-8 shadow-xl relative border-l-4 border-purple-500 scrollcue"
+                                    data-cue="slide-left" data-delay="400">
+                                    <div
+                                        class="absolute -top-4 -left-4 w-10 h-10 bg-purple-600 rounded-full flex items-center justify-center shadow-lg">
+                                        <i class="fas fa-quote-left text-white"></i>
+                                    </div>
+                                    <blockquote class="text-gray-300 italic mb-4">
+                                        "Simplicity is the ultimate sophistication."
+                                    </blockquote>
+                                    <p class="text-purple-400 font-medium">- Leonardo da Vinci</p>
+                                </div>
+                                <div class="bg-gray-800 rounded-2xl p-8 shadow-xl relative border-l-4 border-blue-500 scrollcue"
+                                    data-cue="slide-right" data-delay="600">
+                                    <div
+                                        class="absolute -top-4 -left-4 w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center shadow-lg">
+                                        <i class="fas fa-quote-left text-white"></i>
+                                    </div>
+                                    <blockquote class="text-gray-300 italic mb-4">
+                                        "Code is like humor. When you have to explain it, it's bad."
+                                    </blockquote>
+                                    <p class="text-blue-400 font-medium">- Cory House</p>
+                                </div>
+                                <div class="bg-gray-800 rounded-2xl p-8 shadow-xl relative border-l-4 border-green-500 scrollcue"
+                                    data-cue="slide-left" data-delay="800">
+                                    <div
+                                        class="absolute -top-4 -left-4 w-10 h-10 bg-green-600 rounded-full flex items-center justify-center shadow-lg">
+                                        <i class="fas fa-quote-left text-white"></i>
+                                    </div>
+                                    <blockquote class="text-gray-300 italic mb-4">
+                                        "The most powerful tool we have as developers is automation."
+                                    </blockquote>
+                                    <p class="text-green-400 font-medium">- Scott Hanselman</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
                 </div>
             </div>
         </section> <!-- About Content -->
