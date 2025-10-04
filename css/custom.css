@@ -2934,3 +2934,116 @@ body.light .skill-tag:hover {
     color: #3730a3;
 }
 
+/* Arch Linux Terminal Styling */
+.arch-terminal {
+  font-family: 'Fira Code', 'Source Code Pro', 'DejaVu Sans Mono', monospace;
+  background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%);
+  border: 2px solid #2d2d2d;
+  border-radius: 8px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.arch-terminal::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 28px;
+  background: linear-gradient(90deg, #2d2d2d 0%, #1a1a1a 100%);
+  border-bottom: 1px solid #404040;
+  z-index: 1;
+}
+
+.arch-code {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #e0e0e0;
+  position: relative;
+  z-index: 2;
+}
+
+.arch-code .text-cyan-400 {
+  color: #00ffff;
+  font-weight: 500;
+}
+
+.arch-code .text-blue-400 {
+  color: #5fafff;
+}
+
+.arch-code .text-green-400 {
+  color: #87ff87;
+}
+
+.arch-code .text-yellow-300 {
+  color: #ffff87;
+}
+
+.arch-code .text-gray-300 {
+  color: #d0d0d0;
+}
+
+.arch-code .text-gray-400 {
+  color: #808080;
+}
+
+.arch-code .animate-pulse {
+  animation: arch-cursor 1s infinite;
+}
+
+@keyframes arch-cursor {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+/* Arch Linux specific hover effects */
+.arch-terminal:hover {
+  border-color: #00ffff;
+  box-shadow: 0 8px 32px rgba(0, 255, 255, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+  transition: all 0.3s ease;
+}
+
+/* Light mode adjustments for Arch terminal */
+body.light .arch-terminal {
+  background: linear-gradient(135deg, #f8f8f8 0%, #e8e8e8 100%);
+  border-color: #cccccc;
+  color: #2d2d2d;
+}
+
+body.light .arch-terminal::before {
+  background: linear-gradient(90deg, #e0e0e0 0%, #d0d0d0 100%);
+  border-bottom-color: #b0b0b0;
+}
+
+body.light .arch-code {
+  color: #2d2d2d;
+}
+
+body.light .arch-code .text-cyan-400 {
+  color: #008080;
+}
+
+body.light .arch-code .text-blue-400 {
+  color: #000080;
+}
+
+body.light .arch-code .text-green-400 {
+  color: #008000;
+}
+
+body.light .arch-code .text-yellow-300 {
+  color: #808000;
+}
+
+body.light .arch-code .text-gray-300 {
+  color: #404040;
+}
+
+body.light .arch-code .text-gray-400 {
+  color: #606060;
+}
+
