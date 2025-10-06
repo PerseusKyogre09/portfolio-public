@@ -52,8 +52,8 @@
                 </div>
                 
                 <div class="flex items-center scrollcue" data-cue="fade-in" data-delay="300">
-                    <button id="theme-toggle" class="hover:text-indigo-400 mr-4 transition-colors focus:outline-none" style="display: none;">
-                        <i class="fas fa-moon text-xl"></i>
+                    <button id="game-mode-toggle" class="hover:text-indigo-400 mr-4 transition-colors focus:outline-none">
+                        <i class="fas fa-gamepad text-xl"></i>
                     </button>
                     
                     <button id="mobile-menu-button" class="md:hidden hover:text-indigo-400 transition-colors focus:outline-none">
@@ -81,7 +81,7 @@
                 <div class="flex flex-col md:flex-row items-center">
                     <div class="md:w-1/2 md:pr-10 mb-10 md:mb-0 text-center md:text-left parallax-bg" data-speed="3">                        
                         <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-500 scrollcue" data-cue="fade-in">
-                            Hey, I'm Pradeepto<span class="text-indigo-300">.</span>
+                            Hey, I'm <span id="name-toggle" class="cursor-pointer" style="cursor: pointer;">Pradeepto</span><span class="text-indigo-300">.</span>
                         </h1>
                         
                         <p class="text-xl md:text-2xl mb-8 text-gray-300 scrollcue" data-cue="slide-up" data-delay="300">
@@ -584,6 +584,33 @@
       "knowsAbout": ["Web Development", "Blockchain", "Python", "JavaScript", "Solidity"],
       "image": "https://portfolio-public-kappa.vercel.app/images/profile.jpg"
     }
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const nameToggle = document.getElementById('name-toggle');
+            let isPradeepto = true;
+
+            nameToggle.addEventListener('click', function() {
+                // Add glitch class
+                nameToggle.classList.add('glitch');
+
+                // Toggle text after a short delay
+                setTimeout(() => {
+                    if (isPradeepto) {
+                        nameToggle.textContent = 'PerseusKyogre09';
+                    } else {
+                        nameToggle.textContent = 'Pradeepto';
+                    }
+                    isPradeepto = !isPradeepto;
+
+                    // Remove glitch class after animation
+                    setTimeout(() => {
+                        nameToggle.classList.remove('glitch');
+                    }, 300);
+                }, 150);
+            });
+        });
     </script>
 </body>
 </html>
