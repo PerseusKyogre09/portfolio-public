@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initScrollAnimations();
     initScrollCue();
     initPageTransitions();
+    initGameModeToggle();
 });
 
 // Also add load event to ensure ScrollCue is initialized even if scripts load asynchronously
@@ -246,6 +247,37 @@ function deferAnimation(callback, delay = 100) {
     
     // Execute the animation with a small delay
     setTimeout(callback, delay);
+}
+
+// Game Mode Toggle
+function initGameModeToggle() {
+    const gameModeBtn = document.getElementById('game-mode-toggle');
+    console.log('Game mode button found:', gameModeBtn);
+    if (gameModeBtn) {
+        gameModeBtn.addEventListener('click', () => {
+            console.log('Game mode button clicked');
+            // Show loading message
+            gameModeBtn.innerHTML = '<i class="fas fa-spinner fa-spin text-xl"></i>';
+            gameModeBtn.disabled = true;
+
+            // Get the base path (works from any page)
+            const basePath = window.location.pathname.includes('/pages/') ? '../' : './';
+            console.log('Redirecting to:', basePath + 'game-mode/index.html');
+            window.location.href = basePath + 'game-mode/index.html';
+        });
+    }
+}
+
+// Fallback function for onclick
+function enterGameMode() {
+    console.log('enterGameMode called');
+    const gameModeBtn = document.getElementById('game-mode-toggle');
+    if (gameModeBtn) {
+        gameModeBtn.innerHTML = '<i class="fas fa-spinner fa-spin text-xl"></i>';
+        gameModeBtn.disabled = true;
+    }
+    const basePath = window.location.pathname.includes('/pages/') ? '../' : './';
+    window.location.href = basePath + 'game-mode/index.html';
 }
 
 // Helper to manage animations in batches

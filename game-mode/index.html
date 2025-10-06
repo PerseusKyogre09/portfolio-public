@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Game Mode</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/custom.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #1a1a2e;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+        #gameCanvas {
+            display: block;
+            background: #16213e;
+            image-rendering: pixelated;
+            image-rendering: -moz-crisp-edges;
+            image-rendering: crisp-edges;
+            max-width: 90vw;
+            max-height: 70vh;
+            width: auto;
+            height: auto;
+        }
+        .game-ui {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: white;
+            font-family: monospace;
+            z-index: 10;
+        }
+        .exit-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(0,0,0,0.5);
+            border: 2px solid #6366f1;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            z-index: 10;
+        }
+        .exit-button:hover {
+            background: rgba(99, 102, 241, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <div id="loading-screen" class="fixed inset-0 bg-gray-900 flex items-center justify-center z-50">
+        <div class="text-center">
+            <div class="text-6xl mb-4">🎮</div>
+            <h1 class="text-3xl font-bold text-white mb-2">Gamefying Portfolio</h1>
+            <p class="text-gray-400 mb-4">Loading your adventure...</p>
+            <div class="flex justify-center">
+                <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-500"></div>
+            </div>
+        </div>
+    </div>
+
+    <button class="exit-button" onclick="exitGameMode()">
+        <i class="fas fa-times mr-2"></i>Exit Game
+    </button>
+
+    <canvas id="gameCanvas" width="800" height="600"></canvas>
+
+    <script src="game.js"></script>
+</body>
+</html></content>
