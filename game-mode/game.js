@@ -15,6 +15,12 @@ let player = {
     color: '#6366f1'
 };
 
+// Sprite variables
+let playerSprite;
+let certificateSprite;
+let computerSprite;
+let bookshelfSprite;
+
 // Game objects (interactive elements)
 const gameObjects = [
     {
@@ -22,30 +28,30 @@ const gameObjects = [
         y: 3 * tileSize,
         width: tileSize * 2,
         height: tileSize,
-        color: '#8b5cf6',
         type: 'certificate',
         name: 'Certificate Frame',
-        description: 'Click to view certificates'
+        description: 'Click to view certificates',
+        sprite: null // Will be assigned after loading
     },
     {
         x: 18 * tileSize,
         y: 8 * tileSize,
         width: tileSize * 2,
         height: tileSize,
-        color: '#10b981',
         type: 'computer',
         name: 'Computer Desk',
-        description: 'Click to explore projects'
+        description: 'Click to explore projects',
+        sprite: null
     },
     {
         x: 3 * tileSize,
         y: 12 * tileSize,
         width: tileSize,
         height: tileSize * 2,
-        color: '#f59e0b',
         type: 'bookshelf',
         name: 'Bookshelf',
-        description: 'Click to see skills & education'
+        description: 'Click to see skills & education',
+        sprite: null
     }
 ];
 
@@ -101,6 +107,9 @@ function gameLoop() {
 
 // Update game state
 function update() {
+    // Update sprites
+    if (playerSprite) playerSprite.update();
+
     // Handle movement
     if (keys['ArrowUp'] || keys['KeyW']) {
         player.y -= player.speed;
@@ -154,37 +163,62 @@ function draw() {
 
     // Draw game objects
     gameObjects.forEach(obj => {
-        ctx.fillStyle = obj.highlighted ? '#ffffff' : obj.color;
-        ctx.fillRect(obj.x, obj.y, obj.width, obj.height);
+        if (obj.sprite && obj.sprite.loaded) {
+            // Use sprite if available
+            const highlight = obj.highlighted ? 1.2 : 1.0;
+            ctx.save();
+            ctx.globalAlpha = highlight > 1 ? 0.8 : 1.0;
+            obj.sprite.draw(ctx, obj.x, obj.y);
+            ctx.restore();
+        } else {
+            // Fallback to colored rectangles
+            ctx.fillStyle = obj.highlighted ? '#ffffff' : (obj.color || '#666666');
+            ctx.fillRect(obj.x, obj.y, obj.width, obj.height);
 
-        // Draw simple icon based on type
-        ctx.fillStyle = '#ffffff';
-        if (obj.type === 'certificate') {
-            // Simple frame icon
-            ctx.fillRect(obj.x + 4, obj.y + 4, obj.width - 8, 4);
-            ctx.fillRect(obj.x + 4, obj.y + obj.height - 8, obj.width - 8, 4);
-            ctx.fillRect(obj.x + 4, obj.y + 4, 4, obj.height - 8);
-            ctx.fillRect(obj.x + obj.width - 8, obj.y + 4, 4, obj.height - 8);
-        } else if (obj.type === 'computer') {
-            // Simple computer icon
-            ctx.fillRect(obj.x + 6, obj.y + 6, obj.width - 12, obj.height - 12);
-            ctx.fillRect(obj.x + 8, obj.y + 8, obj.width - 16, 4);
-        } else if (obj.type === 'bookshelf') {
-            // Simple bookshelf
-            for (let i = 0; i < 3; i++) {
-                ctx.fillRect(obj.x + 2, obj.y + 2 + i * 8, obj.width - 4, 2);
+            // Draw simple icon based on type
+            ctx.fillStyle = '#ffffff';
+            if (obj.type === 'certificate') {
+                // Simple frame icon
+                ctx.fillRect(obj.x + 4, obj.y + 4, obj.width - 8, 4);
+                ctx.fillRect(obj.x + 4, obj.y + obj.height - 8, obj.width - 8, 4);
+                ctx.fillRect(obj.x + 4, obj.y + 4, 4, obj.height - 8);
+                ctx.fillRect(obj.x + obj.width - 8, obj.y + 4, 4, obj.height - 8);
+            } else if (obj.type === 'computer') {
+                // Simple computer icon
+                ctx.fillRect(obj.x + 6, obj.y + 6, obj.width - 12, obj.height - 12);
+                ctx.fillRect(obj.x + 8, obj.y + 8, obj.width - 16, 4);
+            } else if (obj.type === 'bookshelf') {
+                // Simple bookshelf
+                for (let i = 0; i < 3; i++) {
+                    ctx.fillRect(obj.x + 2, obj.y + 2 + i * 8, obj.width - 4, 2);
+                }
             }
         }
     });
 
     // Draw player
-    ctx.fillStyle = player.color;
-    ctx.fillRect(player.x, player.y, player.width, player.height);
+    if (playerSprite && playerSprite.loaded) {
+        // Determine if player should face left or right based on movement
+        const facingLeft = keys['ArrowLeft'] || keys['KeyA'];
+        const facingRight = keys['ArrowRight'] || keys['KeyD'];
 
-    // Draw player face (simple eyes)
-    ctx.fillStyle = '#ffffff';
-    ctx.fillRect(player.x + 6, player.y + 6, 4, 4);
-    ctx.fillRect(player.x + 16, player.y + 6, 4, 4);
+        // Simple direction logic - face the direction of last movement
+        let flipX = false;
+        if (facingLeft && !facingRight) flipX = true;
+        else if (!facingLeft && facingRight) flipX = false;
+        // Keep current direction if no horizontal movement
+
+        playerSprite.draw(ctx, player.x, player.y, flipX);
+    } else {
+        // Fallback to colored rectangle
+        ctx.fillStyle = player.color;
+        ctx.fillRect(player.x, player.y, player.width, player.height);
+
+        // Draw player face (simple eyes)
+        ctx.fillStyle = '#ffffff';
+        ctx.fillRect(player.x + 6, player.y + 6, 4, 4);
+        ctx.fillRect(player.x + 16, player.y + 6, 4, 4);
+    }
 }
 
 // Collision detection
@@ -226,6 +260,24 @@ window.addEventListener('load', () => {
     if (loadingScreen) {
         loadingScreen.style.display = 'none';
     }
+
+    // Initialize sprites
+    initSprites();
+
+    // Assign sprites to game objects
+    gameObjects.forEach(obj => {
+        switch(obj.type) {
+            case 'certificate':
+                obj.sprite = certificateSprite;
+                break;
+            case 'computer':
+                obj.sprite = computerSprite;
+                break;
+            case 'bookshelf':
+                obj.sprite = bookshelfSprite;
+                break;
+        }
+    });
 
     // Start game loop
     gameLoop();
