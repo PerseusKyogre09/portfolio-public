@@ -2890,7 +2890,7 @@ a:not(.no-hover):hover::after {
         transform: translateX(0);
     }
     100% {
-        transform: translateX(calc(-400px * 2 - 2rem));
+        transform: translateX(var(--scroll-distance, calc(-400px * 2 - 2rem)));
     }
 }
 

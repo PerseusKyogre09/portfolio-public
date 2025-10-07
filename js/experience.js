@@ -53,6 +53,11 @@ class ExperienceSection {
         } else {
             this.cardWidth = 400 + 32;
         }
+        
+        // Update scroll distance if scrolling is enabled
+        if (this.isScrollEnabled) {
+            this.updateScrollDistance();
+        }
     }
     
     setupScrolling() {
@@ -67,6 +72,9 @@ class ExperienceSection {
         // Duplicate cards for seamless infinite scroll
         this.duplicateCards();
         
+        // Set scroll distance for animation
+        this.updateScrollDistance();
+        
         // Start auto-scroll
         this.startAutoScroll();
     }
@@ -79,6 +87,11 @@ class ExperienceSection {
             const clone = card.cloneNode(true);
             this.wrapper.appendChild(clone);
         });
+    }
+    
+    updateScrollDistance() {
+        const scrollDistance = - (this.totalCards * this.cardWidth) + 'px';
+        this.wrapper.style.setProperty('--scroll-distance', scrollDistance);
     }
     
     startAutoScroll() {
