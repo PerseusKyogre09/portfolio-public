@@ -27,6 +27,14 @@
   padding: 0.75rem 1.5rem;
 }
 
+.floating-nav .brand-logo {
+  width: 32px;
+  height: 32px;
+  border-radius: 9999px;
+  object-fit: cover;
+  display: inline-block;
+}
+
 /* Apply a subtle animation when scrolling */
 .floating-nav.scrolled {
   background-color: rgba(31, 41, 55, 0.4);
