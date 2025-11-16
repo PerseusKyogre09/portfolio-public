@@ -175,6 +175,26 @@ body.light footer .border-gray-800 {
   border-color: #e5e7eb;
 }
 
+footer {
+  position: relative;
+  background-color: #111827; /* gray-900 */
+}
+
+footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('../assets/shade-lord.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.4; /* limited visibility - adjust as needed */
+  z-index: 0;
+}
+
 body.light svg text {
   fill: #111827 !important;
 }
