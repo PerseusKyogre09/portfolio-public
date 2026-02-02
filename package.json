@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "cloudinary": "^2.9.0",
     "github-calendar": "^2.3.4"
   }
 }
