@@ -1,0 +1,12 @@
+Pradeepto Pal
+Full Stack Developer & Computer Science Student
+
+A passionate Computer Science student at SRMIST with a strong dedication to coding and problem-solving. Specialized in web development, app development, and blockchain technologies. 
+
+From an early age, I've been fascinated with technology and building applications. This curiosity drove me to learn programming and I'm constantly building a strong foundation in various languages and frameworks.
+
+As a second year CS student, I'm actively working on personal projects and learning new technologies. I specialize in full-stack web development with a focus on creating user-friendly applications.
+
+My passion: "Coding like there's no tomorrow"
+
+Currently exploring: Advanced React patterns, blockchain development, and cloud infrastructure.

@@ -1,0 +1,48 @@
+TECHNICAL SKILLS
+════════════════
+
+PROGRAMMING LANGUAGES
+→ Python, Java, C/C++, JavaScript, TypeScript, SQL
+
+FRONTEND DEVELOPMENT
+→ HTML5, CSS3, Tailwind CSS
+→ React.js, Svelte.js
+→ Responsive Design, Web Animations
+→ GSAP, Framer Motion
+
+BACKEND DEVELOPMENT
+→ Node.js, Express.js
+→ FastAPI, Flask (Python)
+→ REST APIs, GraphQL basics
+
+DATABASES & STORAGE
+→ MySQL, PostgreSQL
+→ Firebase, Firestore
+→ Supabase
+
+TOOLS & PLATFORMS
+→ Git & GitHub, GitLab
+→ Docker, Docker Compose
+→ Render, Vercel
+→ VS Code, Terminal/CLI
+
+WEB3 & BLOCKCHAIN
+→ Solidity (Smart Contracts)
+→ Web3.js, Ethereum
+→ DeFi protocols basics
+→ Smart Contract Security
+
+DEVELOPMENT PRACTICES
+→ Version Control (Git)
+→ Agile/Scrum basics
+→ Testing (Unit & Integration)
+→ Problem Solving & Debugging
+→ Performance Optimization
+→ SEO Basics
+
+SOFT SKILLS
+→ Quick Learner
+→ Adaptation to new technologies
+→ Problem-solving ability
+→ Communication & Collaboration
+→ Time management

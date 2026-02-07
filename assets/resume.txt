@@ -1,0 +1,82 @@
+PRADEEPTO PAL
+✉ pp9775@srmist.edu.in | 📱 9667581819
+🔗 github.com/PerseusKyogre09 | 💼 linkedin.com/in/pradeeptopal
+
+═══════════════════════════════════════════════════════════════════════
+
+SKILLS
+──────
+Languages: Python, C/C++, Javascript, Java, Solidity, SQL
+Technologies & Tools: Flask, ReactJS, PostgreSQL, Docker, Google Cloud Platform, Firebase, Supabase
+
+═══════════════════════════════════════════════════════════════════════
+
+WORK EXPERIENCE
+───────────────
+
+HackSkill, Ghaziabad | Apr 2025 - Present
+Technical Member (Part-time)
+
+• Built the platform's interactive in-browser code editor, reducing code execution errors by 25% and enabling smoother
+  practice sessions for over 300+ users.
+• Revamped the Product pages by restructuring layouts and implementing a responsive UI, improving load times by 30%
+  and increasing user click-through by 15%.
+• Optimized frontend rendering and reduced script overhead, lowering interaction latency by 20% across key pages.
+• Collaborated with a 3-4 member technical team to design, test, and deploy new features, improving development cycle
+  efficiency by 10–15%.
+• Skills: Python, JavaScript, TypeScript, Web Development, GitHub
+
+═══════════════════════════════════════════════════════════════════════
+
+EDUCATION
+─────────
+
+SRM Institute of Science and Technology | Jun 2024 - May 2028
+B.Tech in Computer Science and Engineering
+
+Relevant Coursework: Object Oriented Programming, Data Structures and Algorithms, Operating Systems, Computer Architecture, Digital Image Processing
+
+═══════════════════════════════════════════════════════════════════════
+
+PROJECT WORK
+────────────
+
+▪ Pokémon Battle Simulator
+  Built a full-featured turn-based battle simulator using Flask and JavaScript, implementing complete Pokémon mechanics
+  (type effectiveness, STAB, crits, animations, sound FX). Delivered a responsive and interactive battle UI that
+  improved user engagement by 40% during internal testing.
+  Technologies: Python, Flask, JavaScript, HTML/CSS, PokeAPI
+
+▪ Online OD Management System
+  Developed a production-ready OD automation platform during a 24-hour hackathon, enabling students and teachers to
+  manage OD requests with attachment support, comments, secure auth, and dashboards. Reduced manual OD processing
+  effort by 70% and cut approval times from hours to minutes.
+  Technologies: Flask, Python, Tailwind CSS, Supabase Auth & PostgreSQL, ScrollCue.js, Vercel
+
+▪ Veritas-AI — Misinformation & Authorship Detection Platform
+  Engineered a full-stack AI system using React + TypeScript and a Python microservice. Integrated Google Gemini for
+  AI-authorship detection and Cloud Vision for image forensics, enabling real-time credibility scoring and reducing
+  article analysis time by 85%.
+  Technologies: React, TypeScript, Tailwind, Python Flask, BeautifulSoup, Google Gemini AI, Google Vision API, Firebase
+
+▪ Parallel Image Processing with Intel oneAPI DPC++
+  Implemented grayscale, edge detection, and blur filters with SYCL/DPC++ and benchmarked against OpenCV's CPU
+  implementation. Achieved 8×–15× speedups on Intel Arc A770 while profiling performance with Intel VTune and Advisor.
+  Technologies: C++, Intel oneAPI DPC++, SYCL, OpenCV, Intel VTune, Intel Advisor
+
+═══════════════════════════════════════════════════════════════════════
+
+AWARDS AND CERTIFICATES
+───────────────────────
+
+▪ CS50P: Introduction to Programming with Python
+  Completed Harvard's project-based Python programming course, demonstrating strong foundations in algorithms,
+  data structures, OOP, file I/O, testing, and problem-solving.
+
+▪ Quantum Computing Program — Womanium x WISER
+  Participated in a global program introducing core concepts of quantum mechanics, quantum algorithms, qubits,
+  superposition, and real-world quantum applications.
+
+▪ Postman API Fundamentals Student Expert
+  Earned certification for mastering API concepts, HTTP methods, authentication, API testing, writing test scripts,
+  and designing requests using Postman.

@@ -294,17 +294,49 @@ Fun commands:
     }
 
     catFile(file) {
-        const files = {
-            'resume': 'This is Pradeepto Pal\'s resume. Full Stack Developer, Computer Science Student at SRMIST. Check out the projects page for more details!',
-            'bio': 'Pradeepto Pal is a passionate Computer Science student and Full Stack Developer with expertise in web development, blockchain, and software engineering.',
-            'skills': 'JavaScript, React, Node.js, Python, Java, HTML/CSS, Git, Docker, AWS, Blockchain, Smart Contracts...'
+        const fileMap = {
+            'resume': 'assets/resume.txt',
+            'bio': 'assets/bio.txt',
+            'skills': 'assets/skills.txt'
         };
 
-        if (files[file]) {
-            this.addOutput(files[file]);
-        } else {
+        if (!fileMap[file]) {
             this.addOutput(`File not found: ${file}`);
+            return;
         }
+
+        // Determine the correct path based on current page location
+        const pathname = window.location.pathname;
+        const isOnNestedPage = pathname.includes('/pages/') || pathname.includes('\\pages\\');
+        let filePath = fileMap[file];
+        if (isOnNestedPage) {
+            filePath = '../' + filePath;
+        }
+
+        console.log('🔍 Fetching:', filePath, 'from:', window.location.href);
+
+        // Fetch the file content
+        fetch(filePath)
+            .then(response => {
+                console.log('📡 Response status:', response.status);
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}`);
+                }
+                return response.text();
+            })
+            .then(content => {
+                console.log('✅ File loaded successfully');
+                // Display content line by line for better formatting
+                const lines = content.trim().split('\n');
+                lines.forEach(line => {
+                    this.addOutput(line);
+                });
+            })
+            .catch(error => {
+                console.error('❌ Fetch error:', error);
+                this.addOutput(`Error reading ${file}: ${error.message}`);
+                this.addOutput(`Tried path: ${filePath}`);
+            });
     }
 
     kyogreCommand() {
