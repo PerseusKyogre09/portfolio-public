@@ -32,6 +32,20 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body class="dark bg-gray-900 text-gray-200 min-h-screen flex flex-col transition-colors duration-300">    
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+        <div class="loading-content">
+            <div class="container">
+                <div class="loader">
+                    <div class="cube"></div>
+                    <div class="cube"></div>
+                    <div class="cube"></div>
+                    <div class="cube"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Particle Background -->
     <div id="particles-js" class="fixed inset-0 z-0"></div>    
     <header class="floating-nav scrollcue" data-cue="fade-in">
@@ -103,33 +117,72 @@
                     </div>
                         <div class="relative max-w-4xl mx-auto parallax-bg" data-speed="2">
                             <div class="relative z-10 transform rotate-1 hover:rotate-0 transition-transform duration-300 scrollcue" data-cue="flip-in" data-delay="800" data-duration="1800">
-                                <div class="bg-black rounded-lg overflow-hidden border border-gray-600 shadow-2xl arch-terminal max-w-3xl">
-                                    <!-- Terminal Header -->
-                                    <div class="flex items-center justify-between px-4 py-2 bg-gray-800 border-b border-gray-600">
-                                        <div class="flex items-center space-x-2">
-                                            <i class="fas fa-terminal text-gray-400 text-sm"></i>
+                                <div class="card">
+                                    <div class="wrap">
+                                        <div class="terminal">
+                                            <div class="head">
+                                                <div class="title">
+                                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                                                    </svg>
+                                                    developer.json
+                                                </div>
+                                                <button class="copy_toggle" title="Copy">
+                                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                        <path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2M9 5a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2M9 5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2m-6 9l2 2 4-4"></path>
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                            <div class="body">
+                                                <div class="pre">
+                                                    <code class="prompt">[pradeepto@archlinux</code>
+                                                    <code class="prompt"> ~</code>
+                                                    <code class="prompt">]$</code>
+                                                    <code> cat developer.json</code>
+                                                </div>
+                                                <div class="pre">
+                                                    <code>{</code>
+                                                </div>
+                                                <div class="pre">
+                                                    <code>  </code>
+                                                    <code class="text-cyan-400">"name"</code>
+                                                    <code>: </code>
+                                                    <code class="text-yellow-300">"Pradeepto Pal"</code>
+                                                    <code>,</code>
+                                                </div>
+                                                <div class="pre">
+                                                    <code>  </code>
+                                                    <code class="text-cyan-400">"skills"</code>
+                                                    <code>: [</code>
+                                                    <code class="text-yellow-300">"Python"</code>
+                                                    <code>, </code>
+                                                    <code class="text-yellow-300">"Java"</code>
+                                                    <code>, </code>
+                                                    <code class="text-yellow-300">"C/C++"</code>
+                                                    <code>, </code>
+                                                    <code class="text-yellow-300">"JavaScript"</code>
+                                                    <code>],</code>
+                                                </div>
+                                                <div class="pre">
+                                                    <code>  </code>
+                                                    <code class="text-cyan-400">"passion"</code>
+                                                    <code>: </code>
+                                                    <code class="text-yellow-300">"Coding like there's no tomorrow"</code>
+                                                </div>
+                                                <div class="pre">
+                                                    <code>}</code>
+                                                </div>
+                                                <div class="pre">
+                                                    <code class="prompt">[pradeepto@archlinux</code>
+                                                    <code class="prompt"> ~</code>
+                                                    <code class="prompt">]$</code>
+                                                    <code class="cmd" data-cmd=" "></code>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="flex items-center space-x-2 text-xs text-gray-400 font-mono">
-                                            <span>pradeepto@archlinux</span><span class="text-cyan-400">:</span><span class="text-blue-400">~</span>
-                                        </div>
-                                        <div class="flex items-center space-x-1">
-                                            <div class="w-3 h-3 rounded-full bg-yellow-500 hover:bg-yellow-400 cursor-pointer transition-colors"></div>
-                                            <div class="w-3 h-3 rounded-full bg-green-500 hover:bg-green-400 cursor-pointer transition-colors"></div>
-                                            <div class="w-3 h-3 rounded-full bg-red-500 hover:bg-red-400 cursor-pointer transition-colors"></div>
-                                        </div>
-                                    </div>
-                                    <!-- Terminal Content -->
-                                    <div class="p-4 bg-black font-mono text-sm arch-code">
-                                        <div class="mb-2"><span class="text-cyan-400">[pradeepto@archlinux</span><span class="text-blue-400"> ~</span><span class="text-cyan-400">]$</span> <span class="text-green-400">cat developer.json</span></div>
-                                        <div class="ml-4 text-gray-300">{</div>
-                                        <div class="ml-8"><span class="text-cyan-400">"name"</span><span class="text-gray-300">:</span> <span class="text-yellow-300">"Pradeepto Pal"</span><span class="text-gray-300">,</span></div>
-                                        <div class="ml-8"><span class="text-cyan-400">"skills"</span><span class="text-gray-300">:</span> <span class="text-gray-300">[</span><span class="text-yellow-300">"Python"</span><span class="text-gray-300">,</span> <span class="text-yellow-300">"Java"</span><span class="text-gray-300">,</span> <span class="text-yellow-300">"C/C++"</span><span class="text-gray-300">,</span> <span class="text-yellow-300">"JavaScript"</span><span class="text-gray-300">],</span></div>
-                                        <div class="ml-8"><span class="text-cyan-400">"passion"</span><span class="text-gray-300">:</span> <span class="text-yellow-300">"Coding like there's no tomorrow"</span></div>
-                                        <div class="ml-4 text-gray-300">}</div>
-                                        <div class="mt-2"><span class="text-cyan-400">[pradeepto@archlinux</span><span class="text-blue-400"> ~</span><span class="text-cyan-400">]$</span> <span class="text-gray-400 animate-pulse">_</span></div>
                                     </div>
                                 </div>
-                          </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -618,6 +671,8 @@
         document.addEventListener('DOMContentLoaded', function() {
             const nameToggle = document.getElementById('name-toggle');
             let isPradeepto = true;
+            const kyogreCryUrl = 'https://raw.githubusercontent.com/PokeAPI/cries/main/cries/pokemon/latest/382.ogg';
+            let audioElement = null;
 
             nameToggle.addEventListener('click', function() {
                 // Add glitch class
@@ -627,6 +682,8 @@
                 setTimeout(() => {
                     if (isPradeepto) {
                         nameToggle.textContent = 'PerseusKyogre09';
+                        // Play Kyogre cry when switching to username
+                        playKyogreCry();
                     } else {
                         nameToggle.textContent = 'Pradeepto';
                     }
@@ -638,6 +695,25 @@
                     }, 300);
                 }, 150);
             });
+
+            function playKyogreCry() {
+                // Stop any currently playing sound
+                if (audioElement && !audioElement.paused) {
+                    audioElement.pause();
+                    audioElement.currentTime = 0;
+                }
+                
+                // Create new audio element if it doesn't exist
+                if (!audioElement) {
+                    audioElement = new Audio(kyogreCryUrl);
+                    audioElement.volume = 0.5;
+                }
+                
+                // Play the sound
+                audioElement.play().catch(error => {
+                    console.log('Could not play Kyogre cry:', error);
+                });
+            }
         });
     </script>
 </body>

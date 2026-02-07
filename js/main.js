@@ -1,4 +1,53 @@
+// Initialize loading screen and prevent scroll during load
+function initLoadingScreen() {
+    // Disable scroll during loading
+    document.documentElement.style.overflow = 'hidden';
+    document.body.style.overflow = 'hidden';
+    window.scrollY = 0;
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+    
+    const loadingScreen = document.getElementById('loading-screen');
+    if (!loadingScreen) return;
+    
+    // Hide loading screen after content is ready
+    function hideLoadingScreen() {
+        loadingScreen.classList.add('hidden');
+        // Re-enable scroll after loading screen hides
+        setTimeout(() => {
+            document.documentElement.style.overflow = '';
+            document.body.style.overflow = '';
+        }, 600); // Match the transition duration
+    }
+    
+    // Wait for all critical resources and DOM to be ready
+    // Using a combination of load event and a reasonable timeout
+    let resourcesReady = false;
+    
+    // Check if page is fully loaded
+    if (document.readyState === 'complete') {
+        resourcesReady = true;
+    } else {
+        window.addEventListener('load', () => {
+            resourcesReady = true;
+        });
+    }
+    
+    // Minimum time to show loading screen (feels more intentional)
+    setTimeout(() => {
+        if (resourcesReady || document.readyState === 'complete') {
+            hideLoadingScreen();
+        }
+    }, 1200);
+    
+    // Fallback: hide after max timeout regardless
+    setTimeout(() => {
+        hideLoadingScreen();
+    }, 3000);
+}
+
 document.addEventListener('DOMContentLoaded', function() {
+    initLoadingScreen();
     initParticles();
     initTypedText();
     initMobileMenu();

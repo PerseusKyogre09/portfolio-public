@@ -1,5 +1,90 @@
 html {
   scroll-behavior: smooth;
+  overscroll-behavior: contain;
+}
+
+/* Loading Screen Styles */
+#loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #111827 0%, #1f2937 100%);
+  z-index: 9999;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+
+#loading-screen.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+#loading-screen.hidden body {
+  overflow: auto;
+}
+
+.loading-content {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+#loading-screen .container {
+  display: flex;
+  justify-content: center;
+  margin: 0;
+}
+
+#loading-screen .loader {
+  display: grid;
+  grid-template-columns: repeat(2, 50px);
+  grid-template-rows: repeat(2, 50px);
+  gap: 30px;
+  perspective: 1000px;
+}
+
+#loading-screen .cube {
+  width: 60px;
+  height: 60px;
+  background-color: #3b82f6;
+  position: relative;
+  border-radius: 5px;
+  transform-style: preserve-3d;
+  animation: rotate 1.8s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotateX(0deg) rotateY(0deg);
+  }
+  100% {
+    transform: rotateX(360deg) rotateY(360deg);
+  }
+}
+
+#loading-screen .cube:nth-child(1) {
+  animation-delay: 0s;
+}
+
+#loading-screen .cube:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+#loading-screen .cube:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+#loading-screen .cube:nth-child(4) {
+  animation-delay: 0.6s;
 }
 
 /* Light mode styles */
@@ -2954,7 +3039,198 @@ body.light .skill-tag:hover {
     color: #3730a3;
 }
 
-/* Arch Linux Terminal Styling */
+/* Terminal Styling */
+.card {
+  padding: 0;
+  overflow: hidden;
+  border: none;
+  border-radius: 12px;
+  background-color: transparent;
+  backdrop-filter: none;
+  min-width: 100%;
+}
+
+.wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  position: relative;
+  z-index: 10;
+  border: 0.5px solid #525252;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.terminal {
+  display: flex;
+  flex-direction: column;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+}
+
+.head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  overflow: hidden;
+  min-height: 40px;
+  padding-inline: 12px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  background-color: #202425;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 2.5rem;
+  user-select: none;
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #8e8e8e;
+}
+
+.title > svg {
+  height: 18px;
+  width: 18px;
+  margin-top: 2px;
+  color: #006adc;
+}
+
+.copy_toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25rem;
+  border: 0.65px solid #c1c2c5;
+  margin-left: auto;
+  border-radius: 6px;
+  background-color: #202425;
+  color: #8e8e8e;
+  cursor: pointer;
+}
+
+.copy_toggle > svg {
+  width: 20px;
+  height: 20px;
+}
+
+.copy_toggle:active > svg > path,
+.copy_toggle:focus-within > svg > path {
+  animation: clipboard-check 500ms linear forwards;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  border-bottom-right-radius: 8px;
+  border-bottom-left-radius: 8px;
+  overflow-x: auto;
+  padding: 1rem;
+  line-height: 19px;
+  color: white;
+  background-color: black;
+  white-space: nowrap;
+}
+
+.pre {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-wrap: nowrap;
+  white-space: pre;
+  background-color: transparent;
+  overflow: hidden;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+.pre code:nth-child(1) {
+  color: #575757;
+}
+
+.pre code:nth-child(2) {
+  color: #e34ba9;
+}
+
+.prompt {
+  color: #3b82f6 !important;
+}
+
+.cmd {
+  height: 19px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+
+.cmd::before {
+  content: attr(data-cmd);
+  position: relative;
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  background-color: transparent;
+}
+
+.cmd::after {
+  content: "";
+  position: relative;
+  display: block;
+  height: 100%;
+  overflow: hidden;
+  background-color: transparent;
+  border-right: 0.15em solid #e34ba9;
+  animation: cursor 0.5s step-end infinite alternate, blinking 0.5s infinite;
+}
+
+@keyframes blinking {
+  20%,
+  80% {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(0);
+  }
+}
+
+@keyframes cursor {
+  50% {
+    border-right-color: transparent;
+  }
+}
+
+@keyframes inputs {
+  0%,
+  100% {
+    width: 0;
+  }
+  10%,
+  90% {
+    width: 58px;
+  }
+  30%,
+  70% {
+    width: 215px;
+    max-width: max-content;
+  }
+}
+
+@keyframes clipboard-check {
+  100% {
+    color: #fff;
+    d: path(
+      "M 9 5 H 7 a 2 2 0 0 0 -2 2 v 12 a 2 2 0 0 0 2 2 h 10 a 2 2 0 0 0 2 -2 V 7 a 2 2 0 0 0 -2 -2 h -2 M 9 5 a 2 2 0 0 0 2 2 h 2 a 2 2 0 0 0 2 -2 M 9 5 a 2 2 0 0 1 2 -2 h 2 a 2 2 0 0 1 2 2 m -6 9 l 2 2 l 4 -4"
+    );
+  }
+}
+
+/* Arch Linux Terminal Styling - Legacy */
 .arch-terminal {
   font-family: 'Fira Code', 'Source Code Pro', 'DejaVu Sans Mono', monospace;
   background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%);
