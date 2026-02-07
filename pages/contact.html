@@ -45,6 +45,9 @@
                 </div>
                 
                 <div class="flex items-center scrollcue" data-cue="fade-in" data-delay="300">
+                    <button id="terminal-toggle" class="hover:text-indigo-400 mr-4 transition-colors focus:outline-none" onclick="openInteractiveTerminal()" title="Open Terminal (Ctrl+`)">
+                        <i class="fas fa-terminal text-xl"></i>
+                    </button>
                     <button id="game-mode-toggle" class="hover:text-indigo-400 mr-4 transition-colors focus:outline-none">
                         <i class="fas fa-gamepad text-xl"></i>
                     </button>
@@ -342,5 +345,22 @@
             return false;
         }
     </script>
+
+    <!-- Interactive Terminal -->
+    <div id="interactive-terminal" class="hidden">
+        <div class="interactive-terminal-header">
+            <div class="interactive-terminal-title">Portfolio Terminal</div>
+            <button class="interactive-terminal-close" onclick="closeInteractiveTerminal()">×</button>
+        </div>
+        <div class="interactive-terminal-body">
+            <div id="interactive-terminal-output"></div>
+            <div class="interactive-terminal-input-container">
+                <span class="interactive-terminal-prompt">portfolio@pradeepto:~$ </span>
+                <input type="text" id="interactive-terminal-input" class="interactive-terminal-input" autocomplete="off" spellcheck="false">
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/terminal.js"></script>
 </body>
 </html>
