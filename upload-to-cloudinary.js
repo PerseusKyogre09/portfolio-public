@@ -2,14 +2,12 @@ const cloudinary = require('cloudinary').v2;
 const fs = require('fs');
 const path = require('path');
 
-// Configure with environment variables
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
   api_key: process.env.CLOUDINARY_API_KEY,
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
-// Check if credentials are set
 if (!process.env.CLOUDINARY_CLOUD_NAME) {
   console.error('❌ Error: Please set environment variables:');
   console.error('   CLOUDINARY_CLOUD_NAME');
@@ -28,7 +26,6 @@ async function uploadImages(folderPath) {
   const files = [];
   const imageExtensions = /\.(jpg|jpeg|png|gif|webp|svg)$/i;
   
-  // Recursively find all image files
   function findFiles(dir) {
     const items = fs.readdirSync(dir);
     for (const item of items) {
@@ -59,7 +56,6 @@ async function uploadImages(folderPath) {
     const relativePath = path.relative(folderPath, file);
     let folderStructure = path.dirname(relativePath).replace(/\\/g, '/');
     
-    // Handle files at root level (no subdirectory)
     if (folderStructure === '.') {
       folderStructure = 'root';
     }
@@ -82,7 +78,6 @@ async function uploadImages(folderPath) {
     }
   }
   
-  // Save URLs to a file for reference
   const outputFile = path.join(folderPath, '..', 'cloudinary-urls.json');
   fs.writeFileSync(outputFile, JSON.stringify(uploadedUrls, null, 2));
   
@@ -92,5 +87,4 @@ async function uploadImages(folderPath) {
   console.log(`   📄 URLs saved to: cloudinary-urls.json`);
 }
 
-// Run the upload
 uploadImages('./assets');

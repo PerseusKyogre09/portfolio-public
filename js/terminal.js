@@ -1,9 +1,7 @@
-// Interactive Terminal for portfolio navigation
 let interactiveTerminalInstance = null;
 
 class InteractiveTerminal {
     constructor() {
-        // Prevent multiple instances
         if (interactiveTerminalInstance) {
             return interactiveTerminalInstance;
         }
@@ -16,7 +14,6 @@ class InteractiveTerminal {
             return;
         }
         
-        // Find elements within terminal container scoped query
         this.output = this.terminal.querySelector('#interactive-terminal-output');
         this.input = this.terminal.querySelector('#interactive-terminal-input');
         
@@ -40,14 +37,12 @@ class InteractiveTerminal {
     detectCurrentPage() {
         const path = window.location.pathname;
         
-        // Handle different page patterns
         if (path.includes('about')) return 'about';
         if (path.includes('skills')) return 'skills';
         if (path.includes('projects') && path.includes('project-details')) return 'project-details';
         if (path.includes('projects')) return 'projects';
         if (path.includes('contact')) return 'contact';
         
-        // Default to home for root or index.html
         return 'home';
     }
 
@@ -56,9 +51,7 @@ class InteractiveTerminal {
             return;
         }
 
-        // Keyboard shortcut (Ctrl + ` OR Ctrl + Shift + T)
         this.keydownHandler = (e) => {
-            // Try both backtick and Shift+T for better compatibility
             if (e.ctrlKey && (e.key === '`' || (e.shiftKey && e.key === 'T'))) {
                 e.preventDefault();
                 this.toggleTerminal();
@@ -66,7 +59,6 @@ class InteractiveTerminal {
         };
         document.addEventListener('keydown', this.keydownHandler);
 
-        // Terminal input handling
         this.inputKeydownHandler = (e) => {
             if (e.key === 'Enter') {
                 e.preventDefault();
@@ -82,7 +74,6 @@ class InteractiveTerminal {
         };
         this.input.addEventListener('keydown', this.inputKeydownHandler);
 
-        // Click outside to close
         this.clickHandler = (e) => {
             if (this.isOpen && this.terminal && !this.terminal.contains(e.target)) {
                 this.closeTerminal();
@@ -90,7 +81,6 @@ class InteractiveTerminal {
         };
         document.addEventListener('click', this.clickHandler);
 
-        // Clear initial content and reset output
         this.output.innerHTML = '';
         this.addOutput('Welcome to Pradeepto\'s Portfolio Terminal!');
         this.addOutput('Type \'help\' for available commands.');
@@ -255,7 +245,6 @@ Fun commands:
     }
 
     changeDirectory(page) {
-        // Determine the navigation path based on current location
         const isOnHomePage = !window.location.pathname.includes('/pages/');
         
         const navigationPaths = {
@@ -305,7 +294,6 @@ Fun commands:
             return;
         }
 
-        // Determine the correct path based on current page location
         const pathname = window.location.pathname;
         const isOnNestedPage = pathname.includes('/pages/') || pathname.includes('\\pages\\');
         let filePath = fileMap[file];
@@ -315,7 +303,6 @@ Fun commands:
 
         console.log('🔍 Fetching:', filePath, 'from:', window.location.href);
 
-        // Fetch the file content
         fetch(filePath)
             .then(response => {
                 console.log('📡 Response status:', response.status);
@@ -326,7 +313,6 @@ Fun commands:
             })
             .then(content => {
                 console.log('✅ File loaded successfully');
-                // Display content line by line for better formatting
                 const lines = content.trim().split('\n');
                 lines.forEach(line => {
                     this.addOutput(line);
@@ -397,7 +383,6 @@ Fun commands:
     }
 }
 
-// Initialize terminal when DOM is loaded
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {
         new InteractiveTerminal();
@@ -406,7 +391,6 @@ if (document.readyState === 'loading') {
     new InteractiveTerminal();
 }
 
-// Global function for HTML onclick
 function closeInteractiveTerminal() {
     const terminal = document.getElementById('interactive-terminal');
     if (terminal) {
@@ -414,13 +398,10 @@ function closeInteractiveTerminal() {
     }
 }
 
-// Global function to open terminal
 function openInteractiveTerminal() {
-    // Try direct approach if instance isn't available
     if (interactiveTerminalInstance && interactiveTerminalInstance.openTerminal) {
         interactiveTerminalInstance.openTerminal();
     } else {
-        // Fallback: directly manipulate the terminal element
         const terminal = document.getElementById('interactive-terminal');
         if (terminal) {
             terminal.classList.remove('hidden');
@@ -434,7 +415,6 @@ function openInteractiveTerminal() {
     }
 }
 
-// Console helper
 console.log('%c💻 Pradeepto\'s Portfolio Terminal', 'color: #10b981; font-size: 14px; font-weight: bold;');
 console.log('%cOpening Shortcuts:', 'color: #6366f1; font-weight: bold;');
 console.log('%cCtrl + ` (backtick)     - Toggle terminal', 'color: #e5e7eb;');
@@ -442,7 +422,6 @@ console.log('%cCtrl + Shift + T        - Alternative shortcut', 'color: #e5e7eb;
 console.log('%cClick terminal icon (>_) in header', 'color: #e5e7eb;');
 console.log('%cType: checkTerminal() to debug terminal status', 'color: #fbbf24;');
 
-// Terminal status checker
 function checkTerminal() {
     const terminalEl = document.getElementById('interactive-terminal');
     const outputEl = document.getElementById('interactive-terminal-output');

@@ -1,4 +1,3 @@
-// Define aliens with their properties
 const aliens = [
     {
         name: "swampfire",
@@ -62,7 +61,6 @@ const aliens = [
     }
 ];
 
-// Function to create particles for general use
 function createParticles() {
     const particlesContainer = document.getElementById('particles');
     const numParticles = 60;
@@ -86,7 +84,6 @@ function createParticles() {
     }
 }
 
-// Function to create fire particles for Swampfire
 function createFireParticles() {
     const effectsContainer = document.getElementById('effect-elements');
     effectsContainer.innerHTML = '';
@@ -114,12 +111,10 @@ function createFireParticles() {
         effectsContainer.appendChild(particle);
     }
     
-    // Add specific fire styling to omnitrix glow
     const omnitrixGlow = document.querySelector('.omnitrix-glow');
     omnitrixGlow.style.background = 'radial-gradient(circle, #ff6d00 0%, transparent 70%)';
 }
 
-// Function to create sound waves for Echo Echo
 function createSoundWaves() {
     const effectsContainer = document.getElementById('effect-elements');
     effectsContainer.innerHTML = '';
@@ -141,7 +136,6 @@ function createSoundWaves() {
     effectsContainer.appendChild(wavesContainer);
 }
 
-// Function to create rocky debris for Humungousaur
 function createRockyDebris() {
     const effectsContainer = document.getElementById('effect-elements');
     effectsContainer.innerHTML = '';
@@ -154,7 +148,6 @@ function createRockyDebris() {
         rock.style.width = `${size}px`;
         rock.style.height = `${size}px`;
         
-        // Random brown colors
         const hue = 30 + Math.floor(Math.random() * 20);
         const sat = 20 + Math.floor(Math.random() * 40);
         const light = 20 + Math.floor(Math.random() * 30);
@@ -168,7 +161,6 @@ function createRockyDebris() {
         rock.style.left = `${left}%`;
         rock.style.top = `${top}%`;
         
-        // Make it more polygon-like with clip-path
         const points = [];
         const sides = Math.floor(Math.random() * 4) + 5; // 5-8 sided polygon
         
@@ -194,7 +186,6 @@ function createRockyDebris() {
     }
 }
 
-// Function to create energy streaks for Jetray
 function createEnergyStreaks() {
     const effectsContainer = document.getElementById('effect-elements');
     effectsContainer.innerHTML = '';
@@ -221,7 +212,6 @@ function createEnergyStreaks() {
         streak.style.transform = `rotate(${rotation}deg)`;
         streak.style.borderRadius = '2px';
         
-        // Create pulse animation
         const keyframeId = `pulse-streak-${i}`;
         const styleSheet = document.createElement('style');
         styleSheet.textContent = `
@@ -239,12 +229,10 @@ function createEnergyStreaks() {
     }
 }
 
-// Function to create frost effect for Big Chill
 function createFrostyEffect() {
     const effectsContainer = document.getElementById('effect-elements');
     effectsContainer.innerHTML = '';
     
-    // Add frost to corners
     for (let i = 0; i < 4; i++) {
         const frost = document.createElement('div');
         frost.className = 'effect-element';
@@ -254,7 +242,6 @@ function createFrostyEffect() {
         frost.style.background = 'radial-gradient(circle, rgba(144, 202, 249, 0.7) 0%, rgba(33, 150, 243, 0) 70%)';
         frost.style.opacity = '0.7';
         
-        // Position in corners
         switch(i) {
             case 0:
                 frost.style.top = '0';
@@ -277,7 +264,6 @@ function createFrostyEffect() {
         effectsContainer.appendChild(frost);
     }
     
-    // Add snowflakes
     for (let i = 0; i < 30; i++) {
         const snowflake = document.createElement('div');
         snowflake.className = 'effect-element';
@@ -295,7 +281,6 @@ function createFrostyEffect() {
         snowflake.style.left = `${left}%`;
         snowflake.style.top = `${top}%`;
         
-        // Create snowfall animation
         const keyframeId = `snowfall-${i}`;
         const styleSheet = document.createElement('style');
         styleSheet.textContent = `
@@ -315,7 +300,6 @@ function createFrostyEffect() {
     }
 }
 
-// Function to create crystal shards for Chromastone
 function createCrystalShards() {
     const effectsContainer = document.getElementById('effect-elements');
     effectsContainer.innerHTML = '';
@@ -328,7 +312,6 @@ function createCrystalShards() {
         crystal.style.width = `${size}px`;
         crystal.style.height = `${size * 2}px`;
         
-        // Random purple/pink colors
         const hue = 280 + Math.floor(Math.random() * 40);
         const sat = 70 + Math.floor(Math.random() * 30);
         const light = 40 + Math.floor(Math.random() * 30);
@@ -342,7 +325,6 @@ function createCrystalShards() {
         crystal.style.left = `${left}%`;
         crystal.style.top = `${top}%`;
         
-        // Make it crystal-like with clip-path
         const points = [
             '50% 0%',
             '100% 25%',
@@ -362,7 +344,6 @@ function createCrystalShards() {
         const rotation = Math.random() * 360;
         crystal.style.transform = `rotate(${rotation}deg)`;
         
-        // Add pulsing glow
         const keyframeId = `crystal-pulse-${i}`;
         const styleSheet = document.createElement('style');
         styleSheet.textContent = `
@@ -379,7 +360,6 @@ function createCrystalShards() {
     }
 }
 
-// Function to create electricity effect for Brainstorm
 function createElectricityEffect() {
     const effectsContainer = document.getElementById('effect-elements');
     effectsContainer.innerHTML = '';
@@ -401,7 +381,6 @@ function createElectricityEffect() {
         const rotation = Math.random() * 90 - 45;
         bolt.style.transform = `rotate(${rotation}deg)`;
         
-        // Create lightning flash animation
         const keyframeId = `lightning-${i}`;
         const styleSheet = document.createElement('style');
         styleSheet.textContent = `
@@ -426,12 +405,10 @@ function createElectricityEffect() {
     }
 }
 
-// Function to create web lines for Spidermonkey
 function createWebLines() {
     const effectsContainer = document.getElementById('effect-elements');
     effectsContainer.innerHTML = '';
     
-    // Create a full-screen web overlay using the image
     const webOverlay = document.createElement('div');
     webOverlay.className = 'effect-element web-overlay';
     webOverlay.style.position = 'absolute';
@@ -445,7 +422,6 @@ function createWebLines() {
     webOverlay.style.pointerEvents = 'none';
     webOverlay.style.zIndex = '-1'; // Set to negative z-index to appear behind everything
     
-    // Add a subtle animation
     const keyframeId = 'web-sway';
     const styleSheet = document.createElement('style');
     styleSheet.textContent = `
@@ -460,7 +436,6 @@ function createWebLines() {
     
     effectsContainer.appendChild(webOverlay);
     
-    // Add a few individual web strands for extra effect
     for (let i = 0; i < 5; i++) {
         const webStrand = document.createElement('div');
         webStrand.className = 'effect-element';
@@ -484,12 +459,10 @@ function createWebLines() {
     }
 }
 
-// Function to create slime drops for Goop
 function createSlimeDrops() {
     const effectsContainer = document.getElementById('effect-elements');
     effectsContainer.innerHTML = '';
     
-    // Create slime drops
     for (let i = 0; i < 40; i++) {
         const slimeDrop = document.createElement('div');
         slimeDrop.className = 'effect-element';
@@ -498,7 +471,6 @@ function createSlimeDrops() {
         slimeDrop.style.width = `${size}px`;
         slimeDrop.style.height = `${size + Math.random() * 10}px`;
         
-        // Acid green color for Goop
         const hue = 75 + Math.floor(Math.random() * 20);
         const sat = 80 + Math.floor(Math.random() * 20);
         const light = 40 + Math.floor(Math.random() * 20);
@@ -513,7 +485,6 @@ function createSlimeDrops() {
         slimeDrop.style.left = `${left}%`;
         slimeDrop.style.top = `${top}%`;
         
-        // Create dripping animation
         const keyframeId = `drip-${i}`;
         const styleSheet = document.createElement('style');
         styleSheet.textContent = `
@@ -531,7 +502,6 @@ function createSlimeDrops() {
         effectsContainer.appendChild(slimeDrop);
     }
     
-    // Create slime puddle at the bottom
     const slimePuddle = document.createElement('div');
     slimePuddle.className = 'effect-element slime-puddle';
     slimePuddle.style.width = '300px';
@@ -543,7 +513,6 @@ function createSlimeDrops() {
     slimePuddle.style.left = '50%';
     slimePuddle.style.transform = 'translateX(-50%)';
     
-    // Create puddle pulsing animation
     const puddleKeyframe = document.createElement('style');
     puddleKeyframe.textContent = `
         @keyframes puddlePulse {
@@ -557,12 +526,10 @@ function createSlimeDrops() {
     effectsContainer.appendChild(slimePuddle);
 }
 
-// Function to create starry background for Alien X
 function createStarryBackground() {
     const effectsContainer = document.getElementById('effect-elements');
     effectsContainer.innerHTML = '';
     
-    // Create dark overlay
     const darkOverlay = document.createElement('div');
     darkOverlay.className = 'effect-element dark-space';
     darkOverlay.style.width = '100%';
@@ -572,7 +539,6 @@ function createStarryBackground() {
     darkOverlay.style.left = '0';
     effectsContainer.appendChild(darkOverlay);
     
-    // Create stars
     for (let i = 0; i < 100; i++) {
         const star = document.createElement('div');
         star.className = 'effect-element star';
@@ -590,7 +556,6 @@ function createStarryBackground() {
         star.style.left = `${left}%`;
         star.style.top = `${top}%`;
         
-        // Create twinkling animation
         const keyframeId = `twinkle-${i}`;
         const styleSheet = document.createElement('style');
         styleSheet.textContent = `
@@ -608,7 +573,6 @@ function createStarryBackground() {
         effectsContainer.appendChild(star);
     }
     
-    // Create cosmic energy
     for (let i = 0; i < 10; i++) {
         const cosmic = document.createElement('div');
         cosmic.className = 'effect-element cosmic-energy';
@@ -617,7 +581,6 @@ function createStarryBackground() {
         cosmic.style.width = `${size}px`;
         cosmic.style.height = `${size}px`;
         
-        // Create a gradient with cosmic colors
         const hue1 = Math.random() * 360;
         const hue2 = (hue1 + 180) % 360; // Complementary color
         cosmic.style.background = `radial-gradient(circle, rgba(255,255,255,0.8) 0%, hsl(${hue1}, 100%, 70%) 30%, hsl(${hue2}, 100%, 50%) 70%, rgba(0,0,0,0) 100%)`;
@@ -630,7 +593,6 @@ function createStarryBackground() {
         cosmic.style.left = `${left}%`;
         cosmic.style.top = `${top}%`;
         
-        // Create pulsing animation
         const keyframeId = `cosmic-pulse-${i}`;
         const styleSheet = document.createElement('style');
         styleSheet.textContent = `
@@ -648,7 +610,6 @@ function createStarryBackground() {
         effectsContainer.appendChild(cosmic);
     }
     
-    // Create celestial symbols (like the ones on Alien X's body)
     for (let i = 0; i < 5; i++) {
         const symbol = document.createElement('div');
         symbol.className = 'effect-element celestial-symbol';
@@ -658,7 +619,6 @@ function createStarryBackground() {
         symbol.style.height = `${size}px`;
         symbol.style.backgroundColor = 'rgba(255, 255, 255, 0.8)';
         
-        // Create different celestial symbols with clip-path
         const symbolShapes = [
             'polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)', // star
             'circle(50% at 50% 50%)', // circle
@@ -675,7 +635,6 @@ function createStarryBackground() {
         symbol.style.left = `${left}%`;
         symbol.style.top = `${top}%`;
         
-        // Create floating and rotating animation
         const keyframeId = `symbol-float-${i}`;
         const styleSheet = document.createElement('style');
         styleSheet.textContent = `
@@ -696,46 +655,35 @@ function createStarryBackground() {
     }
 }
 
-// Function to choose an alien and initialize the page
 function initializeAlien() {
-    // Check if there's a selected alien in sessionStorage
     const selectedAlienName = sessionStorage.getItem('selectedAlien');
     let selectedAlien;
     
     if (selectedAlienName) {
-        // Convert the alien name from storage to match our naming convention
         const normalizedName = selectedAlienName.toLowerCase()
             .replace(' ', '-') // Convert "Alien X" to "alien-x"
             .replace('echo echo', 'echo-echo') // Special handling for Echo Echo
             .replace('big chill', 'big-chill'); // Special handling for Big Chill
         
-        // Find the alien in our aliens array
         selectedAlien = aliens.find(alien => alien.name === normalizedName);
         
-        // If we somehow don't have a match, fall back to random
         if (!selectedAlien) {
             selectedAlien = aliens[Math.floor(Math.random() * aliens.length)];
         }
     } else {
-        // No stored alien, choose randomly
         selectedAlien = aliens[Math.floor(Math.random() * aliens.length)];
     }
     
-    // Apply the alien theme to the page
     document.body.className = `${selectedAlien.name}-theme`;
     
-    // Set the alien message
     document.getElementById('alien-message').textContent = selectedAlien.message;
     
-    // Set the alien image
     const alienImage = document.getElementById('alien-image');
     alienImage.src = selectedAlien.imagePath;
     alienImage.alt = selectedAlien.name.charAt(0).toUpperCase() + selectedAlien.name.slice(1);
     
-    // Create the alien's special effect
     createParticles();
     selectedAlien.createEffect();
 }
 
-// Initialize the page when the DOM is loaded
 document.addEventListener('DOMContentLoaded', initializeAlien);

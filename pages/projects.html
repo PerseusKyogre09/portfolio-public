@@ -11,7 +11,6 @@
     <script src="https://unpkg.com/scrollcue.js@1.2.0/scrollcue.all-in-one.min.js"></script>
 </head>
 <body class="dark bg-gray-900 text-gray-200 min-h-screen flex flex-col transition-colors duration-300">
-    <!-- Loading Screen -->
     <div id="loading-screen">
         <div class="loading-content">
             <div class="container">
@@ -25,7 +24,6 @@
         </div>
     </div>
 
-    <!-- Particle Background -->
     <div id="particles-js" class="fixed inset-0 z-0"></div>    
     <header class="floating-nav scrollcue" data-cue="fade-in">
         <nav class="container mx-auto">
@@ -56,7 +54,7 @@
                         <i class="fas fa-bars text-xl"></i>
                     </button>
                 </div>
-            </div>              <!-- Mobile Menu -->
+            </div>
             <div id="mobile-menu" class="md:hidden hidden mt-4 mb-2 px-4 pt-2 pb-3 scrollcue" data-cue="fade-in">
                 <div class="flex flex-col space-y-3">
                     <a href="../index.html" class="hover:text-indigo-400 transition-colors py-2 scrollcue" data-cue="slide-up" data-delay="100">Home</a>
@@ -70,13 +68,11 @@
     </header>
 
     <main class="flex-grow z-10 relative with-floating-nav">
-        <!-- Projects Header -->
         <section class="py-16 relative overflow-hidden bg-image-bg1">
             <div class="container mx-auto px-6">                <div class="max-w-3xl mx-auto text-center">
                     <h1 class="text-4xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-500 scrollcue" data-cue="fade-in">My Projects</h1>
                     <p class="text-gray-400 mb-8 scrollcue" data-cue="slide-up" data-delay="300">A showcase of my work, personal projects, and contributions.</p>
                     
-                    <!-- Filter Buttons -->
                     <div class="flex flex-wrap justify-center gap-3 mb-10 scrollcue" data-cue="fade-in" data-delay="500">
                         <button class="filter-btn active px-4 py-2 rounded-full text-sm font-medium bg-indigo-600 text-white hover:bg-indigo-700 transition-colors" data-filter="all">
                             All Projects
@@ -107,14 +103,11 @@
             </div>
         </section>
 
-        <!-- Projects Gallery -->
         <section class="pb-20 bg-image-bg2">
             <video autoplay loop muted class="bg-video absolute inset-0 w-full h-full object-cover z-0"><source src="../assets/race.mp4" type="video/mp4"></video>
             <div class="container mx-auto px-6">
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="projects-container">
-                    <!-- Project Card 1 -->
                     <div class="project-card scrollcue" data-cue="zoom-in" data-category="web">
-                        <!-- Preview Image -->
                         <img src="../assets/projects/quill.png" alt="Quill Forms Builder" class="project-card-preview">
                         
                         <div class="project-card-content">
@@ -150,9 +143,7 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Project Card 2 -->
                     <div class="project-card scrollcue" data-cue="zoom-in" data-category="hpc">
-                        <!-- Preview Image -->
                         <img src="https://res.cloudinary.com/dzturswbu/image/upload/v1770044930/portfolio/projects/rhba2cpt0ytdqqqvvefy.png" alt="Intel oneAPI Project Preview" class="project-card-preview">
                         
                         <div class="project-card-content">
@@ -188,9 +179,7 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Project Card 3 -->
                     <div class="project-card scrollcue" data-cue="zoom-in" data-delay="300" data-category="desktop">
-                        <!-- Preview Image -->
                         <img src="https://res.cloudinary.com/dzturswbu/image/upload/v1770044927/portfolio/projects/nujuafzo3xj1pawbdkw1.png" alt="Desktop Widgets Preview" class="project-card-preview">
                         
                         <div class="project-card-content">
@@ -225,9 +214,7 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Project Card 4 -->
                     <div class="project-card scrollcue" data-cue="zoom-in" data-delay="600" data-category="web">
-                        <!-- Preview Image -->
                         <img src="../assets/projects/contexia.png" alt="ConteXia - Voice Assistant" class="project-card-preview">
                         
                         <div class="project-card-content">
@@ -265,9 +252,7 @@
                             </div>
                         </div>
                     </div>
-                      <!-- Project Card 5 -->
                     <div class="project-card scrollcue" data-cue="zoom-in" data-delay="900" data-category="web">
-                        <!-- Preview Image -->
                         <img src="https://res.cloudinary.com/dzturswbu/image/upload/v1770044931/portfolio/projects/wymjacmlwgsikcblx6r6.png" alt="Pokemon Battle Simulator Preview" class="project-card-preview">
                         
                         <div class="project-card-content">
@@ -304,9 +289,7 @@
                             </div>
                         </div>
                     </div>
-                      <!-- Project Card 6 -->
                     <div class="project-card scrollcue" data-cue="zoom-in" data-delay="1200" data-category="desktop">
-                        <!-- Preview Image -->
                         <img src="https://res.cloudinary.com/dzturswbu/image/upload/v1770044936/portfolio/projects/jzngeah6cnzqrsgz6obt.png" alt="Weather App Preview" class="project-card-preview">
                         
                         <div class="project-card-content">
@@ -341,9 +324,7 @@
                             </div>
                         </div>
                     </div>
-                      <!-- Project Card 7 -->
                     <div class="project-card scrollcue" data-cue="zoom-in" data-delay="1500" data-category="aiml">
-                        <!-- Preview Image -->
                         <img src="../assets/projects/leagle.png" alt="Leagle Assistance" class="project-card-preview">
                         
                         <div class="project-card-content">
@@ -381,9 +362,7 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Project Card 8 -->
                     <div class="project-card scrollcue" data-cue="zoom-in" data-delay="1800" data-category="cybersecurity">
-                        <!-- Preview Image -->
                         <img src="https://res.cloudinary.com/dzturswbu/image/upload/v1770044935/portfolio/projects/fbizykqh1xdvralibu3j.png" alt="Steganography Preview" class="project-card-preview">
                         
                         <div class="project-card-content">
@@ -419,9 +398,7 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Project Card 9 -->
                     <div class="project-card scrollcue" data-cue="zoom-in" data-delay="2100" data-category="web">
-                        <!-- Preview Image -->
                         <img src="https://res.cloudinary.com/dzturswbu/image/upload/v1770044928/portfolio/projects/uwmslyqqcbbndtjh8k0w.jpg" alt="OD System Preview" class="project-card-preview">
                         
                         <div class="project-card-content">
@@ -461,9 +438,6 @@
                 </div>
             </div>
         </section>
-        <!-- GitHub Activity-->
-                
-        <!-- GitHub with Stickers -->
         <section id="github-section" class="py-20 bg-gradient-to-r from-gray-800 via-gray-700 to-gray-800 bg-opacity-50 relative overflow-hidden bg-image-bg1">
             <div class="container mx-auto px-6 text-center relative z-10">
                 <img src="https://res.cloudinary.com/dzturswbu/image/upload/v1770044965/portfolio/stickers/ekrsts0skd4iwo9aoytw.png" alt="Octocat" class="mx-auto mb-6 w-64 h-64 scrollcue" data-cue="slide-down" data-github-octocat>
@@ -479,7 +453,6 @@
                 </div>
             </div>
         
-            <!-- Stickers -->
             <div class="sticker-container relative w-full h-full">
                 <img src="https://res.cloudinary.com/dzturswbu/image/upload/v1770044973/portfolio/stickers/x1c9fyhtsgr4lscjcqsc.png" alt="Python" class="sticker">
                 <img src="https://res.cloudinary.com/dzturswbu/image/upload/v1770044983/portfolio/stickers/vfytna2hvmu6fctssw0l.png" alt="VSCode" class="sticker">
@@ -509,31 +482,6 @@
             </div>
         </section>
         
-        <!-- 
-        <section id="gitlab-section" class="py-20 bg-gradient-to-r from-orange-900 via-red-900 to-orange-900 bg-opacity-40 relative overflow-hidden">
-            <div class="container mx-auto px-6 text-center relative z-10">
-                <div class="mx-auto mb-6 w-64 h-64 animate-fade-in flex justify-center items-center">
-                    <i class="fab fa-gitlab text-orange-400 text-8xl"></i>
-                </div>
-                <h2 class="text-3xl font-bold text-orange-400 mb-4">Check Out My GitLab</h2>
-                <p class="text-gray-300 mb-8">Browse my projects and contributions on GitLab.</p>
-                <div class="mt-8 flex justify-center">
-                    <a href="https://gitlab.com/PerseusKyogre09" 
-                    class="flex items-center px-8 py-4 rounded-full bg-orange-600 hover:bg-orange-500 text-white font-medium text-lg shadow-lg transform hover:scale-105 transition-all duration-300">
-                    <i class="fab fa-gitlab mr-3 text-2xl"></i>
-                    <span>Visit My GitLab Profile</span>
-                    </a>
-                </div>
-            </div>
-            
-            <div class="absolute top-10 right-10 opacity-20">
-                <i class="fab fa-gitlab text-9xl text-orange-300"></i>
-            </div>
-            <div class="absolute bottom-10 left-10 opacity-20">
-                <i class="fab fa-gitlab text-9xl text-orange-300"></i>
-            </div>
-        </section> -->
-
     </main>    
     <footer class="bg-gray-900 py-10 border-t border-gray-800 z-10 relative">
         <div class="container mx-auto px-6">
@@ -576,7 +524,6 @@
             </div>
         </div>
     </footer>    
-    <!-- Scripts -->    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
     <script src="../js/main.js"></script>
     <script src="../js/animations.js"></script>
@@ -585,7 +532,6 @@
     <script src="../js/projects.js"></script>
     <script src="../js/stickers.js"></script>
 
-    <!-- Interactive Terminal -->
     <div id="interactive-terminal" class="hidden">
         <div class="interactive-terminal-header">
             <div class="interactive-terminal-title">Portfolio Terminal</div>

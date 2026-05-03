@@ -1,10 +1,7 @@
-// GSAP Animations for Portfolio
 
 gsap.defaults({ overwrite: 'auto' });
 
-// Hero Section Animations
 window.addEventListener('load', () => {
-    // Hero heading animation
     const heroHeading = document.querySelector('h1.text-transparent');
     if (heroHeading) {
         gsap.from(heroHeading, {
@@ -15,7 +12,6 @@ window.addEventListener('load', () => {
         });
     }
 
-    // Hero text animations with stagger
     const heroTexts = document.querySelectorAll('.hero-text, .md\\:text-left > p');
     if (heroTexts.length) {
         gsap.from(heroTexts, {
@@ -28,7 +24,6 @@ window.addEventListener('load', () => {
         });
     }
 
-    // Hero button animations
     const heroButtons = document.querySelectorAll('a.px-6.py-3');
     if (heroButtons.length) {
         gsap.from(heroButtons, {
@@ -41,7 +36,6 @@ window.addEventListener('load', () => {
         });
     }
 
-    // Project Cards - Staggered Animations
     gsap.utils.toArray('.project-card').forEach((card, index) => {
         gsap.from(card, {
             scrollTrigger: {
@@ -58,7 +52,6 @@ window.addEventListener('load', () => {
         });
     });
 
-    // Project Card Hover Effect
     document.querySelectorAll('.project-card').forEach(card => {
         card.addEventListener('mouseenter', function() {
             gsap.to(this, {
@@ -79,7 +72,6 @@ window.addEventListener('load', () => {
         });
     });
 
-    // Experience Cards - Scroll Triggered with Stagger
     gsap.utils.toArray('.experience-card').forEach((card, index) => {
         gsap.from(card, {
             scrollTrigger: {
@@ -95,7 +87,6 @@ window.addEventListener('load', () => {
         });
     });
 
-    // Experience Card Hover Animation
     document.querySelectorAll('.experience-card').forEach(card => {
         card.addEventListener('mouseenter', function() {
             gsap.to(this, {
@@ -124,7 +115,6 @@ window.addEventListener('load', () => {
         });
     });
 
-    // Skill Circles Animation
     gsap.utils.toArray('.skill-circle').forEach((circle, index) => {
         gsap.from(circle, {
             scrollTrigger: {
@@ -139,7 +129,6 @@ window.addEventListener('load', () => {
             delay: index * 0.1
         });
 
-        // Continuous rotation animation
         gsap.to(circle, {
             duration: 20,
             rotation: 360,
@@ -148,7 +137,6 @@ window.addEventListener('load', () => {
         });
     });
 
-    // Section Headings - Fade and Slide
     document.querySelectorAll('h2.text-3xl').forEach(heading => {
         gsap.from(heading, {
             scrollTrigger: {
@@ -163,7 +151,6 @@ window.addEventListener('load', () => {
         });
     });
 
-    // Section Divider Lines Animation
     document.querySelectorAll('.w-24.h-1.bg-indigo-500').forEach(divider => {
         gsap.from(divider, {
             scrollTrigger: {
@@ -177,7 +164,6 @@ window.addEventListener('load', () => {
         });
     });
 
-    // Skill Tags - Staggered Appearance
     document.querySelectorAll('.skill-tag').forEach((tag, index) => {
         gsap.from(tag, {
             scrollTrigger: {
@@ -193,7 +179,6 @@ window.addEventListener('load', () => {
         });
     });
 
-    // Button Hover Effects
     document.querySelectorAll('a[class*="px-6"][class*="py-3"], button').forEach(btn => {
         btn.addEventListener('mouseenter', function() {
             gsap.to(this, {
@@ -212,7 +197,6 @@ window.addEventListener('load', () => {
         });
     });
 
-    // Social Icons Animation
     document.querySelectorAll('.social-icon').forEach((icon, index) => {
         gsap.from(icon, {
             scrollTrigger: {
@@ -228,7 +212,6 @@ window.addEventListener('load', () => {
         });
     });
 
-    // Parallax effect on scroll
     gsap.utils.toArray('[data-speed]').forEach(element => {
         const speed = element.getAttribute('data-speed');
         gsap.to(element, {
@@ -241,7 +224,6 @@ window.addEventListener('load', () => {
         });
     });
 
-    // Text appears on scroll
     gsap.utils.toArray('p.text-gray-300, p.text-gray-400').forEach(para => {
         gsap.from(para, {
             scrollTrigger: {
@@ -257,7 +239,6 @@ window.addEventListener('load', () => {
     });
 });
 
-// Scroll animations for dynamically added content
 window.addEventListener('load', () => {
     ScrollTrigger.refresh();
 });

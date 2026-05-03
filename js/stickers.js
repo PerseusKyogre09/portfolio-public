@@ -3,7 +3,6 @@ document.addEventListener("DOMContentLoaded", function() {
     const placedStickers = [];
     const section = document.getElementById('github-section');
     
-    // Position stickers within the section
     function positionStickers() {
       const sectionRect = section.getBoundingClientRect();
       const sectionWidth = sectionRect.width;
@@ -155,13 +154,10 @@ if (tardisSticker) {
 }
 
 function createTardisEffect() {
-  // Create a wrapper for the background elements that will be blurred
   const pageContent = document.createElement('div');
   pageContent.className = 'tardis-blur-wrapper';
   
-  // Move all body children (except scripts) to the wrapper
   Array.from(document.body.children).forEach(child => {
-    // Skip script tags and the tardis elements we might add
     if (child.tagName !== 'SCRIPT' && 
         !child.classList.contains('tardis-container') && 
         !child.classList.contains('blocking-overlay')) {
@@ -169,38 +165,30 @@ function createTardisEffect() {
     }
   });
   
-  // Add the wrapper to the body
   document.body.appendChild(pageContent);
   
-  // Apply blur to the wrapper
   pageContent.classList.add('tardis-blur');
   
-  // Create blocking overlay
   const blockingOverlay = document.createElement('div');
   blockingOverlay.className = 'blocking-overlay';
   document.body.appendChild(blockingOverlay);
   
-  // Play TARDIS sound
   const tardisSound = new Audio('../assets/sounds/tardis.mp3');
   tardisSound.volume = 0.5;
   tardisSound.play().catch(e => console.log('Audio playback prevented: ', e));
   
-  // Create TARDIS container
   const tardisContainer = document.createElement('div');
   tardisContainer.className = 'tardis-container';
   
-  // Create TARDIS image
   const tardisImg = document.createElement('img');
   tardisImg.src = '../assets/tardis.png';
   tardisImg.alt = 'TARDIS';
   tardisImg.className = 'tardis-img';
   
-  // Create message
   const tardisMessage = document.createElement('div');
   tardisMessage.className = 'tardis-message';
   tardisMessage.textContent = "Oops, looks like the Doctor landed in the wrong place and time!";
   
-  // Create button
   const tardisButton = document.createElement('button');
   tardisButton.className = 'tardis-button';
   tardisButton.textContent = "Go back in time";
@@ -208,49 +196,40 @@ function createTardisEffect() {
     removeTardisEffect();
   });
   
-  // Append elements
   tardisContainer.appendChild(tardisImg);
   tardisContainer.appendChild(tardisMessage);
   tardisContainer.appendChild(tardisButton);
   document.body.appendChild(tardisContainer);
   
-  // Add animation
   setTimeout(() => {
     tardisContainer.classList.add('tardis-visible');
   }, 100);
 }
 
 function removeTardisEffect() {
-  // Get elements
   const tardisContainer = document.querySelector('.tardis-container');
   const blockingOverlay = document.querySelector('.blocking-overlay');
   const blurWrapper = document.querySelector('.tardis-blur-wrapper');
   
   if (tardisContainer) {
-    // Hide button and message
     const tardisButton = document.querySelector('.tardis-button');
     const tardisMessage = document.querySelector('.tardis-message');
     
     tardisButton.style.opacity = '0';
     tardisMessage.style.opacity = '0';
     
-    // Play TARDIS leaving sound
     const tardisLeavingSound = new Audio('../assets/sounds/tardis-leaving.mp3');
     tardisLeavingSound.volume = 0.5;
     tardisLeavingSound.play().catch(e => console.log('Audio playback prevented: ', e));
     
-    // Begin TARDIS departure animation but keep the TARDIS visible during the sound
     const tardisImg = document.querySelector('.tardis-img');
     tardisImg.classList.add('tardis-departing');
     
-    // Gradually reduce blur over time
     setTimeout(() => {
       blurWrapper.classList.add('tardis-unblur');
     }, 10000);
     
-    // Wait for the full sound duration before removing elements
     setTimeout(() => {
-      // Move all content back to body
       if (blurWrapper) {
         while (blurWrapper.firstChild) {
           document.body.appendChild(blurWrapper.firstChild);
@@ -272,89 +251,67 @@ if (masterballSticker) {
 }
 
 function createMasterballEffect() {
-  // Create blocking overlay
   const blockingOverlay = document.createElement('div');
   blockingOverlay.className = 'blocking-overlay';
   document.body.appendChild(blockingOverlay);
   
-  // Create MasterBall animation container
   const masterballContainer = document.createElement('div');
   masterballContainer.className = 'masterball-container';
   
-  // Create MasterBall image
   const masterballImg = document.createElement('img');
   masterballImg.src = '../assets/masterball.png';
   masterballImg.alt = 'MasterBall';
   masterballImg.className = 'masterball-img';
   
-  // Add masterball to container and body
   masterballContainer.appendChild(masterballImg);
   document.body.appendChild(masterballContainer);
   
-  // Play MasterBall throw sound
   const throwSound = new Audio('../assets/sounds/masterball-throw.mp3');
   throwSound.volume = 0.5;
   throwSound.play().catch(e => console.log('Audio playback prevented: ', e));
   
-  // Add throw animation
   setTimeout(() => {
     masterballContainer.classList.add('masterball-throw');
     
-    // Wait for throw animation to complete
     setTimeout(() => {
-      // Play capture sound
       const captureSound = new Audio('../assets/sounds/masterball-capture.mp3');
       captureSound.volume = 0.5;
       captureSound.play().catch(e => console.log('Audio playback prevented: ', e));
       
-      // Start shake animation
       masterballContainer.classList.add('masterball-shake');
       
-      // Wait for shake, then start Mewtwo sequence
       setTimeout(() => {
-        // Remove masterball
         masterballContainer.remove();
         
-        // Create Mewtwo container
         const mewtwoContainer = document.createElement('div');
         mewtwoContainer.className = 'mewtwo-container';
         
-        // Create Mewtwo image
         const mewtwoImg = document.createElement('img');
         mewtwoImg.src = '../assets/mewtwo.png';
         mewtwoImg.alt = 'Mewtwo';
         mewtwoImg.className = 'mewtwo-img';
         
-        // Add Mewtwo to page
         mewtwoContainer.appendChild(mewtwoImg);
         document.body.appendChild(mewtwoContainer);
         
-        // Play Mewtwo cry sound
         const mewtwoSound = new Audio('../assets/sounds/mewtwo-cry.mp3');
         mewtwoSound.volume = 0.5;
         mewtwoSound.play().catch(e => console.log('Audio playback prevented: ', e));
         
-        // Start Mewtwo appearance animation
         setTimeout(() => {
           mewtwoContainer.classList.add('mewtwo-appear');
           
-          // Add psychic effect after appearance
           setTimeout(() => {
-            // Apply psychic effect to page
             document.body.classList.add('psychic-effect');
             
-            // Play psychic attack sound
             const psychicSound = new Audio('../assets/sounds/psychic-attack.mp3');
             psychicSound.volume = 0.5;
             psychicSound.play().catch(e => console.log('Audio playback prevented: ', e));
             
-            // Create psychic energy waves
             createPsychicWaves();
             
-            // Add pulsing glow to Mewtwo
             mewtwoImg.classList.add('psychic-glow');
             
-            // Redirect to 404m.html after effect completes
             setTimeout(() => {
               window.location.href = "../404m.html";
             }, 4000);
@@ -366,12 +323,10 @@ function createMasterballEffect() {
 }
 
 function createPsychicWaves() {
-  // Create psychic wave container
   const waveContainer = document.createElement('div');
   waveContainer.className = 'psychic-wave-container';
   document.body.appendChild(waveContainer);
   
-  // Create multiple psychic waves
   for (let i = 0; i < 5; i++) {
     const wave = document.createElement('div');
     wave.className = 'psychic-wave';
@@ -379,7 +334,6 @@ function createPsychicWaves() {
     waveContainer.appendChild(wave);
   }
   
-  // Create psychic particles
   for (let i = 0; i < 40; i++) {
     createPsychicParticle();
   }
@@ -389,7 +343,6 @@ function createPsychicParticle() {
   const particle = document.createElement('div');
   particle.className = 'psychic-particle';
   
-  // Random position around the center
   const centerX = window.innerWidth / 2;
   const centerY = window.innerHeight / 2;
   const angle = Math.random() * Math.PI * 2;
@@ -398,7 +351,6 @@ function createPsychicParticle() {
   const xPos = centerX + Math.cos(angle) * distance;
   const yPos = centerY + Math.sin(angle) * distance;
   
-  // Random size
   const size = Math.random() * 15 + 5;
   
   particle.style.left = `${xPos}px`;
@@ -408,7 +360,6 @@ function createPsychicParticle() {
   
   document.body.appendChild(particle);
   
-  // Animate particle movement
   setTimeout(() => {
     const moveDistance = 300 + Math.random() * 400;
     const xMove = Math.cos(angle) * moveDistance;
@@ -423,7 +374,6 @@ function createPsychicParticle() {
   }, 10);
 }
 
-// Omnitrix functionality
 document.addEventListener("DOMContentLoaded", function() {
   const omnitrixSticker = document.querySelector('.sticker[alt="Omnitrix"]') || 
                          document.querySelector('img[alt="Omnitrix"]');
@@ -449,16 +399,13 @@ document.addEventListener("DOMContentLoaded", function() {
   function createBlockingOverlay() {
     const blockingOverlay = document.createElement('div');
     blockingOverlay.className = 'blocking-overlay';
-    // Make overlay clickable by setting pointer-events to none
     blockingOverlay.style.pointerEvents = 'none';
     document.body.appendChild(blockingOverlay);
   }
   
-  // Show the Omnitrix interface
   function showOmnitrixInterface() {
     const omnitrixInterface = document.createElement('div');
     omnitrixInterface.className = 'omnitrix-interface';
-    // Ensure the interface has higher z-index
     omnitrixInterface.style.zIndex = '10000';
     
     const omnitrixBody = document.createElement('div');
@@ -480,7 +427,6 @@ document.addEventListener("DOMContentLoaded", function() {
       { name: "Alien X", color: "#000000", power: "realityWarp" }
     ];
     
-    // Alien holograms
     const hologramContainer = document.createElement('div');
     hologramContainer.className = 'hologram-container';
     
@@ -491,11 +437,9 @@ document.addEventListener("DOMContentLoaded", function() {
       hologram.dataset.power = alien.power;
       hologram.style.backgroundColor = "rgba(0, 255, 0, 0.7)"; // Brighter green
       hologram.style.boxShadow = "0 0 15px rgba(0, 255, 0, 0.8)"; // Add glow effect
-      // Ensure holograms are clickable
       hologram.style.cursor = 'pointer';
       hologram.style.pointerEvents = 'auto';
       
-      // Position in a circle
       const angle = (index / aliens.length) * Math.PI * 2;
       const radius = 180;
       const x = Math.cos(angle) * radius;
@@ -521,7 +465,6 @@ document.addEventListener("DOMContentLoaded", function() {
       
       hologramContainer.appendChild(hologram);
       
-      // Add specific click event listener to each hologram
       hologram.addEventListener('click', function(event) {
         event.stopPropagation(); // Prevent event bubbling
         console.log(`Clicked on ${alien.name}`);
@@ -549,7 +492,6 @@ document.addEventListener("DOMContentLoaded", function() {
       omnitrixDial.classList.add('glow');
     }, 100);
     
-    // Rotatable Holograms
     let currentRotation = 0;
     
     function rotateHolograms(direction) {
@@ -580,7 +522,6 @@ document.addEventListener("DOMContentLoaded", function() {
     document.addEventListener('keydown', handleKeyDown);
     omnitrixInterface.keyboardListener = handleKeyDown;
     
-    // Add a small instruction for keyboard navigation
     const instruction = document.createElement('div');
     instruction.className = 'keyboard-instruction';
     instruction.textContent = 'Use ← → arrow keys to rotate';
@@ -596,7 +537,6 @@ document.addEventListener("DOMContentLoaded", function() {
     omnitrixInterface.appendChild(instruction);
   }
   
-  // Function to handle alien selection
   function selectAlien(alienName, power) {
     console.log(`Selected: ${alienName} with power: ${power}`);
     
@@ -645,7 +585,6 @@ document.addEventListener("DOMContentLoaded", function() {
         omnitrixDial.classList.add('pulse-ready');
       }
       
-      // Make the silhouette clickable for transformation
       const silhouette = selectedAlien.querySelector('.alien-silhouette');
       if (silhouette) {
         silhouette.style.cursor = 'pointer';
@@ -655,7 +594,6 @@ document.addEventListener("DOMContentLoaded", function() {
         });
       }
       
-      // Make the entire centered alien clickable for transformation
       selectedAlien.addEventListener('click', function(e) {
         if (selectedAlien.classList.contains('centered')) {
           e.stopPropagation();
@@ -665,9 +603,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   }
   
-  // Show transformation sequence
   function showTransformation(alienName, power) {
-    // Create transformation flash
     const flash = document.createElement('div');
     flash.className = 'transformation-flash';
     document.body.appendChild(flash);
@@ -682,7 +618,6 @@ document.addEventListener("DOMContentLoaded", function() {
     }, 100);
   }
   
-  // Show the selected alien
   function showAlien(alienName, power) {
     const alien = document.createElement('div');
     alien.className = 'alien ' + alienName.toLowerCase().replace(' ', '-');
@@ -703,7 +638,6 @@ document.addEventListener("DOMContentLoaded", function() {
     setTimeout(() => {
       alien.classList.add('active');
       
-      // Play alien's cry sound
       setTimeout(() => {
         const alienCrySound = new Audio(`../assets/sounds/aliens/${alienFileName}-cry.mp3`);
         alienCrySound.volume = 0.7;
@@ -720,7 +654,6 @@ document.addEventListener("DOMContentLoaded", function() {
             setTimeout(() => {
               executePower(power);
               
-              // Store selected alien in sessionStorage for the 404 page
               sessionStorage.setItem('selectedAlien', alienName);
               
               setTimeout(() => {
@@ -733,7 +666,6 @@ document.addEventListener("DOMContentLoaded", function() {
     }, 100);
   }
   
-  // Get alien catchphrase
   function getAlienCatchphrase(alienName) {
     const catchphrases = {
       "Swampfire": "Time to bring the heat!",
@@ -751,7 +683,6 @@ document.addEventListener("DOMContentLoaded", function() {
     return catchphrases[alienName] || `It's ${alienName} time!`;
   }
   
-  // Execute alien power destruction animation
   function executePower(power) {
     document.body.classList.add('power-active');
     
@@ -791,7 +722,6 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   }
   
-  // Different destruction effects
   function createFireEffect() {
     const overlay = document.createElement('div');
     overlay.className = 'destruction-overlay fire-overlay';
@@ -885,7 +815,6 @@ document.addEventListener("DOMContentLoaded", function() {
     overlay.className = 'freeze-overlay';
     document.body.appendChild(overlay);
     
-    // Add ice texture from assets
     overlay.style.backgroundImage = 'url("../assets/effects/ice-effect.png")';
     overlay.style.backgroundSize = 'cover';
     
@@ -893,7 +822,6 @@ document.addEventListener("DOMContentLoaded", function() {
     frostParticles.className = 'frost-particles';
     document.body.appendChild(frostParticles);
     
-    // Add snowflake particles
     for (let i = 0; i < 50; i++) {
       const particle = document.createElement('div');
       particle.className = 'frost-particle';
@@ -902,12 +830,10 @@ document.addEventListener("DOMContentLoaded", function() {
       particle.style.animationDuration = `${2 + Math.random() * 4}s`;
       particle.style.animationDelay = `${Math.random()}s`;
       
-      // Use snowflake images from assets
       particle.style.backgroundImage = `url("../assets/effects/snowflake.png")`;
       particle.style.backgroundSize = 'contain';
       particle.style.backgroundRepeat = 'no-repeat';
       particle.style.opacity = '0.2';
-      // Vary the size and rotation to create visual diversity with a single image
       const scale = 0.5 + Math.random();
       const rotation = Math.random() * 360;
       particle.style.transform = `scale(${scale}) rotate(${rotation}deg)`;
@@ -915,18 +841,15 @@ document.addEventListener("DOMContentLoaded", function() {
       frostParticles.appendChild(particle);
     }
     
-    // Generate ice cracks using crack images
     setTimeout(() => {
       for (let i = 0; i < 10; i++) {
         const crack = document.createElement('div');
         crack.className = 'ice-crack';
-        // Keep cracks within visible area by using percentage from 20-80%
         crack.style.left = `${20 + Math.random() * 60}%`;
         crack.style.top = `${20 + Math.random() * 60}%`;
         crack.style.width = `${50 + Math.random() * 200}px`;
         crack.style.transform = `rotate(${Math.random() * 360}deg)`;
         
-        // Use ice crack images from assets
         const crackNum = Math.floor(Math.random() * 3) + 1;
         crack.style.backgroundImage = `url("../assets/effects/ice-crack${crackNum}.png")`;
         crack.style.backgroundSize = 'contain';
@@ -935,7 +858,6 @@ document.addEventListener("DOMContentLoaded", function() {
         overlay.appendChild(crack);
       }
       
-      // Add frost border effect
       const frostBorder = document.createElement('div');
       frostBorder.className = 'frost-border';
       frostBorder.style.backgroundImage = 'url("../assets/effects/frost-border.png")';
@@ -946,7 +868,6 @@ document.addEventListener("DOMContentLoaded", function() {
       freezeSound.volume = 0.5;
       freezeSound.play().catch(e => console.log('Audio playback prevented: ', e));
       
-      // Create blackout effect overlay that will transition to black
       const blackoutOverlay = document.createElement('div');
       blackoutOverlay.className = 'blackout-overlay';
       blackoutOverlay.style.position = 'fixed';
@@ -960,11 +881,9 @@ document.addEventListener("DOMContentLoaded", function() {
       blackoutOverlay.style.zIndex = '99999';
       document.body.appendChild(blackoutOverlay);
       
-      // Activate the blackout effect before redirecting
       setTimeout(() => {
         blackoutOverlay.style.opacity = '1';
         
-        // Play ice crack sound as screen fades to black
         const crackSound = new Audio('../assets/sounds/ice-crack.mp3');
         crackSound.volume = 0.4;
         crackSound.play().catch(e => console.log('Audio playback prevented: ', e));
@@ -974,7 +893,6 @@ document.addEventListener("DOMContentLoaded", function() {
     setTimeout(() => {
       document.body.classList.add('shatter-freeze');
       
-      // Create a container for shards to ensure better positioning control
       const shardContainer = document.createElement('div');
       shardContainer.className = 'ice-shard-container';
       shardContainer.style.position = 'fixed';
@@ -986,17 +904,13 @@ document.addEventListener("DOMContentLoaded", function() {
       shardContainer.style.zIndex = '10000';
       document.body.appendChild(shardContainer);
       
-      // Add shattering effect with ice shards
       for (let i = 0; i < 15; i++) {
         const shard = document.createElement('div');
         shard.className = 'ice-shard';
         
-        // Position shards more centrally
-        // Use viewport width and height to ensure shards start in visible area
         const viewportWidth = window.innerWidth;
         const viewportHeight = window.innerHeight;
         
-        // Position in center area (30-70% of viewport)
         const startX = viewportWidth * (0.3 + Math.random() * 0.4);
         const startY = viewportHeight * (0.3 + Math.random() * 0.4);
         
@@ -1004,22 +918,17 @@ document.addEventListener("DOMContentLoaded", function() {
         shard.style.left = `${startX}px`;
         shard.style.top = `${startY}px`;
         
-        // Use the same ice shard image for all shards
         shard.style.backgroundImage = `url("../assets/effects/ice-shard.png")`;
         shard.style.backgroundSize = 'contain';
         shard.style.backgroundRepeat = 'no-repeat';
         
-        // Vary rotation and scale to create visual diversity with a single image
         shard.style.transform = `rotate(${Math.random() * 360}deg) scale(${0.5 + Math.random() * 1.5})`;
         
         shardContainer.appendChild(shard);
         
-        // Add flying animation - keeping shards within reasonable bounds
         setTimeout(() => {
           const angle = Math.random() * Math.PI * 2;
           
-          // Limit distance to ensure shards don't fly too far off-screen
-          // Use percentage of viewport for responsive behavior
           const maxDistance = Math.min(viewportWidth, viewportHeight) * 0.5;
           const distance = 100 + Math.random() * maxDistance;
           
@@ -1103,7 +1012,6 @@ document.addEventListener("DOMContentLoaded", function() {
     webContainer.className = 'web-container';
     document.body.appendChild(webContainer);
     
-    // Create web strands from different angles
     for (let i = 0; i < 15; i++) {
       const web = document.createElement('div');
       web.className = 'web-strand';
@@ -1212,17 +1120,13 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   }
   
-  // Create the Transformers sequence
   function playTransformersSequence() {
-    // Play truck engine sound
     const engineSound = new Audio('../assets/sounds/truck-engine.mp3');
     engineSound.volume = 0.5;
     engineSound.play().catch(e => console.log('Audio playback prevented: ', e));
     
-    // Show the truck approaching
     showTruckApproaching();
     
-    // Then transform to robot with transformation sound
     setTimeout(function() {
       const transformSound = new Audio('../assets/sounds/transform-sound.mp3');
       transformSound.volume = 0.5;
@@ -1230,7 +1134,6 @@ document.addEventListener("DOMContentLoaded", function() {
       showRobotTransformation();
     }, 3000);
     
-    // Show Optimus Prime quote with Peter Cullen voice
     setTimeout(function() {
       const optimusVoice = new Audio('../assets/sounds/optimus-quote.mp3');
       optimusVoice.volume = 0.6;
@@ -1238,12 +1141,10 @@ document.addEventListener("DOMContentLoaded", function() {
       showOptimusQuote("Freedom is the right of all sentient beings.");
     }, 5000);
     
-    // Show Megatron appearing
     setTimeout(function() {
       showMegatronAppearing();
     }, 8000);
     
-    // Show Megatron quote with Frank Welker voice
     setTimeout(function() {
       const megatronVoice = new Audio('../assets/sounds/megatron-quote.mp3');
       megatronVoice.volume = 0.6;
@@ -1251,7 +1152,6 @@ document.addEventListener("DOMContentLoaded", function() {
       showMegatronQuote("They cannot handle the wrath of Decepticon Tyranny... Huhuhahahahahahaha!!");
     }, 9500);
     
-    // Finally, redirect to the Transformers themed 404 page
     setTimeout(function() {
       window.location.href = "../404t.html";
     }, 16500);
@@ -1275,29 +1175,24 @@ document.addEventListener("DOMContentLoaded", function() {
     truckContainer.appendChild(truckImg);
     document.body.appendChild(truckContainer);
     
-    // Add animation class
     setTimeout(() => {
       truckContainer.classList.add('truck-animate');
     }, 100);
   }
   
   function showRobotTransformation() {
-    // Hide truck
     const truckContainer = document.querySelector('.truck-container');
     if (truckContainer) {
       truckContainer.classList.add('hide');
     }
     
-    // Show transformation flash
     const flash = document.createElement('div');
     flash.className = 'transform-flash';
     document.body.appendChild(flash);
     
     setTimeout(() => {
-      // Remove flash
       document.body.removeChild(flash);
       
-      // Show robot
       const robotContainer = document.createElement('div');
       robotContainer.className = 'robot-container';
       
@@ -1332,7 +1227,6 @@ document.addEventListener("DOMContentLoaded", function() {
   }
   
   function showMegatronAppearing() {
-    // Create dark energy effect
     const darkEnergy = document.createElement('div');
     darkEnergy.className = 'dark-energy';
     document.body.appendChild(darkEnergy);
@@ -1341,7 +1235,6 @@ document.addEventListener("DOMContentLoaded", function() {
       darkEnergy.classList.add('dark-energy-animate');
       
       setTimeout(() => {
-        // Show Megatron
         const megatronContainer = document.createElement('div');
         megatronContainer.className = 'megatron-container';
         

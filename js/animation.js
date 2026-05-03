@@ -1,12 +1,10 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // ScrollCue is initialized in main.js, no need to initialize here
     
     animateSkillCircles();
     initProjectCardHoverEffects();
     initCodeTypingAnimation();
     initParallaxEffect();
     
-    // Initialize new visual effects
     initGridBackground();
     initCursorGlow();
 });
@@ -47,7 +45,6 @@ function animateProgress(element, start, end, duration) {
         if (progress < 1) {
             requestAnimationFrame(update);
         } else {
-            // Add a class when animation is complete for additional effects
             element.classList.add('animation-completed');
         }
     }
@@ -64,21 +61,18 @@ function initProjectCardHoverEffects() {
     
     projectCards.forEach(card => {
         card.addEventListener('mouseenter', () => {
-            // Animate the arrow icon
             const icon = card.querySelector('.fa-arrow-right');
             if (icon) {
                 icon.style.transform = 'translateX(5px)';
                 icon.style.transition = 'transform 0.3s ease';
             }
             
-            // Add subtle glow effect to project image/icon container
             const imageContainer = card.querySelector('.relative.overflow-hidden');
             if (imageContainer) {
                 imageContainer.style.boxShadow = '0 0 15px rgba(129, 140, 248, 0.3)';
                 imageContainer.style.transition = 'box-shadow 0.4s ease';
             }
             
-            // Enhance the category tag
             const categoryTag = card.querySelector('.absolute.bottom-0 span');
             if (categoryTag) {
                 categoryTag.style.transform = 'translateY(-3px)';
@@ -88,19 +82,16 @@ function initProjectCardHoverEffects() {
         });
         
         card.addEventListener('mouseleave', () => {
-            // Reset the arrow icon
             const icon = card.querySelector('.fa-arrow-right');
             if (icon) {
                 icon.style.transform = 'translateX(0)';
             }
             
-            // Reset image container
             const imageContainer = card.querySelector('.relative.overflow-hidden');
             if (imageContainer) {
                 imageContainer.style.boxShadow = 'none';
             }
             
-            // Reset category tag
             const categoryTag = card.querySelector('.absolute.bottom-0 span');
             if (categoryTag) {
                 categoryTag.style.transform = 'translateY(0)';
@@ -113,7 +104,6 @@ function initProjectCardHoverEffects() {
 function initCodeTypingAnimation() {
     const codeAnimationElements = document.querySelectorAll('.code-animation');
     
-    // Setup Intersection Observer for the code animation elements
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -167,7 +157,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             const targetElement = document.querySelector(targetId);
             
             if (targetElement) {
-                // Use smoother scrolling with custom easing
                 const startPosition = window.scrollY;
                 const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY;
                 const distance = targetPosition - startPosition;
@@ -202,8 +191,6 @@ function initParallaxEffect() {
             const speed = parseFloat(element.getAttribute('data-speed'));
             const yPos = -(window.scrollY * speed / 10);
             
-            // Apply the transform while preserving any existing ScrollCue transformations
-            // We use translate3d for hardware acceleration
             element.style.transform = `translate3d(0, ${yPos}px, 0)`;
         });
         ticking = false;
@@ -218,7 +205,6 @@ function initParallaxEffect() {
         }
     });
     
-    // Add mouse movement parallax for more interactivity (subtle effect)
     window.addEventListener('mousemove', e => {
         if (!ticking) {
             window.requestAnimationFrame(() => {
@@ -227,10 +213,8 @@ function initParallaxEffect() {
                     const mouseX = (window.innerWidth / 2 - e.clientX) * speed / 100;
                     const mouseY = (window.innerHeight / 2 - e.clientY) * speed / 100;
                     
-                    // Calculate the scroll-based offset
                     const scrollY = -(window.scrollY * speed * 2);
                     
-                    // Combine both effects
                     element.style.transform = `translate3d(${mouseX}px, ${scrollY + mouseY}px, 0)`;
                 });
                 ticking = false;
@@ -239,34 +223,25 @@ function initParallaxEffect() {
         }
     });
     
-    // Initial position
     updateParallaxElements();
 }
 
-// Add function to adjust animations for mobile devices
 function optimizeAnimationsForMobile() {
-    // Check if device is mobile
     const isMobile = window.innerWidth < 768;
     
     if (isMobile) {
-        // Reduce the number of parallax elements on mobile for better performance
         document.querySelectorAll('[data-speed]').forEach(element => {
-            // Keep only essential parallax elements and disable others
             if (!element.classList.contains('essential-parallax')) {
                 element.removeAttribute('data-speed');
             } else {
-                // Reduce the speed value for mobile
                 const currentSpeed = parseFloat(element.getAttribute('data-speed'));
                 element.setAttribute('data-speed', String(currentSpeed * 0.5));
             }
         });
         
-        // Simplify animations for better mobile performance
         document.querySelectorAll('.scrollcue').forEach(element => {
-            // Force simpler animations on mobile
             const currentDelay = parseInt(element.getAttribute('data-delay') || '0');
             
-            // Reduce delays between animations on mobile
             if (currentDelay > 300) {
                 element.setAttribute('data-delay', String(Math.max(100, currentDelay * 0.7)));
             }
@@ -274,7 +249,6 @@ function optimizeAnimationsForMobile() {
     }
 }
 
-// Call the function on page load and resize
 window.addEventListener('load', optimizeAnimationsForMobile);
 window.addEventListener('resize', optimizeAnimationsForMobile);
 
@@ -282,28 +256,22 @@ if (document.querySelector('.parallax-bg')) {
     initParallaxEffect();
 }
 
-// Enhance skill progress bars with interactive animations
 function enhanceSkillProgressBars() {
     const skillCards = document.querySelectorAll('.bg-gray-800.rounded-xl');
     
-    // Add hover effect to skill cards
     skillCards.forEach(card => {
         card.addEventListener('mouseenter', () => {
-            // Add a subtle glow effect
             card.style.boxShadow = '0 0 20px rgba(99, 102, 241, 0.3)';
             card.style.transform = 'translateY(-8px)';
             
-            // Animate the progress bars inside this card
             const progressBars = card.querySelectorAll('.skill-progress');
             progressBars.forEach((bar, index) => {
-                // Create a pulsing effect on the progress bars
                 bar.style.transition = 'all 0.3s ease';
                 bar.style.animation = `skillPulse 1.5s infinite ${index * 0.2}s`;
             });
         });
         
         card.addEventListener('mouseleave', () => {
-            // Remove the effects
             card.style.boxShadow = '';
             card.style.transform = '';
             
@@ -314,7 +282,6 @@ function enhanceSkillProgressBars() {
         });
     });
     
-    // Add the keyframe animation to the CSS
     if (!document.getElementById('skill-pulse-animation')) {
         const styleEl = document.createElement('style');
         styleEl.id = 'skill-pulse-animation';
@@ -329,20 +296,15 @@ function enhanceSkillProgressBars() {
     }
 }
 
-// Execute the enhancement on page load
 if (document.querySelector('.skill-progress')) {
     window.addEventListener('load', enhanceSkillProgressBars);
 }
 
-// Add floating animation to profile photo and enhance social icons
 function enhanceProfileElements() {
-    // Add floating animation to profile photo
     const profilePhoto = document.querySelector('.aspect-w-1.aspect-h-1');
     if (profilePhoto) {
-        // Add gentle floating animation
         profilePhoto.style.animation = 'float 6s ease-in-out infinite';
         
-        // Add the keyframe animation
         if (!document.getElementById('profile-animations')) {
             const styleEl = document.createElement('style');
             styleEl.id = 'profile-animations';
@@ -367,13 +329,10 @@ function enhanceProfileElements() {
         }
     }
     
-    // Add staggered hover effect to social icons
     const socialIcons = document.querySelectorAll('.social-icon');
     socialIcons.forEach((icon, index) => {
-        // Add a subtle delay to the hover transition based on position
         icon.style.transitionDelay = `${index * 0.05}s`;
         
-        // Make icons more interactive
         icon.addEventListener('mouseenter', () => {
             icon.style.transform = 'translateY(-5px)';
             const iconEl = icon.querySelector('i');
@@ -392,25 +351,20 @@ function enhanceProfileElements() {
     });
 }
 
-// Execute the enhancement on page load for about page
 if (document.querySelector('.social-icon')) {
     window.addEventListener('load', enhanceProfileElements);
 }
 
-// Add interactive animations to the contact form
 function enhanceContactForm() {
     const contactForm = document.getElementById('contactForm');
     if (!contactForm) return;
     
-    // Add effects to form inputs
     const formInputs = contactForm.querySelectorAll('input, textarea');
     
     formInputs.forEach(input => {
-        // Add focus and typing animations
         input.addEventListener('focus', () => {
             input.parentElement.classList.add('input-focused');
             
-            // Add a subtle scale animation to the label
             const label = input.parentElement.querySelector('label');
             if (label) {
                 label.style.color = '#818cf8';
@@ -423,7 +377,6 @@ function enhanceContactForm() {
         input.addEventListener('blur', () => {
             input.parentElement.classList.remove('input-focused');
             
-            // Reset the label unless the input has value
             const label = input.parentElement.querySelector('label');
             if (label && !input.value) {
                 label.style.color = '';
@@ -431,7 +384,6 @@ function enhanceContactForm() {
             }
         });
         
-        // Check if input already has value (e.g., on page reload)
         if (input.value) {
             const label = input.parentElement.querySelector('label');
             if (label) {
@@ -441,7 +393,6 @@ function enhanceContactForm() {
         }
     });
     
-    // Add a CSS class for styling the focused input containers
     if (!document.getElementById('contact-form-styles')) {
         const styleEl = document.createElement('style');
         styleEl.id = 'contact-form-styles';
@@ -493,42 +444,33 @@ function enhanceContactForm() {
         document.head.appendChild(styleEl);
     }
     
-    // Add submit button animation
     const submitButton = contactForm.querySelector('button[type="submit"]');
     if (submitButton) {
         submitButton.addEventListener('click', function(e) {
-            // Add ripple effect (implemented in CSS above)
             
-            // Prevent the actual submission for this demo
-            // In a real implementation, you'd handle the form submission
             if (!contactForm.checkValidity()) {
                 return;
             }
             
             e.preventDefault();
             
-            // Show success message animation
             submitButton.innerHTML = '<i class="fas fa-circle-notch fa-spin mr-2"></i> Sending...';
             submitButton.disabled = true;
             
-            // Simulate form submission
             setTimeout(() => {
                 submitButton.innerHTML = '<i class="fas fa-check mr-2"></i> Message Sent!';
                 submitButton.classList.remove('bg-indigo-600', 'hover:bg-indigo-700');
                 submitButton.classList.add('bg-green-600', 'hover:bg-green-700');
                 
-                // Reset form with animation
                 setTimeout(() => {
                     contactForm.reset();
                     
-                    // Reset button after 3 seconds
                     setTimeout(() => {
                         submitButton.innerHTML = 'Send Message <i class="fas fa-paper-plane ml-2"></i>';
                         submitButton.classList.remove('bg-green-600', 'hover:bg-green-700');
                         submitButton.classList.add('bg-indigo-600', 'hover:bg-indigo-700');
                         submitButton.disabled = false;
                         
-                        // Reset labels
                         formInputs.forEach(input => {
                             const label = input.parentElement.querySelector('label');
                             if (label) {
@@ -543,20 +485,16 @@ function enhanceContactForm() {
     }
 }
 
-// Run the contact form enhancement
 if (document.getElementById('contactForm')) {
     window.addEventListener('load', enhanceContactForm);
 }
 
-// Initialize animated grid background
 function initGridBackground() {
-    // Add the grid container if it doesn't exist
     if (!document.querySelector('.grid-background')) {
         const grid = document.createElement('div');
         grid.className = 'grid-background';
         document.body.insertBefore(grid, document.body.firstChild);
 
-        // Add styles for the grid
         if (!document.getElementById('grid-styles')) {
             const styleEl = document.createElement('style');
             styleEl.id = 'grid-styles';
@@ -606,7 +544,6 @@ function initGridBackground() {
         }
     }
 
-    // Add subtle parallax effect to the grid on mouse move
     let mouseX = 0, mouseY = 0;
     const grid = document.querySelector('.grid-background');
     
@@ -620,7 +557,6 @@ function initGridBackground() {
     });
 }
 
-// Initialize cursor glow effect
 function initCursorGlow() {
     if (!document.querySelector('.cursor-glow')) {
         const glow = document.createElement('div');
@@ -665,7 +601,6 @@ function initCursorGlow() {
             glow.style.top = e.clientY + 'px';
             glow.style.opacity = '1';
 
-            // Show glow effect while moving
             isMoving = true;
             clearTimeout(moveTimeout);
             

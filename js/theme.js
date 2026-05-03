@@ -31,7 +31,6 @@ function setupThemeToggle() {
     }
 }
 
-// Set the theme to dark mode
 function setDarkTheme() {
     document.documentElement.classList.add('dark');
     document.documentElement.classList.remove('light');
@@ -42,7 +41,6 @@ function setDarkTheme() {
     document.body.classList.remove('bg-white');
     document.body.classList.remove('text-gray-800');
     
-    // Ensure indigo colors stay consistent
     document.documentElement.style.setProperty('--indigo-500', '#6366f1');
     document.documentElement.style.setProperty('--indigo-600', '#4f46e5');
     document.documentElement.style.setProperty('--indigo-700', '#4338ca');
@@ -50,7 +48,6 @@ function setDarkTheme() {
     localStorage.setItem('theme', 'dark');
 }
 
-// Set the theme to light mode
 function setLightTheme() {
     document.documentElement.classList.remove('dark');
     document.documentElement.classList.add('light');
@@ -61,7 +58,6 @@ function setLightTheme() {
     document.body.classList.add('bg-white');
     document.body.classList.add('text-gray-800');
     
-    // Ensure indigo colors stay consistent
     document.documentElement.style.setProperty('--indigo-500', '#6366f1');
     document.documentElement.style.setProperty('--indigo-600', '#4f46e5');
     document.documentElement.style.setProperty('--indigo-700', '#4338ca');
@@ -69,14 +65,11 @@ function setLightTheme() {
     localStorage.setItem('theme', 'light');
 }
 
-// Theme toggle button 
 function updateThemeIcon(iconElement) {
     if (document.documentElement.classList.contains('dark')) {
-        // Show sun icon
         iconElement.classList.remove('fa-moon');
         iconElement.classList.add('fa-sun');
     } else {
-        // Show moon icon
         iconElement.classList.remove('fa-sun');
         iconElement.classList.add('fa-moon');
     }
