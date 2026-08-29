@@ -1,0 +1,4 @@
+/* 404 module entry point. Individual scenes keep their own themed styles. */
+@media (prefers-reduced-motion: reduce) {
+  .scene, .effect, .particle { animation: none !important; }
+}

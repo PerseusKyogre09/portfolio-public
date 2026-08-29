@@ -1,0 +1,9 @@
+/* Optional effects module. Decorative motion is disabled when requested. */
+.sticker, .gear-slow, .bg-video { will-change: transform; }
+@media (prefers-reduced-motion: reduce) {
+  .sticker, .gear-slow, .bg-video, #particles-js { animation: none !important; }
+  .bg-video { display: none !important; }
+}
+@media (max-width: 767px) {
+  #particles-js, .bg-video { display: none; }
+}

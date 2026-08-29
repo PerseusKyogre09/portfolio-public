@@ -1,0 +1,9 @@
+/* Terminal module: decorative code card and interactive shell surfaces. */
+.terminal, .interactive-terminal-body, #interactive-terminal-output { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+#interactive-terminal { border-radius: 16px; overflow: hidden; }
+.interactive-terminal-header { min-height: 42px; display: flex; align-items: center; justify-content: space-between; }
+.interactive-terminal-close { min-width: 32px; min-height: 32px; border-radius: 8px; }
+#interactive-terminal-input { min-width: 0; }
+@media (max-width: 767px) {
+  #interactive-terminal { width: calc(100vw - 20px); right: 10px; left: 10px; bottom: 10px; }
+}

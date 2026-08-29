@@ -9,6 +9,9 @@
     <link rel="stylesheet" href="../css/decks.css">
     <link rel="stylesheet" href="../css/floating-nav.css">
     <link rel="stylesheet" href="../css/cards.css">
+    <link rel="stylesheet" href="../css/site.css">
+    <link rel="stylesheet" href="../css/terminal.css">
+    <link rel="stylesheet" href="../css/effects.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body class="dark bg-gray-900 text-gray-200 min-h-screen flex flex-col transition-colors duration-300">
@@ -386,7 +389,7 @@
                 </div>
         </section>                
             <section class="py-20 md:py-24 bg-image-bg2">
-                <video autoplay loop muted class="bg-video absolute inset-0 w-full h-full object-cover z-0"><source src="../assets/race.mp4" type="video/mp4"></video>
+                <video autoplay loop muted playsinline preload="none" class="bg-video absolute inset-0 w-full h-full object-cover z-0"><source data-src="../assets/race.mp4" type="video/mp4"></video>
                 <div class="container mx-auto px-6">
                     <h2 class="text-3xl font-bold text-center mb-12 relative inline-block w-full scrollcue"
                         data-cue="fade-in">
@@ -563,7 +566,7 @@
     </footer>    <!-- Scripts -->    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
     <script src="https://unpkg.com/scrollcue.js@1.2.0/scrollcue.all-in-one.min.js"></script>
     <script src="../js/main.js"></script>
-    <script src="../js/animations.js"></script>
+    <script src="../js/animation.js"></script>
     <script src="../js/theme.js"></script>
     <script>
         // Mobile menu toggle

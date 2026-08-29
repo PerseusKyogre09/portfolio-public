@@ -1,51 +1,50 @@
 function initLoadingScreen() {
-    document.documentElement.style.overflow = 'hidden';
-    document.body.style.overflow = 'hidden';
-    window.scrollY = 0;
-    document.documentElement.scrollTop = 0;
-    document.body.scrollTop = 0;
-    
     const loadingScreen = document.getElementById('loading-screen');
     if (!loadingScreen) return;
     
     function hideLoadingScreen() {
         loadingScreen.classList.add('hidden');
-        setTimeout(() => {
-            document.documentElement.style.overflow = '';
-            document.body.style.overflow = '';
-        }, 600); // Match the transition duration
+        document.documentElement.style.overflow = '';
+        document.body.style.overflow = '';
     }
-    
-    let resourcesReady = false;
-    
-    if (document.readyState === 'complete') {
-        resourcesReady = true;
-    } else {
-        window.addEventListener('load', () => {
-            resourcesReady = true;
-        });
-    }
-    
-    setTimeout(() => {
-        if (resourcesReady || document.readyState === 'complete') {
-            hideLoadingScreen();
-        }
-    }, 1200);
-    
-    setTimeout(() => {
-        hideLoadingScreen();
-    }, 3000);
+
+    // The DOM is usable before every image/video and third-party script finishes.
+    requestAnimationFrame(hideLoadingScreen);
 }
 
 document.addEventListener('DOMContentLoaded', function() {
     initLoadingScreen();
     initParticles();
+    initBackgroundVideos();
     initTypedText();
-    initMobileMenu();
     initScrollAnimations();
     initScrollCue();
     initPageTransitions();
 });
+
+function initBackgroundVideos() {
+    const videos = document.querySelectorAll('.bg-video');
+    if (!videos.length || window.matchMedia('(max-width: 767px), (prefers-reduced-motion: reduce)').matches) return;
+
+    const loadVideo = (video) => {
+        const source = video.querySelector('source[data-src]');
+        if (!source || source.src) return;
+        source.src = source.dataset.src;
+        video.load();
+        video.play().catch(() => {});
+    };
+
+    const observer = new IntersectionObserver((entries, videoObserver) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                loadVideo(entry.target);
+                videoObserver.unobserve(entry.target);
+            }
+        });
+    }, { rootMargin: '200px 0px' });
+
+    videos.forEach((video) => observer.observe(video));
+}
 
 window.addEventListener('load', function() {
     deferAnimation(() => {
@@ -66,7 +65,7 @@ function initScrollCue() {
             parentSelector: '',     
             childSelector: '.scrollcue',
             easing: 'easeOutExpo', // Smooth easing function
-            once: false,           // Allow animations to repeat
+            once: true,
             docSlider: false,
             breakpoint: 768,       // Mobile breakpoint
             delayTime: 100,        // Small delay after elements become visible
@@ -86,11 +85,11 @@ function initScrollCue() {
 }
 
 function initParticles() {
-    if (typeof particlesJS !== 'undefined') {
+    if (typeof particlesJS !== 'undefined' && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         particlesJS('particles-js', {
             particles: {
                 number: {
-                    value: 50,
+                    value: window.innerWidth < 768 ? 18 : 35,
                     density: { enable: true, value_area: 800 }
                 },
                 color: { value: '#818cf8' },
@@ -167,18 +166,6 @@ function initTypedText() {
     }
 }
 
-function initMobileMenu() {
-    const mobileMenuButton = document.getElementById('mobile-menu-button');
-    const mobileMenu = document.getElementById('mobile-menu');
-    
-    if (mobileMenuButton && mobileMenu) {
-        mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-            mobileMenu.classList.toggle('show');
-        });
-    }
-}
-
 function initScrollAnimations() {
     const animatedElements = document.querySelectorAll('.animate-on-scroll');
     checkElementsInViewport(animatedElements);
@@ -239,7 +226,7 @@ function initPageTransitions() {
                 
                 setTimeout(() => {
                     window.location.href = href;
-                }, 600); // Match with CSS transition duration
+                }, 150);
             });
         }
     });

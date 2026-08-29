@@ -1,0 +1,101 @@
+/*
+ * Portfolio UI
+ * Plain CSS design system shared by every page.
+ * Keep page-specific experiments out of this file.
+ */
+:root {
+  --site-bg: #070b14;
+  --site-panel: rgba(14, 22, 38, .78);
+  --site-panel-solid: #0e1626;
+  --site-line: rgba(143, 173, 214, .18);
+  --site-line-active: rgba(94, 234, 212, .44);
+  --site-text: #e7eef9;
+  --site-muted: #8fa1ba;
+  --site-cyan: #5eead4;
+  --site-violet: #a78bfa;
+  --site-pink: #f0abfc;
+  --site-radius: 16px;
+  --site-shadow: 0 24px 80px rgba(0, 0, 0, .28);
+}
+
+html { background: var(--site-bg); }
+body.dark {
+  color: var(--site-text) !important;
+  background-color: var(--site-bg) !important;
+  background-image: radial-gradient(circle at 12% 8%, rgba(94,234,212,.1), transparent 28rem), radial-gradient(circle at 88% 18%, rgba(167,139,250,.11), transparent 32rem) !important;
+}
+body.light {
+  --site-bg: #f4f7fb;
+  --site-panel: rgba(255,255,255,.82);
+  --site-panel-solid: #fff;
+  --site-line: rgba(50,70,100,.16);
+  --site-line-active: rgba(13,148,136,.45);
+  --site-text: #132033;
+  --site-muted: #617189;
+  color: var(--site-text) !important;
+  background: var(--site-bg) !important;
+  background-image: radial-gradient(circle at 12% 8%, rgba(20,184,166,.1), transparent 28rem), radial-gradient(circle at 88% 18%, rgba(124,58,237,.08), transparent 32rem) !important;
+}
+
+body.dark header.floating-nav, body.light header.floating-nav {
+  top: 14px;
+  width: min(1180px, calc(100% - 28px));
+  border: 1px solid var(--site-line) !important;
+  border-radius: var(--site-radius);
+  background: rgba(9,15,27,.72) !important;
+  box-shadow: 0 16px 45px rgba(0,0,0,.24), inset 0 1px rgba(255,255,255,.07) !important;
+  backdrop-filter: blur(22px) saturate(140%);
+}
+body.light header.floating-nav { background: rgba(255,255,255,.78) !important; }
+.floating-nav .container { padding: .65rem 1rem; }
+.floating-nav .brand-logo { width: 29px; height: 29px; border: 1px solid var(--site-line-active); }
+.floating-nav .nav-link { padding: .55rem .7rem; color: var(--site-muted); border-radius: 9px; }
+.floating-nav .nav-link:hover, .floating-nav .nav-link.active { color: var(--site-cyan) !important; background: rgba(94,234,212,.08); }
+.floating-nav .nav-link.active::after { display: none; }
+.floating-nav button { min-width: 2.25rem; min-height: 2.25rem; color: var(--site-muted); border-radius: 9px; }
+.floating-nav button:hover { color: var(--site-cyan); background: rgba(94,234,212,.08); }
+main.with-floating-nav { padding-top: 5.7rem; }
+
+main > section { position: relative; isolation: isolate; }
+main > section::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image: linear-gradient(rgba(94,234,212,.025) 1px, transparent 1px), linear-gradient(90deg, rgba(94,234,212,.025) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: linear-gradient(to bottom, black, transparent 75%);
+}
+h1, h2, h3 { letter-spacing: -.035em; }
+h2::before { content: '// '; color: var(--site-cyan); font: 600 .62em/1 ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: 0; }
+.text-indigo-400, .text-indigo-300 { color: var(--site-cyan) !important; }
+.text-purple-400, .text-purple-300 { color: var(--site-violet) !important; }
+
+.card, .deck, .card-3d, .project-card, .experience-card, .glass-effect {
+  border: 1px solid var(--site-line) !important;
+  background: var(--site-panel) !important;
+  box-shadow: var(--site-shadow), inset 0 1px rgba(255,255,255,.05) !important;
+  backdrop-filter: blur(16px) saturate(125%);
+}
+.card:hover, .deck:hover, .card-3d:hover, .project-card:hover, .experience-card:hover { border-color: var(--site-line-active) !important; }
+.project-card { border-radius: 18px !important; }
+.project-card:hover { transform: translateY(-7px) !important; box-shadow: 0 24px 60px rgba(0,0,0,.32), 0 0 0 1px rgba(94,234,212,.18) !important; }
+.project-card-content { background: linear-gradient(to bottom, transparent, rgba(7,11,20,.78) 35%, rgba(7,11,20,.98)) !important; }
+.filter-btn { border: 1px solid var(--site-line); background: var(--site-panel) !important; color: var(--site-muted) !important; }
+.filter-btn.active { background: var(--site-cyan) !important; color: #071016 !important; }
+
+.form-input, input, textarea, select { border: 1px solid var(--site-line) !important; border-radius: 10px !important; background: rgba(7,12,23,.6) !important; color: var(--site-text) !important; }
+.form-input:focus, input:focus, textarea:focus, select:focus { border-color: var(--site-cyan) !important; box-shadow: 0 0 0 3px rgba(94,234,212,.12); outline: none; }
+footer { background: rgba(5,9,17,.72) !important; border-top-color: var(--site-line) !important; }
+body.light footer { background: rgba(255,255,255,.72) !important; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; }
+}
+@media (max-width: 767px) {
+  body.dark header.floating-nav, body.light header.floating-nav { width: calc(100% - 20px); top: 10px; }
+  main.with-floating-nav { padding-top: 4.8rem; }
+  #particles-js, .bg-video { display: none; }
+  .project-card:hover, .card-3d:hover { transform: translateY(-3px) !important; }
+}

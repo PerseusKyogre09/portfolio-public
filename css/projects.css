@@ -1,0 +1,9 @@
+/* Project module: cards, filters, and project-grid interaction states. */
+.project-card { border-radius: 18px; overflow: hidden; }
+.project-card-preview { aspect-ratio: 16 / 10; object-fit: cover; }
+.project-card-content { display: flex; flex-direction: column; min-height: 220px; }
+.project-card-footer { margin-top: auto; }
+.filter-btn { cursor: pointer; user-select: none; }
+@media (max-width: 767px) {
+  .project-card-content { min-height: 200px; }
+}

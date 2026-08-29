@@ -6,6 +6,9 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/custom.css">
     <link rel="stylesheet" href="../css/decks.css">
+    <link rel="stylesheet" href="../css/site.css">
+    <link rel="stylesheet" href="../css/terminal.css">
+    <link rel="stylesheet" href="../css/effects.css">
     <link rel="stylesheet" href="../css/floating-nav.css">    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="https://unpkg.com/scrollcue.js@1.2.0/scrollcue.all-in-one.min.js"></script>
@@ -83,7 +86,7 @@
         </section>
 
         <section class="py-12 bg-image-bg2">
-            <video autoplay loop muted class="bg-video absolute inset-0 w-full h-full object-cover z-0"><source src="../assets/race.mp4" type="video/mp4"></video>
+            <video autoplay loop muted playsinline preload="none" class="bg-video absolute inset-0 w-full h-full object-cover z-0"><source data-src="../assets/race.mp4" type="video/mp4"></video>
             <div class="container mx-auto px-6">
                 <div class="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">                    <!-- Contact Form -->
                     <div class="bg-gray-800 rounded-xl overflow-hidden shadow-lg transform hover:-translate-y-1 transition-all duration-300 scrollcue deck" data-cue="slide-right">
@@ -269,7 +272,7 @@
     </footer>    <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
     <script src="../js/main.js"></script>
-    <script src="../js/animations.js"></script>
+    <script src="../js/animation.js"></script>
     <script src="../js/theme.js"></script>
     <script>
         // Mobile menu toggle
